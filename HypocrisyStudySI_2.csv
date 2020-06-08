@@ -1,0 +1,331 @@
+ID,StartDate,EndDate,Gender,Economics_exp,Age,Perceived_purpose,condition,hypocrisy_1,hypocrisy_2,hypocrisy_3,discomfort_1,benevolence_1,benevolence_2,benevolence_3,honest,moral_1,moral_2,trust,proclamation,lie.motives
+1,9/5/18 14:26,9/5/18 14:33,Female,1,23,To see if people favor a selfish truth or a kind lie,4,2,2,2,2,6,6,6,5,6,7,5,ambiguous,prosocial
+2,9/5/18 14:32,9/5/18 14:40,Male,0,21,To learn about people behaviours when it comes to being dishonest especially when winning money is involved.,2,4,4,4,6,3,3,5,3,3,3,6,absolute,prosocial
+3,9/5/18 14:38,9/5/18 14:43,Male,0,30,The purpose was to rate the trustworthiness of a participant who stands to profit slightly off of being dishonest and depriving another player of profit.,3,4,3,2,2,2,2,2,1,2,2,1,ambiguous,selfish
+4,9/5/18 14:37,9/5/18 14:45,Male,0,21,I think the purpose of the Coin Flip Game was to see if people who feel that lying is completely unacceptable are willing to lie if it benefits the person who is being lied to.,2,5,4,5,4,5,5,6,4,5,5,5,absolute,prosocial
+5,9/5/18 14:45,9/5/18 14:48,Female,1,34,see if people lie,3,4,2,2,2,2,2,4,2,2,2,2,ambiguous,selfish
+6,9/5/18 14:37,9/5/18 14:49,Female,2,21,The purpose was to study how participant will react in real situation after answering just answering questions about his morals and thoughts of ethics,1,4,2,1,5,1,1,2,1,1,1,1,absolute,selfish
+7,9/5/18 14:37,9/5/18 14:49,Female,2,28,"To see if the person who says lying is a bad thing, will support this idea even when playing games.",2,2,4,5,4,3,2,6,2,4,3,2,absolute,prosocial
+8,9/5/18 14:40,9/5/18 14:52,Female,1,27,To show how selfish/honest/trustworthy a person behaves ,1,6,6,7,2,5,5,2,4,3,4,4,absolute,selfish
+9,9/5/18 14:48,9/5/18 14:53,Female,0,21,To see if people really adhere to their values when there's a reward if they choose to be unethical,1,6,7,7,2,1,2,2,1,2,2,1,absolute,selfish
+10,9/5/18 14:38,9/5/18 14:53,Male,0,21,"To see if someone would lie so that there is a high chance that both participants get money, even if the sender gets a little bit less than when he/she says the truth.",4,2,2,2,2,6,6,7,4,6,6,6,ambiguous,prosocial
+11,9/5/18 14:51,9/5/18 15:00,Female,0,39,not sure really...,3,2,4,4,2,2,2,5,1,1,1,4,ambiguous,selfish
+12,9/5/18 14:52,9/5/18 15:01,Male,1,36,To determine people's willingness to give up some of their profit for cooperation.,3,5,2,4,2,1,2,2,2,2,2,2,ambiguous,selfish
+13,9/5/18 14:48,9/5/18 15:02,Female,1,24,get insight to how people trust,1,2,5,5,5,5,5,6,6,3,3,3,absolute,selfish
+14,9/5/18 14:54,9/5/18 15:04,Male,0,26,To determine if people will Lie for a bigger prize outcome and whether or not people will trust others.,4,2,3,2,2,5,4,6,4,4,4,2,ambiguous,prosocial
+15,9/5/18 14:52,9/5/18 15:05,Female,0,23,Trusting the Word le others in decisión making,4,3,4,4,3,5,5,3,3,3,4,3,ambiguous,prosocial
+16,9/5/18 15:01,9/5/18 15:07,Male,1,29,To find out a  persons morality.,3,1,1,2,1,2,6,1,2,2,2,2,ambiguous,selfish
+17,9/5/18 15:02,9/5/18 15:09,Female,2,24,Win money by cheating,1,6,6,6,5,2,4,3,2,6,6,4,absolute,selfish
+18,9/5/18 15:00,9/5/18 15:09,Male,2,23,To see how greedy and selfish people can be when presented with an opportunity to make some extra money.,1,6,7,7,3,2,2,1,1,1,1,1,absolute,selfish
+19,9/5/18 14:57,9/5/18 15:11,Female,0,23,Do we really trust people by what they are saying? Or are we still making our own choices reagardless the information/tips we are given? How honest are people actually when there is money involved?,2,4,5,5,4,4,5,5,2,3,2,2,absolute,prosocial
+20,9/5/18 15:09,9/5/18 15:13,Female,0,26,The purpose was to test the moral values of the participant,1,6,7,7,4,2,1,2,1,2,2,2,absolute,selfish
+21,9/5/18 15:02,9/5/18 15:14,Male,0,24,To create a scenario in which someone would have to lie in order to achieve a gain for both participants.,4,1,1,1,2,6,6,7,6,6,5,6,ambiguous,prosocial
+22,9/5/18 15:03,9/5/18 15:16,Female,0,30,"I think it's a game of chance where you need to deceive the other to earn more, I do not think this makes you a hypocrite, it's about being cunning",3,3,4,2,2,5,2,2,2,2,2,1,ambiguous,selfish
+23,9/5/18 15:05,9/5/18 15:16,Female,1,30,Ethical reasons ,4,2,2,2,2,4,4,4,4,4,4,4,ambiguous,prosocial
+24,9/5/18 15:13,9/5/18 15:17,Male,2,22,To try and figure if people will stand by what they say when money is involved.,1,6,6,6,2,2,6,2,2,2,2,2,absolute,selfish
+25,9/5/18 15:13,9/5/18 15:17,Male,0,22,to see whether people would lie or tell the truth and whether they serve their own interests or not,4,4,6,2,2,4,6,6,4,6,4,4,ambiguous,prosocial
+26,9/5/18 15:05,9/5/18 15:17,Female,0,30,"to test a persons reactions in a situation whereby influencing another persons incorrect decision could lead to a greater gain for them. 
+",3,3,5,3,2,3,3,4,4,3,2,3,ambiguous,selfish
+27,9/5/18 15:11,9/5/18 15:21,Female,1,25,To determine the honesty of a particular participant,1,7,7,5,1,2,2,3,1,1,1,1,absolute,selfish
+28,9/5/18 15:10,9/5/18 15:21,Female,0,27,To test morals and look at the idea of honesty ,4,2,5,3,3,6,6,7,4,6,6,6,ambiguous,prosocial
+29,9/5/18 15:09,9/5/18 15:22,Male,0,32,The purpose was to see if someone would mislead another person when they were able to stay anonymouse.,4,2,2,2,2,5,5,6,5,5,5,4,ambiguous,prosocial
+30,9/5/18 15:17,9/5/18 15:23,Female,0,21,To see whether peoples actions match their words and promises regarding money.,3,4,5,3,2,2,2,5,1,2,2,2,ambiguous,selfish
+31,9/5/18 15:09,9/5/18 15:23,Male,2,21,To see how likealy a person is to sacrifice part of his reward so that the other person can earn something.,2,1,2,2,2,6,6,7,4,6,6,6,absolute,prosocial
+32,9/5/18 15:18,9/5/18 15:24,Female,0,18,To understand if a person's views conflicts with their actions during certain situations.,2,5,5,7,2,1,1,1,1,2,2,1,absolute,prosocial
+33,9/5/18 15:17,9/5/18 15:26,Male,0,26,To see how people judge other people,1,4,4,4,5,4,4,3,4,5,5,5,absolute,selfish
+34,9/5/18 15:25,9/5/18 15:28,Male,0,45,to see if monetary gain can influence the honesty of people,1,6,6,7,2,2,3,2,2,2,2,1,absolute,selfish
+35,9/5/18 15:20,9/5/18 15:29,Female,0,43,"To test how honest the sender is, by seeing how often they tried to mislead the receiver into giving the wrong answer (and therefore earning more money for the sender)",3,3,3,3,4,2,2,5,2,2,2,2,ambiguous,selfish
+36,9/5/18 15:21,9/5/18 15:30,Male,0,43,"To test the honesty/ethics/morality of the Sender. Would they be more likely to assist the Receiver in earning money, or put their own interests first.",2,3,4,3,4,3,3,5,3,3,4,3,absolute,prosocial
+37,9/5/18 15:19,9/5/18 15:31,Female,0,32,Check how ethically people behave when another person's failures lead to greater personal gain.,3,3,2,2,2,4,2,2,2,4,2,2,ambiguous,selfish
+38,9/5/18 15:21,9/5/18 15:31,Female,0,29,to see wether our judgement of a person can change our perspective?,1,5,2,4,4,2,2,3,1,2,2,2,absolute,selfish
+39,9/5/18 15:25,9/5/18 15:32,Female,2,55,To evaluate how we view the honesty of another person.,1,6,6,7,2,3,3,2,2,3,3,3,absolute,selfish
+40,9/5/18 15:16,9/5/18 15:32,Male,0,31,Guess one of the two sides of the coin.,3,2,3,4,4,3,4,6,5,6,5,4,ambiguous,selfish
+41,9/5/18 15:28,9/5/18 15:32,Female,0,44,Not sure,3,3,3,6,4,3,3,5,3,3,4,3,ambiguous,selfish
+42,9/5/18 15:28,9/5/18 15:34,Male,0,50,"It was about ethics, morals and trust.",4,6,6,7,7,2,2,2,1,2,2,1,ambiguous,prosocial
+43,9/5/18 15:29,9/5/18 15:35,Female,0,30,to see how much people can trust strangers,2,1,1,1,7,7,7,7,7,6,6,6,absolute,prosocial
+44,9/5/18 15:15,9/5/18 15:35,Female,0,22,"To see how people emphasise and relate to each other maybe. Since the sender will always get paid no matter the outcome and the difference between the money they receive whether the answer is right or wrong is little, and because the receiver doesn't know the amount they get so they don't know the sender can get paid more and make them not get paid if the answer is wrong and therefore the receiver as no motive to not thrust the sender, the only reason for the sender to lie is because they are greedy and only care for themselves. And with the game we can study how much people are willing to thrust people they don't know and see how people react when they are presented with options that will benefit them even when they are immoral and don't benefit others.",1,7,6,7,2,2,2,1,2,1,1,1,absolute,selfish
+45,9/5/18 15:25,9/5/18 15:36,Male,0,29,"To asses the balance of benefit-morality-risk in the long run, the effect of having to consciously weight on it while playing with full knowledge of the results and pretty clear way to predict the results.",3,4,2,3,1,2,2,3,3,3,2,2,ambiguous,selfish
+46,9/5/18 15:28,9/5/18 15:37,Male,0,18,to determine how often the sender(s) would lie and whether the sender would choose to gain more money from the outcome for themselves or share it with the other person,4,2,2,3,2,7,4,6,7,4,7,7,ambiguous,prosocial
+47,9/5/18 15:24,9/5/18 15:37,Female,1,28,I think it was to see a link between honesty (as in lying/not lying) and fairness since the participant had to answer a question about lies and later had to lie to the second participant to let him get a reward. ,2,3,5,5,5,5,5,7,6,6,6,6,absolute,prosocial
+48,9/5/18 15:22,9/5/18 15:37,Female,1,21,to investigate one's willingness to use the information they have to achieve a profit at the expense of others,4,2,2,2,5,5,2,6,4,5,5,4,ambiguous,prosocial
+49,9/5/18 15:30,9/5/18 15:39,Female,0,30,To earn money for the Sender,3,3,3,3,4,2,3,4,2,2,2,2,ambiguous,selfish
+50,9/5/18 15:32,9/5/18 15:39,Female,0,25,To test memory,3,4,4,5,4,4,4,4,4,4,4,4,ambiguous,selfish
+51,9/5/18 15:30,9/5/18 15:40,Female,0,30,To see how many times the receiver chose the same option that the sender sent,4,4,5,6,4,4,3,6,4,5,5,4,ambiguous,prosocial
+52,9/5/18 15:34,9/5/18 15:42,Female,1,28,to figure out if a person is selfish or not,1,6,6,6,2,2,2,3,2,2,2,2,absolute,selfish
+53,9/5/18 15:37,9/5/18 15:44,Male,2,23,judging people by their actions not quite connected to this specific judgement,4,4,4,4,4,3,3,5,3,3,3,3,ambiguous,prosocial
+54,9/5/18 15:39,9/5/18 15:44,Male,0,38,to rate people's self interest,4,3,4,4,3,3,1,5,3,3,3,3,ambiguous,prosocial
+55,9/5/18 15:35,9/5/18 15:45,Female,1,21,see how conditions influence the sense of ethics,2,1,1,1,5,6,4,6,5,4,4,4,absolute,prosocial
+56,9/5/18 15:36,9/5/18 15:46,Male,0,20,"To check if the sender will be a honest person in situation that is clearly on his side. I guess most people choose to fool receiver to earn a bit more money. I can't judge that, only the sender might feel that he lied. Pretty cool test I'd say!",3,4,4,4,6,3,3,3,2,3,3,4,ambiguous,selfish
+57,9/5/18 15:41,9/5/18 15:47,Female,0,27,To rate moral alignment in individuals.,3,1,2,2,2,2,1,3,2,2,3,1,ambiguous,selfish
+58,9/5/18 15:42,9/5/18 15:47,Female,0,32,"To see if people would lie, when knowing that the truth would leave one person with no reward.",2,3,6,7,6,6,4,6,3,5,5,3,absolute,prosocial
+59,9/5/18 15:32,9/5/18 15:47,Female,0,20,To see to which extent the sender values their morals and how much the receiver trusts their partner to not be selfish.,1,6,7,7,2,2,1,2,1,2,1,1,absolute,selfish
+60,9/5/18 15:40,9/5/18 15:47,Female,0,36,Understand how mind tricks work,3,3,6,6,3,3,2,5,2,2,3,2,ambiguous,selfish
+61,9/5/18 15:39,9/5/18 15:48,Female,1,28,"To see how greedy the SENDER is and how doubtful the RECEIVER is (= do they trust the SENDER to give them money too or do they believe the SENDER is driven by greed and answer opposite of what they were told). Anonymity plays a big part, as it's easier to be tempted to lie to the RECEIVER when they're just a random person somewhere far away.",1,3,2,2,2,1,2,2,2,2,2,2,absolute,selfish
+62,9/5/18 15:44,9/5/18 15:48,Female,0,21,Unsure,4,2,4,2,5,2,2,2,2,2,2,2,ambiguous,prosocial
+63,9/5/18 15:36,9/5/18 15:49,Female,3,26,To understand would a people gives wrong answers to earn more even if they know the other people will get nothing if they do that. ,4,5,5,5,3,2,4,2,6,2,3,4,ambiguous,prosocial
+64,9/5/18 15:44,9/5/18 15:49,Female,0,26,i have no idea,2,1,1,1,2,5,5,6,5,6,6,5,absolute,prosocial
+65,9/5/18 15:40,9/5/18 15:50,Male,0,22,to see how unselfish the send is,2,2,2,2,2,4,5,6,7,5,5,5,absolute,prosocial
+66,9/5/18 15:43,9/5/18 15:51,Female,0,23,To see how honest people would be if they were in control of the money they would receive.,1,2,2,2,2,2,4,5,2,2,2,2,absolute,selfish
+67,9/5/18 15:42,9/5/18 15:52,Female,1,32,"To find out if people are honest, what sort of personality and traits a person has ",1,5,6,6,2,3,6,2,2,2,2,1,absolute,selfish
+68,9/5/18 15:43,9/5/18 15:52,Female,0,28,To study trust between strangers and whether people are willing to lie,1,6,7,7,4,2,4,3,2,2,2,2,absolute,selfish
+69,9/5/18 15:45,9/5/18 15:53,Female,0,36,To see if the SENDER is cooperate with the RECEIVER or not.,3,2,3,2,2,2,2,3,1,2,2,1,ambiguous,selfish
+70,9/5/18 15:52,9/5/18 15:54,Male,1,22,To understand if they trust the sender.,3,3,6,6,3,4,3,2,4,5,4,5,ambiguous,selfish
+71,9/5/18 15:47,9/5/18 15:54,Female,0,39,to see if peoples morals were affected by certain circumstance?,2,2,2,6,2,7,7,7,7,7,7,7,absolute,prosocial
+72,9/5/18 15:44,9/5/18 15:54,Male,0,19,To check if one can dump their values for money.,1,7,7,7,4,1,1,1,1,1,1,1,absolute,selfish
+73,9/5/18 15:43,9/5/18 15:55,Male,5+,37,To see if a person only acts in his own interests or also in in the interests of someone else. And to see if someone is prepared to act against his beliefs when doing so.,2,5,6,6,5,6,6,7,2,3,4,4,absolute,prosocial
+74,9/5/18 15:49,9/5/18 15:55,Female,5+,20,Determining how easy or hard it is to elicit dishonest responses from participants.,1,6,6,6,5,2,2,3,2,2,2,2,absolute,selfish
+75,9/5/18 15:44,9/5/18 15:55,Male,0,18,The Coin Flip game was to test people to see if they would let their selfish money grabbing side take over and if they would lie to gain more money. Even if the increase was 25 cents they would still prefer to have that then give the other person money at all. This game is way more than just a gambling game. ,1,7,2,7,5,2,1,2,2,4,1,2,absolute,selfish
+76,9/5/18 15:45,9/5/18 15:55,Male,5+,23,To see whether the sender will pursue his own benefits or whether he will share the compensation with the receiver. ,2,7,7,7,6,5,5,6,2,2,2,2,absolute,prosocial
+77,9/5/18 15:49,9/5/18 15:55,Male,0,20,Verify if the person was honest.,1,7,7,6,2,2,2,2,2,2,3,4,absolute,selfish
+78,9/5/18 15:48,9/5/18 15:56,Male,0,22,"To measure how people weigh honesty vs good results or kindness. Lying to the receiver was a more generous action, despite lying supposedly being immoral. ",4,2,2,1,2,6,6,6,4,5,6,5,ambiguous,prosocial
+79,9/5/18 15:50,9/5/18 15:57,Male,0,42,Judging others,3,4,4,5,4,5,5,6,5,5,5,5,ambiguous,selfish
+80,9/5/18 15:50,9/5/18 15:57,Female,0,38,testing how people judge other's decisions,1,5,2,7,4,2,1,2,2,1,1,1,absolute,selfish
+81,9/5/18 15:49,9/5/18 15:57,Male,0,18,To see if people went back on their core values and to see if greed can over power morals,3,6,2,2,2,1,1,1,1,1,1,1,ambiguous,selfish
+82,9/5/18 15:48,9/5/18 15:57,Female,0,39,To see who would get a share of the money,2,2,3,5,1,7,3,7,2,5,5,3,absolute,prosocial
+83,9/5/18 15:51,9/5/18 15:57,Female,2,38,To decide if the sender was telling lies. ,4,2,5,2,3,4,4,4,1,2,2,2,ambiguous,prosocial
+84,9/5/18 15:49,9/5/18 15:57,Male,0,23,"To find out whether people with different believes behaves differently, wants to be helpful and not greedy. ",2,2,6,7,7,7,7,6,5,6,6,5,absolute,prosocial
+85,9/5/18 15:49,9/5/18 15:58,Male,0,25,To determine how likely people would accept a small loss for the greater benefit of the group they're in.,4,2,2,2,3,4,5,5,5,4,5,3,ambiguous,prosocial
+86,9/5/18 15:53,9/5/18 15:58,Female,0,58,Determine how altruistic the sender might be given that the sender only loses a quarter if the receiver guesses incorrectly. ,2,1,2,2,2,6,6,6,6,6,6,6,absolute,prosocial
+87,9/5/18 15:55,9/5/18 15:59,Male,0,19,"To test whether participants would place their own gain above others', and whether they would lie to help another.",4,2,2,2,2,6,6,6,4,6,6,5,ambiguous,prosocial
+88,9/5/18 15:50,9/5/18 16:00,Male,2,44,To see how honest people are.,3,2,2,2,1,2,2,2,1,1,1,1,ambiguous,selfish
+89,9/5/18 15:46,9/5/18 16:00,Male,1,48,Determining whether someone would lie to a stranger to gain an extra reward for themselves.,3,4,2,2,4,2,2,2,2,2,2,2,ambiguous,selfish
+90,9/5/18 15:54,9/5/18 16:00,Male,0,20,For the two players to earn money,4,1,1,2,3,6,1,7,2,6,6,6,ambiguous,prosocial
+91,9/5/18 15:53,9/5/18 16:01,Female,1,52,Moral values?,3,3,3,3,3,2,2,2,2,2,2,3,ambiguous,selfish
+92,9/5/18 15:52,9/5/18 16:01,Male,2,36,I think it is a game theory exercise. ,1,5,6,1,2,2,2,1,1,2,2,2,absolute,selfish
+93,9/5/18 15:50,9/5/18 16:02,Male,5+,22,purpose was determining peoples opinions about the correlalion of behaviours and responses upon self integrity,1,7,7,7,2,4,1,2,2,2,2,2,absolute,selfish
+94,9/5/18 15:55,9/5/18 16:02,Female,0,21,To see if people will act selfishly or not when given the opportunity to gain more.,1,1,3,1,1,2,2,1,1,2,2,1,absolute,selfish
+95,9/5/18 15:56,9/5/18 16:03,Male,0,19,Sorry but I really don't know,1,1,7,7,4,6,5,3,7,7,7,7,absolute,selfish
+96,9/5/18 15:56,9/5/18 16:03,Female,1,25,To see how te people act in front of the possibility to get an actual benefit without others knowing compared to what they think replying to a generic survey.,3,4,4,4,4,2,2,2,1,3,3,2,ambiguous,selfish
+97,9/5/18 15:56,9/5/18 16:03,Female,0,57,"not sure, to see how honest people are, and how generous",2,3,3,4,3,4,4,6,4,4,4,5,absolute,prosocial
+98,9/5/18 15:57,9/5/18 16:03,Male,0,24,To see if people are fair and would share the profit from the game.,2,3,4,3,3,3,6,4,5,3,4,4,absolute,prosocial
+99,9/5/18 15:52,9/5/18 16:04,Female,1,34,to show can you believe other one or not,1,4,5,5,5,4,4,3,2,3,2,2,absolute,selfish
+100,9/5/18 15:56,9/5/18 16:04,Male,0,21,to get a sample of how much a person is trhustworthy,4,2,4,3,4,4,5,4,3,5,5,3,ambiguous,prosocial
+101,9/5/18 15:58,9/5/18 16:05,Male,2,56,Memorize something and comprehension?,3,2,2,5,6,6,4,6,6,4,4,2,ambiguous,selfish
+102,9/5/18 15:55,9/5/18 16:07,Male,0,23,"I think the purpose was investigating how people will react knowing they will probably get a small amount of money less, but could help earn some money to a stranger too.I think the most of people will try to help a stranger too, but I am curious to which extent they would go (how much money are they willing to lose). 12.5 % isn't a lot.",2,1,1,1,7,4,2,6,6,6,6,6,absolute,prosocial
+103,9/5/18 15:58,9/5/18 16:07,Female,0,36,Trust in the information given by the sender to gain the most amount of money for the receiver.,2,2,2,2,2,4,4,5,2,4,4,5,absolute,prosocial
+104,9/5/18 15:50,9/5/18 16:07,Male,2,32,measure the honesty of people,1,5,6,4,5,4,4,4,4,4,4,4,absolute,selfish
+105,9/5/18 16:01,9/5/18 16:08,Female,0,42,To see whether a persons views/morals/principles are reflected in their actions,2,5,6,6,6,6,4,7,2,2,6,5,absolute,prosocial
+106,9/5/18 15:55,9/5/18 16:08,Male,0,23,To identify a correlation between how we perceive an unknown individual based upon how we are impacted financially,3,4,4,6,4,2,2,2,2,2,2,2,ambiguous,selfish
+107,9/5/18 16:04,9/5/18 16:08,Female,0,37,To Understand if the sender is honest,2,3,5,1,1,2,3,2,3,5,5,5,absolute,prosocial
+108,9/5/18 15:56,9/5/18 16:09,Female,2,26,"To test participant's values, especially in things that do affect them directly and other people as well. In this case, I was expecting the sender to be more selfish or having a more ""meh"" attitude, but he did the 'right thing.'",4,1,2,6,1,7,6,6,4,6,7,6,ambiguous,prosocial
+109,9/5/18 15:49,9/5/18 16:09,Female,0,42,no idea,4,3,6,4,4,4,4,4,4,4,4,4,ambiguous,prosocial
+110,9/5/18 16:05,9/5/18 16:09,Male,0,29,To see if ppl would take advantage of others with being dishonest.,3,7,4,6,5,5,6,4,5,2,4,3,ambiguous,selfish
+111,9/5/18 16:05,9/5/18 16:09,Male,0,45,To check how much someone is willing to give up a slight portion of his potential winnings for mutual benefit,4,2,2,2,2,3,2,2,2,2,2,2,ambiguous,prosocial
+112,9/5/18 15:53,9/5/18 16:10,Female,1,35,Checking  if possibility to get some money can affect the way we behave/ if it can influence on our morality.,1,6,6,7,2,3,2,1,2,2,2,1,absolute,selfish
+113,9/5/18 16:04,9/5/18 16:10,Male,0,28,measure the trust between humans,3,7,3,2,1,1,1,1,1,1,1,1,ambiguous,selfish
+114,9/5/18 16:03,9/5/18 16:10,Male,1,21,chance,1,4,4,4,5,2,2,4,2,2,2,3,absolute,selfish
+115,9/5/18 16:06,9/5/18 16:11,Male,0,19,Determine whether the participant's intention was selfish or selfless,2,4,4,4,4,4,1,4,1,4,3,2,absolute,prosocial
+116,9/5/18 16:06,9/5/18 16:12,Female,0,21,To see if the receiver will trust the sender and if the sender will be honest about the outcome of the game.,4,2,4,3,5,5,2,6,1,4,5,5,ambiguous,prosocial
+117,9/5/18 16:06,9/5/18 16:13,Male,0,23,"To see whether someone would do act against the benefit of someone else, in order to further their own.",3,2,2,2,3,2,2,4,2,4,4,4,ambiguous,selfish
+118,9/5/18 16:06,9/5/18 16:14,Female,0,26,To see if someone who said they would not lie would lie or not.,2,2,4,6,5,6,6,7,5,5,6,6,absolute,prosocial
+119,9/5/18 16:06,9/5/18 16:15,Male,0,67,to try and asess how reward affects honesty,4,3,2,3,4,2,2,3,1,3,3,4,ambiguous,prosocial
+120,9/5/18 16:03,9/5/18 16:15,Female,1,56,"Really don't know, but it did ask for a lot of my attention to understand that the sender had to lye for the receiver to make some money.",2,5,4,7,2,7,7,7,3,4,5,4,absolute,prosocial
+121,9/5/18 16:09,9/5/18 16:15,Male,0,30,study about honesty,4,4,5,3,3,4,3,4,3,3,3,3,ambiguous,prosocial
+122,9/5/18 16:07,9/5/18 16:15,Male,5+,20,"To be completely honest with you, I have no idea!",3,3,5,4,4,2,2,4,3,5,5,4,ambiguous,selfish
+123,9/5/18 16:08,9/5/18 16:16,Female,0,32,"A test of how trusting receivers are or whether senders would act dishonestly to further their own gains? However what I don't understand is, if both knew the rules, how do we know that the sender didn't lie assuming the receiver would expect they were? ",1,6,6,6,4,2,5,3,1,2,2,2,absolute,selfish
+124,9/5/18 16:09,9/5/18 16:16,Male,2,22,"To see my reaction about the other ""participant"" ",2,4,4,5,4,5,4,4,5,5,5,5,absolute,prosocial
+125,9/5/18 16:10,9/5/18 16:16,Male,0,21,Its a moral test.,4,2,2,3,3,3,3,4,5,3,4,3,ambiguous,prosocial
+126,9/5/18 16:11,9/5/18 16:16,Male,2,31,Trying to determine if its ethical to lie in order to get the better overall outcome for everyone,2,2,2,4,2,6,7,3,4,5,5,6,absolute,prosocial
+127,9/5/18 16:09,9/5/18 16:17,Male,0,32,A simple game to evaluate and study moral and ethical decissions.,4,1,2,2,2,7,6,7,7,6,6,7,ambiguous,prosocial
+128,9/5/18 16:14,9/5/18 16:17,Male,0,27,See people behavior,4,4,3,2,4,5,5,5,6,5,6,4,ambiguous,prosocial
+129,9/5/18 16:09,9/5/18 16:17,Male,0,29,To learn about morals and what people would do with theirs when money is on the bag,3,5,3,4,2,2,2,2,2,4,4,2,ambiguous,selfish
+130,9/5/18 16:09,9/5/18 16:17,Male,1,27,"No idea, sorry",1,2,2,2,3,5,6,2,6,5,6,6,absolute,selfish
+131,9/5/18 16:11,9/5/18 16:17,Female,1,28,To see whether the personality of a person could correlate with his actions in the game.,4,2,3,3,2,7,7,7,6,7,7,6,ambiguous,prosocial
+132,9/5/18 16:07,9/5/18 16:18,Male,0,31,Whether the sender would act in a way to benefit the others.,2,2,2,3,2,6,6,6,4,6,6,5,absolute,prosocial
+133,9/5/18 16:14,9/5/18 16:19,Male,2,23,"Honestly, no idea.",1,4,5,5,4,5,3,4,5,3,4,5,absolute,selfish
+134,9/5/18 16:13,9/5/18 16:19,Male,0,24,To see if people will lie for benefit.,2,2,2,6,2,7,7,6,2,6,6,6,absolute,prosocial
+135,9/5/18 16:10,9/5/18 16:19,Male,0,27,To see how easily people trust each other.,3,1,1,1,1,4,2,3,2,4,2,2,ambiguous,selfish
+136,9/5/18 16:10,9/5/18 16:19,Male,0,22,To see if one goes against their own moral values of lying and to see how unselfish someone is.,2,6,7,7,2,7,6,7,7,7,7,5,absolute,prosocial
+137,9/5/18 16:08,9/5/18 16:19,Female,2,29, I think its see  the behavior if one person is honest or not.,1,4,4,4,4,6,5,3,6,5,5,5,absolute,selfish
+138,9/5/18 16:11,9/5/18 16:19,Male,0,40,assuming mistrust,4,1,1,1,4,5,4,5,5,5,5,5,ambiguous,prosocial
+139,9/5/18 16:14,9/5/18 16:19,Female,0,34,I don't know,4,1,2,2,2,4,4,6,3,4,4,4,ambiguous,prosocial
+140,9/5/18 16:11,9/5/18 16:20,Male,0,30,To test whether people's actions would remain consistent with their answers to the initial questionnaire (particularly the question pertaining to the morality of lying) in a scenario that allows them to benefit more from lying than telling the truth.,1,5,5,6,4,4,4,2,2,4,4,2,absolute,selfish
+141,9/5/18 16:12,9/5/18 16:20,Male,1,22,The purpose of the coin flip game was to determine how one person would manipulate the decision of another person.,1,6,7,7,1,2,1,2,2,2,2,1,absolute,selfish
+142,9/5/18 16:14,9/5/18 16:20,Female,1,25,To see people behave and trust,4,1,4,1,2,4,5,5,3,4,5,4,ambiguous,prosocial
+143,9/5/18 16:14,9/5/18 16:21,Male,2,22,To see if people can attention for just 50 cents.,2,7,6,2,3,2,6,2,2,1,1,1,absolute,prosocial
+144,9/5/18 16:16,9/5/18 16:21,Male,0,28,"To see, if people can share the winnings with other people or just get the biggest outcome.",3,4,2,2,2,2,3,3,2,2,2,2,ambiguous,selfish
+145,9/5/18 16:14,9/5/18 16:22,Male,0,29,To judge whether a person will try and get a little remuneration for himself/herself so that another person has a chance to gain something in return.,3,4,5,6,4,2,1,3,2,2,2,2,ambiguous,selfish
+146,9/5/18 16:14,9/5/18 16:23,Male,0,27,test particiapants to see if they will lie or be unethical to receive a higher reward.,1,6,6,6,2,2,2,3,2,2,2,2,absolute,selfish
+147,9/5/18 16:13,9/5/18 16:23,Female,0,27,"To see, wether people are willing to give up a little bit of theire own money to help other people much more than it costs themselves.",2,4,4,6,5,5,6,7,4,6,5,5,absolute,prosocial
+148,9/5/18 16:16,9/5/18 16:23,Male,2,38,Game,2,5,5,4,5,5,6,2,6,5,6,6,absolute,prosocial
+149,9/5/18 16:10,9/5/18 16:23,Male,5+,32,It is about trust of the players to the each other. Especially senders receivers...,4,3,3,4,5,6,6,6,6,5,5,5,ambiguous,prosocial
+150,9/5/18 16:12,9/5/18 16:23,Male,1,53,"It is a risk game, where a coin is thrown with the same probability of winning or losing. The receiver will not know the result and the challenge is to have the credibility of the person who launched the coin and knows the result.",3,1,2,4,3,5,6,4,6,5,5,5,ambiguous,selfish
+151,9/5/18 16:14,9/5/18 16:23,Male,0,26,"Checking if the SENDER is trustworthy,sharing or greedy and lying.",1,6,6,6,2,2,2,2,2,3,4,2,absolute,selfish
+152,9/5/18 16:14,9/5/18 16:24,Male,0,20,To determine whrther people tell the truth about their values,2,5,6,7,6,6,7,7,3,6,6,4,absolute,prosocial
+153,9/5/18 16:20,9/5/18 16:24,Female,1,24,To compare morals with actions ,1,7,7,7,1,1,1,1,1,1,1,1,absolute,selfish
+154,9/5/18 16:19,9/5/18 16:24,Female,0,54,to test the integrity of the sender,1,2,2,5,5,4,5,6,5,5,5,5,absolute,selfish
+155,9/5/18 16:15,9/5/18 16:24,Female,0,66,To evaluate the receiver's perception of the odds of the sender giving the truthful answer.,4,2,6,5,5,5,4,5,6,6,6,5,ambiguous,prosocial
+156,9/5/18 16:17,9/5/18 16:24,Male,5+,25,it was a fake test to help us answer question about morality/lying,1,2,4,2,2,4,3,3,4,4,4,3,absolute,selfish
+157,9/5/18 16:20,9/5/18 16:25,Male,0,33,To determine a person's willingness to lie (for Reasons).,2,4,4,4,1,5,3,7,4,6,5,4,absolute,prosocial
+158,9/5/18 16:19,9/5/18 16:26,Female,1,37,Show the veracity of the participants and the coherence of their actions with their words,4,2,5,3,2,5,4,6,3,5,4,5,ambiguous,prosocial
+159,9/5/18 16:21,9/5/18 16:27,Female,0,28,To test people's morals/judgement?,1,2,2,2,6,5,5,6,5,5,5,5,absolute,selfish
+160,9/5/18 16:17,9/5/18 16:27,Female,0,25,Test how honest can someone be on a luck game being fully aware of the results,1,5,5,4,4,6,5,7,6,4,3,3,absolute,selfish
+161,9/5/18 16:21,9/5/18 16:27,Female,0,26,To find out if people lie or not,1,7,7,7,1,2,5,1,1,1,1,1,absolute,selfish
+162,9/5/18 16:20,9/5/18 16:27,Male,1,28,Define the expectations for other person behaviour,3,6,6,6,3,3,3,3,2,3,3,3,ambiguous,selfish
+163,9/5/18 16:18,9/5/18 16:28,Male,3,39,"It reminds me of Game Theory where every chosen action taken would have winners and losers. In the end, the main aim is to try to achieve the highest overall benefits to all participants although this concept is almost always difficult to obtain without sacrificing personal values.",2,5,6,6,4,2,1,3,2,2,3,2,absolute,prosocial
+164,9/5/18 16:21,9/5/18 16:28,Male,0,23,Test trustworthy,4,4,3,3,3,4,4,5,5,5,5,5,ambiguous,prosocial
+165,9/5/18 16:19,9/5/18 16:29,Male,0,22,the survey studies the honesty of the participants,4,2,2,3,6,5,7,7,7,7,6,6,ambiguous,prosocial
+166,9/5/18 16:22,9/5/18 16:30,Male,5+,18,"Test the honesty of the sender, to see if he is more selfish (earn lots of money) or more benevolent (share with the receiver by sending good messages).",3,5,5,4,4,4,4,3,2,4,3,3,ambiguous,selfish
+167,9/5/18 16:27,9/5/18 16:31,Female,0,25,To see if people will be selfish or not,1,1,4,2,5,3,4,4,3,3,3,2,absolute,selfish
+168,9/5/18 16:11,9/5/18 16:31,Female,3,31,How trustworthy and honest a person can be in order to earn more or less money than his/her partner.,3,4,6,6,7,1,1,1,1,1,1,1,ambiguous,selfish
+169,9/5/18 16:25,9/5/18 16:32,Female,0,19,The coin flip game may have been to analyze the honesty of someone when they know an outcome the other person may not. ,3,1,1,1,2,3,1,4,2,3,3,2,ambiguous,selfish
+170,9/5/18 16:26,9/5/18 16:32,Male,1,41,"I understand that to value the honesty of the people. I assume that someone answers a question based on their own behavior, blames someone else for the way we act.",1,6,1,2,2,2,1,2,2,2,2,2,absolute,selfish
+171,9/5/18 16:26,9/5/18 16:32,Male,0,54,"To determine if the sender would opt to maximise their own self-interest (earnings) at the expense of the other player, or if they would sacrifice some of their earnings for the overall greater good of the team (measured by total earnings of the pair).",2,1,1,1,1,7,7,7,4,7,7,7,absolute,prosocial
+172,9/5/18 16:24,9/5/18 16:33,Female,0,24,One person flips a coin and needs to decide whether to trust what they are told the outcome is,2,1,1,1,5,5,4,6,5,4,5,4,absolute,prosocial
+173,9/5/18 16:23,9/5/18 16:33,Female,0,24,To check if one would chose to get bigger benefit even though it is somewhat immoral,3,3,3,3,4,1,2,3,2,2,2,2,ambiguous,selfish
+174,9/5/18 16:27,9/5/18 16:33,Female,0,21,To see if the previous questions of the participant and their answer in the game could sway us into creating a perception on his values.,4,1,3,4,2,7,7,7,4,6,7,5,ambiguous,prosocial
+175,9/5/18 16:28,9/5/18 16:33,Female,0,31,To determine the risk and reward of coin flipping (e.g. telling the receiver a lie in order to change the ohtcome).,3,4,5,3,4,5,4,5,3,3,3,4,ambiguous,selfish
+176,9/5/18 16:19,9/5/18 16:34,Male,0,37,"To test the confidence of the RECEIVER in the information given by the SENDER, and/or to test the selfishness of the SENDER.",2,2,3,6,5,5,6,6,5,6,6,6,absolute,prosocial
+177,9/5/18 16:26,9/5/18 16:34,Female,1,28,To see if people would help other people out even if it came as a financial loss to them personally.,2,1,1,1,2,6,7,7,7,6,6,6,absolute,prosocial
+178,9/5/18 16:28,9/5/18 16:34,Female,2,18,It's like gamble. Everyone tries to get the most amount of money they can ,4,4,4,5,5,4,5,3,3,3,4,2,ambiguous,prosocial
+179,9/5/18 16:25,9/5/18 16:35,Female,2,23,To see how much people care about the smallest amounts of money,3,3,3,3,4,2,1,1,2,2,2,2,ambiguous,selfish
+180,9/5/18 16:25,9/5/18 16:35,Male,2,28,"Several possibilities, one could be that you look for how people would react by being presented with monetary choices and if they would do anything to increase their personal gain or if they would try to give the other participant a fair share of it.  Still the possibility remains that they only act ""benevolent"" because it IS a study and otherwise would do everything for their own gain an disregard others. ",4,4,2,2,2,6,6,5,2,5,3,6,ambiguous,prosocial
+181,9/5/18 16:27,9/5/18 16:35,Male,0,22,Check for ethical values and if people really aplly what they say,3,5,5,5,1,2,3,2,2,1,1,1,ambiguous,selfish
+182,9/5/18 16:27,9/5/18 16:36,Male,0,33,To create a decision that would challenge someones willingness to lie for a beneficial cause.,4,2,2,3,2,5,2,6,4,5,5,4,ambiguous,prosocial
+183,9/5/18 16:30,9/5/18 16:36,Male,0,23,Research into the perceived value of sending a larger gift at minimal expense,3,2,2,2,2,2,2,1,1,2,2,1,ambiguous,selfish
+184,9/5/18 16:30,9/5/18 16:36,Female,0,38,To ascertain whether people are more likely to facilitate an outcome that results in a higher payoff for themselves than an anonymous partner or whether they will try to affect a smaller reward for themselves in order for the partner to also receive a reward.,2,2,2,1,1,5,5,6,4,5,6,5,absolute,prosocial
+185,9/5/18 16:29,9/5/18 16:36,Female,0,33,to see how moral people are when mobey is involved,2,4,6,5,4,2,4,2,1,2,2,2,absolute,prosocial
+186,9/5/18 16:34,9/5/18 16:37,Male,0,18,Nice,4,3,5,5,3,5,4,5,7,5,5,3,ambiguous,prosocial
+187,9/5/18 16:30,9/5/18 16:37,Female,0,46,To test honesty ,4,4,3,3,4,4,2,6,4,5,4,5,ambiguous,prosocial
+188,9/5/18 16:30,9/5/18 16:37,Male,5+,29,to check whether the participant will choose a strategy that operates better for the total of two players (1+1.75&gt;0+2) than one that gives a marginal money advantage to the sender,1,6,7,7,4,2,2,6,1,2,2,2,absolute,selfish
+189,9/5/18 16:30,9/5/18 16:37,Male,1,47,Probably to test whether people behave in a way consistent with how they describe their behavior,1,5,6,7,6,4,4,3,3,2,2,2,absolute,selfish
+190,9/5/18 16:30,9/5/18 16:37,Male,0,20,to decide if a person is honest or greedy,4,4,4,4,4,3,4,2,2,2,2,2,ambiguous,prosocial
+191,9/5/18 16:34,9/5/18 16:38,Male,0,20,to see how people behave when theres money on the line,1,3,5,3,5,2,4,2,4,4,4,3,absolute,selfish
+192,9/5/18 16:31,9/5/18 16:38,Male,0,19,To test selfishness of people,2,6,6,6,2,2,2,2,2,4,2,2,absolute,prosocial
+193,9/5/18 16:24,9/5/18 16:38,Female,0,53,To know if there is a moral conflict when there is money involved.,1,5,6,6,2,4,2,4,2,2,2,2,absolute,selfish
+194,9/5/18 16:30,9/5/18 16:38,Male,1,20,"I dont know, i always choose the way where both people earn, because why not?",3,4,4,4,4,4,4,4,4,4,4,4,ambiguous,selfish
+195,9/5/18 16:35,9/5/18 16:38,Male,1,24,Knowing if a person can be trusted. ,4,5,3,3,2,2,2,2,1,2,2,1,ambiguous,prosocial
+196,9/5/18 16:30,9/5/18 16:39,Male,0,19,Determine the general perception on trusting others and learning what people might fo if they have the power to manipulate them to their benefit.,3,4,5,4,2,3,3,3,3,5,4,4,ambiguous,selfish
+197,9/5/18 16:32,9/5/18 16:39,Male,0,33,"to see if someone would lie just to get a slightly larger payout, while trying to make the other player get nothing",3,2,4,2,1,1,1,1,1,1,1,1,ambiguous,selfish
+198,9/5/18 16:27,9/5/18 16:40,Male,1,24,"It shows how people are willing be dishonest to gain a very slight amount over another person, when being honest would result in both parties being able to benefit. It also helps see how others would judge a person based on their selfish actions.",3,2,2,2,1,1,1,1,1,1,1,1,ambiguous,selfish
+199,9/5/18 16:29,9/5/18 16:40,Male,1,34,"To measure how compassionate people are, or on the other side of the coin(hah) - how greedy.",4,3,5,4,5,6,6,6,6,5,5,5,ambiguous,prosocial
+200,9/5/18 16:29,9/5/18 16:40,Male,1,24,"to know if people tend to share with other theirs ""game"" income or not",2,4,4,4,3,6,2,7,2,4,4,3,absolute,prosocial
+201,9/5/18 16:30,9/5/18 16:40,Male,2,32,Game of luck between two people under which you can understand a bit more for those peoples behaviour psychology and character.,1,5,4,4,1,2,5,1,2,3,3,2,absolute,selfish
+202,9/5/18 16:24,9/5/18 16:41,Female,0,56,To see if values are deeply embedded or superficial and how easily they can be undermined when tempted by financial gain however small ,4,6,5,6,5,2,2,5,2,2,2,1,ambiguous,prosocial
+203,9/5/18 16:35,9/5/18 16:41,Female,2,26,understand the reasoning about this survey,3,7,4,5,6,6,3,3,3,6,5,4,ambiguous,selfish
+204,9/5/18 16:33,9/5/18 16:41,Male,0,30,To test wether people were willing to lie for their own benefit or the benefits of others.,2,4,6,6,7,6,6,7,4,6,5,5,absolute,prosocial
+205,9/5/18 16:33,9/5/18 16:41,Male,0,29,To see if people would screw each other over even for a measly 25 cent per coin toss rather than let someone else also gain,1,6,6,6,4,2,2,5,1,2,2,2,absolute,selfish
+206,9/5/18 16:27,9/5/18 16:41,Female,0,24,To learn about human behavior by contrasting words versus actions. Ethics and morals can change for some people depending on the outcome of their decisions. ,1,5,6,7,7,2,2,3,1,2,1,1,absolute,selfish
+207,9/5/18 16:35,9/5/18 16:41,Male,0,26,No clue.,4,2,2,2,2,6,6,6,3,6,6,6,ambiguous,prosocial
+208,9/5/18 16:37,9/5/18 16:42,Female,2,18,It's to get to know how people act considering their beliefs,1,7,6,6,2,2,2,5,1,4,2,3,absolute,selfish
+209,9/5/18 16:31,9/5/18 16:42,Male,2,28,To see how people see themselves versus what action do they actually take. ,3,2,3,5,5,2,2,2,2,3,3,2,ambiguous,selfish
+210,9/5/18 16:33,9/5/18 16:42,Female,0,40,First impressions we get from a person by their acts,3,7,4,1,1,1,1,1,1,1,1,1,ambiguous,selfish
+211,9/5/18 16:30,9/5/18 16:43,Male,0,20,finding out if people give a damn about others,1,5,5,5,3,4,2,4,4,4,4,4,absolute,selfish
+212,9/5/18 16:38,9/5/18 16:43,Female,2,34,The purpose of the Coin Flip game was to determine whether participants would act altruistically when presented with a choice that could benefit them more if the other person was not to benefit,2,2,6,2,2,4,4,4,6,6,6,6,absolute,prosocial
+213,9/5/18 16:35,9/5/18 16:44,Male,0,28,To check whether the sender indicates the real result and whether the receiver chooses to trust him.,2,2,5,7,5,3,3,6,5,5,4,5,absolute,prosocial
+214,9/5/18 16:36,9/5/18 16:44,Male,1,23,It seems somewhat similar to the prisoner's dilemma with an asymmetric information twist - identify how people decide to resolve situations where they think they know more or less than the other participant and whether they decide to try to capitalise on their access to more data.,3,1,4,3,4,4,5,6,5,5,5,4,ambiguous,selfish
+215,9/5/18 16:34,9/5/18 16:44,Female,0,18,To see if someone would lie if the lie benefits someone else.,2,5,5,7,5,6,4,7,2,6,6,3,absolute,prosocial
+216,9/5/18 16:35,9/5/18 16:45,Male,1,35,To study the level of honesty,4,3,3,4,4,4,4,4,4,4,4,4,ambiguous,prosocial
+217,9/5/18 16:41,9/5/18 16:45,Male,0,35,to judge how honest someone would be,1,6,6,6,2,2,2,2,2,2,2,2,absolute,selfish
+218,9/5/18 16:12,9/5/18 16:45,Male,0,31,To ,3,4,4,4,4,4,4,4,4,4,5,4,ambiguous,selfish
+219,9/5/18 16:40,9/5/18 16:46,Male,1,22,"Test how people interact with another one in terms of morality and honesty, and how consistent their thoughts are when compared with their actions.",2,2,6,5,4,3,2,4,2,3,3,2,absolute,prosocial
+220,9/5/18 16:40,9/5/18 16:46,Female,5+,43,To determine whether it is better to be ethical versus honest.,2,5,7,7,4,6,6,6,2,6,6,1,absolute,prosocial
+221,9/5/18 16:36,9/5/18 16:46,Female,0,38,to see what my opinions were of other peoples decisions ,3,2,2,2,2,2,3,2,3,2,1,4,ambiguous,selfish
+222,9/5/18 16:39,9/5/18 16:46,Male,0,18,"To test the morals, honesty and how much is someone willing to help other person, even if they lose little money.",3,5,2,4,7,3,2,3,1,2,3,2,ambiguous,selfish
+223,9/5/18 16:39,9/5/18 16:46,Male,0,24,To survey something in regards to Game Theory and/or how personalities affect economic decisions.,4,1,1,1,1,5,1,7,4,5,5,4,ambiguous,prosocial
+224,9/5/18 16:40,9/5/18 16:47,Male,1,31,"Possibly, to test how people would react when they can decide for others, hidden behind a ""curtain"" of anonymity.",3,4,4,2,2,4,3,3,2,5,5,4,ambiguous,selfish
+225,9/5/18 16:41,9/5/18 16:47,Male,0,18,"To learn about the processes separating honest and dishonest people. Honest people sacrifice .25$ but the receiver earns an extra dollar, so senders who told the receivers the wrong answer are dubbed as the ""honest"" ones.",4,1,1,1,5,7,6,7,6,7,7,5,ambiguous,prosocial
+226,9/5/18 16:35,9/5/18 16:47,Male,2,28,"I was sure it was something about memory, but it turned out to be something else, maybe something about values... I guess. It was a little confusing. ",1,5,6,4,4,3,2,1,1,1,1,1,absolute,selfish
+227,9/5/18 16:41,9/5/18 16:47,Female,0,21,To see how people would take action in different situations.,3,3,2,4,3,2,2,2,2,2,2,2,ambiguous,selfish
+228,9/5/18 16:32,9/5/18 16:47,Female,0,21,To see how the SENDER person acts by knowing or having the power to earn more or equal money than the RECIEVER,2,4,2,2,3,3,4,3,3,3,5,4,absolute,prosocial
+229,9/5/18 16:37,9/5/18 16:47,Male,1,29,To determine if the participant was ethical in his/her decision to lie in the coin flip game.,1,5,5,5,5,2,4,5,2,2,1,1,absolute,selfish
+230,9/5/18 16:33,9/5/18 16:48,Male,0,35,trick people,4,5,6,5,5,5,6,4,6,4,6,5,ambiguous,prosocial
+231,9/5/18 16:38,9/5/18 16:48,Male,0,38,To check the moral attitude of people in an economic context.,1,7,7,7,1,1,1,1,1,1,1,1,absolute,selfish
+232,9/5/18 16:42,9/5/18 16:48,Female,1,41,"To test whether people would tell lies, after saying they wouldnt and I suppose to see if they wanted to share some of the money to be earned ",2,1,6,6,2,6,5,6,5,5,5,5,absolute,prosocial
+233,9/5/18 16:36,9/5/18 16:48,Male,0,22,Altruism. To check if people would go against their beliefs in order to benefit someone else with nothing to gain from this action.,2,5,5,7,3,5,5,6,2,4,4,3,absolute,prosocial
+234,9/5/18 16:36,9/5/18 16:49,Female,1,45,evaluate the coherence of people with respect to their ideas,2,3,4,4,5,4,2,4,6,3,3,4,absolute,prosocial
+235,9/5/18 16:34,9/5/18 16:49,Male,0,20,To check if people will act selfish or honest in a situation in which they are in control of.,1,6,4,6,2,1,2,1,1,1,1,2,absolute,selfish
+236,9/5/18 16:40,9/5/18 16:50,Female,0,39,to establish if I thought particpant 425 was honest or I could figure out characteristics based on the responses of the game,4,1,1,7,7,7,7,7,7,7,7,7,ambiguous,prosocial
+237,9/5/18 15:59,9/5/18 16:50,Male,0,21,Analyze how difficult it is for a person to admit their dishonesty,3,4,3,2,1,2,2,7,1,3,2,1,ambiguous,selfish
+238,9/5/18 16:37,9/5/18 16:50,Female,0,33,I don't know,2,2,3,5,4,4,3,7,3,4,3,4,absolute,prosocial
+239,9/5/18 16:39,9/5/18 16:50,Male,1,30,"Risk Vs Reward. Knowing the odds, the Sender can decide whether to sacrifice moral standing for additional gain. ",3,3,3,2,2,2,2,5,3,3,2,3,ambiguous,selfish
+240,9/5/18 16:43,9/5/18 16:50,Male,0,19,To see if people want to satisfy another person who is anonymous,1,3,3,4,4,4,3,6,5,2,2,2,absolute,selfish
+241,9/5/18 16:43,9/5/18 16:51,Male,0,23,Test human behaviour,2,2,2,2,2,5,5,3,5,5,5,5,absolute,prosocial
+242,9/5/18 16:40,9/5/18 16:51,Male,1,18,"Think it has something to do with whether or not the person will lie, indicating the type of person they are.",1,4,4,6,3,2,3,3,2,3,3,2,absolute,selfish
+243,9/5/18 16:42,9/5/18 16:51,Male,0,46,Persons moral and ethics,1,4,6,7,4,2,2,2,2,2,2,1,absolute,selfish
+244,9/5/18 16:46,9/5/18 16:51,Female,1,22,To see if a person would act for their personal gain opposed to shared gain.,4,4,3,3,5,2,4,4,3,2,4,3,ambiguous,prosocial
+245,9/5/18 16:44,9/5/18 16:51,Male,0,22,To find out if people lie more for their benefit/ if people believe strangers,3,2,2,2,3,2,2,4,3,4,4,2,ambiguous,selfish
+246,9/5/18 16:45,9/5/18 16:51,Male,0,29,"the coin flip game was to test how the sender would react to getting more money themselves, would they be honest and get lower amounts or lie and get higher amounts",3,4,5,5,3,2,4,3,3,4,3,3,ambiguous,selfish
+247,9/5/18 16:45,9/5/18 16:52,Female,0,54,not sure,1,3,3,3,4,4,4,4,5,5,5,5,absolute,selfish
+248,9/5/18 16:43,9/5/18 16:52,Female,1,22,To determine people’s willingness to be honest based on the potential monetary benefits ,4,3,3,3,4,2,2,3,2,3,3,4,ambiguous,prosocial
+249,9/5/18 16:45,9/5/18 16:53,Male,0,34,I don´t  know the purpose of this study,3,4,5,3,1,4,1,1,1,1,2,1,ambiguous,selfish
+250,9/5/18 16:41,9/5/18 16:53,Female,2,35,to see if people would choose a bigger gain for themselves or a fairer gain for both participants,2,2,3,3,4,5,5,6,4,5,5,5,absolute,prosocial
+251,9/5/18 16:50,9/5/18 16:53,Female,0,20,Ethics decisions ,4,4,3,3,4,4,5,4,4,4,4,4,ambiguous,prosocial
+252,9/5/18 16:47,9/5/18 16:53,Female,0,21,"The game aimed to reveal the extent of honesty/dishonesty the sender was willing to display in order to obtain financial gain, and to examine how this correlated with previous survey questions on their values and beliefs.",2,5,6,2,5,3,2,3,2,5,5,4,absolute,prosocial
+253,9/5/18 16:44,9/5/18 16:53,Male,1,23,find out how selfish one can be,2,3,3,6,4,6,6,7,5,6,6,4,absolute,prosocial
+254,9/5/18 16:50,9/5/18 16:54,Female,0,45,evaluate the coherence of people with respect to their ideas,2,4,4,3,5,4,2,3,4,3,2,3,absolute,prosocial
+255,9/5/18 16:50,9/5/18 16:54,Male,2,32,To tell how honest people are when they are given a reward for dishonesty,1,6,6,2,4,1,1,2,1,6,6,6,absolute,selfish
+256,9/5/18 16:47,9/5/18 16:55,Male,3,27,"To test morality and values ""when no one is looking""",1,6,7,7,5,2,2,1,2,2,1,1,absolute,selfish
+257,9/5/18 16:47,9/5/18 16:55,Male,0,34,A pointless game/survey tool that is outdated and not applicable to research like so many of you researchers continue to assume. ,3,2,2,2,4,2,2,4,2,2,2,2,ambiguous,selfish
+258,9/5/18 16:50,9/5/18 16:55,Male,0,26,It tests how people deal with situations where their own self interest could conflict with their ethical and/or moral standards.,1,7,7,7,2,2,2,2,1,2,2,1,absolute,selfish
+259,9/5/18 16:49,9/5/18 16:55,Female,3,23,I think to test whether the sender will choose more money (by sending a wrong answer) or choose to give a honest answer so both people can earn.,3,4,4,4,4,2,2,3,2,2,2,2,ambiguous,selfish
+260,9/5/18 16:45,9/5/18 16:55,Female,0,35,don't know,1,4,4,4,4,4,4,4,4,4,4,4,absolute,selfish
+261,9/5/18 16:49,9/5/18 16:56,Male,1,21,To see if people acted honestly in reporting the coin - or in a way that would financially benefit them,3,2,2,4,5,2,4,5,3,4,3,3,ambiguous,selfish
+262,9/5/18 16:49,9/5/18 16:56,Male,0,21,"To see how people can change their behavior and values/ethics in something as simple as a game, to get the desired outcome.",2,4,5,6,2,6,6,2,3,5,6,4,absolute,prosocial
+263,9/5/18 16:52,9/5/18 16:56,Female,2,34,to judge someone else's decision,3,6,4,4,2,2,2,2,2,1,1,1,ambiguous,selfish
+264,9/5/18 16:51,9/5/18 16:56,Female,5+,19,"To ask participant their beliefs on the actions of players which correspond to their choices, in other words, how we interpret the ability or failure of others to follow their word.",3,5,2,2,4,2,2,3,2,5,2,2,ambiguous,selfish
+265,9/5/18 16:48,9/5/18 16:56,Male,1,32,Figure out how truthful people were when ony one party had information presented to them.,2,2,2,2,2,2,4,2,2,4,4,5,absolute,prosocial
+266,9/5/18 16:50,9/5/18 16:57,Female,1,36,To test the selfishness / selflessness of people.,3,4,4,4,4,1,1,2,1,1,1,1,ambiguous,selfish
+267,9/5/18 16:48,9/5/18 16:57,Male,1,27,To see if the sender would choose his own gain or a benefit for both the players,3,4,2,2,5,2,1,1,1,2,2,1,ambiguous,selfish
+268,9/5/18 16:48,9/5/18 16:57,Male,5+,24,To evaluate if the person would prefer the greater good 2.75$ for the team or if he would prefer to win more money for himself and let the other one empty handed.,2,6,7,7,1,1,1,2,1,1,1,1,absolute,prosocial
+269,9/5/18 16:45,9/5/18 16:57,Male,1,18,To test if people would sacrifice a little of their own to benefit others,3,2,2,2,1,2,3,2,2,2,2,2,ambiguous,selfish
+270,9/5/18 16:47,9/5/18 16:58,Male,0,24,To check the extent to which the fictional participant would sacrifice a small gain for themselves to provide a larger gain for someone else. I believe questions of 'honesty' are somewhat of a red herring. ,4,1,2,1,4,6,6,7,6,5,5,6,ambiguous,prosocial
+271,9/5/18 16:45,9/5/18 16:59,Female,0,38,Very hard to understand the query to be honest I presume from the end questions about trusting a stranger online or someone you don’t know as I say hard to understand answered it the best I could ,1,1,1,4,6,6,6,7,6,5,5,6,absolute,selfish
+272,9/5/18 16:55,9/5/18 16:59,Female,1,20,To test how someone acts in situations that question morality?,1,5,6,7,4,2,2,2,1,3,2,1,absolute,selfish
+273,9/5/18 16:53,9/5/18 16:59,Male,0,25,Test wether participants stuck by their claims when tempted with monetary compensation.,2,6,6,6,2,2,2,4,2,2,2,2,absolute,prosocial
+274,9/5/18 16:50,9/5/18 16:59,Male,0,48,"the game provides a reward to the receiver if they get the answer wrong. Therefore it tests the moral stance of the sender- will they lie to help someone, and recieve a slightly lower reward themselves, or will their moral code prevail and force them to be honest, despite this being less favourable for the other participant. It's a test of morals vs altruism, possibly. ",2,2,2,6,5,5,5,3,5,5,6,6,absolute,prosocial
+275,9/5/18 16:49,9/5/18 16:59,Male,0,22,To see how people think and then see how they react in a specific situation where they will contradict themselfs,4,2,6,5,4,6,6,7,1,6,6,2,ambiguous,prosocial
+276,9/5/18 16:50,9/5/18 16:59,Male,0,31,To determine how much people value their moral values by performing the game with different payouts for different participants. ,1,7,7,7,5,4,6,3,1,5,4,2,absolute,selfish
+277,9/5/18 16:55,9/5/18 16:59,Female,3,26,To see if people would act in a way that only benefitted themselves or share with the other person.,3,2,1,2,3,3,2,3,2,3,4,2,ambiguous,selfish
+278,9/5/18 16:51,9/5/18 16:59,Female,0,32,To see if the person was willing to lie to benefit themselves,1,6,6,7,6,2,2,5,2,3,3,2,absolute,selfish
+279,9/5/18 16:50,9/5/18 17:00,Female,0,38,No idea,4,4,4,4,2,2,4,5,3,3,2,2,ambiguous,prosocial
+280,9/5/18 16:50,9/5/18 17:00,Male,2,20,To see if people's actions differ from their thoughts/words,1,5,6,7,2,2,3,5,2,2,2,1,absolute,selfish
+281,9/5/18 16:51,9/5/18 17:00,Male,1,24,To see if people would choose to make more profit for themselves by telling the truth or to share the wealth and lie.,2,5,6,6,7,6,6,2,6,7,7,6,absolute,prosocial
+282,9/5/18 16:49,9/5/18 17:00,Female,0,31,To see how the Sender would react with the decision to be able to give/share money with the Receiver,4,2,2,1,2,4,2,6,3,4,4,3,ambiguous,prosocial
+283,9/5/18 16:51,9/5/18 17:01,Male,0,43,To understand how much can a stranger trust another stranger?,2,3,4,4,6,5,4,4,4,5,5,3,absolute,prosocial
+284,9/5/18 16:55,9/5/18 17:01,Female,1,64,I think the purpose of the game is to see if the Sender is honest and sends a message that will make both players money rather than being selfish.,1,6,6,6,4,2,3,2,2,3,3,1,absolute,selfish
+285,9/5/18 16:58,9/5/18 17:02,Male,0,31,"Correlating stated and actual honesty?
+
+(please don't make this a mandatory question, it feels patronising)",3,5,4,4,4,2,2,2,2,2,3,2,ambiguous,selfish
+286,9/5/18 16:49,9/5/18 17:02,Male,2,24,Making a point that lying isn't alyways bad - can be beneficial.,2,7,7,7,4,1,1,7,2,4,4,4,absolute,prosocial
+287,9/5/18 16:50,9/5/18 17:02,Female,0,26,To see if people would lie in order to get more money for themselves/lie to help the other person earn money,2,4,5,5,5,5,5,6,5,4,5,5,absolute,prosocial
+288,9/5/18 16:55,9/5/18 17:02,Female,0,28,to determine whether the sender's actions conflict with their previous answers in the survey about honesty and lying. ,3,2,2,2,1,1,1,2,2,2,2,1,ambiguous,selfish
+289,9/5/18 16:50,9/5/18 17:02,Male,1,27,to know whether the people are selfish or not.,4,1,2,2,2,5,5,6,3,5,4,5,ambiguous,prosocial
+290,9/5/18 16:58,9/5/18 17:03,Male,2,24,To understand what people are willing to do to just receive a little bit of extra money.,1,5,7,7,3,2,2,1,1,3,3,1,absolute,selfish
+291,9/5/18 16:46,9/5/18 17:03,Male,0,23,To basically see if you could win some money and to test weather the person you were playing with was trustworthy and honest.,2,4,5,4,4,4,5,4,5,4,3,3,absolute,prosocial
+292,9/5/18 16:58,9/5/18 17:03,Male,0,22,To see what the people will do when they have the power to earn more money without anyone else knowing.,4,2,2,3,2,6,6,7,6,6,6,6,ambiguous,prosocial
+293,9/5/18 16:58,9/5/18 17:03,Male,0,24,Check whether more reward leads to unethical behaviour,1,7,7,7,2,1,1,1,1,2,2,1,absolute,selfish
+294,9/5/18 16:55,9/5/18 17:03,Female,0,52,to see how lying is judged when it leads to an advantage of the other person maybe?,4,1,1,1,2,6,6,7,6,6,6,6,ambiguous,prosocial
+295,9/5/18 16:55,9/5/18 17:04,Male,0,22,"To see how willing someone is to deceive another person for only a small gain, while knowing that the other person loses much more. It could also show how willing someone is to trust another person.",4,2,2,1,6,6,6,6,5,6,6,5,ambiguous,prosocial
+296,9/5/18 16:59,9/5/18 17:04,Male,0,24,Dont really know ,2,5,5,6,5,4,4,5,3,3,4,2,absolute,prosocial
+297,9/5/18 16:57,9/5/18 17:04,Female,1,35,Memory game,2,4,4,4,4,5,5,3,5,4,4,4,absolute,prosocial
+298,9/5/18 16:59,9/5/18 17:04,Male,0,31,Not entirely sure - probably to prove some research or educational point.,2,2,2,2,2,4,5,5,4,5,5,5,absolute,prosocial
+299,9/5/18 16:55,9/5/18 17:04,Female,0,63,It was about honesty,1,6,6,6,2,2,2,4,2,2,2,2,absolute,selfish
+300,9/5/18 16:54,9/5/18 17:04,Male,0,48,to judge whether someone would be honest to benefit both parties or lie to benefit only themselves,3,4,4,6,1,2,2,2,2,2,2,2,ambiguous,selfish
+301,9/5/18 16:46,9/5/18 17:05,Female,1,30,earn money with azar,2,1,6,4,6,6,6,6,2,2,2,2,absolute,prosocial
+302,9/5/18 16:59,9/5/18 17:05,Female,1,44,To see if people would tell the truth for money or if greed would take over. ,1,4,5,5,4,2,1,6,2,2,2,2,absolute,selfish
+303,9/5/18 16:58,9/5/18 17:05,Female,0,36,"To see if the sender would choose to accept a slightly smaller reward for themself, thereby letting the receiver get a reward too",4,1,3,1,3,7,5,6,2,6,5,4,ambiguous,prosocial
+304,9/5/18 16:57,9/5/18 17:06,Female,1,37,To see if people and read others “poker face”,2,2,3,4,2,6,4,6,4,6,6,2,absolute,prosocial
+305,9/5/18 16:57,9/5/18 17:06,Male,0,35,"To gauge people's generosity to strangers, or their willingness to do something immoral when consequences are removed. (I think it's especially telling when someone would cheat a stranger out of imaginary money!)",3,4,4,4,4,1,2,2,1,1,1,1,ambiguous,selfish
+306,9/5/18 16:57,9/5/18 17:06,Female,0,29,Determining whether someone would lie even if it's against their personal values or beliefs,2,2,6,5,2,5,5,6,4,4,4,4,absolute,prosocial
+307,9/5/18 16:58,9/5/18 17:06,Male,0,28,To test hoesty and trust between randomly paired participants,4,2,2,2,2,3,3,6,2,4,3,1,ambiguous,prosocial
+308,9/5/18 16:54,9/5/18 17:07,Female,0,73,To see if a person would try to earn money for another as well as himself or be selfish,3,7,1,7,1,1,1,1,1,1,1,1,ambiguous,selfish
+309,9/5/18 17:00,9/5/18 17:07,Female,0,51,Looking at how people's beliefs pan out when those beliefs are tested.,2,4,6,6,2,4,4,6,2,4,4,5,absolute,prosocial
+310,9/5/18 16:58,9/5/18 17:07,Female,2,28,counting benefits,4,5,5,5,5,4,4,3,5,5,5,5,ambiguous,prosocial
+311,9/5/18 16:57,9/5/18 17:07,Male,1,25,Evaluating how people would respond to other participants self-contradicting behavior.,2,6,7,7,4,6,6,7,2,5,5,2,absolute,prosocial
+312,9/5/18 16:59,9/5/18 17:07,Female,0,31,About trust and see if a person would lie for there gain?,4,4,4,4,2,4,3,4,3,4,3,5,ambiguous,prosocial
+313,9/5/18 16:53,9/5/18 17:08,Female,0,45,Maybe to see if people would just think about them self or others,3,2,4,4,4,3,4,4,3,3,3,3,ambiguous,selfish
+314,9/5/18 17:01,9/5/18 17:08,Male,3,39,To see what is more important to the Sender; being honest or getting more money. ,4,2,2,4,4,3,4,3,4,3,3,3,ambiguous,prosocial
+315,9/5/18 17:00,9/5/18 17:08,Male,0,36,to deceive your playing partner so you win a larger share of the prize,3,2,2,3,2,3,4,5,2,4,2,2,ambiguous,selfish
+316,9/5/18 17:02,9/5/18 17:09,Female,0,26,to see if people where honest and whether people would believe what was said ,4,4,4,3,5,6,1,7,6,6,6,6,ambiguous,prosocial
+317,9/5/18 16:59,9/5/18 17:09,Female,0,31,To see if people would lie/go against their beliefs in order to help others benefit,2,6,6,6,3,5,5,6,2,4,4,4,absolute,prosocial
+318,9/5/18 17:02,9/5/18 17:09,Male,1,30,To view a person's actions based on how trustworthy they are,3,1,2,2,3,2,4,2,2,2,2,1,ambiguous,selfish
+319,9/5/18 17:01,9/5/18 17:10,Female,1,52,To know the personality of a person based on his/her actions,1,1,5,1,1,3,2,1,4,1,1,2,absolute,selfish
+320,9/5/18 17:01,9/5/18 17:12,Female,2,76,To make money for guessing the coin flip whether one is the receiver or sender,3,2,4,4,4,5,5,3,5,5,5,5,ambiguous,selfish
+321,9/5/18 17:09,9/5/18 17:14,Male,1,24,See if people are honest if there is a money incentive to lie,2,4,4,3,3,3,3,5,2,3,4,2,absolute,prosocial
+322,9/5/18 17:05,9/5/18 17:15,Female,0,43,Testing if a persons ideal response in a survey matches his actions in practice.,2,6,6,6,2,6,6,6,3,6,4,3,absolute,prosocial
+323,9/5/18 17:08,9/5/18 17:17,Female,0,46,To see what the sender does?,4,4,4,4,4,4,4,6,3,5,5,2,ambiguous,prosocial
+324,9/5/18 17:08,9/5/18 17:17,Female,1,21,To see if people would prefer to share profits (and earn less) or earn more but leave another person without profit,3,2,2,4,5,2,2,2,1,5,4,2,ambiguous,selfish
+325,9/5/18 17:15,9/5/18 17:21,Male,2,27,To gauge whether or not people will willingly lie about the results of a coin flip to earn more money for themselves at the cost of another person's gain.,1,7,7,7,1,1,1,1,1,2,2,1,absolute,selfish
+326,9/5/18 17:16,9/5/18 17:22,Male,2,28,To test whether it's okay to lie for the benefit of 2 people or tell the truth in order to gain the most you can.,4,3,5,2,2,6,2,7,4,5,6,5,ambiguous,prosocial
+327,9/5/18 15:53,9/5/18 18:28,Male,0,31,Have no idea,4,1,2,2,1,3,3,5,3,3,3,3,ambiguous,prosocial
