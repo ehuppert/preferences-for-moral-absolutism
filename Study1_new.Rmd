@@ -1,0 +1,397 @@
+---
+title: "Study1_new"
+author: "Elizabeth Huppert"
+date: "5/4/2020"
+output: pdf_document
+---
+
+
+#Set-up and Read in Data
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+-afex
+-apa
+-psych
+-dplyr
+-emmeans
+
+
+```{r setup, include=FALSE}
+
+library(here)
+library(tidyverse)
+library(afex)
+library(apa)
+library(psych)
+library(dplyr)
+library(emmeans)
+
+#read in data
+
+s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv")) #1205
+
+```
+
+
+Note: The current csv file imported for this analysis reflects cleaned data. 
+The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
+
+
+# Models
+
+Key variable names (also see codebook for more information):
+
+1. Proclamation:
+Assignment to absolute vs. flexible honesty stance
+
+2. Perspective:
+Perspective of statement as first-, second-, or third-person
+(i.e. "It is never okay to lie" vs. "I would never lie" vs. "You should never lie")
+
+3. Frame:
+Truth or lie Frame (i.e. "It is always imperative to tell the truth" vs. "I would always tell the truth" vs. "You should always tell the truth"")
+
+4. Voting:
+Likelihood of voting for Matthew Johnson (1 -7)
+
+# Record ordering of Proclamation for ease of interpretation
+
+Coded to: Absolute = 1, Flexible = 0
+
+```{r}
+s1$Proclamation <- factor(s1$Proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
+
+```
+
+# Composite Evaluation Variables 
+
+Items with high agreement were combined as per our pre-registration.
+
+```{r}
+#Hypocrisy
+hypocrisy1_check.df <- data.frame(s1$Hypocrisy_1, s1$Hypocrisy_2, s1$Hypocrisy_3, s1$Hypocrisy_4, s1$Hypocrisy_5)
+summary(hypocrisy1_check.df)
+describe(hypocrisy1_check.df)
+psych::alpha(hypocrisy1_check.df) #alpha = 0.90
+s1 <-  mutate(s1, 
+              Hypocrisy_composite = ((s1$Hypocrisy_1 + s1$Hypocrisy_2 + s1$Hypocrisy_3 + s1$Hypocrisy_4 + s1$Hypocrisy_5)/5))
+
+#Morality
+moral1_check.df <- data.frame(s1$Moral_1, s1$Moral_2, s1$Moral_3)
+summary(moral1_check.df)
+describe(moral1_check.df)
+psych::alpha(moral1_check.df) #alpha = 0.95
+s1 <- mutate(s1, 
+             Moral_composite = ((s1$Moral_1 + s1$Moral_2 + s1$Moral_3)/3))
+
+
+#Future Honesty
+honest1_check.df <- data.frame(s1$Honest_frequency, s1$Honest_likelihood, s1$Honest_extreme, s1$Honest_committment)
+summary(honest1_check.df)
+describe(honest1_check.df)
+psych::alpha(honest1_check.df) #alpha = 0.76
+s1<- mutate(s1, 
+            Honest_composite = ((s1$Honest_frequency + s1$Honest_likelihood + s1$Honest_extreme + s1$Honest_committment)/4))
+
+```
+
+Evaluation variables:
+
+Hypocrisy_composite = hypocrisy composite of 5 items (Ratings: 1-7)
+Moral_composite = morality composite of 3 items (Ratings: 1-7)
+Honest_composite = honesty thresholds composite of 4 items (Ratings: 1-7)
+
+# Hypocrisy Model
+
+```{r}
+#ANOVA
+hypocrisy_1.afex <-aov_car(Hypocrisy_composite ~ Proclamation*Perspective*Frame + Error(ID), data=s1)
+summary(hypocrisy_1.afex) 
+anova_apa(hypocrisy_1.afex)
+```
+
+
+# Hypocrisy Descriptives
+
+```{r}
+#Cells
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), mean)
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), sd)
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), length)
+
+#Across Proclamation*Frame
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Frame), mean)
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Frame), sd)
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Frame), length)
+
+#Across Proclamation*Perspective
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Perspective), mean)
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Perspective), sd)
+tapply(s1$Hypocrisy_composite, list(s1$Proclamation, s1$Perspective), length)
+
+#Across Frame*Perspective
+tapply(s1$Hypocrisy_composite, list(s1$Perspective, s1$Frame), mean)
+tapply(s1$Hypocrisy_composite, list(s1$Perspective, s1$Frame), sd)
+tapply(s1$Hypocrisy_composite, list(s1$Perspective, s1$Frame), length)
+
+#Across Proclamation
+tapply(s1$Hypocrisy_composite, s1$Proclamation, mean)
+tapply(s1$Hypocrisy_composite, s1$Proclamation, sd)
+tapply(s1$Hypocrisy_composite, s1$Proclamation, length)
+
+#Across Frame
+tapply(s1$Hypocrisy_composite, s1$Frame, mean)
+tapply(s1$Hypocrisy_composite, s1$Frame, sd)
+tapply(s1$Hypocrisy_composite, s1$Frame, length)
+
+#Across Perspective
+tapply(s1$Hypocrisy_composite, s1$Perspective, mean)
+tapply(s1$Hypocrisy_composite, s1$Perspective, sd)
+tapply(s1$Hypocrisy_composite, s1$Perspective, length)
+
+#Overall
+mean(s1$Hypocrisy_composite)
+sd(s1$Hypocrisy_composite)
+length(s1$Hypocrisy_composite)
+```
+
+# Morality Model
+
+```{r}
+#ANOVA
+moral_1.afex <-aov_car(Moral_composite ~ Proclamation*Perspective*Frame + Error(ID), data=s1)
+summary(moral_1.afex) 
+anova_apa(moral_1.afex)
+```
+
+# Morality Descriptives
+
+```{r}
+#Cells
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), mean)
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), sd)
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), length)
+
+#Across Proclamation*Frame
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Frame), mean)
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Frame), sd)
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Frame), length)
+
+#Across Proclamation*Perspective
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Perspective), mean)
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Perspective), sd)
+tapply(s1$Moral_composite, list(s1$Proclamation, s1$Perspective), length)
+
+#Across Frame*Perspective
+tapply(s1$Moral_composite, list(s1$Perspective, s1$Frame), mean)
+tapply(s1$Moral_composite, list(s1$Perspective, s1$Frame), sd)
+tapply(s1$Moral_composite, list(s1$Perspective, s1$Frame), length)
+
+#Across Proclamation
+tapply(s1$Moral_composite, s1$Proclamation, mean)
+tapply(s1$Moral_composite, s1$Proclamation, sd)
+tapply(s1$Moral_composite, s1$Proclamation, length)
+
+#Across Frame
+tapply(s1$Moral_composite, s1$Frame, mean)
+tapply(s1$Moral_composite, s1$Frame, sd)
+tapply(s1$Moral_composite, s1$Frame, length)
+
+#Across Perspective
+tapply(s1$Moral_composite, s1$Perspective, mean)
+tapply(s1$Moral_composite, s1$Perspective, sd)
+tapply(s1$Moral_composite, s1$Perspective, length)
+
+#Overall
+mean(s1$Moral_composite)
+sd(s1$Moral_composite)
+length(s1$Moral_composite)
+```
+
+# Future Honesty Model
+
+```{r}
+#ANOVA
+honest_1.afex <-aov_car(Honest_composite ~ Proclamation*Perspective*Frame + Error(ID), data=s1)
+summary(honest_1.afex) 
+anova_apa(honest_1.afex)
+```
+
+
+# Future Honesty Descriptives
+
+```{r}
+#Cells
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), mean)
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), sd)
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Perspective, s1$Frame), length)
+
+#Across Proclamation*Frame
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Frame), mean)
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Frame), sd)
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Frame), length)
+
+#Across Proclamation*Perspective
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Perspective), mean)
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Perspective), sd)
+tapply(s1$Honest_composite, list(s1$Proclamation, s1$Perspective), length)
+
+#Across Frame*Perspective
+tapply(s1$Honest_composite, list(s1$Perspective, s1$Frame), mean)
+tapply(s1$Honest_composite, list(s1$Perspective, s1$Frame), sd)
+tapply(s1$Honest_composite, list(s1$Perspective, s1$Frame), length)
+
+#Across Proclamation
+tapply(s1$Honest_composite, s1$Proclamation, mean)
+tapply(s1$Honest_composite, s1$Proclamation, sd)
+tapply(s1$Honest_composite, s1$Proclamation, length)
+
+#Across Frame
+tapply(s1$Honest_composite, s1$Frame, mean)
+tapply(s1$Honest_composite, s1$Frame, sd)
+tapply(s1$Honest_composite, s1$Frame, length)
+
+#Across Perspective
+tapply(s1$Honest_composite, s1$Perspective, mean)
+tapply(s1$Honest_composite, s1$Perspective, sd)
+tapply(s1$Honest_composite, s1$Perspective, length)
+
+#Overall
+mean(s1$Honest_composite)
+sd(s1$Honest_composite)
+length(s1$Honest_composite)
+```
+
+# Voting Intentions Model
+
+```{r}
+#ANOVA
+Voting_1.afex <-aov_car(Voting ~ Proclamation*Perspective*Frame + Error(ID), data=s1)
+summary(Voting_1.afex) 
+anova_apa(Voting_1.afex)
+
+```
+
+# Voting Descriptives
+
+```{r}
+#Cells
+tapply(s1$Voting, list(s1$Proclamation, s1$Perspective, s1$Frame), mean)
+tapply(s1$Voting, list(s1$Proclamation, s1$Perspective, s1$Frame), sd)
+tapply(s1$Voting, list(s1$Proclamation, s1$Perspective, s1$Frame), length)
+
+#Across Proclamation*Frame
+tapply(s1$Voting, list(s1$Proclamation, s1$Frame), mean)
+tapply(s1$Voting, list(s1$Proclamation, s1$Frame), sd)
+tapply(s1$Voting, list(s1$Proclamation, s1$Frame), length)
+
+#Across Proclamation*Perspective
+tapply(s1$Voting, list(s1$Proclamation, s1$Perspective), mean)
+tapply(s1$Voting, list(s1$Proclamation, s1$Perspective), sd)
+tapply(s1$Voting, list(s1$Proclamation, s1$Perspective), length)
+
+#Across Frame*Perspective
+tapply(s1$Voting, list(s1$Perspective, s1$Frame), mean)
+tapply(s1$Voting, list(s1$Perspective, s1$Frame), sd)
+tapply(s1$Voting, list(s1$Perspective, s1$Frame), length)
+
+#Across Proclamation
+tapply(s1$Voting, s1$Proclamation, mean)
+tapply(s1$Voting, s1$Proclamation, sd)
+tapply(s1$Voting, s1$Proclamation, length)
+
+#Across Frame
+tapply(s1$Voting, s1$Frame, mean)
+tapply(s1$Voting, s1$Frame, sd)
+tapply(s1$Voting, s1$Frame, length)
+
+#Across Perspective
+tapply(s1$Voting, s1$Perspective, mean)
+tapply(s1$Voting, s1$Perspective, sd)
+tapply(s1$Voting, s1$Perspective, length)
+
+#Overall
+mean(s1$Voting)
+sd(s1$Voting)
+length(s1$Voting)
+```
+
+# Voting Simple Effects - Subsetting Data
+
+```{r}
+#How does Proclamation vary within just third-person lie frame?
+thirdperson_lie <- s1 %>%
+  filter(Perspective == "general") %>%
+  filter(Frame == "lie") #174
+
+#How does Proclamation vary within just third-person truth frame?
+thirdperson_truth <- s1 %>%
+  filter(Perspective == "general") %>%
+  filter(Frame == "truth") #208
+
+#How does Proclamation vary within just first-person lie frame?
+firstperson_lie <- s1 %>%
+  filter(Perspective == "I") %>%
+  filter(Frame == "lie") #207
+
+#How does Proclamation vary within just first-person truth frame?
+firstperson_truth <- s1 %>%
+  filter(Perspective == "I") %>%
+  filter(Frame == "truth") #213
+
+#How does Proclamation vary within just second-person lie frame?
+secperson_lie <- s1 %>%
+  filter(Perspective == "you") %>%
+  filter(Frame == "lie") #211
+
+#How does Proclamation vary within just second-person truth frame?
+secperson_truth <- s1 %>%
+  filter(Perspective == "you") %>%
+  filter(Frame == "truth") #192
+```
+
+# Voting Simple Effects - T-tests
+
+```{r}
+#Proclamation within third person general lie frame
+t.test(Voting ~ Proclamation, thirdperson_lie, var.equal = TRUE)
+t_apa(t.test(Voting ~ Proclamation, thirdperson_lie, var.equal = TRUE))
+
+#Proclamation within third person general truth frame
+t.test(Voting ~ Proclamation, thirdperson_truth, var.equal = TRUE) 
+t_apa(t.test(Voting ~ Proclamation, thirdperson_truth, var.equal = TRUE))
+
+#Proclamation within first person lie frame
+t.test(Voting ~ Proclamation, firstperson_lie, var.equal = TRUE)
+t_apa(t.test(Voting ~ Proclamation, firstperson_lie, var.equal = TRUE))
+
+#Proclamation within first person truth frame
+t.test(Voting ~ Proclamation, firstperson_truth, var.equal = TRUE) 
+t_apa(t.test(Voting ~ Proclamation, firstperson_truth, var.equal = TRUE))
+
+#Proclamation within second lie frame
+t.test(Voting ~ Proclamation, secperson_lie, var.equal = TRUE) 
+t_apa(t.test(Voting ~ Proclamation, secperson_lie, var.equal = TRUE))
+
+#Proclamation within second truth frame
+t.test(Voting ~ Proclamation, secperson_truth, var.equal = TRUE) 
+t_apa(t.test(Voting ~ Proclamation, secperson_truth, var.equal = TRUE))
+
+#Alternative ANOVA and tukey post-hoc tests
+voting_model = aov_ez('ID', 'Voting', s1,
+                    within = c (),
+                    between = c ('Proclamation', 'Perspective', 'Frame'),
+                    anova_table = list(es = 'pes'))
+print(voting_model)
+means <- emmeans(voting_model, ~ Proclamation|Perspective|Frame)
+print(means)
+post1 <- emmeans(voting_model, ~ Proclamation|Perspective|Frame)
+pairs(post1)
+
+```
+
+
+See the attached R script "Study1_mediation.R" for the multiple mediation analysis. As mentioned, further analysis notes available upon request.

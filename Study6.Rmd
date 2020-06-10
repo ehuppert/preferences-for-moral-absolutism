@@ -1,0 +1,278 @@
+---
+title: "Supplemental Study 1 (Study 6)"
+author: "Elizabeth Huppert"
+date: "5/4/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Set-up
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+-afex
+-psych
+-reshape2
+-apa
+-psych
+-dplyr
+
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+library(psych)
+library(reshape2)
+library(afex)
+library(apa)
+library(psych)
+library(dplyr)
+
+#read in data
+
+s6 <- read.csv(here("HypocrisyStudySI_1.csv"))
+
+```
+
+Note: The current csv file imported for this analysis reflects cleaned data. 
+The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
+
+
+# Models
+
+Key variable names (also see codebook for more information):
+
+1. Proclamation:
+Assignment to absolute honesty vs. control 
+
+2. Lie.motives:
+Reasons for lying in the deception game: prosocial vs. selfish motives
+
+3.Hypocrisy_1:
+This person is a hypocrite. (Ratings: 1-7)
+
+4. Guilt:
+This person felt uncomfortable about the decision to SEND a dishonest message. (Ratings: 1-7)
+
+5. Moral:
+Moral  (Ratings: 1-7)
+
+6. Trustbeh:
+KEEP or PASS in The Coin Flip Game, (0 = KEEP, 1 = PASS)
+
+# Composite evaluation variables
+
+Items with high agreement were combined as per our pre-registration.
+
+```{r}
+#Attitudinal Trust
+cor.test(s6$trust_1, s6$trust_2) #r = 0.95
+s6<- mutate(s6, att_trust = ((s6$trust_1 + s6$trust_2)/2))
+
+#Benevolence
+Benveolence_df <- data.frame(s6$benevolence_1, s6$benevolence_2, s6$benevolence_3)
+summary(Benveolence_df )
+describe(Benveolence_df )
+psych::alpha(Benveolence_df ) #alpha = 0.79
+s6 <- mutate(s6, Benevolence_composite = ((s6$benevolence_1 + s6$benevolence_2 + s6$benevolence_3)/3))
+
+```
+
+att_trust = composite of 2 items of trust items (Ratings: 1-7)
+Benevolence_composite = composite of 3 items of benevolence (Ratings: 1-7)
+
+# Hypocrisy Model
+
+```{r}
+#ANOVA
+hypocrisy6.aov <-aov_car(hypocrisy_1 ~ proclamation*lie.motives + Error(ID), data=s6)
+summary(hypocrisy6.aov) 
+anova_apa(hypocrisy6.aov)
+
+```
+
+# Hypocrisy Descriptives
+
+```{r}
+#Cells
+tapply(s6$hypocrisy_1, list(s6$proclamation, s6$lie.motives), FUN = length)
+tapply(s6$hypocrisy_1, list(s6$proclamation, s6$lie.motives), FUN = mean)
+tapply(s6$hypocrisy_1, list(s6$proclamation, s6$lie.motives), FUN = sd)
+
+#Across Proclamation
+tapply(s6$hypocrisy_1, s6$proclamation,FUN = length)
+tapply(s6$hypocrisy_1, s6$proclamation,FUN = mean)
+tapply(s6$hypocrisy_1, s6$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s6$hypocrisy_1, s6$lie.motives,FUN = length)
+tapply(s6$hypocrisy_1, s6$lie.motives,FUN = mean)
+tapply(s6$hypocrisy_1, s6$lie.motives,FUN = sd)
+
+#Overall
+mean(s6$hypocrisy_1)
+sd(s6$hypocrisy_1)
+length(s6$hypocrisy_1)
+
+```
+
+# Morality Model
+
+
+```{r}
+#ANOVA
+morality1.aov <-aov_car(moral ~ proclamation*lie.motives + Error(ID), data=s6)
+summary(morality1.aov)
+anova_apa(morality1.aov)
+```
+
+# Morality Descriptives
+
+```{r}
+#Cells
+tapply(s6$moral, list(s6$proclamation, s6$lie.motives), FUN = mean)
+tapply(s6$moral, list(s6$proclamation, s6$lie.motives), FUN = sd)
+tapply(s6$moral, list(s6$proclamation, s6$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s6$moral, s6$proclamation,FUN = length)
+tapply(s6$moral, s6$proclamation,FUN = mean)
+tapply(s6$moral, s6$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s6$moral, s6$lie.motives,FUN = length)
+tapply(s6$moral, s6$lie.motives,FUN = mean)
+tapply(s6$moral, s6$lie.motives,FUN = sd)
+
+#Overall
+mean(s6$moral)
+sd(s6$moral)
+length(s6$moral)
+
+```
+
+# Guilt Model
+
+```{r}
+#ANOVA
+discomfort1.aov <-aov_car(discomfort_1 ~ proclamation*lie.motives + Error(ID), data=s6)
+summary(discomfort1.aov)
+anova_apa(discomfort1.aov)
+```
+
+# Descriptives Guilt
+
+```{r}
+#Cells
+tapply(s6$discomfort_1, list(s6$proclamation, s6$lie.motives), FUN = mean)
+tapply(s6$discomfort_1, list(s6$proclamation, s6$lie.motives), FUN = sd)
+tapply(s6$discomfort_1, list(s6$proclamation, s6$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s6$discomfort_1, s6$proclamation,FUN = length)
+tapply(s6$discomfort_1, s6$proclamation,FUN = mean) 
+tapply(s6$discomfort_1, s6$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s6$discomfort_1, s6$lie.motives,FUN = length)
+tapply(s6$discomfort_1, s6$lie.motives,FUN = mean)
+tapply(s6$discomfort_1, s6$lie.motives,FUN = sd)
+
+#Overall
+mean(s6$discomfort_1)
+sd(s6$discomfort_1)
+length(s6$discomfort_1)
+
+```
+
+# Attitudinal Trust
+
+```{r}
+#ANOVA
+trust1.aov <-aov_car(att_trust ~ proclamation*lie.motives + Error(ID), data=s6)
+summary(trust1.aov)
+anova_apa(trust1.aov)
+```
+
+# Attitudinal Trust Descriptives
+
+```{r}
+#Cells
+tapply(s6$att_trust, list(s6$proclamation, s6$lie.motives), FUN = mean)
+tapply(s6$att_trust, list(s6$proclamation, s6$lie.motives), FUN = sd)
+tapply(s6$att_trust, list(s6$proclamation, s6$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s6$att_trust, s6$proclamation,FUN = length)
+tapply(s6$att_trust, s6$proclamation,FUN = mean) 
+tapply(s6$att_trust, s6$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s6$att_trust, s6$lie.motives,FUN = length)
+tapply(s6$att_trust, s6$lie.motives,FUN = mean)
+tapply(s6$att_trust, s6$lie.motives,FUN = sd)
+
+#Overall
+mean(s6$att_trust)
+sd(s6$att_trust)
+length(s6$att_trust)
+
+```
+
+# Benevolence
+
+```{r}
+#ANOVA
+ben.aov <- aov(Benevolence_composite ~ proclamation*lie.motives, data = s6)
+summary(ben.aov)
+anova_apa(ben.aov)
+```
+
+#Benevolence Descriptives
+
+```{r}
+#Cells
+tapply(s6$Benevolence_composite, list(s6$proclamation, s6$lie.motives), FUN = mean)
+tapply(s6$Benevolence_composite, list(s6$proclamation, s6$lie.motives), FUN = sd)
+tapply(s6$Benevolence_composite, list(s6$proclamation, s6$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s6$Benevolence_composite, s6$proclamation,FUN = length)
+tapply(s6$Benevolence_composite, s6$proclamation,FUN = mean) 
+tapply(s6$Benevolence_composite, s6$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s6$Benevolence_composite, s6$lie.motives,FUN = length)
+tapply(s6$Benevolence_composite, s6$lie.motives,FUN = mean)
+tapply(s6$Benevolence_composite, s6$lie.motives,FUN = sd)
+
+#Overall
+mean(s6$Benevolence_composite)
+sd(s6$Benevolence_composite)
+length(s6$Benevolence_composite)
+
+```
+
+# The Choice Game
+
+```{r}
+#Logistic regression
+model.1 <- glm(trustbeh ~ proclamation*lie.motives, data=s6, family = binomial(link = "logit"))
+summary(model.1)
+
+#Follow-ups
+chisq.test(s6$lie.motives, s6$trustbeh)
+table(s6$lie.motives, s6$trustbeh)
+table(s6$proclamation, s6$lie.motives, s6$trustbeh)
+
+```
+
+
+#Mediation
+
+See R script Study6_mediation.R for mediation results.

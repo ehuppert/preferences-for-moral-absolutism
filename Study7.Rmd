@@ -1,0 +1,304 @@
+---
+title: "Supplemental Study 2 (Study7)"
+author: "Elizabeth Huppert"
+date: "5/4/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Set-up
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+-afex
+-psych
+-apa
+-psych
+-dplyr
+-emmeans
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+library(psych)
+library(afex)
+library(apa)
+library(psych)
+library(dplyr)
+library(emmeans)
+
+#read in data
+
+s7 <- read.csv(here("HypocrisyStudySI_2.csv")) #327
+
+```
+
+Note: The current csv file imported for this analysis reflects cleaned data. 
+The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
+
+
+# Models
+
+Key variable names (also see codebook for more information):
+
+1. Proclamation:
+Assignment to absolute vs. flexible honesty stance
+
+2. Lie.motives:
+Assignment to prosocial vs. selfish lie
+
+3. Discomfort_1:
+Discomfort (Ratings: 1-7)
+
+4. Trust:
+Trustworthy (Ratings: 1-7)
+
+# Composite  Evaluation Variables
+
+Items with high agreement were combined as per our pre-registration.
+
+```{r}
+#Hypocrisy
+hypocrisy7_df <- data.frame(s7$hypocrisy_1, s7$hypocrisy_2, s7$hypocrisy_3)
+summary(hypocrisy7_df)
+describe(hypocrisy7_df)
+psych::alpha(hypocrisy7_df) #alpha = 0.86
+s7<- mutate(s7, hypocrisy7_composite = ((s7$hypocrisy_1 + s7$hypocrisy_2 + s7$hypocrisy_3)/3))
+
+#Morality
+cor.test(s7$moral_1, s7$moral_2) #r = 0.91
+s7<- mutate(s7, moral7_composite  = ((s7$moral_1 + s7$moral_2)/2))
+
+#Benevolence
+ben_7check <- data.frame(s7$benevolence_1, s7$benevolence_2, s7$benevolence_3, s7$honest)
+summary(ben_7check)
+describe(ben_7check)
+psych::alpha(ben_7check) #alpha = .88
+s7 <- mutate(s7, benevolence7_composite = ((s7$benevolence_1 + s7$benevolence_2 + s7$benevolence_3 + s7$honest)/3))
+
+```
+
+Evaluation variables:
+
+hypocrisy7_composite = hypocrisy composite of 3 items (Ratings: 1-7)
+moral7_composite = morality composite of 2 items (Ratings: 1-7)
+benevolence7_composite = benevolence composite of 4 items (Ratings: 1-7)
+
+
+# Hypocrisy Model
+
+```{r}
+#ANOVA
+hypocrisy7.afex <-aov_car(hypocrisy7_composite ~ proclamation*lie.motives + Error(ID), data=s7)
+summary(hypocrisy7.afex)
+anova_apa(hypocrisy7.afex)
+```
+
+# Hypocrisy Descriptives
+
+```{r}
+#Cells
+tapply(s7$hypocrisy7_composite, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$hypocrisy7_composite, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$hypocrisy7_composite, list(s7$proclamation, s7$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s7$hypocrisy7_composite, s7$proclamation,FUN = length)
+tapply(s7$hypocrisy7_composite, s7$proclamation,FUN = mean)
+tapply(s7$hypocrisy7_composite, s7$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s7$hypocrisy7_composite, s7$lie.motives,FUN = length)
+tapply(s7$hypocrisy7_composite, s7$lie.motives,FUN = mean)
+tapply(s7$hypocrisy7_composite, s7$lie.motives,FUN = sd)
+
+#Overall
+mean(s7$hypocrisy7_composite)
+sd(s7$hypocrisy7_composite)
+length(s7$hypocrisy7_composite)
+
+```
+
+# Hypocrisy Simple Effects
+
+```{r}
+#Lie motives on proclamations
+absolute_test <- s7 %>%
+  filter(proclamation == "absolute") 
+
+t.test(hypocrisy7_composite ~ lie.motives, data = absolute_test, var.equal = TRUE)
+
+ambiguous_test <- s7 %>%
+  filter(proclamation == "ambiguous") 
+
+t.test(hypocrisy7_composite ~ lie.motives, data = ambiguous_test, var.equal = TRUE)
+
+#Proclamation on lie motives
+prosocial_test <- s7 %>%
+  filter(lie.motives == "prosocial") 
+
+t.test(hypocrisy7_composite ~ proclamation, data = prosocial_test, var.equal = TRUE)
+t_apa(t_test(hypocrisy7_composite ~ proclamation, data = prosocial_test, var.equal = TRUE))
+
+selfish_test <- s7 %>%
+  filter(lie.motives == "selfish") 
+
+t.test(hypocrisy7_composite ~ proclamation, data = selfish_test, var.equal = TRUE)
+t_apa(t_test(hypocrisy7_composite ~ proclamation, data = selfish_test, var.equal = TRUE))
+
+#Alternative ANOVA and tukey post-hoc tests
+hyp_model = aov_ez('ID', 'hypocrisy7_composite', s7,
+                    within = c (),
+                    between = c ('proclamation', 'lie.motives'),
+                    anova_table = list(es = 'pes'))
+print(hyp_model)
+means <- emmeans(hyp_model, ~ proclamation|lie.motives)
+print(means)
+post1 <- emmeans(hyp_model, ~ proclamation|lie.motives)
+pairs(post1) 
+post2 <- emmeans(hyp_model, ~ lie.motives|proclamation)
+pairs(post2) 
+```
+
+#Morality Model
+
+```{r}
+#ANOVA
+morality7.afex <-aov_car(moral7_composite ~ proclamation*lie.motives + Error(ID), data=s7)
+summary(morality7.afex)
+anova_apa(morality7.afex)
+```
+
+# Morality Descriptives
+
+```{r}
+#Cells
+tapply(s7$moral7_composite, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$moral7_composite, list(s7$proclamation, s7$lie.motive), FUN = sd)
+tapply(s7$moral7_composite, list(s7$proclamation, s7$lie.motive), FUN = length)
+
+#Across Proclamation
+tapply(s7$moral7_composite, s7$proclamation,FUN = length)
+tapply(s7$moral7_composite, s7$proclamation,FUN = mean)
+tapply(s7$moral7_composite, s7$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s7$moral7_composite, s7$lie.motive,FUN = length)
+tapply(s7$moral7_composite, s7$lie.motive,FUN = mean)
+tapply(s7$moral7_composite, s7$lie.motive,FUN = sd)
+
+#Overall
+mean(s7$moral7_composite)
+sd(s7$moral7_composite)
+length(s7$moral7_composite)
+```
+
+
+# Guilt Model
+
+```{r}
+#ANOVA
+discomfort7.afex <-aov_car(discomfort_1 ~ proclamation*lie.motives + Error(ID), data=s7)
+summary(discomfort7.afex) 
+anova_apa(discomfort7.afex)
+```
+
+#Guilt Descriptives
+
+
+```{r}
+#Cells
+tapply(s7$discomfort_1, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$discomfort_1, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$discomfort_1, list(s7$proclamation, s7$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s7$discomfort_1, s7$proclamation,FUN = length)
+tapply(s7$discomfort_1, s7$proclamation,FUN = mean)
+tapply(s7$discomfort_1, s7$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s7$discomfort_1, s7$lie.motives,FUN = length)
+tapply(s7$discomfort_1, s7$lie.motives,FUN = mean)
+tapply(s7$discomfort_1, s7$lie.motives,FUN = sd)
+
+#Overall
+mean(s7$discomfort_1)
+sd(s7$discomfort_1)
+length(s7$discomfort_1)
+```
+
+#Attitudinal Trust Model
+
+```{r}
+#ANOVA
+trust7.afex <-aov_car(trust ~ proclamation*lie.motives + Error(ID), data=s7)
+summary(trust7.afex) 
+anova_apa(trust7.afex) 
+```
+
+#Attitudinal Trust Descriptives
+
+```{r}
+#Cells
+tapply(s7$trust, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$trust, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$trust, list(s7$proclamation, s7$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s7$trust, s7$proclamation,FUN = length)
+tapply(s7$trust, s7$proclamation,FUN = mean)
+tapply(s7$trust, s7$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s7$trust, s7$lie.motives,FUN = length)
+tapply(s7$trust, s7$lie.motives,FUN = mean)
+tapply(s7$trust, s7$lie.motives,FUN = sd)
+
+#Overall
+mean(s7$trust)
+sd(s7$trust)
+length(s7$trust)
+```
+
+#Benevolence Model
+
+```{r}
+#ANOVA
+benevolence7.afex <-aov_car(benevolence7_composite ~ proclamation*lie.motives + Error(ID), data=s7)
+summary(benevolence7.afex)
+anova_apa(benevolence7.afex) 
+```
+
+#Benevolence Descriptives
+
+```{r}
+#Cells
+tapply(s7$benevolence7_composite, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$benevolence7_composite, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$benevolence7_composite, list(s7$proclamation, s7$lie.motives), FUN = length)
+
+#Across Proclamation
+tapply(s7$benevolence7_composite, s7$proclamation,FUN = length)
+tapply(s7$benevolence7_composite, s7$proclamation,FUN = mean)
+tapply(s7$benevolence7_composite, s7$proclamation,FUN = sd)
+
+#Across Lie.motives
+tapply(s7$benevolence7_composite, s7$lie.motives,FUN = length)
+tapply(s7$benevolence7_composite, s7$lie.motives,FUN = mean)
+tapply(s7$benevolence7_composite, s7$lie.motives,FUN = sd)
+
+#Overall
+mean(s7$benevolence7_composite)
+sd(s7$benevolence7_composite)
+length(s7$benevolence7_composite)
+
+```
+
+
+See R script Study7_mediation.R for mediation results.
