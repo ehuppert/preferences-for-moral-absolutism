@@ -28,9 +28,7 @@ library(lavaan)
 
 #read in data
 
-s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #271
-
-
+s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #265
 ```
 
 Note: The current csv file imported for this analysis reflects cleaned data. 
@@ -57,30 +55,33 @@ Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Hypocrisy
-s2_NEW.test.df <- data.frame(s2_NEW$h1, s2_NEW$h2, s2_NEW$h3, s2_NEW$h4, s2_NEW$h5)
-summary(s2_NEW.test.df)
-describe(s2_NEW.test.df)
-psych::alpha(s2_NEW.test.df) #alpha = 0.89 so combine
-s2_NEW <- mutate(s2_NEW, h_composite2= ((s2_NEW$h1+s2_NEW$h2+s2_NEW$h3+s2_NEW$h4+s2_NEW$h5)/5))
+hypocrisy2_check <- data.frame(s2$Hypocrisy_1, s2$Hypocrisy_2, s2$Hypocrisy_3, s2$Hypocrisy_4, s2$Hypocrisy_5)
+summary(hypocrisy2_check)
+describe(hypocrisy2_check)
+psych::alpha(hypocrisy2_check) #alpha = 0.89 
+s2 <- mutate(s2, Hypocrisy_composite2= 
+               ((s2$Hypocrisy_1 + s2$Hypocrisy_2 + s2$Hypocrisy_3 + s2$Hypocrisy_4 +   s2$Hypocrisy_5)/5))
 
 #Morality
-moral.test.df <- data.frame(s2_NEW$m1, s2_NEW$m2, s2_NEW$m3)
-summary(moral.test.df)
-describe(moral.test.df)
-psych::alpha(moral.test.df) #alpha = 0.94 so combine
+moral2_check <- data.frame(s2$Moral_1, s2$Moral_2, s2$Moral_3)
+summary(moral2_check)
+describe(moral2_check)
+psych::alpha(moral2_check) #alpha = 0.94 
 
-s2_NEW <- mutate(s2_NEW, m_composite2 = ((s2_NEW$m1+s2_NEW$m2+s2_NEW$m3)/3))
+s2 <- mutate(s2, Moral_composite2 = ((s2$Moral_1 + s2$Moral_2 +s2$Moral_3)/3))
 
 #Future Honesty
-honest.test.df <- data.frame(s2_NEW$hf, s2_NEW$hl, s2_NEW$he, s2_NEW$ch)
-summary(honest.test.df)
-describe(honest.test.df)
-psych::alpha(honest.test.df) #alpha = 0.74
-s2_NEW <- mutate(s2_NEW, Honest_composite2 = ((s2_NEW$hl+s2_NEW$hf+s2_NEW$he+s2_NEW$ch)/4))
+honesty2_check  <- data.frame(s2$Honest_frequency, s2$Honest_likelihood, s2$Honest_extreme, s2$Honest_committment)
+summary(honesty2_check)
+describe(honesty2_check)
+psych::alpha(honesty2_check) #alpha = 0.74
+s2 <- mutate(s2, Honest_composite2 = 
+               ((s2$Honest_frequency + s2$Honest_likelihood + s2$Honest_extreme + s2$Honest_committment)/4))
 
 #Social benefit of the proclamation
-cor.test(s2_NEW$s1, s2_NEW$s2) #r = 0.87
-s2_NEW <- mutate(s2_NEW, SI_composite2 = ((s2_NEW$s1+s2_NEW$s2)/2))
+cor.test(s2$Social_1, s2$Social_2) #r = 0.87
+
+s2 <- mutate(s2, SI_composite2 = ((s2$Social_1 + s2$Social_2)/2))
 ```
 
 Evaluation variables:
@@ -94,10 +95,9 @@ SI_composite2 = perceived social benefit of the proclamation composite of 2 item
 # Voting Intentions Model
 
 ```{r}
-vote_2new.afex <-aov_car(v1 ~ proclamation + Error(ID), data= s2_NEW)
-summary(vote_2new.afex) 
-anova_apa(vote_2new.afex)  #main effect of proc
-
+Voting_2.afex <-aov_car(Voting ~ Proclamation + Error(ID), data= s2)
+summary(Voting_2.afex) 
+anova_apa(Voting_2.afex)  
 ```
 
 # Voting Descriptives
@@ -105,39 +105,37 @@ anova_apa(vote_2new.afex)  #main effect of proc
 ```{r}
 
 #Across Proclamations
-tapply(s2_NEW$v1, s2_NEW$proclamation, mean)
-tapply(s2_NEW$v1, s2_NEW$proclamation, sd)
-tapply(s2_NEW$v1, s2_NEW$proclamation, length)
-
+tapply(s2$Voting, s2$Proclamation, mean)
+tapply(s2$Voting, s2$Proclamation, sd)
+tapply(s2$Voting, s2$Proclamation, length)
 ```
 
 # Voting Simple Effects - Subsetting Data
 
 ```{r}
 #Subset for main effects tests
+abs_exclude <- s2 %>%
+  filter(Proclamation != "absolute") #182
 
-abs_exclude <- s2_NEW %>%
-  filter(proclamation != "absolute") #182
+flex_exclude  <- s2 %>%
+  filter(Proclamation != "flexible") #186 - rarely
 
-flex_exclude  <- s2_NEW %>%
-  filter(proclamation != "flexible") #186 - rarely
-
-control_exclude <- s2_NEW %>%
-  filter(proclamation != "control") #162
+control_exclude <- s2 %>%
+  filter(Proclamation != "control") #162
 
 
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
-t.test(v1 ~ proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(v1 ~ proclamation, control_exclude, var.equal = TRUE))
+t.test(Voting ~ Proclamation, control_exclude, var.equal = TRUE)
+t_apa(t.test(Voting ~ Proclamation, control_exclude, var.equal = TRUE))
 
 #Abs vs. control
-t.test(v1 ~ proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(v1 ~ proclamation, flex_exclude, var.equal = TRUE))
+t.test(Voting ~ Proclamation, flex_exclude, var.equal = TRUE)
+t_apa(t.test(Voting ~ Proclamation, flex_exclude, var.equal = TRUE))
 
 #Flex vs. control
-t.test(v1 ~ proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(v1 ~ proclamation, abs_exclude, var.equal = TRUE))
+t.test(Voting ~ Proclamation, abs_exclude, var.equal = TRUE)
+t_apa(t.test(Voting ~ Proclamation, abs_exclude, var.equal = TRUE))
 
 ```
 
@@ -145,18 +143,18 @@ t_apa(t.test(v1 ~ proclamation, abs_exclude, var.equal = TRUE))
 # Hypocrisy Model
 
 ```{r}
-hypocrisy_2new.afex <-aov_car(h_composite2 ~ proclamation + Error(ID), data= s2_NEW)
-summary(hypocrisy_2new.afex) 
-anova_apa(hypocrisy_2new.afex)  #main effect of proc
+hypocrisy_2.afex <-aov_car(Hypocrisy_composite2 ~ Proclamation + Error(ID), data= s2)
+summary(hypocrisy_2.afex) 
+anova_apa(hypocrisy_2.afex)  
 ```
 
 # Hypocrisy Descriptives
 
 ```{r}
 #Across Proclamations
-tapply(s2_NEW$h_composite2, s2_NEW$proclamation, mean)
-tapply(s2_NEW$h_composite2, s2_NEW$proclamation, sd)
-tapply(s2_NEW$h_composite2, s2_NEW$proclamation, length)
+tapply(s2$Hypocrisy_composite2, s2$Proclamation, mean)
+tapply(s2$Hypocrisy_composite2, s2$Proclamation, sd)
+tapply(s2$Hypocrisy_composite2, s2$Proclamation, length)
 
 ```
 
@@ -165,34 +163,34 @@ tapply(s2_NEW$h_composite2, s2_NEW$proclamation, length)
 ```{r}
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
-t.test(h_composite2 ~ proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(h_composite2 ~ proclamation, control_exclude, var.equal = TRUE))
+t.test(Hypocrisy_composite2 ~ Proclamation, control_exclude, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, control_exclude, var.equal = TRUE))
 
 #Abs vs. control
-t.test(h_composite2 ~ proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(h_composite2 ~ proclamation, flex_exclude, var.equal = TRUE))
+t.test(Hypocrisy_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE))
 
 #Flex vs. control
-t.test(h_composite2 ~ proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(h_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
+t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 
 ```
 
 # Morality Model
 
 ```{r}
-morality_2new.afex <-aov_car(m_composite2 ~ proclamation + Error(ID), data= s2_NEW)
-summary(morality_2new.afex) 
-anova_apa(morality_2new.afex)  #main effect of proc
+morality_2.afex <-aov_car(Moral_composite2 ~ Proclamation + Error(ID), data= s2)
+summary(morality_2.afex ) 
+anova_apa(morality_2.afex ) 
 ```
 
 # Morality Descriptives
 
 ```{r}
 #Across Proclamations
-tapply(s2_NEW$m_composite2, s2_NEW$proclamation, mean)
-tapply(s2_NEW$m_composite2, s2_NEW$proclamation, sd)
-tapply(s2_NEW$m_composite2, s2_NEW$proclamation, length)
+tapply(s2$Moral_composite2, s2$Proclamation, mean)
+tapply(s2$Moral_composite2, s2$Proclamation, sd)
+tapply(s2$Moral_composite2, s2$Proclamation, length)
 
 ```
 
@@ -201,33 +199,33 @@ tapply(s2_NEW$m_composite2, s2_NEW$proclamation, length)
 ```{r}
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
-t.test(m_composite2 ~ proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(m_composite2 ~ proclamation, control_exclude, var.equal = TRUE))
+t.test(Moral_composite2 ~ Proclamation, control_exclude, var.equal = TRUE)
+t_apa(t.test(Moral_composite2 ~ Proclamation, control_exclude, var.equal = TRUE))
 
 #Abs vs. control
-t.test(m_composite2 ~ proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(m_composite2 ~ proclamation, flex_exclude, var.equal = TRUE))
+t.test(Moral_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE)
+t_apa(t.test(Moral_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE))
 
 #Flex vs. control
-t.test(m_composite2 ~ proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(m_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
+t.test(Moral_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
+t_apa(t.test(Moral_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 ```
 
 # Future Honesty Model
 
 ```{r}
-honesty_2new.afex <-aov_car(Honest_composite2 ~ proclamation + Error(ID), data= s2_NEW)
-summary(honesty_2new.afex) 
-anova_apa(honesty_2new.afex)  #main effect of proc
+honesty_2.afex <-aov_car(Honest_composite2 ~ Proclamation + Error(ID), data= s2)
+summary(honesty_2.afex) 
+anova_apa(honesty_2.afex)  
 ```
 
 # Future Honesty Descriptives
 
 ```{r}
 #Across Proclamations
-tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, mean)
-tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, sd)
-tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, length)
+tapply(s2$Honest_composite2, s2$Proclamation, mean)
+tapply(s2$Honest_composite2, s2$Proclamation, sd)
+tapply(s2$Honest_composite2, s2$Proclamation, length)
 
 ```
 
@@ -236,16 +234,16 @@ tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, length)
 ```{r}
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
-t.test(Honest_composite2 ~ proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(Honest_composite2 ~ proclamation, control_exclude, var.equal = TRUE))
+t.test(Honest_composite2 ~ Proclamation, control_exclude, var.equal = TRUE)
+t_apa(t.test(Honest_composite2 ~ Proclamation, control_exclude, var.equal = TRUE))
 
 #Abs vs. control
-t.test(Honest_composite2 ~ proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(Honest_composite2 ~ proclamation, flex_exclude, var.equal = TRUE))
+t.test(Honest_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE)
+t_apa(t.test(Honest_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE))
 
 #Flex vs. control
-t.test(Honest_composite2 ~ proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(Honest_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
+t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
+t_apa(t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 ```
 
 # Social Benefit of the Proclamation Model - New Subsetted Data
@@ -254,64 +252,62 @@ t_apa(t.test(Honest_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
 # Subset Data
 
 ```{r}
-#get rid of control since no social benefit here
-absflex_only <- s2_NEW %>%
-  filter (proclamation != "control")
-
+#Exclude participants in the control condition, as they were not asked this question
+absflex_only <- s2 %>%
+  filter (Proclamation != "control")
 ```
 
 
 # Social Benefit of the Proclamation Model
 
 ```{r}
-SI_2new.afex <-aov_car(SI_composite2 ~ proclamation + Error(ID), data= absflex_only)
-summary(SI_2new.afex) 
-anova_apa(SI_2new.afex)  #main effect of proc
+SI_2.afex <-aov_car(SI_composite2 ~ Proclamation + Error(ID), data= absflex_only)
+summary(SI_2.afex) 
+anova_apa(SI_2.afex) 
 ```
 
 # Social Benefit of the Proclamation Descriptives
 
 ```{r}
 #Across Proclamations
-tapply(s2_NEW$SI_composite2, s2_NEW$proclamation, mean)
-tapply(s2_NEW$SI_composite2, s2_NEW$proclamation, sd)
-tapply(s2_NEW$SI_composite2, s2_NEW$proclamation, length)
-
+tapply(s2$SI_composite2, s2$Proclamation, mean)
+tapply(s2$SI_composite2, s2$Proclamation, sd)
+tapply(s2$SI_composite2, s2$Proclamation, length)
 ```
 
 # Discounting Model
 
 ```{r}
 #Discounting
-discounting2.afex <-aov_car(d1~ proclamation + Error(ID), data= s2_NEW)
-summary(discounting2.afex) 
-anova_apa(discounting2.afex)  #main effect of proc
+Discounting2.afex <-aov_car(Discount ~ Proclamation + Error(ID), data= s2)
+summary(Discounting2.afex) 
+anova_apa(Discounting2.afex) 
 ```
 
 # Discounting Descriptives
 
 ```{r}
 #Across Proclamations
-tapply(s2_NEW$d1, s2_NEW$proclamation, mean)
-tapply(s2_NEW$d1, s2_NEW$proclamation, sd)
-tapply(s2_NEW$d1, s2_NEW$proclamation, length)
+tapply(s2$Discount, s2$Proclamation, mean)
+tapply(s2$Discount, s2$Proclamation, sd)
+tapply(s2$Discount, s2$Proclamation, length)
 ```
 
 # Goals  Model
 
 ```{r}
-goals2.afex <-aov_car(g1 ~ proclamation + Error(ID), data= s2_NEW)
+goals2.afex <-aov_car(Goals ~ Proclamation + Error(ID), data= s2)
 summary(goals2.afex) 
-anova_apa(goals2.afex)  #main effect of proc
+anova_apa(goals2.afex)  
 ```
 
 # Goals Descriptives
 
 ```{r}
 #Across Proclamations
-tapply(s2_NEW$g1, s2_NEW$proclamation, mean)
-tapply(s2_NEW$g1, s2_NEW$proclamation, sd)
-tapply(s2_NEW$g1, s2_NEW$proclamation, length)
+tapply(s2$Goals, s2$Proclamation, mean)
+tapply(s2$Goals, s2$Proclamation, sd)
+tapply(s2$Goals, s2$Proclamation, length)
 ```
 
 # Exploratory Continued
