@@ -1,4 +1,5 @@
-#Study 4 multiple mediation analysis
+#Study 3 mediation on morality
+#[see SPSS syntax in Study2.Rmd for trust model in SPSS and SPSS output for trust results]
 
 #Load packages
 
@@ -7,85 +8,96 @@ library(tidyverse)
 library(lavaan)
 library(psych)
 
-#Read in data
 
-s4 <- read.csv(here("HypocrisyStudy4_cleaned.csv"))
+#read in data
 
-#Reorder proclamation
+s3 <- read.csv(here("HypocrisyStudy3.csv"))
 
-s4$proclamation <- factor(s4$proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
 
 #Create composite variables
 
-#Time one
 #Hypocrisy
-hypocrisy_4_check <- data.frame(s4$hypocrisy_1, s4$hypocrisy_2, s4$hypocrisy_4, s4$hypocrisy_5)
-summary(hypocrisy_4_check)
-describe(hypocrisy_4_check)
-psych::alpha(hypocrisy_4_check) # raw alpha = 0.89 
-s4 <- mutate(s4, Hypocrisy.1_composite4 = ((s4$hypocrisy_1 + s4$hypocrisy_2 + s4$hypocrisy_4 + s4$hypocrisy_5)/4))
+hypocrisy_3_check  <- data.frame(s3$Hypocrisy_1, s3$Hypocrisy_2, s3$Hypocrisy_3, s3$Hypocrisy_4, s3$Hypocrisy_5)
+summary(hypocrisy_3_check)
+describe(hypocrisy_3_check)
+psych::alpha(hypocrisy_3_check) # raw alpha = 0.96
+s3 <- mutate(s3, Hypocrisy_composite3 = ((s3$Hypocrisy_1 + s3$Hypocrisy_2 + s3$Hypocrisy_3 + s3$Hypocrisy_4 + s3$Hypocrisy_5)/5))
 
 #Morality
-morality4_check <- data.frame(s4$moral_1, s4$moral_2, s4$moral_3)
-summary(morality4_check )
-describe(morality4_check )
-psych::alpha(morality4_check ) # raw = 0.97
-s4 <- mutate(s4, Moral.1_composite4 = ((s4$moral_1 +s4$moral_2 + s4$moral_3)/3))
+moral_3_check <- data.frame(s3$Moral_1, s3$Moral_2, s3$Moral_3)
+summary(moral_3_check)
+describe(moral_3_check)
+psych::alpha(moral_3_check) # rawalpha = 0.98
+s3 <- mutate(s3, Moral_composite3 = ((s3$Moral_1 + s3$Moral_2 + s3$Moral_3)/3))
 
 #Future Honesty
-Honest4_df <- data.frame(s4$honest_freq_1, s4$honest_likely_1, s4$honest_extreme_1, s4$committment_honesty_1)
-summary(Honest4_df)
-describe(Honest4_df)
-psych::alpha(Honest4_df) # raw= 0.85
-s4 <- mutate(s4, Honest.1_composite4= ((s4$honest_freq_1 + s4$honest_likely_1 + s4$honest_extreme_1 + s4$committment_honesty_1)/4))
+honest_3_check <- data.frame(s3$Honest_frequency, s3$Honest_likely, s3$Honest_extreme, s3$Honest_committment)
+summary(honest_3_check)
+describe(honest_3_check)
+psych::alpha(honest_3_check) # raw alpha = 0.92
+s3 <- mutate(s3, Honest_composite3 = ((s3$Honest_frequency + s3$Honest_likely + s3$Honest_extreme + s3$Honest_committment)/4))
 
-#Time two
-#Hypocrisy
-hypocrisy_4_check.2 <- data.frame(s4$hypocrisy_1.2, s4$hypocrisy_2.2, s4$hypocrisy_4.2, s4$hypocrisy_5.2)
-summary(hypocrisy_4_check.2)
-describe(hypocrisy_4_check.2)
-psych::alpha(hypocrisy_4_check.2) #alpha = 0.91
-s4 <- mutate(s4, 
-             Hypocrisy.2_composite4 = (s4$hypocrisy_1.2 + s4$hypocrisy_2.2 + s4$hypocrisy_4.2 + s4$hypocrisy_5.2)/4)
+#Social Influene
+cor.test(s3$Social_benefit1, s3$Social_benefit2) #r = 0.84
+s3 <- mutate(s3, SI_composite3 = ((s3$Social_benefit1 + s3$Social_benefit2)/2))
 
-#Morality
-morality4_check.2 <- data.frame(s4$moral_1.2, s4$moral_2.2, s4$moral_3.2)
-summary(morality4_check.2)
-describe(morality4_check.2)
-psych::alpha(morality4_check.2) #alpha = 0.97
-s4 <- mutate(s4, Moral.2_composite4  = ((s4$moral_1.2 + s4$moral_2.2 + s4$moral_3.2)/3))
+#Model 
 
-#Future Honesty
-Honest4_df.2  <- data.frame(s4$honest_freq_2, s4$honest_likely_2, s4$honest_extreme_2, s4$committment_honesty_2)
-summary(Honest4_df.2)
-describe(Honest4_df.2)
-psych::alpha(Honest4_df.2) #alpha = 0.82
-s4 <- mutate(s4, Honest.2_composite4 = ((s4$honest_freq_2 + s4$honest_likely_2 + s4$honest_extreme_2 + s4$committment_honesty_2)/4))
+#IV = Sometimes = dummy-coded proclamation variable (sometimes = 1, rarely/never = 0)
+
+#Mediators: future honesty (Honest_composite3, hypocrisy (Hypocrisy_composite3), social benefit (SI_composite3)
+
+#Moderator = Behave lie 1 = selfish lie, 0 = prosocial truth
+
+#DV: morality (Moral_composite3)
 
 
-#Model
+med_mod_study3 = '
+Hypocrisy_composite3 ~ a11*sometimes + a12*behavlie + a13*sometimes:behavlie
+Honest_composite3  ~ a21*sometimes + a22*behavlie + a23*sometimes:behavlie
+SI_composite3 ~ a31*sometimes + a32*behavlie + a33*sometimes:behavlie
+Moral_composite3~ b11*Hypocrisy_composite3 + b21*Honest_composite3  + b31*SI_composite3+ c1*sometimes + d1*behavlie + b12*Hypocrisy_composite3:behavlie + b22*Honest_composite3:behavlie + b32*SI_composite3:behavlie + c2*sometimes:behavlie
 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#Indirect effects conditional on moderator (a11+a13*ModValue)*(b11+b12*ModValue) + (a21+a23*ModValue)*(b21+b22*ModValue) + (a31+a33*ModValue)*(b31+b32*ModValue)
 
-#Mediators at time two: future honesty (Honest.2_composite4), hypocrisy (Hypocrisy.2_composite4)
+indirect1_prosocial := a11*b11
+indirect2_prosocial := a21*b21
+indirect3_prosocial := a31*b31
+indirect_prosocial := indirect1_prosocial + indirect2_prosocial + indirect3_prosocial
 
-#DV: morality (Moral.2_composite4)
+indirect1_selfish := (a11+a13)*(b11+b12)
+indirect2_selfish := (a21+a23)*(b21+b22)
+indirect3_selfish := (a31+a33)*(b31+b32)
+indirect_selfish := indirect1_selfish + indirect2_selfish + indirect3_selfish
+
+indirect1_diff := indirect1_selfish - indirect1_prosocial
+indirect2_diff := indirect2_selfish - indirect2_prosocial
+indirect3_diff := indirect3_selfish - indirect3_prosocial
+indirect_diff := indirect_selfish - indirect_prosocial
+
+#Direct effects conditional on moderator (c1 + c2*ModValue)
+
+direct_prosocial := c1
+direct_selfish := c1 + c2
+direct_diff := direct_selfish - direct_prosocial
+
+#Total effects conditional on moderator
+total_prosocial := direct_prosocial + indirect_prosocial
+total_selfish := direct_selfish + indirect_selfish
+
+#Proportion mediated conditional on moderator
+#To match the output of mediate package
+prop_mediated_prosocial := indirect_prosocial / total_prosocial
+prop_mediated_selfish := indirect_selfish / total_selfish
+'
 
 
-mod_med_4 = "Hypocrisy.2_composite4  ~ a1*proclamation
-Honest.2_composite4  ~ a2*proclamation
-Moral.2_composite4 ~ b1*Hypocrisy.2_composite4  + b2*Honest.2_composite4  + c*proclamation
 
-indirect1 := a1*b1
-indirect2 := a2*b2
-direct := c
-total := c + (a1*b1) + (a2*b2) 
-#covariances
-Hypocrisy.2_composite4   ~~ Honest.2_composite4"
+fit.Mod.Med.study3 <- sem(model = med_mod_study3, se = "boot", bootstrap = 1000, data = s3, 
+                          likelihood = "wishart")
 
-fit_s4 = sem(mod_med_4, se = "boot", bootstrap = 10000, 
-             data = s4, likelihood = "wishart")
+summary(fit.Mod.Med.study3, standardized = T, rsq = T)
+parameterEstimates((fit.Mod.Med.study3))
 
-#Model Summary
-summary(fit_s4, standardized = T, rsq = T)
-parameterEstimates((fit_s4))
+
+#Note: see SPSS output for moderated mediation on trust.
