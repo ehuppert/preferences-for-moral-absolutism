@@ -1,7 +1,7 @@
 ---
 title: "Study1_new"
 author: "Elizabeth Huppert"
-date: "5/4/2020"
+date: "1/12/2021"
 output: pdf_document
 ---
 
@@ -31,7 +31,7 @@ library(emmeans)
 
 #read in data
 
-s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv")) #1205
+s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv")) #1021
 
 ```
 
@@ -75,7 +75,7 @@ Items with high agreement were combined as per our pre-registration.
 hypocrisy1_check.df <- data.frame(s1$Hypocrisy_1, s1$Hypocrisy_2, s1$Hypocrisy_3, s1$Hypocrisy_4, s1$Hypocrisy_5)
 summary(hypocrisy1_check.df)
 describe(hypocrisy1_check.df)
-psych::alpha(hypocrisy1_check.df) #alpha = 0.90
+psych::alpha(hypocrisy1_check.df) #alpha = 0.88
 s1 <-  mutate(s1, 
               Hypocrisy_composite = ((s1$Hypocrisy_1 + s1$Hypocrisy_2 + s1$Hypocrisy_3 + s1$Hypocrisy_4 + s1$Hypocrisy_5)/5))
 
@@ -83,7 +83,7 @@ s1 <-  mutate(s1,
 moral1_check.df <- data.frame(s1$Moral_1, s1$Moral_2, s1$Moral_3)
 summary(moral1_check.df)
 describe(moral1_check.df)
-psych::alpha(moral1_check.df) #alpha = 0.95
+psych::alpha(moral1_check.df) #alpha = 0.94
 s1 <- mutate(s1, 
              Moral_composite = ((s1$Moral_1 + s1$Moral_2 + s1$Moral_3)/3))
 
@@ -92,7 +92,7 @@ s1 <- mutate(s1,
 honest1_check.df <- data.frame(s1$Honest_frequency, s1$Honest_likelihood, s1$Honest_extreme, s1$Honest_committment)
 summary(honest1_check.df)
 describe(honest1_check.df)
-psych::alpha(honest1_check.df) #alpha = 0.76
+psych::alpha(honest1_check.df) #alpha = 0.75
 s1<- mutate(s1, 
             Honest_composite = ((s1$Honest_frequency + s1$Honest_likelihood + s1$Honest_extreme + s1$Honest_committment)/4))
 

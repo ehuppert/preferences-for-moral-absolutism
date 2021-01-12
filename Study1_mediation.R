@@ -61,7 +61,7 @@ total := c + (a1*b1) + (a2*b2)
 #covariances
 Hypocrisy_composite ~~ Honest_composite"
 
-fit_mult_politics = sem(multipleMed_politics, se = "boot", bootstrap = 10000, data = s1, 
+fit_mult_politics = sem(multipleMed_politics, se = "boot", bootstrap = 1000, data = s1, 
                         likelihood = "wishart")
 summary(fit_mult_politics, standardized = T, rsq = T)
 parameterEstimates((fit_mult_politics))
@@ -85,7 +85,7 @@ total := c + (a1*b1) + (a2*b2)
 #covariances
 Hypocrisy_composite  ~~ Honest_composite"
 
-fit_mult_politics_vote = sem(multipleMed_politics_vote, se = "boot", bootstrap = 10000, data = s1, 
+fit_mult_politics_vote = sem(multipleMed_politics_vote, se = "boot", bootstrap = 1000, data = s1, 
                              likelihood = "wishart")
 summary(fit_mult_politics_vote, standardized = T, rsq = T)
 parameterEstimates((fit_mult_politics_vote))

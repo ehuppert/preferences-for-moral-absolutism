@@ -28,286 +28,92 @@ library(lavaan)
 
 #read in data
 
-s2_NEW  <- read.csv(here("newstudy2_lie_exclusions_only.csv")) #271
+s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #271
 
-#Eliminate headers
-s2_NEW[1:2,]
-s2_NEW <- s2_NEW[-(1:2),] #265 obs
 
 ```
 
-# Form New Variables
+Note: The current csv file imported for this analysis reflects cleaned data. 
+The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
 
-# Proclamation: 1 = Absolute, 2 = Flexible, 3 = Control
 
-```{r}
-s2_NEW$proclamation[s2_NEW$condition=="1"] <- "absolute"
-s2_NEW$proclamation[s2_NEW$condition=="2"] <- "flexible"
-s2_NEW$proclamation[s2_NEW$condition=="3"] <-  "control"
-s2_NEW$proclamation <- as.factor(s2_NEW$proclamation)
-```
+Key variable names (also see codebook for more information):
 
-# Votes
+1. Proclamation:
+Assignment to absolute honesty stance vs. flexible honesty stance vs. control
 
-```{r}
-glimpse(s2_NEW$vote_1)
-levels(s2_NEW$vote_1)
+2. Voting:
+Likelihood of voting for Matthew Johnson (1 -7)
 
-#Vote 1 has 7 items
-s2_NEW$v1[s2_NEW$vote_1=="Not at all likely"] <- "1"
-s2_NEW$v1[s2_NEW$vote_1=="Not very likely"] <- "2"
-s2_NEW$v1[s2_NEW$vote_1=="Slightly likely"] <- "3"
-s2_NEW$v1[s2_NEW$vote_1=="Somewhat likely"] <- "4"
-s2_NEW$v1[s2_NEW$vote_1=="Moderately likely"] <- "5"
-s2_NEW$v1[s2_NEW$vote_1=="Very likely"] <- "6"
-s2_NEW$v1[s2_NEW$vote_1=="Extremely likely"] <- "7"
-s2_NEW$v1<- as.numeric(s2_NEW$v1)
-describe(s2_NEW$v1)
-```
+3. Discount:
+Extent to which participants actually think Matthew Johnson lies (1-7)
 
-# Hypocrisy - 5 items
+4. Goals
+Extent to which participants actually think Matthew Johnsons thinks its okay to lie (1-7)
+
+# Composite Evaluation Variables 
+
+Items with high agreement were combined as per our pre-registration.
 
 ```{r}
-#Hypocrisy 1 = this person is a hypocrite
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Strongly disagree"] <- "1"
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Disagree"] <- "2"
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Somewhat disagree"] <- "3"
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Neither agree nor disagree"] <- "4"
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Somewhat agree"] <- "5"
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Agree"] <- "6"
-s2_NEW$h1[s2_NEW$hypocrisy_1=="Strongly agree"] <- "7"
-s2_NEW$h1<- as.numeric(s2_NEW$h1)
-#hypocrisy 2 = behaved inconsistently with his/her values
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Strongly disagree"] <- "1"
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Disagree"] <- "2"
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Somewhat disagree"] <- "3"
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Neither agree nor disagree"] <- "4"
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Somewhat agree"] <- "5"
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Agree"] <- "6"
-s2_NEW$h2[s2_NEW$hypocrisy_2=="Strongly agree"] <- "7"
-s2_NEW$h2 <- as.numeric(s2_NEW$h2)
-#hypocrisy 3 = inauthentic
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Strongly disagree"] <- "1"
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Disagree"] <- "2"
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Somewhat disagree"] <- "3"
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Neither agree nor disagree"] <- "4"
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Somewhat agree"] <- "5"
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Agree"] <- "6"
-s2_NEW$h3[s2_NEW$hypocrisy_3=="Strongly agree"] <- "7"
-s2_NEW$h3 <- as.numeric(s2_NEW$h3)
-#hypocrisy 4 = disingenuous
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Strongly disagree"] <- "1"
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Disagree"] <- "2"
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Somewhat disagree"] <- "3"
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Neither agree nor disagree"] <- "4"
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Somewhat agree"] <- "5"
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Agree"] <- "6"
-s2_NEW$h4[s2_NEW$hypocrisy_4=="Strongly agree"] <- "7"
-s2_NEW$h4 <- as.numeric(s2_NEW$h4)
-#hypocrisy 5 = interview responses conflict with behavior
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Strongly disagree"] <- "1"
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Disagree"] <- "2"
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Somewhat disagree"] <- "3"
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Neither agree nor disagree"] <- "4"
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Somewhat agree"] <- "5"
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Agree"] <- "6"
-s2_NEW$h5[s2_NEW$hypocrisy_5=="Strongly agree"] <- "7"
-s2_NEW$h5 <- as.numeric(s2_NEW$h5)
-
-#cronbachs alpha for 5 hypocrisy items
+#Hypocrisy
 s2_NEW.test.df <- data.frame(s2_NEW$h1, s2_NEW$h2, s2_NEW$h3, s2_NEW$h4, s2_NEW$h5)
 summary(s2_NEW.test.df)
 describe(s2_NEW.test.df)
 psych::alpha(s2_NEW.test.df) #alpha = 0.89 so combine
 s2_NEW <- mutate(s2_NEW, h_composite2= ((s2_NEW$h1+s2_NEW$h2+s2_NEW$h3+s2_NEW$h4+s2_NEW$h5)/5))
-```
 
-# Morality - 3 items
-
-```{r}
-#moral_1 = ethical 
-s2_NEW$m1[s2_NEW$moral_1=="Not at all"] <- "1"
-s2_NEW$m1[s2_NEW$moral_1=="Not very"] <- "2"
-s2_NEW$m1[s2_NEW$moral_1=="Slightly"] <- "3"
-s2_NEW$m1[s2_NEW$moral_1=="Somewhat"] <- "4"
-s2_NEW$m1[s2_NEW$moral_1=="Moderately"] <- "5"
-s2_NEW$m1[s2_NEW$moral_1=="Very"] <- "6"
-s2_NEW$m1[s2_NEW$moral_1=="Extremely"] <- "7"
-s2_NEW$m1 <- as.numeric(s2_NEW$m1)
-#moral_2 = moral 
-s2_NEW$m2[s2_NEW$moral_2=="Not at all"] <- "1"
-s2_NEW$m2[s2_NEW$moral_2=="Not very"] <- "2"
-s2_NEW$m2[s2_NEW$moral_2=="Slightly"] <- "3"
-s2_NEW$m2[s2_NEW$moral_2=="Somewhat"] <- "4"
-s2_NEW$m2[s2_NEW$moral_2=="Moderately"] <- "5"
-s2_NEW$m2[s2_NEW$moral_2=="Very"] <- "6"
-s2_NEW$m2[s2_NEW$moral_2=="Extremely"] <- "7"
-s2_NEW$m2 <- as.numeric(s2_NEW$m2)
-#moral_3 = trustworthy 
-s2_NEW$m3[s2_NEW$moral_3=="Not at all"] <- "1"
-s2_NEW$m3[s2_NEW$moral_3=="Not very"] <- "2"
-s2_NEW$m3[s2_NEW$moral_3=="Slightly"] <- "3"
-s2_NEW$m3[s2_NEW$moral_3=="Somewhat"] <- "4"
-s2_NEW$m3[s2_NEW$moral_3=="Moderately"] <- "5"
-s2_NEW$m3[s2_NEW$moral_3=="Very"] <- "6"
-s2_NEW$m3[s2_NEW$moral_3=="Extremely"] <- "7"
-s2_NEW$m3 <- as.numeric(s2_NEW$m3)
-
-#moral composite
+#Morality
 moral.test.df <- data.frame(s2_NEW$m1, s2_NEW$m2, s2_NEW$m3)
 summary(moral.test.df)
 describe(moral.test.df)
 psych::alpha(moral.test.df) #alpha = 0.94 so combine
 
 s2_NEW <- mutate(s2_NEW, m_composite2 = ((s2_NEW$m1+s2_NEW$m2+s2_NEW$m3)/3))
-```
 
-# Future Honesty - 4 items
-
-```{r}
-#honest_freq = often_1
-s2_NEW$hf[s2_NEW$often_1=="Not often at all"] <- "7"
-s2_NEW$hf[s2_NEW$often_1=="Not very often"] <- "6"
-s2_NEW$hf[s2_NEW$often_1=="Slightly often"] <- "5"
-s2_NEW$hf[s2_NEW$often_1=="Somewhat often"] <- "4"
-s2_NEW$hf[s2_NEW$often_1=="Moderately often"] <- "3"
-s2_NEW$hf[s2_NEW$often_1== "Very\noften" ] <- "2"
-s2_NEW$hf[s2_NEW$often_1=="Extremely often"] <- "1"
-s2_NEW$hf <- as.numeric(s2_NEW$hf)
-#honest_likely = liklihood
-s2_NEW$hl[s2_NEW$liklihood_1=="Not at all likely"] <- "7"
-s2_NEW$hl[s2_NEW$liklihood_1=="Not very likely"] <- "6"
-s2_NEW$hl[s2_NEW$liklihood_1=="Slightly likely"] <- "5"
-s2_NEW$hl[s2_NEW$liklihood_1=="Somewhat likely"] <- "4"
-s2_NEW$hl[s2_NEW$liklihood_1=="Moderately likely"] <- "3"
-s2_NEW$hl[s2_NEW$liklihood_1=="Very likely"] <- "2"
-s2_NEW$hl[s2_NEW$liklihood_1=="Extremely likely"] <- "1"
-s2_NEW$hl <- as.numeric(s2_NEW$hl)
-#honest_extreme, = extreme_1
-s2_NEW$he[s2_NEW$extreme_1=="Not at all extreme"] <- "1"
-s2_NEW$he[s2_NEW$extreme_1=="Not very extreme"] <- "2"
-s2_NEW$he[s2_NEW$extreme_1=="Slightly extreme"] <- "3"
-s2_NEW$he[s2_NEW$extreme_1=="Somewhat extreme"] <- "4"
-s2_NEW$he[s2_NEW$extreme_1=="Moderately extreme"] <- "5"
-s2_NEW$he[s2_NEW$extreme_1=="Very extreme"] <- "6"
-s2_NEW$he[s2_NEW$extreme_1=="The most extreme"] <- "7"
-s2_NEW$he <- as.numeric(s2_NEW$he)
-#committment_honest_1, = Q670_1
-s2_NEW$ch[s2_NEW$commitment_1=="Not at all"] <- "1"
-s2_NEW$ch[s2_NEW$commitment_1=="Not very"] <- "2"
-s2_NEW$ch[s2_NEW$commitment_1=="Slightly"] <- "3"
-s2_NEW$ch[s2_NEW$commitment_1=="Somewhat"] <- "4"
-s2_NEW$ch[s2_NEW$commitment_1=="Moderately"] <- "5"
-s2_NEW$ch[s2_NEW$commitment_1=="Very"] <- "6"
-s2_NEW$ch[s2_NEW$commitment_1=="Extremely"] <- "7"
-s2_NEW$ch <- as.numeric(s2_NEW$ch)
-#look at different honesty items - 4
+#Future Honesty
 honest.test.df <- data.frame(s2_NEW$hf, s2_NEW$hl, s2_NEW$he, s2_NEW$ch)
 summary(honest.test.df)
 describe(honest.test.df)
 psych::alpha(honest.test.df) #alpha = 0.74
 s2_NEW <- mutate(s2_NEW, Honest_composite2 = ((s2_NEW$hl+s2_NEW$hf+s2_NEW$he+s2_NEW$ch)/4))
 
-```
-
-# Social Norm
-
-```{r}
-#social influence DVs
-#NEVER
-#condition 1 = abs norm 1 - uphold valuable norms
-s2_NEW$s1[s2_NEW$abs_norm_1=="Not at all"] <- "1"
-s2_NEW$s1[s2_NEW$abs_norm_1=="Not very"] <- "2"
-s2_NEW$s1[s2_NEW$abs_norm_1=="Slightly"] <- "3"
-s2_NEW$s1[s2_NEW$abs_norm_1=="Somewhat"] <- "4"
-s2_NEW$s1[s2_NEW$abs_norm_1=="Moderately"] <- "5"
-s2_NEW$s1[s2_NEW$abs_norm_1=="Very"] <- "6"
-s2_NEW$s1[s2_NEW$abs_norm_1=="Extremely"] <- "7"
-s2_NEW$s1 <- as.numeric(s2_NEW$s1)
-
-#condition 1 =, abs norm 2 - uphold valuable norms
-s2_NEW$s2[s2_NEW$abs_norm_2=="Not at all"] <- "1"
-s2_NEW$s2[s2_NEW$abs_norm_2=="Not very"] <- "2"
-s2_NEW$s2[s2_NEW$abs_norm_2=="Slightly"] <- "3"
-s2_NEW$s2[s2_NEW$abs_norm_2=="Somewhat"] <- "4"
-s2_NEW$s2[s2_NEW$abs_norm_2=="Moderately"] <- "5"
-s2_NEW$s2[s2_NEW$abs_norm_2=="Very"] <- "6"
-s2_NEW$s2[s2_NEW$abs_norm_2=="Extremely"] <- "7"
-s2_NEW$s2 <- as.numeric(s2_NEW$s2)
-
-#FLEXIBLE
-#condition 1 = flex norm 1 - uphold valuable norms
-s2_NEW$s1[s2_NEW$flex_norm_1=="Not at all"] <- "1"
-s2_NEW$s1[s2_NEW$flex_norm_1=="Not very"] <- "2"
-s2_NEW$s1[s2_NEW$flex_norm_1=="Slightly"] <- "3"
-s2_NEW$s1[s2_NEW$flex_norm_1=="Somewhat"] <- "4"
-s2_NEW$s1[s2_NEW$flex_norm_1=="Moderately"] <- "5"
-s2_NEW$s1[s2_NEW$flex_norm_1=="Very"] <- "6"
-s2_NEW$s1[s2_NEW$flex_norm_1=="Extremely"] <- "7"
-s2_NEW$s1 <- as.numeric(s2_NEW$s1)
-
-#condition 1 = flex norm 1 - uphold valuable norms
-s2_NEW$s2[s2_NEW$flex_norm_2=="Not at all"] <- "1"
-s2_NEW$s2[s2_NEW$flex_norm_2=="Not very"] <- "2"
-s2_NEW$s2[s2_NEW$flex_norm_2=="Slightly"] <- "3"
-s2_NEW$s2[s2_NEW$flex_norm_2=="Somewhat"] <- "4"
-s2_NEW$s2[s2_NEW$flex_norm_2=="Moderately"] <- "5"
-s2_NEW$s2[s2_NEW$flex_norm_2=="Very"] <- "6"
-s2_NEW$s2[s2_NEW$flex_norm_2=="Extremely"] <- "7"
-s2_NEW$s2 <- as.numeric(s2_NEW$s2)
-
-describe(s2_NEW$s1) #n = 162 #162 abs/flex (103 control)
-describe(s2_NEW$s2) # n= 166 #162 abs/flex (103 control)
-
-
-#social influence composite
+#Social benefit of the proclamation
 cor.test(s2_NEW$s1, s2_NEW$s2) #r = 0.87
 s2_NEW <- mutate(s2_NEW, SI_composite2 = ((s2_NEW$s1+s2_NEW$s2)/2))
 ```
 
-# Mechanisms
+Evaluation variables:
 
-```{r}
-#discounting
-s2_NEW$d1[s2_NEW$mechanisms_1=="Never ever"] <- "1"
-s2_NEW$d1[s2_NEW$mechanisms_1== "Almost never"] <- "2"
-s2_NEW$d1[s2_NEW$mechanisms_1== "Once in a while"] <- "3"
-s2_NEW$d1[s2_NEW$mechanisms_1== "Sometimes"] <- "4"
-s2_NEW$d1[s2_NEW$mechanisms_1== "Pretty often"] <- "5"
-s2_NEW$d1[s2_NEW$mechanisms_1== "Frequently"] <- "6"
-s2_NEW$d1[s2_NEW$mechanisms_1== "Always"] <- "7"
-s2_NEW$d1 <- as.numeric(s2_NEW$d1) 
+Hypocrisy_composite2 = hypocrisy composite of 5 items (Ratings: 1-7)
+Moral_composite2 = morality composite of 3 items (Ratings: 1-7)
+Honest_composite2 = honesty thresholds composite of 4 items (Ratings: 1-7)
+SI_composite2 = perceived social benefit of the proclamation composite of 2 items (Ratings: 1-7)
 
-#ideals
-s2_NEW$g1[s2_NEW$mechanisms_2=="Never ever"] <- "1"
-s2_NEW$g1[s2_NEW$mechanisms_2== "Almost never"] <- "2"
-s2_NEW$g1[s2_NEW$mechanisms_2== "Once in a while"] <- "3"
-s2_NEW$g1[s2_NEW$mechanisms_2== "Sometimes"] <- "4"
-s2_NEW$g1[s2_NEW$mechanisms_2== "Pretty often"] <- "5"
-s2_NEW$g1[s2_NEW$mechanisms_2== "Frequently"] <- "6"
-s2_NEW$g1[s2_NEW$mechanisms_2== "Always"] <- "7"
-s2_NEW$g1 <- as.numeric(s2_NEW$g1)
 
-```
-
-# Models
-
-```{r}
-s2_NEW <- tibble::rowid_to_column(s2_NEW, "ID")
-```
-
-# Voting
-
+# Voting Intentions Model
 
 ```{r}
 vote_2new.afex <-aov_car(v1 ~ proclamation + Error(ID), data= s2_NEW)
 summary(vote_2new.afex) 
 anova_apa(vote_2new.afex)  #main effect of proc
+
+```
+
+# Voting Descriptives
+
+```{r}
+
 #Across Proclamations
 tapply(s2_NEW$v1, s2_NEW$proclamation, mean)
 tapply(s2_NEW$v1, s2_NEW$proclamation, sd)
 tapply(s2_NEW$v1, s2_NEW$proclamation, length)
 
+```
+
+# Voting Simple Effects - Subsetting Data
+
+```{r}
 #Subset for main effects tests
 
 abs_exclude <- s2_NEW %>%
@@ -333,42 +139,30 @@ t_apa(t.test(v1 ~ proclamation, flex_exclude, var.equal = TRUE))
 t.test(v1 ~ proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(v1 ~ proclamation, abs_exclude, var.equal = TRUE))
 
-
-#summarize values to pass to ggplot
-plot_vote <- s2_NEW %>%
-  group_by(proclamation) %>%
-  summarize(value= mean(vote)) %>%
-  rename(Proclamation = proclamation)
-
-#bar graph
-ggplot(data = plot_vote, mapping = aes(x = Proclamation, y = value, fill = Proclamation)) +
-  geom_bar(stat = "identity", position = "dodge2") +
-  labs(x = "Proclamation", 
-       y = "Voting Intentions",
-       fill = "Proclamation") +
-  ylim(0, 7) +
-  scale_fill_brewer(palette = "Set3") 
-
-
-
 ```
 
-# Hypocrisy
+
+# Hypocrisy Model
 
 ```{r}
 hypocrisy_2new.afex <-aov_car(h_composite2 ~ proclamation + Error(ID), data= s2_NEW)
 summary(hypocrisy_2new.afex) 
 anova_apa(hypocrisy_2new.afex)  #main effect of proc
+```
+
+# Hypocrisy Descriptives
+
+```{r}
 #Across Proclamations
 tapply(s2_NEW$h_composite2, s2_NEW$proclamation, mean)
 tapply(s2_NEW$h_composite2, s2_NEW$proclamation, sd)
 tapply(s2_NEW$h_composite2, s2_NEW$proclamation, length)
 
-#just abs vs. flex
-hypo_absflex.afex <-aov_car(h_composite2 ~ proclamation + Error(ID), data= absflex_only)
-summary(hypo_absflex.afex)
-anova_apa(hypo_absflex.afex)  
+```
 
+# Hypocrisy Simple Effects - Use Subsetted Data from Voting Intentions Model
+
+```{r}
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
 t.test(h_composite2 ~ proclamation, control_exclude, var.equal = TRUE)
@@ -382,39 +176,29 @@ t_apa(t.test(h_composite2 ~ proclamation, flex_exclude, var.equal = TRUE))
 t.test(h_composite2 ~ proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(h_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
 
-
-#summarize values to pass to ggplot
-plot_hypo <- s2_NEW %>%
-  group_by(proclamation) %>%
-  summarize(value= mean(h_composite2)) %>%
-  rename(Proclamation = proclamation)
-
-#bar graph
-ggplot(data = plot_hypo, mapping = aes(x = Proclamation, y = value, fill = Proclamation)) +
-  geom_bar(stat = "identity", position = "dodge2") +
-  labs(x = "Proclamation", 
-       y = "Hypocrisy Ratings",
-       fill = "Proclamation") +
-  ylim(0, 7) +
-  scale_fill_brewer(palette = "Set3") 
 ```
 
-# Morality
+# Morality Model
 
 ```{r}
 morality_2new.afex <-aov_car(m_composite2 ~ proclamation + Error(ID), data= s2_NEW)
 summary(morality_2new.afex) 
 anova_apa(morality_2new.afex)  #main effect of proc
+```
+
+# Morality Descriptives
+
+```{r}
 #Across Proclamations
 tapply(s2_NEW$m_composite2, s2_NEW$proclamation, mean)
 tapply(s2_NEW$m_composite2, s2_NEW$proclamation, sd)
 tapply(s2_NEW$m_composite2, s2_NEW$proclamation, length)
 
-#just abs vs. flex
-moral_absflex.afex <-aov_car(m_composite2 ~ proclamation + Error(ID), data= absflex_only)
-summary(moral_absflex.afex)
-anova_apa(moral_absflex.afex) 
+```
 
+# Morality Simple Effects - Use Subsetted Data from Voting Intentions Model
+
+```{r}
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
 t.test(m_composite2 ~ proclamation, control_exclude, var.equal = TRUE)
@@ -427,41 +211,29 @@ t_apa(t.test(m_composite2 ~ proclamation, flex_exclude, var.equal = TRUE))
 #Flex vs. control
 t.test(m_composite2 ~ proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(m_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
-
-
-
-#summarize values to pass to ggplot
-plot_moral <- s2_NEW %>%
-  group_by(proclamation) %>%
-  summarize(value= mean(m_composite2)) %>%
-  rename(Proclamation = proclamation)
-
-#bar graph
-ggplot(data = plot_moral, mapping = aes(x = Proclamation, y = value, fill = Proclamation)) +
-  geom_bar(stat = "identity", position = "dodge2") +
-  labs(x = "Proclamation", 
-       y = "Moral Ratings",
-       fill = "Proclamation") +
-  ylim(0, 7) +
-  scale_fill_brewer(palette = "Set3") 
 ```
 
-# Honesty
+# Future Honesty Model
 
 ```{r}
 honesty_2new.afex <-aov_car(Honest_composite2 ~ proclamation + Error(ID), data= s2_NEW)
 summary(honesty_2new.afex) 
 anova_apa(honesty_2new.afex)  #main effect of proc
+```
+
+# Future Honesty Descriptives
+
+```{r}
 #Across Proclamations
 tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, mean)
 tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, sd)
 tapply(s2_NEW$Honest_composite2, s2_NEW$proclamation, length)
 
-#just abs vs. flex
-honest_absflex.afex <-aov_car(Honest_composite2 ~ proclamation + Error(ID), data= absflex_only)
-summary(honest_absflex.afex)
-anova_apa(honest_absflex.afex) 
+```
 
+# Future Honesty Simple Effects - Use Subsetted Data from Voting Intentions Model
+
+```{r}
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
 t.test(Honest_composite2 ~ proclamation, control_exclude, var.equal = TRUE)
@@ -474,34 +246,32 @@ t_apa(t.test(Honest_composite2 ~ proclamation, flex_exclude, var.equal = TRUE))
 #Flex vs. control
 t.test(Honest_composite2 ~ proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(Honest_composite2 ~ proclamation, abs_exclude, var.equal = TRUE))
-
-
-#summarize values to pass to ggplot
-plot_honest <- s2_NEW %>%
-  group_by(proclamation) %>%
-  summarize(value= mean(Honest_composite2)) %>%
-  rename(Proclamation = proclamation)
-
-#bar graph
-ggplot(data = plot_honest , mapping = aes(x = Proclamation, y = value, fill = Proclamation)) +
-  geom_bar(stat = "identity", position = "dodge2") +
-  labs(x = "Proclamation", 
-       y = "Honest Ratings",
-       fill = "Proclamation") +
-  ylim(0, 7) +
-  scale_fill_brewer(palette = "Set3")
-
 ```
-# Social Benefit
+
+# Social Benefit of the Proclamation Model - New Subsetted Data
+
+
+# Subset Data
 
 ```{r}
 #get rid of control since no social benefit here
 absflex_only <- s2_NEW %>%
   filter (proclamation != "control")
 
+```
+
+
+# Social Benefit of the Proclamation Model
+
+```{r}
 SI_2new.afex <-aov_car(SI_composite2 ~ proclamation + Error(ID), data= absflex_only)
 summary(SI_2new.afex) 
 anova_apa(SI_2new.afex)  #main effect of proc
+```
+
+# Social Benefit of the Proclamation Descriptives
+
+```{r}
 #Across Proclamations
 tapply(s2_NEW$SI_composite2, s2_NEW$proclamation, mean)
 tapply(s2_NEW$SI_composite2, s2_NEW$proclamation, sd)
@@ -509,75 +279,41 @@ tapply(s2_NEW$SI_composite2, s2_NEW$proclamation, length)
 
 ```
 
-# Exploratory
+# Discounting Model
 
 ```{r}
-
 #Discounting
 discounting2.afex <-aov_car(d1~ proclamation + Error(ID), data= s2_NEW)
 summary(discounting2.afex) 
 anova_apa(discounting2.afex)  #main effect of proc
+```
+
+# Discounting Descriptives
+
+```{r}
 #Across Proclamations
 tapply(s2_NEW$d1, s2_NEW$proclamation, mean)
 tapply(s2_NEW$d1, s2_NEW$proclamation, sd)
 tapply(s2_NEW$d1, s2_NEW$proclamation, length)
+```
 
-#summarize values to pass to ggplot
-plot_discount <- s2_NEW %>%
-  group_by(proclamation) %>%
-  summarize(value= mean(d1)) %>%
-  rename(Proclamation = proclamation)
+# Goals  Model
 
-#bar graph
-ggplot(data = plot_discount, mapping = aes(x = Proclamation, y = value, fill = Proclamation)) +
-  geom_bar(stat = "identity", position = "dodge2") +
-  labs(x = "Proclamation", 
-       y = "Discounting (Frequency of Actual Lie Behavior)",
-       fill = "Proclamation") +
-  ylim(0, 7) +
-  scale_fill_brewer(palette = "Set3") 
-
-#Goals
+```{r}
 goals2.afex <-aov_car(g1 ~ proclamation + Error(ID), data= s2_NEW)
 summary(goals2.afex) 
 anova_apa(goals2.afex)  #main effect of proc
+```
+
+# Goals Descriptives
+
+```{r}
 #Across Proclamations
 tapply(s2_NEW$g1, s2_NEW$proclamation, mean)
 tapply(s2_NEW$g1, s2_NEW$proclamation, sd)
 tapply(s2_NEW$g1, s2_NEW$proclamation, length)
-
-#summarize values to pass to ggplot
-plot_goals <- s2_NEW %>%
-  group_by(proclamation) %>%
-  summarize(value= mean(g1)) %>%
-  rename(Proclamation = proclamation)
-
-#bar graph
-ggplot(data = plot_goals, mapping = aes(x = Proclamation, y = value, fill = Proclamation)) +
-  geom_bar(stat = "identity", position = "dodge2") +
-  labs(x = "Proclamation", 
-       y = "Goals (Intentions about Lie Behavior)",
-       fill = "Proclamation") +
-  ylim(0, 7) +
-  scale_fill_brewer(palette = "Set3") 
-
 ```
 
 # Exploratory Continued
 
-Go to the mediation NEW Study 3 script for mediation results. Can re-order levels there or here. Re-ordering script below.
-
-
-```{r}
-
-glimpse(absflex_only$proclamation)
-absflex_only$proclamation <- droplevels(absflex_only$proclamation)
-levels(absflex_only$proclamation)
-
-#re-order proclamation levels for ease of interpreation
-
-absflex_only$proclamation <- factor(absflex_only$proclamation, levels = c("flexible", "absolute"), labels = c("flexible", "absolute"))
-
-
-```
-
+See the attached R script "Study2_mediation.R" for the multiple mediation analysis. As mentioned, further analysis notes available upon request. Make sure to run this Rmarkdown file code before running the mediation to get composite variables.
