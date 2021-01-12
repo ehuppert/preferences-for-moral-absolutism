@@ -39,7 +39,7 @@ absflex_only <- s2 %>%
   filter (Proclamation != "control")
 
 glimpse(absflex_only$Proclamation)
-absflex_only$proclamation <- droplevels(absflex_only$Proclamation)
+absflex_only$Proclamation <- droplevels(absflex_only$Proclamation)
 levels(absflex_only$Proclamation)
 
 #re-order proclamation levels for ease of interpreation
@@ -49,14 +49,14 @@ absflex_only$Proclamation <- factor(absflex_only$Proclamation, levels = c("flexi
 #MORAL 
 #IV: proclamation (0 = flexible, 1 = absolute)
 
-#Mediators: future honesty (Honest_composite2), hypocrisy (h_composite2), social benefit (SI_composite2)
+#Mediators: future honesty (Honest_composite2), hypocrisy (Hypocrisy_composite2), social benefit (SI_composite2)
 
-#DV: morality (m_composite2)
+#DV: morality (Moral_composite2)
 
-multipleMed_politics_new2 = "h_composite2  ~ a1*proclamation
-Honest_composite2 ~ a2*proclamation
-SI_composite2 ~ a3*proclamation
-m_composite2 ~ b1*h_composite2 + b2*Honest_composite2 + b3*SI_composite2 + c*proclamation
+multipleMed_politics2 = "Hypocrisy_composite2  ~ a1*Proclamation
+Honest_composite2 ~ a2*Proclamation
+SI_composite2 ~ a3*Proclamation
+Moral_composite2 ~ b1*Hypocrisy_composite2  + b2*Honest_composite2 + b3*SI_composite2 + c*Proclamation
 
 indirect1 := a1*b1
 indirect2 := a2*b2
@@ -64,26 +64,26 @@ indirect3 := a3*b3
 direct := c
 total := c + (a1*b1) + (a2*b2) + (a3*b3)
 #covariances
-h_composite2  ~~ Honest_composite2
-h_composite2 ~~ SI_composite2
+Hypocrisy_composite2   ~~ Honest_composite2
+Hypocrisy_composite2  ~~ SI_composite2
 Honest_composite2 ~~ SI_composite2
 "
 
-fit_mult_politics_new2 = sem(multipleMed_politics_new2 , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
+fit_mult_politics_new2 = sem(multipleMed_politics2 , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
 summary(fit_mult_politics_new2, standardized = T, rsq = T)
 parameterEstimates((fit_mult_politics_new2))
 
 #VOTE
 #IV: proclamation (0 = flexible, 1 = absolute)
 
-#Mediators: future honesty (Honest_composite2), hypocrisy (h_composite2), social benefit (SI_composite2)
+#Mediators: future honesty (Honest_composite2), hypocrisy (Hypocrisy_composite2 ), social benefit (SI_composite2)
 
-#DV:voting = vote
+#DV:voting = Voting
 
-multipleMed_politics_new2.2 = "h_composite2  ~ a1*proclamation
-Honest_composite2 ~ a2*proclamation
-SI_composite2 ~ a3*proclamation
-vote ~ b1*h_composite2 + b2*Honest_composite2 + b3*SI_composite2 + c*proclamation
+multipleMed_politics2_vote = "Hypocrisy_composite2   ~ a1*Proclamation
+Honest_composite2 ~ a2*Proclamation
+SI_composite2 ~ a3*Proclamation
+Voting ~ b1*Hypocrisy_composite2  + b2*Honest_composite2 + b3*SI_composite2 + c*Proclamation
 
 indirect1 := a1*b1
 indirect2 := a2*b2
@@ -91,87 +91,14 @@ indirect3 := a3*b3
 direct := c
 total := c + (a1*b1) + (a2*b2) + (a3*b3)
 #covariances
-h_composite2  ~~ Honest_composite2
-h_composite2 ~~ SI_composite2
+Hypocrisy_composite2   ~~ Honest_composite2
+Hypocrisy_composite2 ~~ SI_composite2
 Honest_composite2 ~~ SI_composite2
 "
 
-fit_mult_politics_new2.2 = sem(multipleMed_politics_new2.2  , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
-summary(fit_mult_politics_new2.2, standardized = T, rsq = T)
-parameterEstimates((fit_mult_politics_new2.2))
+fit_mult_politics2_vote = sem(multipleMed_politics2_vote, se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
+summary(fit_mult_politics2_vote, standardized = T, rsq = T)
+parameterEstimates((fit_mult_politics2_vote))
 
 
-# just honesty ####
-
-#MORAL 
-#IV: proclamation (0 = flexible, 1 = absolute)
-
-#Mediators: future honesty (Honest_composite2)
-
-#DV: morality (m_composite2)
-
-mediation_politics_new2.3 = "Honest_composite2  ~ a1*proclamation
-m_composite2 ~ b1*Honest_composite2 + c*proclamation
-
-indirect1 := a1*b1
-direct := c
-total := c + (a1*b1) 
-"
-
-fit_mult_politics_new2.3 = sem(mediation_politics_new2.3 , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
-summary(fit_mult_politics_new2.3, standardized = T, rsq = T)
-parameterEstimates((fit_mult_politics_new2.3))
-
-#DV: voting (vote)
-
-mediation_politics_new2.4 = "Honest_composite2  ~ a1*proclamation
-vote ~ b1*Honest_composite2 + c*proclamation
-
-indirect1 := a1*b1
-direct := c
-total := c + (a1*b1) 
-"
-
-fit_mult_politics_new2.4 = sem(mediation_politics_new2.4 , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
-summary(fit_mult_politics_new2.4, standardized = T, rsq = T)
-parameterEstimates((fit_mult_politics_new2.4))
-
-# just honesty and SI benefit ####
-
-#MORAL
-
-#Honesty
-multipleMed_politics_new2.5 = "Honest_composite2  ~ a1*proclamation
-SI_composite2 ~ a2*proclamation
-m_composite2 ~ b1*Honest_composite2 + b2*SI_composite2+ c*proclamation
-
-indirect1 := a1*b1
-indirect2 := a2*b2
-direct := c
-total := c + (a1*b1) + (a2*b2) 
-#covariances
-Honest_composite2  ~~ SI_composite2
-"
-
-fit_mult_politics_new2.5 = sem(multipleMed_politics_new2.5, se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
-summary(fit_mult_politics_new2.5, standardized = T, rsq = T)
-parameterEstimates((fit_mult_politics_new2.5))
-
-#VOTE
-
-multipleMed_politics_new2.6 = "Honest_composite2  ~ a1*proclamation
-SI_composite2 ~ a2*proclamation
-vote ~ b1*Honest_composite2 + b2*SI_composite2+ c*proclamation
-
-indirect1 := a1*b1
-indirect2 := a2*b2
-direct := c
-total := c + (a1*b1) + (a2*b2) 
-#covariances
-Honest_composite2  ~~ SI_composite2
-"
-
-fit_mult_politics_new2.6 = sem(multipleMed_politics_new2.6, se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
-summary(fit_mult_politics_new2.6, standardized = T, rsq = T)
-parameterEstimates((fit_mult_politics_new2.6))
 
