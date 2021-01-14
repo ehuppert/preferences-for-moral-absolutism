@@ -1,5 +1,5 @@
 ---
-title: "Study1_new"
+title: "Study1"
 author: "Elizabeth Huppert"
 date: "1/12/2021"
 output: pdf_document
@@ -272,7 +272,6 @@ length(s1$Honest_composite)
 Voting_1.afex <-aov_car(Voting ~ Proclamation*Perspective*Frame + Error(ID), data=s1)
 summary(Voting_1.afex) 
 anova_apa(Voting_1.afex)
-
 ```
 
 # Voting Descriptives
@@ -319,7 +318,7 @@ sd(s1$Voting)
 length(s1$Voting)
 ```
 
-# Voting Simple Effects - Subsetting Data
+# Subsetting Data for Simple Effects
 
 ```{r}
 #How does Proclamation vary within just third-person lie frame?
@@ -393,5 +392,44 @@ pairs(post1)
 
 ```
 
+# Morality Simple Effects - T-tests
+
+```{r}
+#Proclamation within third person general lie frame
+t.test(Moral_composite~ Proclamation, thirdperson_lie, var.equal = TRUE)
+t_apa(t.test(Moral_composite~ Proclamation, thirdperson_lie, var.equal = TRUE))
+
+#Proclamation within third person general truth frame
+t.test(Moral_composite~ Proclamation, thirdperson_truth, var.equal = TRUE) 
+t_apa(t.test(Moral_composite~ Proclamation, thirdperson_truth, var.equal = TRUE))
+
+#Proclamation within first person lie frame
+t.test(Moral_composite~ Proclamation, firstperson_lie, var.equal = TRUE)
+t_apa(t.test(Moral_composite~ Proclamation, firstperson_lie, var.equal = TRUE))
+
+#Proclamation within first person truth frame
+t.test(Moral_composite~ Proclamation, firstperson_truth, var.equal = TRUE) 
+t_apa(t.test(Moral_composite~ Proclamation, firstperson_truth, var.equal = TRUE))
+
+#Proclamation within second lie frame
+t.test(Moral_composite~ Proclamation, secperson_lie, var.equal = TRUE) 
+t_apa(t.test(Moral_composite~ Proclamation, secperson_lie, var.equal = TRUE))
+
+#Proclamation within second truth frame
+t.test(Moral_composite~ Proclamation, secperson_truth, var.equal = TRUE) 
+t_apa(t.test(Moral_composite~ Proclamation, secperson_truth, var.equal = TRUE))
+
+#Alternative ANOVA and tukey post-hoc tests
+moral_model = aov_ez('ID', 'Moral_composite', s1,
+                    within = c (),
+                    between = c ('Proclamation', 'Perspective', 'Frame'),
+                    anova_table = list(es = 'pes'))
+print(moral_model)
+means <- emmeans(moral_model, ~ Proclamation|Perspective|Frame)
+print(means)
+post2 <- emmeans(moral_model, ~ Proclamation|Perspective|Frame)
+pairs(post2)
+
+```
 
 See the attached R script "Study1_mediation.R" for the multiple mediation analysis. As mentioned, further analysis notes available upon request.
