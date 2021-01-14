@@ -1,7 +1,7 @@
 ---
-title: "Study3"
+title: "Study4"
 author: "Elizabeth Huppert"
-date: "5/4/2020"
+date: "1/14/2020"
 output: pdf_document
 ---
 
@@ -519,16 +519,16 @@ pairs(post1)
 
 ```{r}
 #Reported Model
-rv_3.glm <- glm(rv ~ sometimes + rarely + behavlie 
+rv_4.glm <- glm(rv ~ sometimes + rarely + behavlie 
                 + sometimes*behavlie + rarely*behavlie, 
                 data=s4, family = binomial(link = "logit"))
-summary(rv_3.glm) 
+summary(rv_4.glm) 
 
 #Exploratory
-rv.glm3_2 <- glm(rv ~ never + rarely + behavlie + 
+rv.glm4_2 <- glm(rv ~ never + rarely + behavlie + 
                 never*behavlie + rarely*behavlie,
               data=s4, family = binomial(link = "logit"))
-summary(rv.glm3_2)
+summary(rv.glm4_2)
 
 
 
@@ -605,7 +605,7 @@ tapply(s4$Moral_composite4, s4$sometimes, sd)
 
 #Preferences Regression - Future Honesty
 honest_4.lm <- lm(Honest_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
-summary(honest_2.lm)
+summary(honest_4.lm)
 
 #Look at mean future honesty ratings by proclamation and preferences 
 tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), mean)
@@ -648,9 +648,6 @@ table(s4$pref)
 #sometimes, 26/144 18%
 #rarely, 30/330 9%
 #never, 4/109 4%
-
-
-
 ```
 
 #Attitudes as a Covariate - exploration

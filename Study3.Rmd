@@ -1,7 +1,7 @@
 ---
-title: "Study 2"
+title: "Study 3"
 author: "Elizabeth Huppert"
-date: "5/4/2020"
+date: "1/14/2020"
 output: pdf_document
 ---
 
@@ -546,7 +546,7 @@ The moderated mediation models on moral character and trust behavior were conduc
 
 # Syntax
 
-Study 2 Trust: First, Open "HypocrisyStudy2_cleaned.xlsx" within SPSS. This excel file is available in this R project and on the OSF page for this project. Then run the code below.
+Study 3 Trust: First, Open "HypocrisyStudy3_cleaned.xlsx" within SPSS. This excel file is available in this R project and on the OSF page for this project. Then run the code below.
 
 *1. Recreate composite variables*
 COMPUTE Hypocrisy_C=MEAN(Hypocrisy_1,Hypocrisy_2,Hypocrisy_3,Hypocrisy_4,Hypocrisy_5).
