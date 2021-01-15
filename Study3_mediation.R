@@ -1,5 +1,5 @@
-#Study 2 mediation on morality
-#[see SPSS syntax in Study2.Rmd for trust model in SPSS and SPSS output for trust results]
+#Study 3 mediation on morality
+#[see SPSS syntax in Study3.Rmd for trust model in SPSS and SPSS output for trust results]
 
 #Load packages
 
@@ -20,7 +20,7 @@ s3 <- read.csv(here("HypocrisyStudy3_cleaned.csv"))
 hypocrisy3_check <- data.frame(s3$Hypocrisy_1, s3$Hypocrisy_2, s3$Hypocrisy_3, s3$Hypocrisy_4, s3$Hypocrisy_5)
 summary(hypocrisy3_check)
 describe(hypocrisy3_check)
-psych::alpha(hypocrisy3_check) # raw alpha = 0.92
+psych::alpha(hypocrisy3_check) 
 s3 <- mutate(s3, 
              Hypocrisy_composite3 = ((s3$Hypocrisy_1 + s3$Hypocrisy_2 + s3$Hypocrisy_3 + s3$Hypocrisy_4 + s3$Hypocrisy_5)/5))
 
@@ -53,7 +53,7 @@ s3<- mutate(s3,
 
 #DV: morality (Moral_composite3)
 
-med_mod_study2 = "
+med_mod_study3 = "
 Hypocrisy_composite3  ~ a11*sometimes + a12*behavlie + a13*sometimes:behavlie
 Honest_composite3~ a21*sometimes + a22*behavlie+ a23*sometimes:behavlie
 Moral_composite3 ~ b11*Hypocrisy_composite3 + b21*Honest_composite3 + c1*sometimes
