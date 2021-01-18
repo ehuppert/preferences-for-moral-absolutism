@@ -81,7 +81,7 @@ hypocrisy_5_check <- data.frame(s5$hypocrisy_1, s5$hypocrisy_2, s5$hypocrisy_4, 
 summary(hypocrisy_5_check)
 describe(hypocrisy_5_check)
 psych::alpha(hypocrisy_5_check) #alpha = 0.89 
-s5 <- mutate(s5, Hypocrisy1_composite5 = ((s5$hypocrisy_1 + s5$hypocrisy_2 + s5$hypocrisy_4 + s5$hypocrisy_5)/4))
+s5 <- mutate(s5, Hypocrisy.1_composite5 = ((s5$hypocrisy_1 + s5$hypocrisy_2 + s5$hypocrisy_4 + s5$hypocrisy_5)/4))
 
 #Morality
 morality5_check <- data.frame(s5$moral_1, s5$moral_2, s5$moral_3)
@@ -95,7 +95,7 @@ Honest5_df <- data.frame(s5$honest_freq_1, s5$honest_likely_1, s5$honest_extreme
 summary(Honest5_df)
 describe(Honest5_df)
 psych::alpha(Honest5_df) #alpha = 0.85
-s5 <- mutate(s5, Honest_composite5 = ((s5$honest_freq_1 + s5$honest_likely_1 + s5$honest_extreme_1 + s5$committment_honesty_1)/4))
+s5 <- mutate(s5, Honest.1_composite5 = ((s5$honest_freq_1 + s5$honest_likely_1 + s5$honest_extreme_1 + s5$committment_honesty_1)/4))
 
 
 #Time two  
@@ -105,7 +105,7 @@ summary(hypocrisy_5_check.2)
 describe(hypocrisy_5_check.2)
 psych::alpha(hypocrisy_5_check.2) #alpha = 0.91
 s5 <- mutate(s5, 
-             Hypocrisy2_composite5 = (s5$hypocrisy_1.2 + s5$hypocrisy_2.2 + s5$hypocrisy_4.2 + s5$hypocrisy_5.2)/4)
+             Hypocrisy.2_composite5 = (s5$hypocrisy_1.2 + s5$hypocrisy_2.2 + s5$hypocrisy_4.2 + s5$hypocrisy_5.2)/4)
 
 #Morality
 morality5_check.2 <- data.frame(s5$moral_1.2, s5$moral_2.2, s5$moral_3.2)
@@ -119,7 +119,7 @@ Honest5_df.2  <- data.frame(s5$honest_freq_2, s5$honest_likely_2, s5$honest_extr
 summary(Honest5_df.2)
 describe(Honest5_df.2)
 psych::alpha(Honest5_df.2) #alpha = 0.82
-s5 <- mutate(s5, Honest_composite5.2 = ((s5$honest_freq_2 + s5$honest_likely_2 + s5$honest_extreme_2 + s5$committment_honesty_2)/4))
+s5 <- mutate(s5, Honest.2_composite5 = ((s5$honest_freq_2 + s5$honest_likely_2 + s5$honest_extreme_2 + s5$committment_honesty_2)/4))
 
 #Supplemental (guilt and moral standards) 
 #Guilt time 1
@@ -143,17 +143,17 @@ Evaluation variables:
 
 Timepoint 1:
 
-Hypocrisy1_composite5 = hypocrisy composite of 4 items at timepoint 1 
+Hypocrisy.1_composite5 = hypocrisy composite of 4 items at timepoint 1 
 Guilt_composite = guilt composite of 2 items at timepoint 1
 Moral.1_composite5 = morality composite of 3 items at timepoint 1
-Honest_composite5 = committment to honesty composite of 4 items at timepoint 1
+Honest.1_composite5 = committment to honesty composite of 4 items at timepoint 1
 
 Timepoint 2 (same 1-7 Likert-type scales):
 
-Hypocrisy2_composite5  = hypocrisy composite of 4 items at timepoint 2
-Guilt_composite = guilt composite of 2 items at timepoint 2
+Hypocrisy.2_composite5  = hypocrisy composite of 4 items at timepoint 2
+Guilt.2_composite = guilt composite of 2 items at timepoint 2
 Moral.2_composite5 = morality composite of 3 items at timepoint 2
-Honest_composite5.2 = committment to honesty composite of 4 items at timepoint 2
+Honest.2_composite5 = committment to honesty composite of 4 items at timepoint 2
 
 #Hypocrisy Model
 
@@ -162,7 +162,7 @@ Honest_composite5.2 = committment to honesty composite of 4 items at timepoint 2
 hypocrisy_df <-melt(s5, 
                 id.vars=c("condition", "ID", "proclamation", "order"),
                 #measure command is for the DV
-                measure.vars=c("Hypocrisy1_composite5","Hypocrisy2_composite5"),
+                measure.vars=c("Hypocrisy.1_composite5","Hypocrisy.2_composite5"),
                 variable.name="hypocrisy.time",
                 value.name="hypocrisy.value"
 )
@@ -250,16 +250,16 @@ length(hypocrisy_df$hypocrisy.value)
 absolute_s5 <- s5 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$Hypocrisy1_composite5, absolute_s5$Hypocrisy2_composite5, paired = TRUE)
-t_apa(t.test(absolute_s5$Hypocrisy1_composite5, absolute_s5$Hypocrisy2_composite5, paired = TRUE))
+t.test(absolute_s5$Hypocrisy.1_composite5, absolute_s5$Hypocrisy.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s5$Hypocrisy.1_composite5, absolute_s5$Hypocrisy.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
 flexible_s5 <- s5 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$Hypocrisy1_composite5, flexible_s5$Hypocrisy2_composite5, paired = TRUE)
-t_apa(t.test(flexible_s5$Hypocrisy1_composite5, flexible_s5$Hypocrisy2_composite5, paired = TRUE))
+t.test(flexible_s5$Hypocrisy.1_composite5, flexible_s5$Hypocrisy.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s5$Hypocrisy.1_composite5, flexible_s5$Hypocrisy.2_composite5, paired = TRUE))
 
 #Proclamation*Order - simple linear regressions
 
@@ -485,7 +485,7 @@ pairs(post4)
 hypo_honest5 <-melt(s5, 
                    id.vars=c("condition", "ID", "proclamation", "order"),
                    #measure command is for the DV
-                   measure.vars=c("Honest_composite5","Honest_composite5.2"),
+                   measure.vars=c("Honest.1_composite5","Honest.2_composite5"),
                    variable.name="honest.time",
                    value.name="honest.value"
 )
@@ -569,16 +569,16 @@ length(hypo_honest5$honest.value)
 absolute_s5 <- s5 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$Honest_composite5, absolute_s5$Honest_composite5.2, paired = TRUE)
-t_apa(t.test(absolute_s5$Honest_composite5, absolute_s5$Honest_composite5.2, paired = TRUE))
+t.test(absolute_s5$Honest.1_composite5, absolute_s5$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s5$Honest.1_composite5, absolute_s5$Honest.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
 flexible_s5 <- s5 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$Honest_composite5, flexible_s5$Honest_composite5.2, paired = TRUE)
-t_apa(t.test(flexible_s5$Honest_composite5, flexible_s5$Honest_composite5.2, paired = TRUE))
+t.test(flexible_s5$Honest.1_composite5, flexible_s5$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s5$Honest.1_composite5, flexible_s5$Honest.2_composite5, paired = TRUE))
 
 #Order*Time 
 
@@ -587,16 +587,16 @@ t_apa(t.test(flexible_s5$Honest_composite5, flexible_s5$Honest_composite5.2, pai
 survey1_s5 <- s5 %>%
   filter(order == "survey1")
 
-t.test(survey1_s5$Honest_composite5, survey1_s5$Honest_composite5.2, paired = TRUE)
-t_apa(t.test(survey1_s5$Honest_composite5, survey1_s5$Honest_composite5.2, paired = TRUE))
+t.test(survey1_s5$Honest.1_composite5, survey1_s5$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(survey1_s5$Honest.1_composite5, survey1_s5$Honest.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on game1 only
 #Paired t-test
 game1_s5 <- s5 %>%
   filter(order == "game1")
 
-t.test(game1_s5$Honest_composite5, game1_s5$Honest_composite5.2, paired = TRUE)
-t_apa(t.test(game1_s5$Honest_composite5, game1_s5$Honest_composite5.2, paired = TRUE))
+t.test(game1_s5$Honest.1_composite5, game1_s5$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(game1_s5$Honest.1_composite5, game1_s5$Honest.2_composite5, paired = TRUE))
 
 
 #Proclamation*Order (linear regressions)
@@ -1015,8 +1015,8 @@ length(s5$guilt_2.2)
 
 ```{r}
 #Logistic Regression
-model.trust_study4 <- glm(trustbeh ~ proclamation*order, data=s5, family = binomial(link = "logit"))
-summary(model.trust_study4)
+model.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s5, family = binomial(link = "logit"))
+summary(model.trust_study5)
 #1 = pass, 0 = keep
 
 chisq.test(s5$proclamation, s5$trustbeh)
