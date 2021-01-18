@@ -1,5 +1,5 @@
 ---
-title: "NEW_study2"
+title: "Study 2"
 author: "Elizabeth Huppert"
 date: "1/6/2021"
 output: pdf_document
@@ -103,7 +103,6 @@ anova_apa(Voting_2.afex)
 # Voting Descriptives
 
 ```{r}
-
 #Across Proclamations
 tapply(s2$Voting, s2$Proclamation, mean)
 tapply(s2$Voting, s2$Proclamation, sd)
@@ -312,4 +311,5 @@ tapply(s2$Goals, s2$Proclamation, length)
 
 # Exploratory Continued
 
-See the attached R script "Study2_mediation.R" for the multiple mediation analysis. As mentioned, further analysis notes available upon request. Make sure to run this Rmarkdown file code before running the mediation to get composite variables.
+See the attached R script "Study2_mediation.R" for the multiple mediation analyses. As mentioned, further analysis notes available upon request. 
+

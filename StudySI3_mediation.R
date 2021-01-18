@@ -9,24 +9,24 @@ library(psych)
 
 #Read in data
 
-s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv"))
+s8 <- read.csv(here("HypocrisyStudySI_3.csv"))
 
 #Reorder proclamation
 
-s5$proclamation <- factor(s5$proclamation, levels = c("flexible", "absolute"))
+s8$proclamation <- factor(s8$proclamation, levels = c("flexible", "absolute"))
 
 #Create composite variables
 
 #Hypocrisy
-hypocrisy5_df <- data.frame(s5$hypocrisy_1, s5$hypocrisy_2, s5$hypocrisy_3, s5$hypocrisy_4)
-summary(hypocrisy5_df)
-psych::alpha(hypocrisy5_df) #alpha = 0.86
-s5 <- mutate(s5, Hypocrisy5_composite  = ((s5$hypocrisy_1 + s5$hypocrisy_2 + s5$hypocrisy_3 + s5$hypocrisy_4)/4))
+hypocrisySI3_df <- data.frame(s8$hypocrisy_1, s8$hypocrisy_2, s8$hypocrisy_3, s8$hypocrisy_4)
+summary(hypocrisySI3_df)
+psych::alpha(hypocrisySI3_df) #alpha = 0.86
+s8 <- mutate(s8, HypocrisySI3_composite  = ((s8$hypocrisy_1 + s8$hypocrisy_2 + s8$hypocrisy_3 + s8$hypocrisy_4)/4))
 
 #Morality
-moral5_df <- data.frame(s5$moral_1, s5$moral_2, s5$moral_3)
-psych::alpha(moral5_df) #alpha = 0.94
-s5 <- mutate(s5, Moral5_composite  = ((s5$moral_1 + s5$moral_2 + s5$moral_3)/3))
+moralSI3_df <- data.frame(s8$moral_1, s8$moral_2, s8$moral_3)
+psych::alpha(moralSI3_df) #alpha = 0.94
+s8 <- mutate(s8, MoralSI3_composite  = ((s8$moral_1 + s8$moral_2 + s8$moral_3)/3))
 
 #Model
 
@@ -34,11 +34,11 @@ s5 <- mutate(s5, Moral5_composite  = ((s5$moral_1 + s5$moral_2 + s5$moral_3)/3))
 
 #Mediators: discounting_2 (perceived lying frequency), goal_2 (honesty ideals)
 
-#DV: morality (Moral5_composite)
+#DV: morality (MoralSI3_composite)
 
-med_mod_exploratory_5 = "discounting_2  ~ a1*proclamation
+med_mod_exploratory_8 = "discounting_2  ~ a1*proclamation
 goal_2 ~ a2*proclamation
-Moral5_composite ~ b1*discounting_2 + b2*goal_2 + c*proclamation
+MoralSI3_composite ~ b1*discounting_2 + b2*goal_2 + c*proclamation
 
 indirect1 := a1*b1
 indirect2 := a2*b2
@@ -47,9 +47,9 @@ total := c + (a1*b1) + (a2*b2)
 #covariances
 discounting_2  ~~ goal_2"
 
-fit_med_mod_exp_5 = sem(med_mod_exploratory_5, se = "boot", bootstrap = 10000, 
-                    data = s5, likelihood = "wishart")
-summary(fit_med_mod_exp_5, standardized = T, rsq = T)
-parameterEstimates(fit_med_mod_exp_5)
+fit_med_mod_exp_8 = sem(med_mod_exploratory_8, se = "boot", bootstrap = 1000, 
+                    data = s8, likelihood = "wishart")
+summary(fit_med_mod_exp_8, standardized = T, rsq = T)
+parameterEstimates(fit_med_mod_exp_8)
 
                    
