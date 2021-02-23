@@ -294,8 +294,11 @@ mor_model = aov_ez('ID', 'Moral_composite3', s3,
 print(mor_model)
 means <- emmeans(mor_model, ~ proclamation|behavior)
 print(means)
-post1 <- emmeans(mor_model, ~ proclamation)
-pairs(post1) 
+post1 <- emmeans(mor_model, ~ proclamation|behavior)
+pairs(post1)
+post2 <- emmeans(mor_model, ~ proclamation)
+pairs(post2) 
+
 
 ```
 
