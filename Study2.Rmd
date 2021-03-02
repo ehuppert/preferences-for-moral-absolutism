@@ -274,16 +274,15 @@ tapply(s2$SI_composite2, s2$Proclamation, sd)
 tapply(s2$SI_composite2, s2$Proclamation, length)
 ```
 
-# Discounting Model
+# Lying Behavior Model (Discounting)
 
 ```{r}
-#Discounting
 Discounting2.afex <-aov_car(Discount ~ Proclamation + Error(ID), data= s2)
 summary(Discounting2.afex) 
 anova_apa(Discounting2.afex) 
 ```
 
-# Discounting Descriptives
+# Lying Behavior (Discounting) Descriptives
 
 ```{r}
 #Across Proclamations
@@ -292,7 +291,7 @@ tapply(s2$Discount, s2$Proclamation, sd)
 tapply(s2$Discount, s2$Proclamation, length)
 ```
 
-# Goals  Model
+# Honesty Intentions (Goals)  Model
 
 ```{r}
 goals2.afex <-aov_car(Goals ~ Proclamation + Error(ID), data= s2)
@@ -300,7 +299,7 @@ summary(goals2.afex)
 anova_apa(goals2.afex)  
 ```
 
-# Goals Descriptives
+# Honesty Intentions (Goals) Descriptives
 
 ```{r}
 #Across Proclamations

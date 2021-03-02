@@ -193,7 +193,7 @@ tapply(s1$Moral_composite, list(s1$Perspective, s1$Frame), length)
 #Across Proclamation
 tapply(s1$Moral_composite, s1$Proclamation, mean)
 tapply(s1$Moral_composite, s1$Proclamation, sd)
-tapply(s1$Moral_compositex, s1$Proclamation, length)
+tapply(s1$Moral_composite, s1$Proclamation, length)
 
 #Across Frame
 tapply(s1$Moral_composite, s1$Frame, mean)

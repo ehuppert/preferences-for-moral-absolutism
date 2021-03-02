@@ -266,26 +266,38 @@ t_apa(t.test(flexible_s5$Hypocrisy.1_composite5, flexible_s5$Hypocrisy.2_composi
 #Effect of order in just absolute
 absolute_hypo <- hypocrisy_df %>%
   filter(proclamation ==  "absolute")
-lm_order.hypo <- lm(hypocrisy.value ~ order, data = absolute_hypo)
-summary(lm_order.hypo)
+
+#independent t-test
+t.test(hypocrisy.value ~ order, absolute_hypo , var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ order, absolute_hypo , var.equal = TRUE))
 
 #Effect of order in just flexible
 flexible_hypo <- hypocrisy_df %>%
   filter(proclamation ==  "ambiguous")
-lm_order2.hypo <- lm(hypocrisy.value ~ order, data = flexible_hypo)
-summary(lm_order2.hypo)
+
+#independent t-test
+t.test(hypocrisy.value ~ order, flexible_hypo , var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ order, flexible_hypo, var.equal = TRUE))
+
 
 #Effect of proc in just survey1
 survey1_hypo <- hypocrisy_df %>%
   filter(order==  "survey1")
-lm_order3.hypo <- lm(hypocrisy.value ~ proclamation, data = survey1_hypo)
-summary(lm_order3.hypo )
+
+#independent t-test
+t.test(hypocrisy.value ~ proclamation, survey1_hypo, var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ proclamation, survey1_hypo, var.equal = TRUE))
+
 
 #Effect of proc in just game1
 game1_hypo <- hypocrisy_df %>%
   filter(order==  "game1")
-lm_order4.hypo <- lm(hypocrisy.value ~ proclamation, data = game1_hypo)
-summary(lm_order4.hypo)
+
+#independent t-test
+t.test(hypocrisy.value ~ proclamation, game1_hypo, var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ proclamation, game1_hypo, var.equal = TRUE))
+
+
 
 #Alternative ANOVA and tukey post-hoc tests
 hyp_model = aov_ez('ID', 'hypocrisy.value', hypocrisy_df,
@@ -426,7 +438,7 @@ t.test(game1_s5$Moral.1_composite5, game1_s5$Moral.2_composite5, paired = TRUE)
 t_apa(t.test(game1_s5$Moral.1_composite5, game1_s5$Moral.2_composite5, paired = TRUE))
 
 
-#Proclamation*Order (linear regressions)
+#Proclamation*Order
 
 #Effect of order in just absolute targets
 absolute_moral <- hypo_moral5 %>%
@@ -599,34 +611,42 @@ t.test(game1_s5$Honest.1_composite5, game1_s5$Honest.2_composite5, paired = TRUE
 t_apa(t.test(game1_s5$Honest.1_composite5, game1_s5$Honest.2_composite5, paired = TRUE))
 
 
-#Proclamation*Order (linear regressions)
+#Proclamation*Order
 
 #Effect of order in just absolute
 absolute_honest <- hypo_honest5 %>%
   filter(proclamation ==  "absolute")
 
-lm_order.honest <- lm(honest.value ~ order, data = absolute_honest)
-summary(lm_order.honest)
+#independent t-test
+t.test(honest.value ~ order, absolute_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ order, absolute_honest, var.equal = TRUE))
 
+#Effect of order in just flexible
 flexible_honest <- hypo_honest5 %>%
   filter(proclamation ==  "ambiguous")
 
-lm_order2.honest <- lm(honest.value ~ order, data = flexible_honest)
-summary(lm_order2.honest)
+#independent t-test
+t.test(honest.value ~ order, flexible_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ order, flexible_honest, var.equal = TRUE))
+
 
 #Effect of proc in just survey1
 survey1_honest <- hypo_honest5  %>%
   filter(order==  "survey1")
 
-lm_order3.honest <- lm(honest.value ~ proclamation, data = survey1_honest)
-summary(lm_order3.honest)
+#independent t-test
+t.test(honest.value ~ proclamation, survey1_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ proclamation, survey1_honest, var.equal = TRUE))
+
 
 #Effect of proc in just game1
 game1_honest <- hypo_honest5  %>%
   filter(order==  "game1")
 
-lm_order4.honest  <- lm(honest.value~ proclamation, data = game1_honest)
-summary(lm_order4.honest)
+#independent t-test
+t.test(honest.value ~ proclamation, game1_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ proclamation, game1_honest, var.equal = TRUE))
+
 
 #Alternative ANOVA and tukey post-hoc tests
 hon_model = aov_ez('ID', 'honest.value', hypo_honest5,
