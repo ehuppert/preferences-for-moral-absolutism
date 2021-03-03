@@ -444,29 +444,35 @@ t_apa(t.test(game1_s5$Moral.1_composite5, game1_s5$Moral.2_composite5, paired = 
 absolute_moral <- hypo_moral5 %>%
   filter(proclamation ==  "absolute")
 
-lm_order.moral <- lm(moral.value ~ order, data = absolute_moral)
-summary(lm_order.moral)
+#independent t-test
+t.test(moral.value ~ order, absolute_moral , var.equal = TRUE)
+t_apa(t.test(moral.value ~ order, absolute_moral, var.equal = TRUE))
 
 #Effect of order in just flexible targets
 flexible_moral <- hypo_moral5 %>%
   filter(proclamation ==  "ambiguous")
 
-lm_order2.moral <- lm(moral.value ~ order, data = flexible_moral)
-summary(lm_order2.moral)
+#independent t-test
+t.test(moral.value ~ order, flexible_moral, var.equal = TRUE)
+t_apa(t.test(moral.value ~ order, flexible_moral, var.equal = TRUE))
+t_apa(t.test(moral.value ~ order, flexible_moral, var.equal = TRUE))
 
 #Effect of proc in just survey1 ordering
 survey1_moral <- hypo_moral5  %>%
   filter(order==  "survey1")
 
-lm_order3.hypo <- lm(moral.value ~ proclamation, data = survey1_moral)
-summary(lm_order3.hypo )
+#independent t-test
+t.test(moral.value ~ proclamation, survey1_moral, var.equal = TRUE)
+t_apa(t.test(moral.value ~ proclamation, survey1_moral, var.equal = TRUE))
 
 #Effect of proc in just game1 ordering
 game1_moral <- hypo_moral5  %>%
   filter(order==  "game1")
 
-lm_order4.hypo <- lm(moral.value~ proclamation, data = game1_moral)
-summary(lm_order4.hypo)
+#independent t-test
+t.test(moral.value ~ proclamation, game1_moral, var.equal = TRUE)
+t_apa(t.test(moral.value ~ proclamation, game1_moral, var.equal = TRUE))
+
 
 #Alternative ANOVA and tukey post-hoc tests
 mor_model = aov_ez('ID', 'moral.value', hypo_moral5,
