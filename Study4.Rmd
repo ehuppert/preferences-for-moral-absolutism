@@ -87,7 +87,7 @@ describe(moral_4_check)
 psych::alpha(moral_4_check) #alpha = 0.98
 s4 <- mutate(s4, Moral_composite4 = ((s4$Moral_1 + s4$Moral_2 + s4$Moral_3)/3))
 
-#Future Honesty
+#Commitment to Honesty
 honest_4_check <- data.frame(s4$Honest_frequency, s4$Honest_likely, s4$Honest_extreme, s4$Honest_committment)
 summary(honest_4_check)
 describe(honest_4_check)
@@ -354,7 +354,7 @@ post2 <- emmeans(mor_model, ~ proclamation)
 pairs(post2)  
 ```
 
-#Future Honesty
+#Commitment to Honesty
 
 ```{r}
 #ANOVA
@@ -363,7 +363,7 @@ summary(honesty_4.afex)
 anova_apa(honesty_4.afex)
 ```
 
-#Future Honesty Descriptives
+#Commitment to Honesty Descriptives
 
 ```{r}
 #Cells
@@ -388,7 +388,7 @@ length(s4$Honest_composite4)
 
 ```
 
-#Future Honesty Simple Effects
+#Commitment to Honesty Simple Effects
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
@@ -587,7 +587,10 @@ summary(hypocrisy_4.lm )
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), mean)
 tapply(s4$Hypocrisy_composite4, list(s4$sometimes, s4$pref), mean)
+tapply(s4$Hypocrisy_composite4, s4$proclamation, mean)
+tapply(s4$Hypocrisy_composite4, s4$pref, mean)
 tapply(s4$Hypocrisy_composite4, s4$rarely, mean)
+tapply(s4$Hypocrisy_composite4, s4$rarely, sd)
 tapply(s4$Hypocrisy_composite4, s4$sometimes, mean)
 tapply(s4$Hypocrisy_composite4, s4$sometimes, sd)
 
@@ -601,20 +604,25 @@ tapply(s4$Moral_composite4, list(s4$sometimes, s4$pref), mean)
 tapply(s4$Moral_composite4, s4$proclamation, mean)
 tapply(s4$Moral_composite4, s4$sometimes, mean)
 tapply(s4$Moral_composite4, s4$sometimes, sd)
+tapply(s4$Moral_composite4, s4$rarely, mean)
+tapply(s4$Moral_composite4, s4$rarely, sd)
 
 
-#Preferences Regression - Future Honesty
+#Preferences Regression - Commitment to Honesty
 honest_4.lm <- lm(Honest_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
 summary(honest_4.lm)
 
-#Look at mean future honesty ratings by proclamation and preferences 
+#Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), mean)
 tapply(s4$Honest_composite4, list(s4$sometimes, s4$pref), mean)
 tapply(s4$Honest_composite4, s4$proclamation, mean)
 tapply(s4$Honest_composite4, s4$sometimes, mean)
+tapply(s4$Honest_composite4, s4$sometimes, sd)
+tapply(s4$Honest_composite4, s4$rarely, mean)
+tapply(s4$Honest_composite4, s4$rarely, sd)
 
 
-#Preferences Regression - SI
+#Preferences Regression - Social Benefit (SI)
 SI.lm <- lm(SI_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
 summary(SI.lm )
 
@@ -622,6 +630,8 @@ summary(SI.lm )
 tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), mean)
 tapply(s4$SI_composite4, s4$sometimes, mean)
 tapply(s4$SI_composite4, s4$sometimes, sd)
+tapply(s4$SI_composite4, s4$rarely, mean)
+tapply(s4$SI_composite4, s4$rarely, sd) 
 
 
 #Logistic Regression (trust) with own attitudes towards honesty
