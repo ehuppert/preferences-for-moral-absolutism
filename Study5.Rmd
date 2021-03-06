@@ -455,7 +455,6 @@ flexible_moral <- hypo_moral5 %>%
 #independent t-test
 t.test(moral.value ~ order, flexible_moral, var.equal = TRUE)
 t_apa(t.test(moral.value ~ order, flexible_moral, var.equal = TRUE))
-t_apa(t.test(moral.value ~ order, flexible_moral, var.equal = TRUE))
 
 #Effect of proc in just survey1 ordering
 survey1_moral <- hypo_moral5  %>%
@@ -496,10 +495,10 @@ post4 <- emmeans(mor_model, ~ proclamation|order)
 pairs(post4)  
 ```
 
-#Future Honesty
+#Commitment to Honesty
 
 ```{r}
-#Dataframe for Future Honesty
+#Dataframe for Commitment to Honesty
 hypo_honest5 <-melt(s5, 
                    id.vars=c("condition", "ID", "proclamation", "order"),
                    #measure command is for the DV
@@ -515,7 +514,7 @@ summary(honest.afex)
 anova_apa(honest.afex)
 ```
 
-#Future Honesty Descriptives
+#Commitment to Honesty Descriptives
 
 ```{r}
 #Cells
@@ -577,7 +576,7 @@ length(hypo_honest5$honest.value)
 
 ```
 
-#Follow-up tests for two*way interactions: Future Honesty
+#Follow-up tests for two*way interactions: Commitment to Honesty
 
 ```{r}
 #Proclamation*Time 
@@ -781,35 +780,38 @@ t.test(flexible_s5$moral_standards1, flexible_s5$moral_standards1.2, paired = TR
 t_apa(t.test(flexible_s5$moral_standards1, flexible_s5$moral_standards1.2, paired = TRUE))
 
 
-#Proclamation*Order (linear regressions)
+#Proclamation*Order 
 
 #Effect of order in just absolute
 absolute_ms <- hypo_ms %>%
   filter(proclamation ==  "absolute")
 
-lm_order.ms <- lm(ms.value  ~ order, data = absolute_ms )
-summary(lm_order.ms )
+#independent t-test
+t.test(ms.value~ order, absolute_ms , var.equal = TRUE)
+t_apa(t.test(ms.value ~ order, absolute_ms , var.equal = TRUE))
 
 #Effect of order in just flexible
 flexible_ms <- hypo_ms %>%
   filter(proclamation ==  "ambiguous")
 
-lm_order2.ms  <- lm(ms.value  ~ order, data = flexible_ms)
-summary(lm_order2.ms )
+#independent t-test
+t.test(ms.value~ order, flexible_ms, var.equal = TRUE)
+t_apa(t.test(ms.value ~ order, flexible_ms, var.equal = TRUE))
+
 
 #Effect of proc in just survey1
 survey1_ms <- hypo_ms  %>%
   filter(order==  "survey1")
 
-lm_order3.ms <- lm(ms.value  ~ proclamation, data = survey1_ms)
-summary(lm_order3.ms)
+#independent t-test
+t.test(ms.value~ proclamation, survey1_ms, var.equal = TRUE)
+t_apa(t.test(ms.value ~ proclamation, survey1_ms, var.equal = TRUE))
 
 #Effect of proc in just game1
 game1_ms <- hypo_ms  %>%
   filter(order==  "game1")
 
-lm_order4.ms <- lm(ms.value ~ proclamation, data = game1_ms)
-summary(lm_order4.ms)
+xf
 
 #Alternative ANOVA and tukey post-hoc tests
 ms_model = aov_ez('ID', 'ms.value', hypo_ms,
@@ -949,35 +951,40 @@ t.test(game1_s5$moral_standards2, game1_s5$moral_standards2.2, paired = TRUE)
 t_apa(t.test(game1_s5$moral_standards2, game1_s5$moral_standards2.2, paired = TRUE))
 
 
-#Proclamation*Order (linear regressions)
+#Proclamation*Order 
 
 #Effect of order in just absolute
 absolute_ms2 <- hypo_ms2 %>%
   filter(proclamation ==  "absolute")
 
-lm_order.ms_r <- lm(ms2.value  ~ order, data = absolute_ms2)
-summary(lm_order.ms_r)
+#independent t-test
+t.test(ms2.value ~ order, absolute_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ order, absolute_ms2, var.equal = TRUE))
 
 #Effect of order in just flexible
 flexible_ms2 <- hypo_ms2 %>%
   filter(proclamation ==  "ambiguous")
 
-lm_order.ms_r2 <- lm(ms2.value ~ order, data = flexible_ms2)
-summary(lm_order.ms_r2)
+#independent t-test
+t.test(ms2.value ~ order, flexible_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ order, flexible_ms2, var.equal = TRUE))
 
 #Effect of proc in just survey1
 survey1_ms2 <- hypo_ms2  %>%
   filter(order==  "survey1")
 
-lm_order.ms_r3 <- lm(ms2.value ~ proclamation, data = survey1_ms2)
-summary(lm_order.ms_r3)
+#independent t-test
+t.test(ms2.value ~ proclamation, survey1_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ proclamation, survey1_ms2, var.equal = TRUE))
 
 #Effect of proc in just game1
 game1_ms2 <- hypo_ms2 %>%
   filter(order==  "game1")
 
-lm_order.ms_r4 <- lm(ms2.value ~ proclamation, data = game1_ms2)
-summary(lm_order.ms_r4)
+#independent t-test
+t.test(ms2.value ~ proclamation, game1_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ proclamation, game1_ms2, var.equal = TRUE))
+
 
 #Alternative ANOVA and tukey post-hoc tests
 ms2_model = aov_ez('ID', 'ms2.value', hypo_ms2,

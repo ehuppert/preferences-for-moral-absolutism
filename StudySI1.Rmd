@@ -275,4 +275,4 @@ table(s6$proclamation, s6$lie.motives, s6$trustbeh)
 
 #Mediation
 
-See R script Study6_mediation.R for mediation results.
+See R script StudySI1_mediation.R for mediation results.

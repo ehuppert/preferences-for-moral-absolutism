@@ -132,11 +132,13 @@ absolute_test <- s7 %>%
   filter(proclamation == "absolute") 
 
 t.test(hypocrisy7_composite ~ lie.motives, data = absolute_test, var.equal = TRUE)
+t_apa(t.test(hypocrisy7_composite ~ lie.motives, data = absolute_test, var.equal = TRUE))
 
 ambiguous_test <- s7 %>%
   filter(proclamation == "ambiguous") 
 
 t.test(hypocrisy7_composite ~ lie.motives, data = ambiguous_test, var.equal = TRUE)
+t_apa(t.test(hypocrisy7_composite ~ lie.motives, data = ambiguous_test, var.equal = TRUE))
 
 #Proclamation on lie motives
 prosocial_test <- s7 %>%
@@ -301,4 +303,4 @@ length(s7$benevolence7_composite)
 ```
 
 
-See R script Study7_mediation.R for mediation results.
+See R script StudySI2_mediation.R for mediation results.

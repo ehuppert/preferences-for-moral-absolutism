@@ -47,7 +47,7 @@ total := c + (a1*b1) + (a2*b2)
 #covariances
 hypocrisy7_composite ~~ discomfort_1"
 
-fit_mutiple7 = sem(mult_med_mod_7, se = "boot", bootstrap = 10000, data = s7, 
+fit_mutiple7 = sem(mult_med_mod_7, se = "boot", bootstrap = 1000, data = s7, 
                    likelihood = "wishart")
 summary(fit_mutiple7, standardized = T, rsq = T)
 parameterEstimates((fit_mutiple7))
