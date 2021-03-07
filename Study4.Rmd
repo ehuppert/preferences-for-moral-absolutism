@@ -502,6 +502,32 @@ t_apa(t.test(SI_composite4  ~ proclamation, rarely_exclude_5, var.equal = TRUE))
 t.test(SI_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE)
 t_apa(t.test(SI_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE))
 
+#Within levels of behavior 
+
+#Prosocial truth: rarely vs. sometimes
+t.test(SI_composite4  ~ proclamation, never_truth_5, var.equal = TRUE)
+t_apa(t.test(SI_composite4  ~ proclamation, never_truth_5, var.equal = TRUE))
+
+#Selfish lie: rarely vs. sometimes
+t.test(SI_composite4  ~ proclamation, never_lie_5, var.equal = TRUE)
+t_apa(t.test(SI_composite4  ~ proclamation, never_lie_5, var.equal = TRUE))
+
+#Prosocial truth: never vs. sometimes
+t.test(SI_composite4  ~ proclamation, rarely_truth_5, var.equal = TRUE)
+t_apa(t.test(SI_composite4  ~ proclamation, rarely_truth_5, var.equal = TRUE))
+
+#Selfish lie: never vs. sometimes
+t.test(SI_composite4  ~ proclamation, rarely_lie_5, var.equal = TRUE)
+t_apa(t.test(SI_composite4  ~ proclamation, rarely_lie_5, var.equal = TRUE))
+
+#Prosocial truth: never vs. rarely
+t.test(SI_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
+t_apa(t.test(SI_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
+
+#Selfish lie: never vs. rarely
+t.test(SI_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
+t_apa(t.test(SI_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
+
 #Alternative ANOVA and tukey post-hoc tests
 SI_model = aov_ez('ID', 'SI_composite4', s4,
                     within = c (),
