@@ -90,6 +90,34 @@ s9_no_control <- s9%>%
   droplevels()
 ```
 
+# Voting Intentions
+
+```{r}
+#ANOVA
+vote9.afex <-aov_car(vote ~ proclamation*advisor + Error(ID), data=s9_no_control)
+summary(vote9.afex) 
+anova_apa(vote9.afex)
+```
+
+#Voting Intentions - Descriptives
+
+```{r}
+#Across Proclamation*Advisor
+tapply(s9_no_control$vote, list(s9_no_control$proclamation, s9_no_control$advisor), mean)
+tapply(s9_no_control$vote, list(s9_no_control$proclamation, s9_no_control$advisor), sd)
+tapply(s9_no_control$vote, list(s9_no_control$proclamation, s9_no_control$advisor), length)
+
+#Across Proclamations
+tapply(s9_no_control$vote, s9_no_control$proclamation, mean)
+tapply(s9_no_control$vote, s9_no_control$proclamation, sd)
+tapply(s9_no_control$vote, s9_no_control$proclamation, length)
+
+#Across Advisor
+tapply(s9_no_control$vote, s9_no_control$advisor, mean)
+tapply(s9_no_control$vote, s9_no_control$advisor, sd)
+tapply(s9_no_control$vote, s9_no_control$advisor, length)
+```
+
 # Hypocrisy
 
 ```{r}
@@ -220,6 +248,16 @@ tapply(no_advisor_df$Moral_composite, no_advisor_df$proclamation, FUN = mean)
 t.test(Moral_composite9  ~ proclamation, s9_no_control, var.equal = TRUE)
 t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_control, var.equal = TRUE)) # abs v flex significant
 
+#Compare moral ratings of candidates who make the abs to flex with no advisor prep
+s9_no_control2 <- no_advisor_df  %>%
+   filter(proclamation != "control")%>%
+  droplevels()
+
+#Compare moral ratings of candidates who make the abs to flex proc
+t.test(Moral_composite9  ~ proclamation, s9_no_control2, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_control2, var.equal = TRUE)) # abs v flex significant
+
+
 #Compare moral ratings of candidate who make the flex proc to control
 s9_no_abs<- s9 %>%
    filter(proclamation != "absolute")%>%
@@ -227,6 +265,14 @@ s9_no_abs<- s9 %>%
 
 t.test(Moral_composite9  ~ proclamation, s9_no_abs, var.equal = TRUE)
 t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_abs, var.equal = TRUE)) # abs v flex significant
+
+#Aagin no advisor prep flex vs. control
+s9_no_abs2 <- no_advisor_df %>%
+   filter(proclamation != "absolute")%>%
+  droplevels()
+
+t.test(Moral_composite9  ~ proclamation, s9_no_abs2, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_abs2, var.equal = TRUE)) # abs v flex significant
 
 
 #Compare moral ratings of candidate who makes the abs proc to control
@@ -236,6 +282,15 @@ s9_no_flex <- s9 %>%
 
 t.test(Moral_composite9  ~ proclamation, s9_no_flex, var.equal = TRUE)
 t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_flex, var.equal = TRUE)) # abs v flex significant
+
+#Again no advisor, abs vs. control
+s9_no_flex2 <- no_advisor_df %>%
+   filter(proclamation != "flexible")%>%
+  droplevels()
+
+t.test(Moral_composite9  ~ proclamation, s9_no_flex2, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_flex2, var.equal = TRUE)) # abs v flex significant
+
 
 #moral by proc and advisor
 tapply(s9$Moral_composite9, list(s9$proclamation, s9$advisor), FUN = mean)
