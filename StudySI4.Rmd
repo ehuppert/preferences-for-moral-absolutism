@@ -30,7 +30,7 @@ library(emmeans)
 
 #read in data
 
-s9 <- read.csv(here("Hypocrisy_StudySI_4.csv")) #1021
+s9 <- read.csv(here("HypocrisyStudySI_4.csv")) #433
 
 ```
 
@@ -49,11 +49,13 @@ Assignment to absolute vs. flexible honesty stance vs. control
 2. Advisor 
 Assignment to no advisor prep for the interview vs. political advisor prep for the interview.
 
-3. d1 = Perceived lying behavior
+3. vote = Likelihood of voting for Matthew Johnson 
 
-4. g1 = Honesty ideals
+4. d1 = Perceived lying behavior
 
-5. imm = Perceived immorality of lying generally (not specific to Matthew Johnson)
+5. g1 = Honesty ideals
+
+6. imm = Perceived immorality of lying generally (not specific to Matthew Johnson)
 
 # Composite DVs
 
