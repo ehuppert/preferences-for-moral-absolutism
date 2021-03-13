@@ -253,7 +253,9 @@ print(mmeans)
 post1 <- emmeans(hyp_model, ~ proclamation)
 pairs(post1)  
 post2 <- emmeans(hyp_model, ~ proclamation|behavior)
-pairs(post2)  
+pairs(post2) 
+post3 <- emmeans(hyp_model, ~ proclamation*behavior)
+pairs(post3) 
 ```
 
 #Morality 
@@ -351,7 +353,9 @@ print(mmeans)
 post1 <- emmeans(mor_model, ~ proclamation|behavior)
 pairs(post1)  
 post2 <- emmeans(mor_model, ~ proclamation)
-pairs(post2)  
+pairs(post2) 
+post3 <- emmeans(mor_model, ~ proclamation*behavior)
+pairs(post3)
 ```
 
 #Commitment to Honesty
