@@ -90,7 +90,7 @@ describe(morality5_check )
 psych::alpha(morality5_check ) #alpha = 0.97
 s5 <- mutate(s5, Moral.1_composite5 = ((s5$moral_1 +s5$moral_2 + s5$moral_3)/3))
 
-#Future Honesty
+#Commitment to Honesty
 Honest5_df <- data.frame(s5$honest_freq_1, s5$honest_likely_1, s5$honest_extreme_1, s5$committment_honesty_1)
 summary(Honest5_df)
 describe(Honest5_df)
@@ -114,14 +114,14 @@ describe(morality5_check.2)
 psych::alpha(morality5_check.2) #alpha = 0.97
 s5 <- mutate(s5, Moral.2_composite5  = ((s5$moral_1.2+s5$moral_2.2+s5$moral_3.2)/3))
 
-#Future Honesty
+#Commitment to Honesty
 Honest5_df.2  <- data.frame(s5$honest_freq_2, s5$honest_likely_2, s5$honest_extreme_2, s5$committment_honesty_2)
 summary(Honest5_df.2)
 describe(Honest5_df.2)
 psych::alpha(Honest5_df.2) #alpha = 0.82
 s5 <- mutate(s5, Honest.2_composite5 = ((s5$honest_freq_2 + s5$honest_likely_2 + s5$honest_extreme_2 + s5$committment_honesty_2)/4))
 
-#Supplemental (guilt and moral standards) 
+#Supplemental (guilt and moral standards/realism) 
 #Guilt time 1
 cor.test(s5$guilt_1, s5$guilt_2) #r = 0.93
 s5 <- mutate(s5, Guilt_composite = ((s5$guilt_1+s5$guilt_2)/2))
