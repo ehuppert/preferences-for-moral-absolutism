@@ -314,7 +314,7 @@ t_apa(t.test(Moral_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE)
 t.test(Moral_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE)
 t_apa(t.test(Moral_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE))
 
- #Alternative ANOVA and tukey post-hoc tests
+#Alternative ANOVA and tukey post-hoc tests
 mor_model = aov_ez('ID', 'Moral_composite3', s3,
                     within = c (),
                     between = c ('proclamation', 'behavior'),

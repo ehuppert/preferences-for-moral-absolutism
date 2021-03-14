@@ -334,7 +334,6 @@ hypo_moral5 <-melt(s5,
 moral.afex <- aov_car(moral.value ~ proclamation*order*moral.time + Error(ID/moral.time), data=hypo_moral5)
 summary(moral.afex)
 anova_apa(moral.afex)
-
 ```
 
 # Morality Descriptives
@@ -491,8 +490,13 @@ post2 <- emmeans(mor_model, ~ order|proclamation)
 pairs(post2)  
 post3 <- emmeans(mor_model, ~ moral.time|order)
 pairs(post3)  
-post4 <- emmeans(mor_model, ~ proclamation|order)
+post4 <- emmeans(mor_model, ~ order*proclamation)
 pairs(post4)  
+post5 <- emmeans(mor_model, ~ order*moral.time)
+pairs(post5)
+post6 <- emmeans(mor_model, ~ moral.time*proclamation)
+pairs(post6)
+
 ```
 
 #Commitment to Honesty
