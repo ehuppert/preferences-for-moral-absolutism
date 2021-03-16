@@ -228,7 +228,9 @@ print(hyp_model)
 means <- emmeans(hyp_model, ~ proclamation|behavior)
 print(means)
 post1 <- emmeans(hyp_model, ~ proclamation|behavior)
-pairs(post1)     
+pairs(post1)
+
+
 ```
 
 

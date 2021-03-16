@@ -279,7 +279,6 @@ flexible_hypo <- hypocrisy_df %>%
 t.test(hypocrisy.value ~ order, flexible_hypo , var.equal = TRUE)
 t_apa(t.test(hypocrisy.value ~ order, flexible_hypo, var.equal = TRUE))
 
-
 #Effect of proc in just survey1
 survey1_hypo <- hypocrisy_df %>%
   filter(order==  "survey1")
@@ -305,17 +304,22 @@ hyp_model = aov_ez('ID', 'hypocrisy.value', hypocrisy_df,
                     between = c ('proclamation', 'order'),
                     anova_table = list(es = 'pes'))
 print(hyp_model)
+
+em1 <- emmeans::emmeans(hyp_model, pairwise ~ proclamation:hypocrisy.time)
+em1$contrasts
 ptmeans <- emmeans(hyp_model, ~ hypocrisy.time|proclamation)
 print(ptmeans)
-pomeans <- emmeans(hyp_model, ~ order|proclamation)
-print(pomeans)
 post1 <- emmeans(hyp_model, ~ hypocrisy.time|proclamation)
 pairs(post1)
-post2 <- emmeans(hyp_model, ~ order|proclamation)
-pairs(post2) 
+
+em2 <- emmeans::emmeans(hyp_model, pairwise ~ proclamation:order)
+em2$contrasts
 post3 <- emmeans(hyp_model, ~ proclamation|order)
 pairs(post3) 
-
+pomeans <- emmeans(hyp_model, ~ order|proclamation)
+print(pomeans)
+post2 <- emmeans(hyp_model, ~ order|proclamation)
+pairs(post2)
 ```
 
 #Morality 
@@ -478,24 +482,28 @@ mor_model = aov_ez('ID', 'moral.value', hypo_moral5,
                     between = c ('proclamation', 'order'),
                     anova_table = list(es = 'pes'))
 print(mor_model)
+
+em4 <- emmeans::emmeans(mor_model, pairwise ~ moral.time:proclamation)
+em4$contrasts
 ptmeans <- emmeans(mor_model, ~ moral.time|proclamation)
 print(ptmeans)
-pomeans <- emmeans(mor_model, ~ order|proclamation)
-print(pomeans)
-tomeans <- emmeans(mor_model, ~ moral.time|order)
-print(tomeans)
 post1 <- emmeans(mor_model, ~ moral.time|proclamation)
 pairs(post1)
+
+em5 <- emmeans::emmeans(mor_model, pairwise ~ order:proclamation)
+em5$contrasts
+pomeans <- emmeans(mor_model, ~ order|proclamation)
+print(pomeans)
 post2 <- emmeans(mor_model, ~ order|proclamation)
 pairs(post2)  
+
+em6 <- emmeans::emmeans(mor_model, pairwise ~ moral.time:order)
+em6$contrasts
+tomeans <- emmeans(mor_model, ~ moral.time|order)
+print(tomeans)
 post3 <- emmeans(mor_model, ~ moral.time|order)
 pairs(post3)  
-post4 <- emmeans(mor_model, ~ order*proclamation)
-pairs(post4)  
-post5 <- emmeans(mor_model, ~ order*moral.time)
-pairs(post5)
-post6 <- emmeans(mor_model, ~ moral.time*proclamation)
-pairs(post6)
+
 
 ```
 
@@ -663,20 +671,31 @@ hon_model = aov_ez('ID', 'honest.value', hypo_honest5,
                     between = c ('proclamation', 'order'),
                     anova_table = list(es = 'pes'))
 print(hon_model)
+
+em7 <- emmeans::emmeans(hon_model, pairwise ~ honest.time:proclamation)
+em7$contrasts
 ptmeans <- emmeans(hon_model, ~ honest.time|proclamation)
 print(ptmeans)
-pomeans <- emmeans(hon_model, ~ order|proclamation)
-print(pomeans)
-tomeans <- emmeans(hon_model, ~ honest.time|order)
-print(tomeans)
 post1 <- emmeans(hon_model, ~ honest.time|proclamation)
 pairs(post1)
+
+em8 <- emmeans::emmeans(hon_model, pairwise ~ order:proclamation)
+em8$contrasts
+pomeans <- emmeans(hon_model, ~ order|proclamation)
+print(pomeans)
 post2 <- emmeans(hon_model, ~ order|proclamation)
 pairs(post2)  
-post3 <- emmeans(hon_model, ~ honest.time|order)
-pairs(post3)  
 post4 <- emmeans(hon_model, ~ proclamation|order)
 pairs(post4) 
+
+em9 <- emmeans::emmeans(hon_model, pairwise ~ honest.time:order)
+em9$contrasts
+tomeans <- emmeans(hon_model, ~ honest.time|order)
+print(tomeans)
+post3 <- emmeans(hon_model, ~ honest.time|order)
+pairs(post3) 
+
+ 
 ```
 
 #Supplemental Information
@@ -815,7 +834,6 @@ t_apa(t.test(ms.value ~ proclamation, survey1_ms, var.equal = TRUE))
 game1_ms <- hypo_ms  %>%
   filter(order==  "game1")
 
-xf
 
 #Alternative ANOVA and tukey post-hoc tests
 ms_model = aov_ez('ID', 'ms.value', hypo_ms,
@@ -823,12 +841,18 @@ ms_model = aov_ez('ID', 'ms.value', hypo_ms,
                     between = c ('proclamation', 'order'),
                     anova_table = list(es = 'pes'))
 print(ms_model)
+
+em9 <- emmeans::emmeans(ms_model, pairwise ~ ms.time:proclamation)
+em9$contrasts
 ptmeans <- emmeans(ms_model, ~ ms.time|proclamation)
 print(ptmeans)
-pomeans <- emmeans(ms_model, ~ order|proclamation)
-print(pomeans)
 post1 <- emmeans(ms_model, ~ ms.time|proclamation)
 pairs(post1)
+
+em10 <- emmeans::emmeans(ms_model, pairwise ~ order:proclamation)
+em10$contrasts
+pomeans <- emmeans(ms_model, ~ order|proclamation)
+print(pomeans)
 post2 <- emmeans(ms_model, ~ order|proclamation)
 pairs(post2)  
 post3 <- emmeans(ms_model, ~ proclamation|order)
@@ -996,16 +1020,24 @@ ms2_model = aov_ez('ID', 'ms2.value', hypo_ms2,
                     between = c ('proclamation', 'order'),
                     anova_table = list(es = 'pes'))
 print(ms2_model)
-ptmeans <- emmeans(ms2_model, ~ ms2.time|proclamation)
-print(ptmeans)
+
+em11 <- emmeans::emmeans(ms2_model, pairwise ~ order:proclamation)
+em11$contrasts
 pomeans <- emmeans(ms2_model, ~ order|proclamation)
 print(pomeans)
-post1 <- emmeans(ms2_model, ~ ms2.time|proclamation)
-pairs(post1)
 post2 <- emmeans(ms2_model, ~ order|proclamation)
 pairs(post2)  
 post3 <- emmeans(ms2_model, ~ proclamation|order)
-pairs(post3) 
+pairs(post3)
+
+em12 <- emmeans::emmeans(ms2_model, pairwise ~ order:proclamation)
+em12$contrasts
+ptmeans <- emmeans(ms2_model, ~ ms2.time|proclamation)
+print(ptmeans)
+post1 <- emmeans(ms2_model, ~ ms2.time|proclamation)
+pairs(post1)
+
+ 
 ```
 
 #Guilt
