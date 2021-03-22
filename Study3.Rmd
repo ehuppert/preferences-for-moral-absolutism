@@ -492,22 +492,25 @@ s3 <- mutate(s3, pref.center = scale(s3$pref))
 
 ```{r}
 #Preferences Regression - Hypocrisy
-hypocrisy.lm <- lm(Hypocrisy_composite3 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s3)
+hypocrisy.lm <- lm(Hypocrisy_composite3 ~ sometimes*pref.center, data= s3)
 summary(hypocrisy.lm)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s3$Hypocrisy_composite3, list(s3$proclamation, s3$pref), mean)
+tapply(s3$Hypocrisy_composite3, list(s3$proclamation, s3$pref), sd)
 tapply(s3$Hypocrisy_composite3, list(s3$sometimes, s3$pref), mean)
 tapply(s3$Hypocrisy_composite3, list(s3$sometimes, s3$pref), sd)
 tapply(s3$Hypocrisy_composite3, s3$sometimes, mean)
 tapply(s3$Hypocrisy_composite3, s3$sometimes, sd)
 
 #Preferences Regression - Morality
-moral.lm <- lm(Moral_composite3 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s3)
+moral.lm <- lm(Moral_composite3 ~ sometimes*pref.center, data= s3)
 summary(moral.lm)
 
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s3$Moral_composite3, list(s3$proclamation, s3$pref), mean)
+tapply(s3$Moral_composite3, list(s3$proclamation, s3$pref), sd)
+tapply(s3$Moral_composite3, list(s3$proclamation, s3$pref), length)
 tapply(s3$Moral_composite3, list(s3$sometimes, s3$pref), mean)
 tapply(s3$Moral_composite3, s3$proclamation, mean)
 tapply(s3$Moral_composite3, s3$rarely, mean)
@@ -516,11 +519,12 @@ tapply(s3$Moral_composite3, s3$sometimes, mean)
 tapply(s3$Moral_composite3, s3$sometimes,sd)
 
 #Preferences Regression - Commitment to Honesty
-honest.lm <- lm(Honest_composite3 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s3)
+honest.lm <- lm(Honest_composite3 ~  sometimes*pref.center, data= s3)
 summary(honest.lm)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s3$Honest_composite3, list(s3$proclamation, s3$pref), mean)
+tapply(s3$Honest_composite3, list(s3$proclamation, s3$pref), sd)
 tapply(s3$Honest_composite3, list(s3$sometimes, s3$pref), mean)
 tapply(s3$Honest_composite3, s3$proclamation, mean)
 tapply(s3$Honest_composite3, s3$pref, mean)
@@ -535,10 +539,26 @@ summary(rv3.glm)
 
 #Frequencies
 table(s3$rv, s3$pref, s3$sometimes)
+#0 = verify, 1 = rely
+table(s3$rv, s3$pref, s3$proclamation)
 table(s3$rv, s3$pref)
 #note that separate tables 0 = never/rarely , 1 = sometimes; within tables, 0 = verify, 1 = rely
 #total per cell
 table(s3$pref)
+
+#Percentages RELY on never
+#always 0/2 0%
+#often 3/10 30%
+#sometimes 22/195 11%
+#rarely 44/297 15%
+#never 20/94 21%
+
+#Percentages RELY on rarely
+#always 0 0%
+#often 0 0%
+#sometimes 23 12%
+#rarely 55 19%
+#never 13 14%
 
 #Percentages RELY on never/rarely
 #always 0/2, 0%
