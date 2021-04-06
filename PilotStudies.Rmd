@@ -1,0 +1,72 @@
+---
+title: "Pilot Studies"
+author: "Elizabeth Huppert"
+date: "4/6/2021"
+output: pdf_document
+---
+
+#Set-up and Read in Data
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+
+#read in data
+
+pilot_parks <- read.csv(here("pilot_parks.csv"))
+pilot_vlab <- read.csv(here("Pilot_vLab.csv"))
+
+```
+
+# Pilot Parks 
+
+# Frequencies of key variables - N = 130
+
+```{r}
+#Attitudes about honesty
+table(pilot_parks$LyingDV)
+#Lying is never okay (5) = 10, 8%
+#Lying is rarely okay (4) = 54, 42%
+#Lying is sometimes okay (3) = 58, 45%
+#Lying is often okay (2) = 6, 5%
+#Lying is always okay (1) = 2, 2%
+```
+
+
+# Pilot Virtual Lab (vlab)
+
+#Frequencies of key variables - N = 154
+
+```{r}
+#Attitudes about honesty
+table(pilot_vlab$attitude)
+#Lying is never okay = 15, 10%
+#Lying is rarely okay = 74, 48%
+#Lying is sometimes okay = 62, 40%
+#Lying is often okay = 3, 2%
+#Lying is always okay = 0, 0%
+
+#Behavior
+table(pilot_vlab$behave)
+#Lying is never okay = 10, 6%
+#Lying is rarely okay = 87, 56%
+#Lying is sometimes okay = 56, 36%
+#Lying is often okay = 1, 1%
+#Lying is always okay = 0, 0%
+
+#Pubic attitudes about honesty
+table(pilot_vlab$public)
+#Lying is never okay = 44, 29%
+#Lying is rarely okay = 80, 52%
+#Lying is sometimes okay = 30, 19%
+#Lying is often okay = 0, 0%
+#Lying is always okay = 0, 0%
+
+```
+

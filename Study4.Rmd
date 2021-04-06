@@ -611,11 +611,12 @@ s4 <- mutate(s4, pref.center = scale(s4$pref))
 
 ```{r}
 #Preferences Regression - Hypocrisy
-hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
+hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s4)
 summary(hypocrisy_4.lm )
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), mean)
+tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), sd)
 tapply(s4$Hypocrisy_composite4, list(s4$sometimes, s4$pref), mean)
 tapply(s4$Hypocrisy_composite4, s4$proclamation, mean)
 tapply(s4$Hypocrisy_composite4, s4$pref, mean)
@@ -625,11 +626,12 @@ tapply(s4$Hypocrisy_composite4, s4$sometimes, mean)
 tapply(s4$Hypocrisy_composite4, s4$sometimes, sd)
 
 #Preferences Regression - Morality
-moral_4.lm <- lm(Moral_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
+moral_4.lm <- lm(Moral_composite4 ~ sometimes*pref.center, data= s4)
 summary(moral_4.lm)
 
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), mean)
+tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), sd)
 tapply(s4$Moral_composite4, list(s4$sometimes, s4$pref), mean)
 tapply(s4$Moral_composite4, s4$proclamation, mean)
 tapply(s4$Moral_composite4, s4$sometimes, mean)
@@ -639,11 +641,12 @@ tapply(s4$Moral_composite4, s4$rarely, sd)
 
 
 #Preferences Regression - Commitment to Honesty
-honest_4.lm <- lm(Honest_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
+honest_4.lm <- lm(Honest_composite4 ~ sometimes*pref.center, data= s4)
 summary(honest_4.lm)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), mean)
+tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), sd)
 tapply(s4$Honest_composite4, list(s4$sometimes, s4$pref), mean)
 tapply(s4$Honest_composite4, s4$proclamation, mean)
 tapply(s4$Honest_composite4, s4$sometimes, mean)
@@ -653,11 +656,12 @@ tapply(s4$Honest_composite4, s4$rarely, sd)
 
 
 #Preferences Regression - Social Benefit (SI)
-SI.lm <- lm(SI_composite4 ~ sometimes + rarely + sometimes*pref.center + rarely*pref.center, data= s4)
+SI.lm <- lm(SI_composite4 ~ sometimes*pref.center, data= s4)
 summary(SI.lm )
 
 #Look at mean SI ratings by proclamation and preferences 
 tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), mean)
+tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), sd)
 tapply(s4$SI_composite4, s4$sometimes, mean)
 tapply(s4$SI_composite4, s4$sometimes, sd)
 tapply(s4$SI_composite4, s4$rarely, mean)
@@ -671,6 +675,22 @@ summary(rv4.4.glm)
 
 #Frequencies
 table(s4$rv, s4$pref, s4$sometimes)
+#0 = verify, 1 = rely
+table(s4$rv, s4$pref, s4$proclamation)
+#Percentages RELY on never
+#always 1/4 25%
+#often 1/9 11%
+#sometimes 15/144 10%
+#rarely 45/330 14%
+#never 33/109 30%
+
+#Percentages that RELY on rarey
+#always 1/4 25%
+#often 1/9 11%
+#sometimes 8/144 6%
+#rarely 62/330 19%
+#never 11/109
+
 #note that separate tables 0 = never/rarely , 1 = sometimes; within tables, 0 = verify, 1 = rely
 #total per cell
 table(s4$pref)
