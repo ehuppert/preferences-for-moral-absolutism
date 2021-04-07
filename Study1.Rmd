@@ -32,7 +32,6 @@ library(emmeans)
 #read in data
 
 s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv")) #1021
-
 ```
 
 
