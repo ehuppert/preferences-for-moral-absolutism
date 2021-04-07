@@ -68,5 +68,23 @@ table(pilot_vlab$public)
 #Lying is often okay = 0, 0%
 #Lying is always okay = 0, 0%
 
+#does the proportion of sometimes stance differ in attitudes and public?
+flex_test <- prop.test(x = c(62, 30), n = c(154, 154), correct = TRUE)
+flex_test
+
+#does the proportion of the absolute stance differ in attitudes and public?
+abs_test <- prop.test(x = c(15, 44), n = c(154, 154), correct = TRUE)
+abs_test
+
+#are frequencies for absolute proclamation in personal attitude and public stance significantly diferent?
+table(pilot_vlab$attitude, pilot_vlab$public)
+summary(table(pilot_vlab$attitude, pilot_vlab$public))
+#chisq = 69.85, df = 6, p < .001
+ 
+#cells < 5 so use fisher exact test
+chi_test2 <- fisher.test(table(pilot_vlab$attitude, pilot_vlab$public))
+chi_test2 # p < .001
+
+
 ```
 
