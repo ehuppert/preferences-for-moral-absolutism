@@ -121,6 +121,9 @@ describe(Honest5_df.2)
 psych::alpha(Honest5_df.2) #alpha = 0.82
 s5 <- mutate(s5, Honest.2_composite5 = ((s5$honest_freq_2 + s5$honest_likely_2 + s5$honest_extreme_2 + s5$committment_honesty_2)/4))
 
+#Correlation between Morality time 1 and time 2 composite for post-hoc power analysis
+cor.test(s5$Moral.1_composite5, s5$Moral.2_composite5) #r = .58
+
 #Supplemental (guilt and moral standards/realism) 
 #Guilt time 1
 cor.test(s5$guilt_1, s5$guilt_2) #r = 0.93
