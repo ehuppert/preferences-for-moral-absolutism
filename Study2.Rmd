@@ -179,8 +179,22 @@ t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
 
 ```{r}
 morality_2.afex <-aov_car(Moral_composite2 ~ Proclamation + Error(ID), data= s2)
-summary(morality_2.afex ) 
-anova_apa(morality_2.afex ) 
+summary(morality_2.afex) 
+anova_apa(morality_2.afex)
+
+#Abs vs. Flex morality focal - need cohen's D
+#abs mean = 2.70, sd = 1.07, 83 
+#flex mean =  2.39, sd = 1.10, 79
+#pooled SD = sqrt(((1.07^2) + (1.10^2))/2)
+sqrt((((1.07^2) + (1.10^2))/2)) #1.085
+
+#cohens = (mean - mean)/SD pooeld
+(2.70-2.39)/1.085104 #0.286
+
+d2 <- cohens_d(t_test(Moral_composite2 ~ Proclamation, absflex_only)) 
+#see Subset Data section below to exclude control
+d2 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.282, enter 0.28
+
 ```
 
 # Morality Descriptives

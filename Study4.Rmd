@@ -266,6 +266,19 @@ moral_4.afex <- aov_car(Moral_composite4 ~ proclamation * behavior + Error(ID), 
 summary(moral_4.afex)
 anova_apa(moral_4.afex)
 
+#Abs vs. Flex morality focal - need cohen's D
+#abs mean =   4.22, sd = 2.12, 201 
+#flex mean =  3.59, sd = 1.63, 198
+#pooled SD = sqrt(((2.12^2) + (1.63^2))/2)
+sqrt((((2.12^2) + (1.63^2))/2)) #1.890939
+
+#cohens = (mean - mean)/SD pooeld
+(4.22-3.59)/1.890939 #0.33
+
+d4 <- cohens_d(t_test(Moral_composite4 ~ proclamation, rarely_exclude_5)) 
+#see Hypocrisy Simple Effects above to exclude rarely, N = 399
+d4 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.34, enter this in power
+
 ```
 
 #Morality Descriptives

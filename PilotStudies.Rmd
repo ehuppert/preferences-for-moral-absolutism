@@ -72,9 +72,25 @@ table(pilot_vlab$public)
 flex_test <- prop.test(x = c(62, 30), n = c(154, 154), correct = TRUE)
 flex_test
 
+#does the proportion of sometimes stance differ in behavior and public?
+flex_test2 <- prop.test(x = c(56, 30), n = c(154, 154), correct = TRUE)
+flex_test2
+
 #does the proportion of the absolute stance differ in attitudes and public?
 abs_test <- prop.test(x = c(15, 44), n = c(154, 154), correct = TRUE)
 abs_test
+
+#does the proportion of the absolute stance differ in behavior and public?
+abs_test2 <- prop.test(x = c(10, 44), n = c(154, 154), correct = TRUE)
+abs_test2
+
+#does the proportion of rarely stance differ in attitudes and public?
+rarely_test <- prop.test(x = c(74, 80), n = c(154, 154), correct = TRUE)
+rarely_test
+
+#does the proportion of rarely stance differ in behavior and public?
+rarely_test2 <- prop.test(x = c(87, 80), n = c(154, 154), correct = TRUE)
+rarely_test2
 
 #are frequencies for absolute proclamation in personal attitude and public stance significantly diferent?
 table(pilot_vlab$attitude, pilot_vlab$public)

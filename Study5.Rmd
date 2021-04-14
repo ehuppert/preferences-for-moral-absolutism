@@ -341,6 +341,19 @@ hypo_moral5 <-melt(s5,
 moral.afex <- aov_car(moral.value ~ proclamation*order*moral.time + Error(ID/moral.time), data=hypo_moral5)
 summary(moral.afex)
 anova_apa(moral.afex)
+
+#Abs vs. Flex morality focal at time two - need cohen's D
+#abs mean =   4.54, sd = 1.59, 294 
+#flex mean =  3.92, sd = 1.39, 306
+#pooled SD = sqrt(((1.59^2) + (1.39^2))/2)
+sqrt((((1.59^2) + (1.39^2))/2)) #1.493352
+
+#cohens = (mean - mean)/SD pooeld
+(4.54-3.92)/1.493352 # 0.42
+
+d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s5)) 
+#see Hypocrisy Simple Effects above to exclude rarely, N = 600
+d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.42, enter this in power
 ```
 
 # Morality Descriptives
