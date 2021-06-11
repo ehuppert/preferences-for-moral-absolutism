@@ -1118,3 +1118,4 @@ table(s5$proclamation, s5$order, s5$trustbeh)
 
 See Study5_mediation.R Rscript for mediation results.
 
+Test for Github token.
