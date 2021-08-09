@@ -1,5 +1,5 @@
 ---
-title: "StudySI4"
+title: "Supplemental Study 4 (Study 9)"
 author: "Elizabeth Huppert"
 date: "1/18/2021"
 output: html_document

@@ -5,10 +5,6 @@ date: "5/4/2020"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 #Set-up
 
 You need to install the following packages to run this code:
