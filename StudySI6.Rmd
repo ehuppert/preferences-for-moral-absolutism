@@ -1,0 +1,95 @@
+---
+title: "StudySI6"
+author: "Elizabeth Huppert"
+date: "8/12/2021"
+output: html_document
+---
+
+#Set-up
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+-afex
+-psych
+-reshape2
+-apa
+-dplyr
+-emmeans
+
+#Load Packages and Data
+
+```{r, include = FALSE}
+library(here)
+library(tidyverse)
+library(psych)
+library(reshape2)
+library(afex)
+library(apa)
+library(dplyr)
+library(emmeans)
+
+#read in data
+
+s11 <- read.csv(here("HypocrisyStudySI_6.csv"))
+
+```
+
+
+# Does Voting differ by Condition?
+Condition 1 is broad (never okay to lie)
+Condition 2 is specific (never okay to lie about PAC donations)
+
+Descriptives and t-tests:
+
+```{r}
+tapply(broad1$vote_likely, broad1$condition, FUN = mean)
+tapply(broad1$vote_likely, broad1$condition, FUN = sd)
+t.test(vote_likely  ~ condition, broad1, var.equal = TRUE)
+t_apa((t.test(vote_likely  ~ condition, broad1, var.equal = TRUE)))
+```
+
+# Does Hypocrisy differ by Condition?
+
+Check for composite as well
+
+```{r}
+check_hypocrisy.df <- data.frame(broad1$hypocrisy_1, broad1$hypocrisy_2, broad1$hypocrisy_3,
+                                 broad1$hypocrisy_4, broad1$hypocrisy_5)
+
+summary(check_hypocrisy.df)
+describe(check_hypocrisy.df)
+psych::alpha(check_hypocrisy.df) # alpha = .88 so combined
+#Combine for Honesty Composite
+broad1 <- mutate(broad1, 
+          hypo_composite = ((broad1$hypocrisy_1 + broad1$hypocrisy_2 + broad1$hypocrisy_3 +
+                                 broad1$hypocrisy_4 + broad1$hypocrisy_5)/5))
+
+tapply(broad1$hypo_composite, broad1$condition, FUN = mean)
+tapply(broad1$hypo_composite, broad1$condition, FUN = sd)
+t.test(hypo_composite  ~ condition, broad1, var.equal = TRUE)
+t_apa((t.test(hypo_composite ~ condition, broad1, var.equal = TRUE)))
+```
+
+# Does Morality differ by Condition?
+
+Check for composite as well
+
+```{r}
+check_moral.df <- data.frame(broad1$moral_1, broad1$moral_2, broad1$moral_3)
+
+summary(check_moral.df)
+describe(check_moral.df)
+psych::alpha(check_moral.df) # alpha = .95 so combined
+#Combine for Honesty Composite
+broad1 <- mutate(broad1, 
+         moral_composite = ((broad1$moral_1 + broad1$moral_2 + broad1$moral_3)/3))
+
+tapply(broad1$moral_composite, broad1$condition, FUN = mean)
+tapply(broad1$moral_composite, broad1$condition, FUN = sd)
+t.test(moral_composite  ~ condition, broad1, var.equal = TRUE)
+t_apa((t.test(moral_composite ~ condition, broad1, var.equal = TRUE)))
+```
+
+

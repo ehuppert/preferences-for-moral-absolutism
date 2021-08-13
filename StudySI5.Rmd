@@ -49,14 +49,18 @@ Assignment to absolute vs. flexible honesty stance
 #Re-code condition for ease of interpretation - "proc"
 
 ```{r}
-hypo_SI5$proc[hypo_SI5$condition=="1"] <- "absolute"
-hypo_SI5$proc[hypo_SI5$condition=="2"] <- "flexible"
+s10$proc[s10$condition=="1"] <- "absolute"
+s10$proc[s10$condition=="2"] <- "flexible"
 ```
 
-# Factorize Country
+
+# Factorize Country and Subject (id)
+
+Note: Country 1 is India and Country 2 is the US.
 
 ```{r}
-hypo_SI5$Country <- as.factor(hypo_SI5$Country)
+s10$Country <- as.factor(s10$Country)
+s10$id<- as.factor(s10$id)
 ```
 
 # Composite variables
@@ -64,251 +68,248 @@ hypo_SI5$Country <- as.factor(hypo_SI5$Country)
 ```{r}
 #time point 1 - hypocrisy
 #hypocrisy_1 - this person is a hypocrite
-hypo_SI5$h1[hypo_SI5$hypocrite=="Strongly disagree"] <- "1"
-hypo_SI5$h1[hypo_SI5$hypocrite=="Disagree"] <- "2"
-hypo_SI5$h1[hypo_SI5$hypocrite=="Somewhat disagree"] <- "3"
-hypo_SI5$h1[hypo_SI5$hypocrite=="Neither agree nor disagree"] <- "4"
-hypo_SI5$h1[hypo_SI5$hypocrite=="Somewhat agree"] <- "5"
-hypo_SI5$h1[hypo_SI5$hypocrite=="Agree"] <- "6"
-hypo_SI5$h1[hypo_SI5$hypocrite=="Strongly agree"] <- "7"
-hypo_SI5$h1 <- as.numeric(hypo_SI5$h1)
+s10$h1[s10$hypocrite=="Strongly disagree"] <- "1"
+s10$h1[s10$hypocrite=="Disagree"] <- "2"
+s10$h1[s10$hypocrite=="Somewhat disagree"] <- "3"
+s10$h1[s10$hypocrite=="Neither agree nor disagree"] <- "4"
+s10$h1[s10$hypocrite=="Somewhat agree"] <- "5"
+s10$h1[s10$hypocrite=="Agree"] <- "6"
+s10$h1[s10$hypocrite=="Strongly agree"] <- "7"
+s10$h1 <- as.numeric(s10$h1)
 #inauthentic
-hypo_SI5$h2[hypo_SI5$inauthentic=="Strongly disagree"] <- "1"
-hypo_SI5$h2[hypo_SI5$inauthentic=="Disagree"] <- "2"
-hypo_SI5$h2[hypo_SI5$inauthentic=="Somewhat disagree"] <- "3"
-hypo_SI5$h2[hypo_SI5$inauthentic=="Neither agree nor disagree"] <- "4"
-hypo_SI5$h2[hypo_SI5$inauthentic=="Somewhat agree"] <- "5"
-hypo_SI5$h2[hypo_SI5$inauthentic=="Agree"] <- "6"
-hypo_SI5$h2[hypo_SI5$inauthentic=="Strongly agree"] <- "7"
-hypo_SI5$h2 <- as.numeric(hypo_SI5$h2)
+s10$h2[s10$inauthentic=="Strongly disagree"] <- "1"
+s10$h2[s10$inauthentic=="Disagree"] <- "2"
+s10$h2[s10$inauthentic=="Somewhat disagree"] <- "3"
+s10$h2[s10$inauthentic=="Neither agree nor disagree"] <- "4"
+s10$h2[s10$inauthentic=="Somewhat agree"] <- "5"
+s10$h2[s10$inauthentic=="Agree"] <- "6"
+s10$h2[s10$inauthentic=="Strongly agree"] <- "7"
+s10$h2 <- as.numeric(s10$h2)
 #disingenuous
-hypo_SI5$h3[hypo_SI5$disingenuous=="Strongly disagree"] <- "1"
-hypo_SI5$h3[hypo_SI5$disingenuous=="Disagree"] <- "2"
-hypo_SI5$h3[hypo_SI5$disingenuous=="Somewhat disagree"] <- "3"
-hypo_SI5$h3[hypo_SI5$disingenuous=="Neither agree nor disagree"] <- "4"
-hypo_SI5$h3[hypo_SI5$disingenuous=="Somewhat agree"] <- "5"
-hypo_SI5$h3[hypo_SI5$disingenuous=="Agree"] <- "6"
-hypo_SI5$h3[hypo_SI5$disingenuous=="Strongly agree"] <- "7"
-hypo_SI5$h3 <- as.numeric(hypo_SI5$h3)
+s10$h3[s10$disingenuous=="Strongly disagree"] <- "1"
+s10$h3[s10$disingenuous=="Disagree"] <- "2"
+s10$h3[s10$disingenuous=="Somewhat disagree"] <- "3"
+s10$h3[s10$disingenuous=="Neither agree nor disagree"] <- "4"
+s10$h3[s10$disingenuous=="Somewhat agree"] <- "5"
+s10$h3[s10$disingenuous=="Agree"] <- "6"
+s10$h3[s10$disingenuous=="Strongly agree"] <- "7"
+s10$h3 <- as.numeric(s10$h3)
 #cronbachs alpha for 3  hypocrisy items - time one
-hypoSI5_df <- data.frame(hypo_SI5$h1, hypo_SI5$h2, hypo_SI5$h3)
+hypoSI5_df <- data.frame(s10$h1, s10$h2, s10$h3)
 summary(hypoSI5_df)
 describe(hypoSI5_df)
 psych::alpha(hypoSI5_df) # raw = 0.95
 #hypocrisy items over 0.6 so create a composite
-hypo_SI5 <- mutate(hypo_SI5, 
+s10 <- mutate(s10, 
                    SI5_hcomposite = 
-                     ((hypo_SI5$h1+hypo_SI5$h2+hypo_SI5$h3)/3))
+                     ((s10$h1+s10$h2+s10$h3)/3))
 
 #time two hypocrisy
 #hypo_2 - this person is a hypocrite
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Strongly disagree"] <- "1"
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Disagree"] <- "2"
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Somewhat disagree"] <- "3"
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Neither agree nor disagree"] <- "4"
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Somewhat agree"] <- "5"
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Agree"] <- "6"
-hypo_SI5$h1.2[hypo_SI5$hypo_2 =="Strongly agree"] <- "7"
-hypo_SI5$h1.2 <- as.numeric(hypo_SI5$h1.2)
+s10$h1.2[s10$hypo_2 =="Strongly disagree"] <- "1"
+s10$h1.2[s10$hypo_2 =="Disagree"] <- "2"
+s10$h1.2[s10$hypo_2 =="Somewhat disagree"] <- "3"
+s10$h1.2[s10$hypo_2 =="Neither agree nor disagree"] <- "4"
+s10$h1.2[s10$hypo_2 =="Somewhat agree"] <- "5"
+s10$h1.2[s10$hypo_2 =="Agree"] <- "6"
+s10$h1.2[s10$hypo_2 =="Strongly agree"] <- "7"
+s10$h1.2 <- as.numeric(s10$h1.2)
 #inauth_2 
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Strongly disagree"] <- "1"
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Disagree"] <- "2"
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Somewhat disagree"] <- "3"
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Neither agree nor disagree"] <- "4"
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Somewhat agree"] <- "5"
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Agree"] <- "6"
-hypo_SI5$h2.2[hypo_SI5$inauth_2 =="Strongly agree"] <- "7"
-hypo_SI5$h2.2 <- as.numeric(hypo_SI5$h2.2)
+s10$h2.2[s10$inauth_2 =="Strongly disagree"] <- "1"
+s10$h2.2[s10$inauth_2 =="Disagree"] <- "2"
+s10$h2.2[s10$inauth_2 =="Somewhat disagree"] <- "3"
+s10$h2.2[s10$inauth_2 =="Neither agree nor disagree"] <- "4"
+s10$h2.2[s10$inauth_2 =="Somewhat agree"] <- "5"
+s10$h2.2[s10$inauth_2 =="Agree"] <- "6"
+s10$h2.2[s10$inauth_2 =="Strongly agree"] <- "7"
+s10$h2.2 <- as.numeric(s10$h2.2)
 #disingen_2
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Strongly disagree"] <- "1"
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Disagree"] <- "2"
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Somewhat disagree"] <- "3"
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Neither agree nor disagree"] <- "4"
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Somewhat agree"] <- "5"
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Agree"] <- "6"
-hypo_SI5$h3.2[hypo_SI5$disingen_2=="Strongly agree"] <- "7"
-hypo_SI5$h3.2 <- as.numeric(hypo_SI5$h3.2)
+s10$h3.2[s10$disingen_2=="Strongly disagree"] <- "1"
+s10$h3.2[s10$disingen_2=="Disagree"] <- "2"
+s10$h3.2[s10$disingen_2=="Somewhat disagree"] <- "3"
+s10$h3.2[s10$disingen_2=="Neither agree nor disagree"] <- "4"
+s10$h3.2[s10$disingen_2=="Somewhat agree"] <- "5"
+s10$h3.2[s10$disingen_2=="Agree"] <- "6"
+s10$h3.2[s10$disingen_2=="Strongly agree"] <- "7"
+s10$h3.2 <- as.numeric(s10$h3.2)
 #cronbachs alpha for 3  hypocrisy items - time two
-hypoSI5_df2 <- data.frame(hypo_SI5$h1.2, hypo_SI5$h2.2, hypo_SI5$h3.2)
+hypoSI5_df2 <- data.frame(s10$h1.2, s10$h2.2, s10$h3.2)
 summary(hypoSI5_df2)
 describe(hypoSI5_df2)
 psych::alpha(hypoSI5_df2) # raw = 0.94
 #hypocrisy items over 0.6 so create a composite
-hypo_SI5 <- mutate(hypo_SI5, 
+s10 <- mutate(s10, 
                    SI5_hcomposite2 = 
-                     ((hypo_SI5$h1.2 + hypo_SI5$h2.2 + hypo_SI5$h3.2)/3))
+                     ((s10$h1.2 + s10$h2.2 + s10$h3.2)/3))
 
 #Honesty time 1
 #honest_freq, reverse code
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Not often at all"] <- "7"
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Not very often"] <- "6"
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Slightly often"] <- "5"
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Somewhat often"] <- "4"
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Moderately often"] <- "3"
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Very often"] <- "2"
-hypo_SI5$hf1[hypo_SI5$lie_freq=="Extremely often"] <- "1"
-hypo_SI5$hf1 <- as.numeric(hypo_SI5$hf1)
+s10$hf1[s10$lie_freq=="Not often at all"] <- "7"
+s10$hf1[s10$lie_freq=="Not very often"] <- "6"
+s10$hf1[s10$lie_freq=="Slightly often"] <- "5"
+s10$hf1[s10$lie_freq=="Somewhat often"] <- "4"
+s10$hf1[s10$lie_freq=="Moderately often"] <- "3"
+s10$hf1[s10$lie_freq=="Very often"] <- "2"
+s10$hf1[s10$lie_freq=="Extremely often"] <- "1"
+s10$hf1 <- as.numeric(s10$hf1)
 #honest_likely, reverse code
-hypo_SI5$hl1[hypo_SI5$future_lie=="Not at all likely"] <- "7"
-hypo_SI5$hl1[hypo_SI5$future_lie=="Not very likely"] <- "6"
-hypo_SI5$hl1[hypo_SI5$future_lie=="Slightly likely"] <- "5"
-hypo_SI5$hl1[hypo_SI5$future_lie=="Somewhat likely"] <- "4"
-hypo_SI5$hl1[hypo_SI5$future_lie=="Moderately likely"] <- "3"
-hypo_SI5$hl1[hypo_SI5$future_lie=="Very likely"] <- "2"
-hypo_SI5$hl1[hypo_SI5$future_lie=="Extremely likely"] <- "1"
-hypo_SI5$hl1 <- as.numeric(hypo_SI5$hl1)
+s10$hl1[s10$future_lie=="Not at all likely"] <- "7"
+s10$hl1[s10$future_lie=="Not very likely"] <- "6"
+s10$hl1[s10$future_lie=="Slightly likely"] <- "5"
+s10$hl1[s10$future_lie=="Somewhat likely"] <- "4"
+s10$hl1[s10$future_lie=="Moderately likely"] <- "3"
+s10$hl1[s10$future_lie=="Very likely"] <- "2"
+s10$hl1[s10$future_lie=="Extremely likely"] <- "1"
+s10$hl1 <- as.numeric(s10$hl1)
 #honest_extreme
-hypo_SI5$he1[hypo_SI5$extreme_lie=="Not at all extreme"] <-  "1"
-hypo_SI5$he1[hypo_SI5$extreme_lie=="Not very extreme"] <- "2"
-hypo_SI5$he1[hypo_SI5$extreme_lie=="Slightly extreme"] <- "3"
-hypo_SI5$he1[hypo_SI5$extreme_lie=="Somewhat extreme"] <- "4"
-hypo_SI5$he1[hypo_SI5$extreme_lie=="Moderately extreme"] <- "5"
-hypo_SI5$he1[hypo_SI5$extreme_lie=="Very extreme"] <- "6"
-hypo_SI5$he1[hypo_SI5$extreme_lie=="The most extreme"] <- "7"
-hypo_SI5$he1 <- as.numeric(hypo_SI5$he1)
+s10$he1[s10$extreme_lie=="Not at all extreme"] <-  "1"
+s10$he1[s10$extreme_lie=="Not very extreme"] <- "2"
+s10$he1[s10$extreme_lie=="Slightly extreme"] <- "3"
+s10$he1[s10$extreme_lie=="Somewhat extreme"] <- "4"
+s10$he1[s10$extreme_lie=="Moderately extreme"] <- "5"
+s10$he1[s10$extreme_lie=="Very extreme"] <- "6"
+s10$he1[s10$extreme_lie=="The most extreme"] <- "7"
+s10$he1 <- as.numeric(s10$he1)
 #committment_honest_1
-hypo_SI5$ch1[hypo_SI5$comm_h=="Not at all"] <- " 1"
-hypo_SI5$ch1[hypo_SI5$comm_h=="Not very"] <- "2"
-hypo_SI5$ch1[hypo_SI5$comm_h=="Slightly"] <- "3"
-hypo_SI5$ch1[hypo_SI5$comm_h=="Somewhat"] <- "4"
-hypo_SI5$ch1[hypo_SI5$comm_h=="Moderately"] <- "5"
-hypo_SI5$ch1[hypo_SI5$comm_h=="Very"] <- "6"
-hypo_SI5$ch1[hypo_SI5$comm_h=="Extremely"] <- "7"
-hypo_SI5$ch1 <- as.numeric(hypo_SI5$ch1)
+s10$ch1[s10$comm_h=="Not at all"] <- " 1"
+s10$ch1[s10$comm_h=="Not very"] <- "2"
+s10$ch1[s10$comm_h=="Slightly"] <- "3"
+s10$ch1[s10$comm_h=="Somewhat"] <- "4"
+s10$ch1[s10$comm_h=="Moderately"] <- "5"
+s10$ch1[s10$comm_h=="Very"] <- "6"
+s10$ch1[s10$comm_h=="Extremely"] <- "7"
+s10$ch1 <- as.numeric(s10$ch1)
 #look at different honesty items - 4
-SI5_honesty_df <- data.frame(hypo_SI5$hf1, hypo_SI5$hl1, hypo_SI5$he1, hypo_SI5$ch1)
+SI5_honesty_df <- data.frame(s10$hf1, s10$hl1, s10$he1, s10$ch1)
 summary(SI5_honesty_df)
 describe(SI5_honesty_df)
 psych::alpha(SI5_honesty_df) # raw= 0.67
 #over .6 so combine
-hypo_SI5 <- mutate(hypo_SI5, 
+s10 <- mutate(s10, 
                    SI_honest_composite = 
-                     ((hypo_SI5$hf1 + hypo_SI5$hl1 + hypo_SI5$he1 + hypo_SI5$ch1)/4))
+                     ((s10$hf1 + s10$hl1 + s10$he1 + s10$ch1)/4))
 
 #Honesty composite time two
 
 #honest_freq, reverse code
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Not often at all"] <- "7"
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Not very often"] <- "6"
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Slightly often"] <- "5"
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Somewhat often"] <- "4"
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Moderately often"] <- "3"
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Very often"] <- "2"
-hypo_SI5$hf1.2[hypo_SI5$lie_freq2=="Extremely often"] <- "1"
-hypo_SI5$hf1.2<- as.numeric(hypo_SI5$hf1.2)
+s10$hf1.2[s10$lie_freq2=="Not often at all"] <- "7"
+s10$hf1.2[s10$lie_freq2=="Not very often"] <- "6"
+s10$hf1.2[s10$lie_freq2=="Slightly often"] <- "5"
+s10$hf1.2[s10$lie_freq2=="Somewhat often"] <- "4"
+s10$hf1.2[s10$lie_freq2=="Moderately often"] <- "3"
+s10$hf1.2[s10$lie_freq2=="Very often"] <- "2"
+s10$hf1.2[s10$lie_freq2=="Extremely often"] <- "1"
+s10$hf1.2<- as.numeric(s10$hf1.2)
 #honest_likely, reverse code
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Not at all likely"] <- "7"
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Not very likely"] <- "6"
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Slightly likely"] <- "5"
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Somewhat likely"] <- "4"
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Moderately likely"] <- "3"
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Very likely"] <- "2"
-hypo_SI5$hl1.2[hypo_SI5$future_lie2=="Extremely likely"] <- "1"
-hypo_SI5$hl1.2 <- as.numeric(hypo_SI5$hl1.2)
+s10$hl1.2[s10$future_lie2=="Not at all likely"] <- "7"
+s10$hl1.2[s10$future_lie2=="Not very likely"] <- "6"
+s10$hl1.2[s10$future_lie2=="Slightly likely"] <- "5"
+s10$hl1.2[s10$future_lie2=="Somewhat likely"] <- "4"
+s10$hl1.2[s10$future_lie2=="Moderately likely"] <- "3"
+s10$hl1.2[s10$future_lie2=="Very likely"] <- "2"
+s10$hl1.2[s10$future_lie2=="Extremely likely"] <- "1"
+s10$hl1.2 <- as.numeric(s10$hl1.2)
 #honest_extreme
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="Not at all extreme"] <-  "1"
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="Not very extreme"] <- "2"
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="Slightly extreme"] <- "3"
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="Somewhat extreme"] <- "4"
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="Moderately extreme"] <- "5"
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="Very extreme"] <- "6"
-hypo_SI5$he1.2[hypo_SI5$extreme_lie2=="The most extreme"] <- "7"
-hypo_SI5$he1.2 <- as.numeric(hypo_SI5$he1.2)
+s10$he1.2[s10$extreme_lie2=="Not at all extreme"] <-  "1"
+s10$he1.2[s10$extreme_lie2=="Not very extreme"] <- "2"
+s10$he1.2[s10$extreme_lie2=="Slightly extreme"] <- "3"
+s10$he1.2[s10$extreme_lie2=="Somewhat extreme"] <- "4"
+s10$he1.2[s10$extreme_lie2=="Moderately extreme"] <- "5"
+s10$he1.2[s10$extreme_lie2=="Very extreme"] <- "6"
+s10$he1.2[s10$extreme_lie2=="The most extreme"] <- "7"
+s10$he1.2 <- as.numeric(s10$he1.2)
 #committment_honest_1
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Not at all"] <- " 1"
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Not very"] <- "2"
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Slightly"] <- "3"
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Somewhat"] <- "4"
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Moderately"] <- "5"
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Very"] <- "6"
-hypo_SI5$ch1.2[hypo_SI5$comm_h2=="Extremely"] <- "7"
-hypo_SI5$ch1.2 <- as.numeric(hypo_SI5$ch1.2)
+s10$ch1.2[s10$comm_h2=="Not at all"] <- " 1"
+s10$ch1.2[s10$comm_h2=="Not very"] <- "2"
+s10$ch1.2[s10$comm_h2=="Slightly"] <- "3"
+s10$ch1.2[s10$comm_h2=="Somewhat"] <- "4"
+s10$ch1.2[s10$comm_h2=="Moderately"] <- "5"
+s10$ch1.2[s10$comm_h2=="Very"] <- "6"
+s10$ch1.2[s10$comm_h2=="Extremely"] <- "7"
+s10$ch1.2 <- as.numeric(s10$ch1.2)
 #look at different honesty items - 4
-SI5_honesty_df2 <- data.frame(hypo_SI5$hf1.2, hypo_SI5$hl1.2, hypo_SI5$he1.2, hypo_SI5$ch1.2)
+SI5_honesty_df2 <- data.frame(s10$hf1.2, s10$hl1.2, s10$he1.2, s10$ch1.2)
 summary(SI5_honesty_df2)
 describe(SI5_honesty_df2)
 psych::alpha(SI5_honesty_df2) # raw= 0.70
 #over .6 so combine
-hypo_SI5 <- mutate(hypo_SI5, 
+s10 <- mutate(s10, 
                    SI_honest_composite2 = 
-                     ((hypo_SI5$hf1.2 + hypo_SI5$hl1.2 + hypo_SI5$he1.2 + hypo_SI5$ch1.2)/4))
+                     ((s10$hf1.2 + s10$hl1.2 + s10$he1.2 + s10$ch1.2)/4))
 
 #Moral
 #time 1
 #moral
-hypo_SI5$m1[hypo_SI5$moral =="Not at all"] <- "1"
-hypo_SI5$m1[hypo_SI5$moral =="Not very"] <- "2"
-hypo_SI5$m1[hypo_SI5$moral =="Slightly"] <- "3"
-hypo_SI5$m1[hypo_SI5$moral =="Somewhat"] <- "4"
-hypo_SI5$m1[hypo_SI5$moral =="Moderately"] <- "5"
-hypo_SI5$m1[hypo_SI5$moral =="Very"] <- "6"
-hypo_SI5$m1[hypo_SI5$moral =="Extremely"] <- "7"
-hypo_SI5$m1 <- as.numeric(hypo_SI5$m1)
+s10$m1[s10$moral =="Not at all"] <- "1"
+s10$m1[s10$moral =="Not very"] <- "2"
+s10$m1[s10$moral =="Slightly"] <- "3"
+s10$m1[s10$moral =="Somewhat"] <- "4"
+s10$m1[s10$moral =="Moderately"] <- "5"
+s10$m1[s10$moral =="Very"] <- "6"
+s10$m1[s10$moral =="Extremely"] <- "7"
+s10$m1 <- as.numeric(s10$m1)
 #moral_2
-hypo_SI5$m2[hypo_SI5$ethical=="Not at all"] <- "1"
-hypo_SI5$m2[hypo_SI5$ethical=="Not very"] <- "2"
-hypo_SI5$m2[hypo_SI5$ethical=="Slightly"] <- "3"
-hypo_SI5$m2[hypo_SI5$ethical=="Somewhat"] <- "4"
-hypo_SI5$m2[hypo_SI5$ethical=="Moderately"] <- "5"
-hypo_SI5$m2[hypo_SI5$ethical=="Very"] <- "6"
-hypo_SI5$m2[hypo_SI5$ethical=="Extremely"] <- "7"
-hypo_SI5$m2 <- as.numeric(hypo_SI5$m2)
+s10$m2[s10$ethical=="Not at all"] <- "1"
+s10$m2[s10$ethical=="Not very"] <- "2"
+s10$m2[s10$ethical=="Slightly"] <- "3"
+s10$m2[s10$ethical=="Somewhat"] <- "4"
+s10$m2[s10$ethical=="Moderately"] <- "5"
+s10$m2[s10$ethical=="Very"] <- "6"
+s10$m2[s10$ethical=="Extremely"] <- "7"
+s10$m2 <- as.numeric(s10$m2)
 #moral_3
-hypo_SI5$m3[hypo_SI5$trust =="Not at all"] <- "1"
-hypo_SI5$m3[hypo_SI5$trust =="Not very"] <- "2"
-hypo_SI5$m3[hypo_SI5$trust =="Slightly"] <- "3"
-hypo_SI5$m3[hypo_SI5$trust =="Somewhat"] <- "4"
-hypo_SI5$m3[hypo_SI5$trust =="Moderately"] <- "5"
-hypo_SI5$m3[hypo_SI5$trust =="Very"] <- "6"
-hypo_SI5$m3[hypo_SI5$trust =="Extremely"] <- "7"
-hypo_SI5$m3 <- as.numeric(hypo_SI5$m3)
+s10$m3[s10$trust =="Not at all"] <- "1"
+s10$m3[s10$trust =="Not very"] <- "2"
+s10$m3[s10$trust =="Slightly"] <- "3"
+s10$m3[s10$trust =="Somewhat"] <- "4"
+s10$m3[s10$trust =="Moderately"] <- "5"
+s10$m3[s10$trust =="Very"] <- "6"
+s10$m3[s10$trust =="Extremely"] <- "7"
+s10$m3 <- as.numeric(s10$m3)
 #moral composite
-SI5_moral_df <- data.frame(hypo_SI5$m1, hypo_SI5$m2, hypo_SI5$m3)
+SI5_moral_df <- data.frame(s10$m1, s10$m2, s10$m3)
 summary(SI5_moral_df)
 describe(SI5_moral_df)
 psych::alpha(SI5_moral_df) # raw = 0.93
-hypo_SI5 <- mutate(hypo_SI5, 
-                   SI_moral_composite = ((hypo_SI5$m1+hypo_SI5$m2+hypo_SI5$m3)/3))
+s10 <- mutate(s10, 
+                   SI_moral_composite = ((s10$m1+s10$m2+s10$m3)/3))
 
 #time 2
 #moral
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Not at all"] <- "1"
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Not very"] <- "2"
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Slightly"] <- "3"
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Somewhat"] <- "4"
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Moderately"] <- "5"
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Very"] <- "6"
-hypo_SI5$m1.2[hypo_SI5$moral_2=="Extremely"] <- "7"
-hypo_SI5$m1.2<- as.numeric(hypo_SI5$m1.2)
+s10$m1.2[s10$moral_2=="Not at all"] <- "1"
+s10$m1.2[s10$moral_2=="Not very"] <- "2"
+s10$m1.2[s10$moral_2=="Slightly"] <- "3"
+s10$m1.2[s10$moral_2=="Somewhat"] <- "4"
+s10$m1.2[s10$moral_2=="Moderately"] <- "5"
+s10$m1.2[s10$moral_2=="Very"] <- "6"
+s10$m1.2[s10$moral_2=="Extremely"] <- "7"
+s10$m1.2<- as.numeric(s10$m1.2)
 #moral_2
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Not at all"] <- "1"
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Not very"] <- "2"
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Slightly"] <- "3"
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Somewhat"] <- "4"
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Moderately"] <- "5"
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Very"] <- "6"
-hypo_SI5$m2.2[hypo_SI5$ethical_2=="Extremely"] <- "7"
-hypo_SI5$m2.2 <- as.numeric(hypo_SI5$m2.2)
+s10$m2.2[s10$ethical_2=="Not at all"] <- "1"
+s10$m2.2[s10$ethical_2=="Not very"] <- "2"
+s10$m2.2[s10$ethical_2=="Slightly"] <- "3"
+s10$m2.2[s10$ethical_2=="Somewhat"] <- "4"
+s10$m2.2[s10$ethical_2=="Moderately"] <- "5"
+s10$m2.2[s10$ethical_2=="Very"] <- "6"
+s10$m2.2[s10$ethical_2=="Extremely"] <- "7"
+s10$m2.2 <- as.numeric(s10$m2.2)
 #moral_3
-hypo_SI5$m3.2[hypo_SI5$trust_2 =="Not at all"] <- "1"
-hypo_SI5$m3.2[hypo_SI5$trust_2 =="Not very"] <- "2"
-hypo_SI5$m3.2[hypo_SI5$trust_2 =="Slightly"] <- "3"
-hypo_SI5$m3.2[hypo_SI5$trust_2 =="Somewhat"] <- "4"
-hypo_SI5$m3.2[hypo_SI5$trust_2 =="Moderately"] <- "5"
-hypo_SI5$m3.2[hypo_SI5$trust_2 =="Very"] <- "6"
-hypo_SI5$m3.2[hypo_SI5$trust_2=="Extremely"] <- "7"
-hypo_SI5$m3.2 <- as.numeric(hypo_SI5$m3.2)
+s10$m3.2[s10$trust_2 =="Not at all"] <- "1"
+s10$m3.2[s10$trust_2 =="Not very"] <- "2"
+s10$m3.2[s10$trust_2 =="Slightly"] <- "3"
+s10$m3.2[s10$trust_2 =="Somewhat"] <- "4"
+s10$m3.2[s10$trust_2 =="Moderately"] <- "5"
+s10$m3.2[s10$trust_2 =="Very"] <- "6"
+s10$m3.2[s10$trust_2=="Extremely"] <- "7"
+s10$m3.2 <- as.numeric(s10$m3.2)
 #moral composite
-SI5_moral_df2 <- data.frame(hypo_SI5$m1.2, hypo_SI5$m2.2, hypo_SI5$m3.2)
+SI5_moral_df2 <- data.frame(s10$m1.2, s10$m2.2, s10$m3.2)
 summary(SI5_moral_df2)
 describe(SI5_moral_df2)
 psych::alpha(SI5_moral_df2) # raw = 0.97
-hypo_SI5 <- mutate(hypo_SI5, 
-                   SI_moral_composite2 = ((hypo_SI5$m1.2 + hypo_SI5$m2.2 + hypo_SI5$m3.2 )/3))
+s10 <- mutate(s10, 
+                   SI_moral_composite2 = ((s10$m1.2 + s10$m2.2 + s10$m3.2 )/3))
 
-
-#Does country moderate these effects?
-hypo_SI5$Country <- as.factor(hypo_SI5$Country)
 ```
 
 # Analysis
@@ -316,7 +317,7 @@ hypo_SI5$Country <- as.factor(hypo_SI5$Country)
 # Hypocrisy
 ```{r}
 #Dataframe for Hypocrisy
-hypo5_SI_df <-melt(hypo_SI5, 
+hypo5_SI_df <-melt(s10, 
                     id.vars=c("condition", "id", "proc", "Country"),
                     #measure command is for the DV
                     measure.vars=c("SI5_hcomposite","SI5_hcomposite2"),
@@ -342,10 +343,10 @@ tapply(hypo5_SI_df$h5value, list(hypo5_SI_df$proc, hypo5_SI_df$h5.time),
 tapply(hypo5_SI_df$h5value, list(hypo5_SI_df$proc, hypo5_SI_df$h5.time),
        FUN = mean)
 
-tapply(hypo5_SI_df$h5value, list(hypo5_SI_df$proclamation, hypo5_SI_df$h5.time),
+tapply(hypo5_SI_df$h5value, list(hypo5_SI_df$proc, hypo5_SI_df$h5.time),
        FUN = sd)
 
-#Across Proclamation
+#Across proclamation
 tapply(hypo5_SI_df$h5value, hypo5_SI_df$proc, FUN = mean)
 tapply(hypo5_SI_df$h5value, hypo5_SI_df$proc,FUN = sd)
 tapply(hypo5_SI_df$h5value, hypo5_SI_df$proc,FUN = length)
@@ -401,7 +402,7 @@ tapply(hypo5_SI_df$h5value,
 # Morality
 
 ```{r}
-moral5_SI_df <-melt(hypo_SI5, 
+moral5_SI_df <-melt(s10, 
                      id.vars=c("condition", "id", "proc", "Country"),
                      #measure command is for the DV
                      measure.vars=c("SI_moral_composite", "SI_moral_composite2"),
@@ -427,7 +428,7 @@ tapply(moral5_SI_df$m5value , list(moral5_SI_df$proc, moral5_SI_df$m5.time),
 tapply(moral5_SI_df$m5value , list(moral5_SI_df$proc, moral5_SI_df$m5.time),
        FUN = mean)
 
-tapply(moral5_SI_df$m5value , list(moral5_SI_df$proclamation, moral5_SI_df$m5.time),
+tapply(moral5_SI_df$m5value , list(moral5_SI_df$proc, moral5_SI_df$m5.time),
        FUN = sd)
 
 
@@ -486,11 +487,30 @@ tapply(moral5_SI_df$m5value,
        FUN = length)
 ```
 
+# Moral Country T-tests at time two
+
+```{r}
+#T-test at time two absolute vs. flexible by country
+#US
+US_only <- s10 %>%
+  filter(Country == "2")
+India_only <- s10 %>%
+  filter(Country == "1")
+
+
+t.test(SI_moral_composite2 ~ proc, US_only, var.equal = TRUE)
+t_apa(t.test(SI_moral_composite2 ~ proc, US_only, var.equal = TRUE))
+
+t.test(SI_moral_composite2 ~ proc, India_only, var.equal = TRUE)
+t_apa(t.test(SI_moral_composite2 ~ proc, India_only, var.equal = TRUE))
+
+```
+
 
 # Honesty
 
 ```{r}
-honest5_SI_df <-melt(hypo_SI5, 
+honest5_SI_df <-melt(s10, 
                    id.vars=c("condition", "id", "proc", "Country"),
                    #measure command is for the DV
                    measure.vars=c("SI_honest_composite","SI_honest_composite2"),
@@ -516,7 +536,7 @@ tapply(honest5_SI_df$honest5value , list(honest5_SI_df$proc, honest5_SI_df$hones
 tapply(honest5_SI_df$honest5value , list(honest5_SI_df$proc, honest5_SI_df$honest5.time),
        FUN = mean)
 
-tapply(honest5_SI_df$honest5value , list(honest5_SI_df$proclamation, honest5_SI_df$honest5.time),
+tapply(honest5_SI_df$honest5value , list(honest5_SI_df$proc, honest5_SI_df$honest5.time),
        FUN = sd)
 
 
@@ -536,8 +556,8 @@ tapply(honest5_SI_df$honest5value, honest5_SI_df$honest5.time,FUN = length)
 
 ```{r}
 #T-test at time two
-t.test(SI_honest_composite2 ~ proc, hypo_SI5, var.equal = TRUE)
-t_apa(t.test(SI_honest_composite2~ proc, hypo_SI5, var.equal = TRUE))
+t.test(SI_honest_composite2 ~ proc, s10, var.equal = TRUE)
+t_apa(t.test(SI_honest_composite2~ proc, s10, var.equal = TRUE))
 ```
 
 # Country and honesty (analysis, descriptives)
@@ -592,5 +612,46 @@ tapply(honest5_SI_df$honest5value,
        FUN = length)
 ```
 
+# Country t-tests for Committment to Honesty
+
+```{r}
+t.test(SI_honest_composite2 ~ proc, US_only, var.equal = TRUE)
+t_apa(t.test(SI_honest_composite2 ~ proc, US_only, var.equal = TRUE))
+
+t.test(SI_honest_composite2 ~ proc, India_only, var.equal = TRUE)
+t_apa(t.test(SI_honest_composite2 ~ proc, India_only, var.equal = TRUE))
+```
+
 # Trust - Advice Game
+
+```{r}
+#remove subject 113 from this analysis since same guess as advice at T1
+
+trust_df <- s10 %>%
+  subset(s10$id != "113")
+
+
+#ANOVA
+trust.afex <- aov_car(
+  advice ~ proc + Error(id),
+  data = trust_df)
+summary(trust.afex)
+anova_apa(trust.afex)
+```
+
+# Culture and Advice Game
+
+```{r}
+#ANOVA
+trust2.afex <- aov_car(
+  advice ~ proc*Country + Error(id),
+  data = trust_df)
+summary(trust2.afex)
+anova_apa(trust2.afex)
+
+#Country
+tapply(trust_df$advice, trust_df$Country,FUN = mean)
+tapply(trust_df$advice, trust_df$Country,FUN = sd)
+tapply(trust_df$advice, trust_dff$Country,FUN = length)
+```
 
