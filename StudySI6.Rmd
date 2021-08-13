@@ -1,5 +1,5 @@
 ---
-title: "StudySI6"
+title: "Supplemental Study 6 (Study 11)"
 author: "Elizabeth Huppert"
 date: "8/12/2021"
 output: html_document
@@ -31,65 +31,100 @@ library(dplyr)
 library(emmeans)
 
 #read in data
-
 s11 <- read.csv(here("HypocrisyStudySI_6.csv"))
 
 ```
 
+Note: The current csv file imported for this analysis reflects cleaned data. 
+The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
 
-# Does Voting differ by Condition?
+Key Variable Names (also see codebook for more information):
+
+1. Condition:
+Assignment to broad vs. specific stance (all absolute)
+
 Condition 1 is broad (never okay to lie)
 Condition 2 is specific (never okay to lie about PAC donations)
+
+# Factorize Condition, Sex, Subject (id)
+
+```{r}
+s11$condition <- as.factor(s11$condition)
+s11$PID <- as.factor(s11$PID)
+s11$sex  <- as.factor(s11$sex)
+
+```
+
+# Composite Variables
+
+```{r}
+#Hypocrsiy
+check_hypocrisy.df <- data.frame(s11$hypocrisy_1, s11$hypocrisy_2, s11$hypocrisy_3, s11$hypocrisy_4, s11$hypocrisy_5)
+summary(check_hypocrisy.df)
+describe(check_hypocrisy.df)
+psych::alpha(check_hypocrisy.df) # alpha = .88 so combined
+
+#Combine for Hypocrisy Composite
+s11 <- mutate(s11, hypo_composite = 
+                ((s11$hypocrisy_1 + s11$hypocrisy_2 +s11$hypocrisy_3 + s11$hypocrisy_4 + s11$hypocrisy_5)/5))
+
+#Moral
+check_moral.df <- data.frame(
+  s11$moral_1, s11$moral_2, s11$moral_3)
+summary(check_moral.df)
+describe(check_moral.df)
+psych::alpha(check_moral.df) # alpha = .95 so combined
+
+#Combine for Morality Composite
+s11 <- mutate(s11, 
+         moral_composite = ((s11$moral_1 + s11$moral_2 + s11$moral_3)/3))
+```
+
+# Analysis
+
+# Voting
 
 Descriptives and t-tests:
 
 ```{r}
-tapply(broad1$vote_likely, broad1$condition, FUN = mean)
-tapply(broad1$vote_likely, broad1$condition, FUN = sd)
-t.test(vote_likely  ~ condition, broad1, var.equal = TRUE)
-t_apa((t.test(vote_likely  ~ condition, broad1, var.equal = TRUE)))
+#t-test
+t.test(vote_likely  ~ condition, s11, var.equal = TRUE)
+t_apa((t.test(vote_likely  ~ condition, s11, var.equal = TRUE)))
+
+#Descriptives
+tapply(s11$vote_likely, s11$condition, FUN = mean)
+tapply(s11$vote_likely, s11$condition, FUN = sd)
+
 ```
 
-# Does Hypocrisy differ by Condition?
+# Hypocrisy 
 
-Check for composite as well
+Descriptives and t-tests:
 
 ```{r}
-check_hypocrisy.df <- data.frame(broad1$hypocrisy_1, broad1$hypocrisy_2, broad1$hypocrisy_3,
-                                 broad1$hypocrisy_4, broad1$hypocrisy_5)
+#t tests
+t.test(hypo_composite  ~ condition, s11, var.equal = TRUE)
+t_apa((t.test(hypo_composite ~ condition, s11, var.equal = TRUE)))
 
-summary(check_hypocrisy.df)
-describe(check_hypocrisy.df)
-psych::alpha(check_hypocrisy.df) # alpha = .88 so combined
-#Combine for Honesty Composite
-broad1 <- mutate(broad1, 
-          hypo_composite = ((broad1$hypocrisy_1 + broad1$hypocrisy_2 + broad1$hypocrisy_3 +
-                                 broad1$hypocrisy_4 + broad1$hypocrisy_5)/5))
+#Descriptives
+tapply(s11$hypo_composite, s11$condition, FUN = mean)
+tapply(s11$hypo_composite, s11$condition, FUN = sd)
 
-tapply(broad1$hypo_composite, broad1$condition, FUN = mean)
-tapply(broad1$hypo_composite, broad1$condition, FUN = sd)
-t.test(hypo_composite  ~ condition, broad1, var.equal = TRUE)
-t_apa((t.test(hypo_composite ~ condition, broad1, var.equal = TRUE)))
 ```
 
-# Does Morality differ by Condition?
+# Morality
 
-Check for composite as well
+Descriptives and t-tests:
 
 ```{r}
-check_moral.df <- data.frame(broad1$moral_1, broad1$moral_2, broad1$moral_3)
+#t-test
+t.test(moral_composite  ~ condition, s11, var.equal = TRUE)
+t_apa((t.test(moral_composite ~ condition, s11, var.equal = TRUE)))
 
-summary(check_moral.df)
-describe(check_moral.df)
-psych::alpha(check_moral.df) # alpha = .95 so combined
-#Combine for Honesty Composite
-broad1 <- mutate(broad1, 
-         moral_composite = ((broad1$moral_1 + broad1$moral_2 + broad1$moral_3)/3))
+#Descriptives
+tapply(s11$moral_composite, s11$condition, FUN = mean)
+tapply(s11$moral_composite, s11$condition, FUN = sd)
 
-tapply(broad1$moral_composite, broad1$condition, FUN = mean)
-tapply(broad1$moral_composite, broad1$condition, FUN = sd)
-t.test(moral_composite  ~ condition, broad1, var.equal = TRUE)
-t_apa((t.test(moral_composite ~ condition, broad1, var.equal = TRUE)))
 ```
 
 

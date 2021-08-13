@@ -1,6 +1,5 @@
 ---
 title: "Supplemental Study 5 (Study 10)"
-
 author: "Elizabeth Huppert"
 date: "8/9/2021"
 output: html_document
@@ -38,8 +37,6 @@ s10 <- read.csv(here("HypocrisyStudySI_5.csv"))
 
 Note: The current csv file imported for this analysis reflects cleaned data. 
 The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
-
-Models
 
 Key Variable Names (also see codebook for more information):
 
@@ -315,6 +312,7 @@ s10 <- mutate(s10,
 # Analysis
 
 # Hypocrisy
+
 ```{r}
 #Dataframe for Hypocrisy
 hypo5_SI_df <-melt(s10, 
