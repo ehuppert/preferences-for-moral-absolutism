@@ -258,6 +258,10 @@ abs_test #no, p =  .32
 abs_test2 <- prop.test(x = c(59, 97), n = c(166, 166), correct = TRUE)
 abs_test2 #yes this does, p < .001
 
+#does the proportion of the absolute stance differ in attitudes and behavior
+abs_test3 <- prop.test(x = c(87, 59), n = c(166, 166), correct = TRUE)
+abs_test3 #yes, p =  .003
+
 #does the proportion of the rarely stance differ in attitudes and public?
 rarely_test <- prop.test(x = c(42, 25), n = c(166, 166), correct = TRUE)
 rarely_test #no, p =  .32
