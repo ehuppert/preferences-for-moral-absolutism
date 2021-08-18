@@ -1,0 +1,269 @@
+---
+title: "Study 6"
+author: "Elizabeth Huppert"
+date: "8/17/2021"
+output: html_document
+---
+
+#Set-up
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+-afex
+-psych
+-apa
+-dplyr
+
+
+#Load Packages and Data
+
+```{r}
+library(here)
+library(tidyverse)
+library(afex)
+library(psych)
+library(apa)
+library(dplyr)
+
+
+
+
+
+CP <- read.csv(here("HypocrisyStudy6_public_access_dataset.csv"))
+               
+```
+
+Note: The current csv file imported for this analysis is a publically 
+available version of data collected with CivicPulse.
+
+# Absolute estimates - variables
+
+Create a numeric trust variable for the questions assessing predictions in the absolute context.
+
+```{r}
+#lie_stan_abs 166; NA = 10 
+CP$abtrust[CP$Lie_stan_abs_nomedia=="Would not trust me at all"] <- "1"
+CP$abtrust[CP$Lie_stan_abs_nomedia=="Would only trust me a little"] <- "2"
+CP$abtrust[CP$Lie_stan_abs_nomedia=="Would somewhat trust me"] <-  "3"
+CP$abtrust[CP$Lie_stan_abs_nomedia=="Would completely trust me"] <-  "4"
+CP$abtrust[CP$Lie_stan_abs_nomedia=="Would mostly trust me"] <- "5"
+CP$abtrust <- as.numeric(CP$abtrust) #166
+
+#means without na
+cp_omit1 <- CP %>%
+  drop_na(abtrust) #N = 156
+mean(cp_omit1$abtrust) # mean = 4 
+sd(cp_omit1$abtrust) # sd = 1.19
+
+#Post lie, NA = 21
+CP$abtrust2[CP$Lie_stan_abs_media=="Would not trust me at all"] <- "1"
+CP$abtrust2[CP$Lie_stan_abs_media=="Would only trust me a little"] <- "2"
+CP$abtrust2[CP$Lie_stan_abs_media=="Would somewhat trust me"] <-  "3"
+CP$abtrust2[CP$Lie_stan_abs_media=="Would completely trust me"] <-  "4"
+CP$abtrust2[CP$Lie_stan_abs_media=="Would mostly trust me"] <- "5"
+CP$abtrust2 <- as.numeric(CP$abtrust2) #166
+
+#means without na
+cp_omit1.2 <- CP %>%
+  drop_na(abtrust2) #N = 145
+mean(cp_omit1.2$abtrust2) # mean = 2.33 
+sd(cp_omit1.2$abtrust2) # sd = 1.46
+```
+
+
+Absolute predictions over time.
+
+```{r}
+#Compare change in group by using cp_omit1.2
+#Confirm cp_omit1.2 has no NAs left in abstrust (same NA carried over +more)
+unique(cp_omit1.2$abtrust) #yes
+
+#Within subj so paired t-test
+t.test(cp_omit1.2$abtrust, cp_omit1.2$abtrust2, paired = TRUE)
+t_apa((t.test(cp_omit1.2$abtrust, cp_omit1.2$abtrust2, paired = TRUE)))
+```
+
+
+# Flexible estimates - variables
+
+Create a numeric trust variable for the questions assessing predictions in the flexible context.
+
+```{r}
+#lie_stan_rel 166; NA = 14
+CP$flextrust[CP$Lie_stan_rel_nomedia=="Would not trust me at all"] <- "1"
+CP$flextrust[CP$Lie_stan_rel_nomedia=="Would only trust me a little"] <- "2"
+CP$flextrust[CP$Lie_stan_rel_nomedia =="Would somewhat trust me"] <-  "3"
+CP$flextrust[CP$Lie_stan_rel_nomedia =="Would completely trust me"] <-  "4"
+CP$flextrust[CP$Lie_stan_rel_nomedia =="Would mostly trust me"] <- "5"
+CP$flextrust <- as.numeric(CP$flextrust) #166
+
+#means without na
+cp_omit2 <- CP %>%
+  drop_na(flextrust) #N = 152
+mean(cp_omit2$flextrust) # mean = 1.6 
+sd(cp_omit2$flextrust) # sd = 2
+
+
+#lie_stan_abs 166; NA = 21 
+CP$flextrust2[CP$Lie_stan_rel_media=="Would not trust me at all"] <- "1"
+CP$flextrust2[CP$Lie_stan_rel_media=="Would only trust me a little"] <- "2"
+CP$flextrust2[CP$Lie_stan_rel_media =="Would somewhat trust me"] <-  "3"
+CP$flextrust2[CP$Lie_stan_rel_media =="Would completely trust me"] <-  "4"
+CP$flextrust2[CP$Lie_stan_rel_media =="Would mostly trust me"] <- "5"
+CP$flextrust2 <- as.numeric(CP$flextrust2) #166
+
+#means without na
+cp_omit2.2 <- CP %>%
+  drop_na(flextrust2) #N = 145
+mean(cp_omit2.2$flextrust2) # mean = 1.6 
+sd(cp_omit2.2$flextrust2) # sd = 1.13
+length(cp_omit2.2$flextrust2) 
+#this df includes 14 NA omitted from first measure too
+```
+
+Flexible predictions over time.
+
+```{r}
+#within subj so paired t-test
+t.test(cp_omit2.2$flextrust, cp_omit2.2$flextrust2, paired = TRUE) 
+t_apa((t.test(cp_omit2.2$flextrust, cp_omit2.2$flextrust2, paired = TRUE)))
+```
+
+# Compare Absolute and Flexible
+
+```{r}
+#Different NAs per set
+#First, start with cp_omit2.2 since this excludes any NA from flex set
+#Now need to drop NAs from abstrust2 here
+cp_omit_full <-  cp_omit2.2%>%
+  drop_na(abtrust2) # = 138
+
+#Confirm no NAs
+unique(cp_omit_full$flextrust)
+unique(cp_omit_full$abtrust)
+unique(cp_omit_full$flextrust2)
+unique(cp_omit_full$abtrust2)
+
+#Now paired t-test on this subset df
+t.test(cp_omit_full$abtrust2, cp_omit_full$flextrust2, paired = TRUE) 
+t_apa((t.test(cp_omit_full$abtrust2, cp_omit_full$flextrust2, paired = TRUE)))
+
+```
+# Attitudes Towards Honesty
+
+```{r}
+#Lie personal beliefs 166; NA = 32 s
+#only never, rarely, sometimes chosen
+CP$personalbelief[CP$Lie_pers_belief =="Lying is never okay."] <- "1"
+CP$personalbelief[CP$Lie_pers_belief=="Lying is rarely okay."] <- "2"
+CP$personalbelief[CP$Lie_pers_belief=="Lying is sometimes okay."] <-  "3"
+CP$personalbelief <- as.numeric(CP$personalbelief) #166
+
+#means without na
+cp_omit3 <- CP %>%
+  drop_na(personalbelief) 
+mean(cp_omit3$personalbelief) # mean = 1.4 
+sd(cp_omit3$personalbelief) # sd = 0.56
+length(cp_omit3$personalbelief) #N = 134
+table(cp_omit3$personalbelief)
+# never is 87 - 65%
+# rarely 42 - 31%
+# sometimes 5 - 3%
+
+#Proportion out of full sample
+#52% never
+#25% rarely
+#3% sometimes
+#19% choose not to response
+
+#Lie personal beliefs 166; NA = 32 
+#only never, rarely, sometimes chosen
+CP$personalbelief[CP$Lie_pers_belief =="Lying is never okay."] <- "1"
+CP$personalbelief[CP$Lie_pers_belief=="Lying is rarely okay."] <- "2"
+CP$personalbelief[CP$Lie_pers_belief=="Lying is sometimes okay."] <-  "3"
+CP$personalbelief <- as.numeric(CP$personalbelief) #166
+
+#Lie behaviors 166; NA = 39
+#only never, rarely, sometimes chosen
+CP$liebehav[CP$Lie_pers_behav =="I never lie."] <- "1"
+CP$liebehav[CP$Lie_pers_behav=="I rarely lie."] <- "2"
+CP$liebehav[CP$Lie_pers_behav=="I sometimes lie."] <-  "3"
+CP$liebehav <- as.numeric(CP$liebehav) #166
+
+#means without na
+cp_omit3.2 <- CP %>%
+  drop_na(liebehav) 
+mean(cp_omit3.2$liebehav) # mean = 1.6 
+sd(cp_omit3.2$liebehav) # sd = 0.60
+length(cp_omit3.2$liebehav) #N = 127
+table(cp_omit3.2$liebehav)
+
+#Behavior freq
+#59 never - 46%
+#61 rarely - 48%
+#7 sometimes - 6%
+
+#Behavior freq - full sample with NA
+#59 never - 36%
+#61 rarely - 29%
+#7 sometimes - 4%
+#NA 32 - 19%
+
+#Public beliefs 166; NA = 42 
+#only never, rarely, sometimes chosen
+CP$public[CP$Lie_pub_trust =="Lying is never okay."] <- "1"
+CP$public[CP$Lie_pub_trust=="Lying is rarely okay."] <- "2"
+CP$public[CP$Lie_pub_trust=="Lying is sometimes okay."] <-  "3"
+CP$public <- as.numeric(CP$public) #166
+
+#means without na
+cp_omit3.3 <- CP %>%
+  drop_na(public) 
+mean(cp_omit3.3$public) # mean = 1.2 
+sd(cp_omit3.3$public) # sd = 0.46
+length(cp_omit3.3$public) #N = 124
+table(cp_omit3.3$public)
+
+#97 never - 78%
+#25 rarely - 20%
+#2 sometimes - 2%
+
+# with full sample
+#97 never - 58%
+#25 rarely - 15%
+#2 sometimes - 1%
+#42 NA  - 25%
+
+```
+
+# Compare private v. public differences
+
+```{r}
+#Does the proportion of sometimes stance differ in attitudes and public?
+#used full sample for this so same
+flex_test <- prop.test(x = c(5, 2), n = c(166, 166), correct = TRUE)
+flex_test # doesn't differ (also not really appr test since so small)
+
+#does the proportion of sometimes stance differ in behavior and public?
+flex_test2 <- prop.test(x = c(7, 2), n = c(166, 166), correct = TRUE)
+flex_test2# doesn't differ (also not really appr test since so small)
+
+#does the proportion of the absolute stance differ in attitudes and public?
+abs_test <- prop.test(x = c(87, 97), n = c(166, 166), correct = TRUE)
+abs_test #no, p =  .32
+
+#does the proportion of the absolute stance differ in behavior and public?
+abs_test2 <- prop.test(x = c(59, 97), n = c(166, 166), correct = TRUE)
+abs_test2 #yes this does, p < .001
+
+#does the proportion of the rarely stance differ in attitudes and public?
+rarely_test <- prop.test(x = c(42, 25), n = c(166, 166), correct = TRUE)
+rarely_test #no, p =  .32
+
+#does the proportion of the rarely stance differ in behavior and public?
+rarely_test2 <- prop.test(x = c(61, 25), n = c(166, 166), correct = TRUE)
+rarely_test2 #yes this does, p < .001
+```
+
