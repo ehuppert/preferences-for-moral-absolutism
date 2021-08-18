@@ -84,6 +84,10 @@ abs_test
 abs_test2 <- prop.test(x = c(10, 44), n = c(154, 154), correct = TRUE)
 abs_test2
 
+#does the proportion of the absolute stance differ in behavior and private?
+abs_test3 <- prop.test(x = c(10, 15), n = c(154, 154), correct = TRUE)
+abs_test3
+
 #does the proportion of rarely stance differ in attitudes and public?
 rarely_test <- prop.test(x = c(74, 80), n = c(154, 154), correct = TRUE)
 rarely_test
