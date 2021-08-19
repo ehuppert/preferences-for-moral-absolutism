@@ -27,10 +27,6 @@ library(psych)
 library(apa)
 library(dplyr)
 
-
-
-
-
 CP <- read.csv(here("HypocrisyStudy6_public_access_dataset.csv"))
                
 ```
@@ -56,6 +52,7 @@ cp_omit1 <- CP %>%
   drop_na(abtrust) #N = 156
 mean(cp_omit1$abtrust) # mean = 4 
 sd(cp_omit1$abtrust) # sd = 1.19
+length(cp_omit1$abtrust)
 
 #Post lie, NA = 21
 CP$abtrust2[CP$Lie_stan_abs_media=="Would not trust me at all"] <- "1"
@@ -79,10 +76,19 @@ Absolute predictions over time.
 #Compare change in group by using cp_omit1.2
 #Confirm cp_omit1.2 has no NAs left in abstrust (same NA carried over +more)
 unique(cp_omit1.2$abtrust) #yes
+#look only at the sample with all responses
+mean(cp_omit1.2$abtrust)
+sd(cp_omit1.2$abtrust)
+mean(cp_omit1.2$abtrust2)
+sd(cp_omit1.2$abtrust2)
+length(cp_omit1.2$abtrust)
+length(cp_omit1.2$abtrust2)
 
 #Within subj so paired t-test
 t.test(cp_omit1.2$abtrust, cp_omit1.2$abtrust2, paired = TRUE)
 t_apa((t.test(cp_omit1.2$abtrust, cp_omit1.2$abtrust2, paired = TRUE)))
+
+
 ```
 
 
@@ -126,6 +132,14 @@ length(cp_omit2.2$flextrust2)
 Flexible predictions over time.
 
 ```{r}
+#look only at the sample with all responses
+length(cp_omit2.2$flextrust)
+mean(cp_omit2.2$flextrust)
+sd(cp_omit2.2$flextrust)
+length(cp_omit2.2$flextrust2)
+mean(cp_omit2.2$flextrust2)
+sd(cp_omit2.2$flextrust2)
+
 #within subj so paired t-test
 t.test(cp_omit2.2$flextrust, cp_omit2.2$flextrust2, paired = TRUE) 
 t_apa((t.test(cp_omit2.2$flextrust, cp_omit2.2$flextrust2, paired = TRUE)))
