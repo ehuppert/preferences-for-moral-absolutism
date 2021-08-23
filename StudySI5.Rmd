@@ -651,5 +651,10 @@ anova_apa(trust2.afex)
 tapply(trust_df$advice, trust_df$Country,FUN = mean)
 tapply(trust_df$advice, trust_df$Country,FUN = sd)
 tapply(trust_df$advice, trust_dff$Country,FUN = length)
+
+#Country
+tapply(trust_df$advice, list(trust_df$proc, trust_df$Country),FUN = mean)
+tapply(trust_df$advice, list(trust_df$proc, trust_df$Country),FUN = sd)
+tapply(trust_df$advice, list(trust_df$proc, trust_df$Country),FUN = length)
 ```
 
