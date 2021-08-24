@@ -49,6 +49,12 @@ Extent to which participants actually think Matthew Johnson lies (1-7)
 4. Goals
 Extent to which participants actually think Matthew Johnsons thinks its okay to lie (1-7)
 
+# Factorize Subject (id)
+
+```{r}
+s2$ID <- as.factor(s2$ID)
+```
+
 # Composite Evaluation Variables 
 
 Items with high agreement were combined as per our pre-registration.

@@ -67,6 +67,12 @@ Supplemental:
 Pref = Attitudes towards honesty;1-5 statement
 ("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
 
+# Factorize Subject (id)
+
+```{r}
+s3$ID <- as.factor(s3$ID)
+```
+
 # Composite Evaluation Variables
 
 Items with high agreement were combined as per our pre-registration.

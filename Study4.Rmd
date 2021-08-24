@@ -67,6 +67,11 @@ Supplemental:
 Pref = Attitudes towards honesty; 1-5 statement
 ("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
 
+# Factorize Subject (id)
+
+```{r}
+s4$ID <- as.factor(s4$ID)
+```
 
 #Composite Evaluation Variables
 
@@ -475,7 +480,7 @@ summary(SI.afex )
 anova_apa(SI.afex)
 ```
 
-#Descriptives for Social Influence
+#Social Influence Descriptives
 
 ```{r}
 #Cells
@@ -558,7 +563,7 @@ pairs(post1)
 
 ```
 
-#Behavior in the RELY-or-VERIFY game
+# Behavior in the RELY-or-VERIFY game
 
 ```{r}
 #Reported Model

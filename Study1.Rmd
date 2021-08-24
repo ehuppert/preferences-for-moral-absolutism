@@ -38,6 +38,12 @@ s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv")) #1021
 Note: The current csv file imported for this analysis reflects cleaned data. 
 The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
 
+# Factorize Subject (ID)
+
+```{r}
+s1$ID <- as.factor(s1$ID)
+```
+
 
 # Models
 
