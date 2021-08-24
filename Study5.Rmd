@@ -5,7 +5,7 @@ date: "1/14/2020"
 output: pdf_document
 ---
 
-#Set-up
+# Set-up
 
 You need to install the following packages to run this code:
 
@@ -18,7 +18,7 @@ You need to install the following packages to run this code:
 -dplyr
 -emmeans
 
-#Load Packages and Data
+# Load Packages and Data
 
 ```{r, include = FALSE}
 library(here)
@@ -40,7 +40,7 @@ Note: The current csv file imported for this analysis reflects cleaned data.
 The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
 
 
-#Models
+# Models
 
 Key Variable Names (also see codebook for more information):
 
@@ -60,13 +60,13 @@ For supplement (The Choice Game):
 Trustbeh = KEEP or PASS in The Coin Flip Game 
 (0 = KEEP, 1 = PASS)
 
-#Recode proclamation for ease of interpretation
+# Recode proclamation for ease of interpretation
 
 ```{r}
 s5$proclamation <- factor(s5$proclamation, levels = c("ambiguous", "absolute"))
 ```
 
-#Composite evaluation variables
+# Composite evaluation variables
 
 Items with high agreement were combined as per our pre-registration.
 
@@ -154,7 +154,9 @@ Guilt.2_composite = guilt composite of 2 items at timepoint 2
 Moral.2_composite5 = morality composite of 3 items at timepoint 2
 Honest.2_composite5 = committment to honesty composite of 4 items at timepoint 2
 
-#Hypocrisy Model
+# Analysis
+
+# Hypocrisy Model
 
 ```{r}
 #Dataframe for Hypocrisy
@@ -175,7 +177,7 @@ anova_apa(hypocrisy5.afex)
 
 ```
 
-#Descriptives Hypocrisy
+# Hypocrisy Descriptives
 
 ```{r}
 #Cells
@@ -227,7 +229,7 @@ tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$hypocrisy.time,FUN = mean)
 tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$hypocrisy.time,FUN = sd)
 tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$hypocrisy.time,FUN = length)
 
-#AcrossOrder
+#Across Order
 tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$order,FUN = mean)
 tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$order,FUN = sd)
 tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$order,FUN = length)
@@ -239,7 +241,7 @@ length(hypocrisy_df$hypocrisy.value)
 
 ```
 
-#Follow-up tests for two*way interactions: Hypocrisy
+# Follow-up tests for two*way interactions: Hypocrisy
 
 ```{r}
 #Proclamation*Time - paired t-tests
@@ -321,7 +323,7 @@ post2 <- emmeans(hyp_model, ~ order|proclamation)
 pairs(post2)
 ```
 
-#Morality 
+# Morality Model
 
 ```{r}
 #Dataframe for Morality
@@ -339,20 +341,20 @@ summary(moral.afex)
 anova_apa(moral.afex)
 
 #Abs vs. Flex morality focal at time two - need cohen's D
-#abs mean =   4.54, sd = 1.59, 294 
-#flex mean =  3.92, sd = 1.39, 306
-#pooled SD = sqrt(((1.59^2) + (1.39^2))/2)
-sqrt((((1.59^2) + (1.39^2))/2)) #1.493352
+#abs mean =   4.543573, sd = 1.594991, 294 
+#flex mean =  3.920635, sd = 1.393322, 306
+#pooled SD = sqrt(((1.594991^2) + (1.393322^2))/2)
+sqrt((((1.594991^2) + (1.393322^2))/2)) #1.493352
 
 #cohens = (mean - mean)/SD pooeld
-(4.54-3.92)/1.493352 # 0.42
+(4.543573-3.920635)/1.493352 #0.4171408
 
 d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s5)) 
 #see Hypocrisy Simple Effects above to exclude rarely, N = 600
-d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.42, enter this in power
+d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.4154103 (0.42
 ```
 
-# Morality Descriptives
+# Morality Descriptives 
 
 ```{r}
 #Cells
@@ -519,7 +521,7 @@ pairs(post3)
 
 ```
 
-#Commitment to Honesty
+# Commitment to Honesty Model
 
 ```{r}
 #Dataframe for Commitment to Honesty
@@ -538,7 +540,7 @@ summary(honest.afex)
 anova_apa(honest.afex)
 ```
 
-#Commitment to Honesty Descriptives
+# Commitment to Honesty Descriptives 
 
 ```{r}
 #Cells
@@ -600,7 +602,7 @@ length(hypo_honest5$honest.value)
 
 ```
 
-#Follow-up tests for two*way interactions: Commitment to Honesty
+# Follow-up tests for two*way interactions: Commitment to Honesty
 
 ```{r}
 #Proclamation*Time 
@@ -710,9 +712,9 @@ pairs(post3)
  
 ```
 
-#Supplemental Information
+# Supplemental Information
 
-#Moral Standards Model
+# Moral Standards Model
 
 ```{r}
 #Dataframe for Moral Standards (moral_standards1) - "This person has high moral standards"
@@ -732,7 +734,7 @@ anova_apa(moralstandards.afex)
 
 ```
 
-#Moral Standards Descriptives
+# Moral Standards Descriptives
 
 ```{r}
 #Cells
@@ -793,7 +795,7 @@ sd(hypo_ms$ms.value)
 length(hypo_ms$ms.value)
 ```
 
-#Follow-up tests for two*way interactions: Moral Standards
+# Follow-up tests for two*way interactions: Moral Standards
 
 ```{r}
 #Proclamation*Time 
@@ -871,7 +873,7 @@ post3 <- emmeans(ms_model, ~ proclamation|order)
 pairs(post3) 
 ```
 
-#Moral Standards - Realism
+# Moral Standards - Realism
 
 ```{r}
 #Dataframe for Realism - "This person is realistic"
@@ -890,7 +892,7 @@ anova_apa(realism.afex)
 
 ```
 
-#Realism Descriptive Statistics
+# Realism Descriptive Statistics
 
 ```{r}
 #Cells
@@ -951,7 +953,7 @@ sd(hypo_ms2$ms2.value)
 length(hypo_ms2$ms2.value)
 ```
 
-#Follow-up tests for interactions: Realism
+# Follow-up tests for interactions: Realism
 
 ```{r}
 #Proclamation*Time 
@@ -1052,7 +1054,7 @@ pairs(post1)
  
 ```
 
-#Guilt
+# Guilt Model
 
 ```{r}
 #ANOVA (time two only)
@@ -1061,7 +1063,7 @@ summary(guilt.afex_time)
 anova_apa(guilt.afex_time)
 ```
 
-#Guilt Descriptives for Main Effect of Proclamation
+# Guilt Descriptives 
 
 ```{r}
 #Cells
@@ -1092,7 +1094,7 @@ length(s5$guilt_2.2)
 
 ```
 
-#Trust Game
+# Trust Game
 
 ```{r}
 #Logistic Regression

@@ -31,7 +31,7 @@ library(dplyr)
 
 #read in data
 
-s8 <- read.csv(here("HypocrisyStudySI_3.csv"))
+s9 <- read.csv(here("HypocrisyStudySI_3.csv"))
 
 ```
 
@@ -58,24 +58,31 @@ Perceived lying frequency (Options: Never, Rarely, Sometimes, Often, Always)
 Honesty ideals (Options: Never, Rarely, Sometimes, Often, Always)
 (discounting_2/goal_2 are the same variables at time two after the lie is revealed)
 
+# Factorize Subject (ID)
+
+```{r}
+s9$ID <- as.factor(s9$ID)
+```
+
+
 # Composite Evaluation Variables
 
 Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Hypocrisy
-hypocrisySI3_df <- data.frame(s8$hypocrisy_1, s8$hypocrisy_2, s8$hypocrisy_3, s8$hypocrisy_4)
+hypocrisySI3_df <- data.frame(s9$hypocrisy_1, s9$hypocrisy_2, s9$hypocrisy_3, s9$hypocrisy_4)
 summary(hypocrisySI3_df)
 describe(hypocrisySI3_df)
 psych::alpha(hypocrisySI3_df) #alpha = 0.86
-s8 <- mutate(s8, HypocrisySI3_composite  = ((s8$hypocrisy_1 + s8$hypocrisy_2 + s8$hypocrisy_3 + s8$hypocrisy_4)/4))
+s9 <- mutate(s9, HypocrisySI3_composite  = ((s9$hypocrisy_1 + s9$hypocrisy_2 + s9$hypocrisy_3 + s9$hypocrisy_4)/4))
 
 #Morality
-moralSI3_df <- data.frame(s8$moral_1, s8$moral_2, s8$moral_3)
+moralSI3_df <- data.frame(s9$moral_1, s9$moral_2, s9$moral_3)
 summary(moralSI3_df)
 describe(moralSI3_df)
 psych::alpha(moralSI3_df) #alpha = 0.94
-s8 <- mutate(s8, MoralSI3_composite  = ((s8$moral_1 + s8$moral_2 + s8$moral_3)/3))
+s9 <- mutate(s9, MoralSI3_composite  = ((s9$moral_1 + s9$moral_2 + s9$moral_3)/3))
 
 ```
 
@@ -85,98 +92,96 @@ HypocrisySI3_composite  = hypocrisy composite of 4 items (Ratings: 1-7)
 MoralSI3_composite = morality composite of 3 items (Ratings: 1-7)
 
 
-#Hypocrisy
+# Hypocrisy Model
 
 ```{r pressure, echo=FALSE}
 #ANOVA
-hypocrisy_8.afex <- aov_car(HypocrisySI3_composite ~ proclamation * lie + Error(ID), s8)
+hypocrisy_8.afex <- aov_car(HypocrisySI3_composite ~ proclamation * lie + Error(ID), s9)
 summary(hypocrisy_8.afex)
 anova_apa(hypocrisy_8.afex)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
-
-#Hypocrisy Descriptives
+# Hypocrisy Descriptives
 
 ```{r}
 #Cells
-tapply(s8$HypocrisySI3_composite, list(s8$proclamation, s8$lie), mean)
-tapply(s8$HypocrisySI3_composite, list(s8$proclamation, s8$lie), sd)
-tapply(s8$HypocrisySI3_composite, list(s8$proclamation, s8$lie), length)
+tapply(s9$HypocrisySI3_composite, list(s9$proclamation, s9$lie), mean)
+tapply(s9$HypocrisySI3_composite, list(s9$proclamation, s9$lie), sd)
+tapply(s9$HypocrisySI3_composite, list(s9$proclamation, s9$lie), length)
 
 #Across Proclamation
-tapply(s8$HypocrisySI3_composite, s8$proclamation, mean)
-tapply(s8$HypocrisySI3_composite, s8$proclamation, sd)
-tapply(s8$HypocrisySI3_composite, s8$proclamation, length)
+tapply(s9$HypocrisySI3_composite, s9$proclamation, mean)
+tapply(s9$HypocrisySI3_composite, s9$proclamation, sd)
+tapply(s9$HypocrisySI3_composite, s9$proclamation, length)
 
 #Across Lie Amount
-tapply(s8$HypocrisySI3_composite, s8$lie, mean)
-tapply(s8$HypocrisySI3_composite, s8$lie, sd)
-tapply(s8$HypocrisySI3_composite, s8$lie, length)
+tapply(s9$HypocrisySI3_composite, s9$lie, mean)
+tapply(s9$HypocrisySI3_composite, s9$lie, sd)
+tapply(s9$HypocrisySI3_composite, s9$lie, length)
 
 #Overall
-mean(s8$HypocrisySI3_composite)
-sd(s8$HypocrisySI3_composite)
-length(s8$HypocrisySI3_composite)
+mean(s9$HypocrisySI3_composite)
+sd(s9$HypocrisySI3_composite)
+length(s9$HypocrisySI3_composite)
 ```
 
-#Morality
+#Morality Model
 
 ```{r}
 #ANOVA
-moral_8.afex <- aov_car(MoralSI3_composite ~ proclamation * lie + Error(ID), s8)
+moral_8.afex <- aov_car(MoralSI3_composite ~ proclamation * lie + Error(ID), s9)
 summary(moral_8.afex)
 anova_apa(moral_8.afex)
 ```
 
-#Morality Descriptive Statistics
+#Morality Descriptives
 
 ```{r}
 #Cells
-tapply(s8$MoralSI3_composite, list(s8$proclamation, s8$lie), mean)
-tapply(s8$MoralSI3_composite, list(s8$proclamation, s8$lie), sd)
-tapply(s8$MoralSI3_composite, list(s8$proclamation, s8$lie), length)
+tapply(s9$MoralSI3_composite, list(s9$proclamation, s9$lie), mean)
+tapply(s9$MoralSI3_composite, list(s9$proclamation, s9$lie), sd)
+tapply(s9$MoralSI3_composite, list(s9$proclamation, s9$lie), length)
 
 #Across Proclamation
-tapply(s8$MoralSI3_composite, s8$proclamation, mean)
-tapply(s8$MoralSI3_composite, s8$proclamation, sd)
-tapply(s8$MoralSI3_composite, s8$proclamation, length)
+tapply(s9$MoralSI3_composite, s9$proclamation, mean)
+tapply(s9$MoralSI3_composite, s9$proclamation, sd)
+tapply(s9$MoralSI3_composite, s9$proclamation, length)
 
 #Across Lie Amount
-tapply(s8$MoralSI3_composite, s8$lie, mean)
-tapply(s8$MoralSI3_composite, s8$lie, sd)
-tapply(s8$MoralSI3_composite, s8$lie, length)
+tapply(s9$MoralSI3_composite, s9$lie, mean)
+tapply(s9$MoralSI3_composite, s9$lie, sd)
+tapply(s9$MoralSI3_composite, s9$lie, length)
 
 #Overall
-mean(s8$MoralSI3_composite)
-sd(s8$MoralSI3_composite)
-length(s8$MoralSI3_composite)
+mean(s9$MoralSI3_composite)
+sd(s9$MoralSI3_composite)
+length(s9$MoralSI3_composite)
 ```
 
-#Perceived lying frequency (discounting)
+# Perceived Lying Frequency (Discounting) Model
 
-#Between-subjects ANOVA at Each Time Point
+# Between-subjects ANOVA at Each Time Point
 
 ```{r}
 #Time one ANOVA
-discounting_1.afex <- aov_car(discounting_1 ~ proclamation * lie + Error(ID), s8)
+discounting_1.afex <- aov_car(discounting_1 ~ proclamation * lie + Error(ID), s9)
 summary(discounting_1.afex)
 anova_apa(discounting_1.afex)
 #1 = never, 5 = always 
 
 #Time two ANOVA
-discounting_2.afex <- aov_car(discounting_2 ~ proclamation * lie + Error(ID), s8)
+discounting_2.afex <- aov_car(discounting_2 ~ proclamation * lie + Error(ID), s9)
 summary(discounting_2.afex)
 anova_apa(discounting_2.afex)
 
 ```
 
-#Frequencies-  perceived lying frequency  / discounting
+# Frequencies - Perceived Lying Frequency  / Discounting
 
 ```{r}
 #Time one
-table(s8$discounting_1, s8$proclamation) 
+table(s9$discounting_1, s9$proclamation) 
 
 #Absolute (299)
 #36 never - 12%
@@ -188,7 +193,7 @@ table(s8$discounting_1, s8$proclamation)
 #52 often - 18%
 
 #Time two 
-table(s8$discounting_2, s8$proclamation) 
+table(s9$discounting_2, s9$proclamation) 
 
 #Absolute  (299)
 #152 sometimes -51%
@@ -200,27 +205,27 @@ table(s8$discounting_2, s8$proclamation)
 
 ```
 
-#Descriptives - perceived lying frequency  / discounting
+# Perceived Lying Frequency  / Discounting Descriptives
 
 ```{r}
 #Time 1 - main effect of proclamtion
 
 #Across Proclamation
-tapply(s8$discounting_1, s8$proclamation, mean)
-tapply(s8$discounting_1, s8$proclamation, sd)
-tapply(s8$discounting_1, s8$proclamation, length)
+tapply(s9$discounting_1, s9$proclamation, mean)
+tapply(s9$discounting_1, s9$proclamation, sd)
+tapply(s9$discounting_1, s9$proclamation, length)
 
 #Time 2 - main effect of proclamation and lie amount
 
 #Across Proclamation
-tapply(s8$discounting_2, s8$proclamation, mean)
-tapply(s8$discounting_2, s8$proclamation, sd)
-tapply(s8$discounting_2, s8$proclamation, length)
+tapply(s9$discounting_2, s9$proclamation, mean)
+tapply(s9$discounting_2, s9$proclamation, sd)
+tapply(s9$discounting_2, s9$proclamation, length)
 
 #Across Lie Amount
-tapply(s8$discounting_2, s8$lie, mean)
-tapply(s8$discounting_2, s8$lie, sd)
-tapply(s8$discounting_2, s8$lie, length)
+tapply(s9$discounting_2, s9$lie, mean)
+tapply(s9$discounting_2, s9$lie, sd)
+tapply(s9$discounting_2, s9$lie, length)
 
 ```
 
@@ -228,7 +233,7 @@ tapply(s8$discounting_2, s8$lie, length)
 
 ```{r}
 #Perceived lying frequency / Discounting  Dataframe
-s8_discounting <-melt(s8, 
+s9_discounting <-melt(s9, 
                 id.vars=c("lie", "ID", "proclamation"),
                 #measure command is for the DV
                 measure.vars=c("discounting_1","discounting_2"),
@@ -239,49 +244,49 @@ s8_discounting <-melt(s8,
 #ANOVA
 discount_time.afex <- aov_car(
   discount.value ~ proclamation*lie*discount.time + Error(ID/discount.time),
-  data=s8_discounting)
+  data=s9_discounting)
 summary(discount_time.afex)
 anova_apa(discount_time.afex)
 
 
 #Descriptives 
 #Cells
-tapply(s8_discounting$discount.value, 
-       list(s8_discounting$proclamation, s8_discounting$lie, s8_discounting$discount.time), 
+tapply(s9_discounting$discount.value, 
+       list(s9_discounting$proclamation, s9_discounting$lie, s9_discounting$discount.time), 
        FUN = mean)
 
-tapply(s8_discounting$discount.value, 
-       list(s8_discounting$proclamation, s8_discounting$lie, s8_discounting$discount.time), 
+tapply(s9_discounting$discount.value, 
+       list(s9_discounting$proclamation, s9_discounting$lie, s9_discounting$discount.time), 
        FUN = sd)
 
-tapply(s8_discounting$discount.value, 
-       list(s8_discounting$proclamation, s8_discounting$lie, s8_discounting$discount.time), 
+tapply(s9_discounting$discount.value, 
+       list(s9_discounting$proclamation, s9_discounting$lie, s9_discounting$discount.time), 
        FUN = length)
 
 #Across Proclamation and Time
-tapply(s8_discounting$discount.value, list(s8_discounting$proclamation, s8_discounting$discount.time), mean)
-tapply(s8_discounting$discount.value, list(s8_discounting$proclamation, s8_discounting$discount.time), sd)
-tapply(s8_discounting$discount.value, list(s8_discounting$proclamation, s8_discounting$discount.time), length)
+tapply(s9_discounting$discount.value, list(s9_discounting$proclamation, s9_discounting$discount.time), mean)
+tapply(s9_discounting$discount.value, list(s9_discounting$proclamation, s9_discounting$discount.time), sd)
+tapply(s9_discounting$discount.value, list(s9_discounting$proclamation, s9_discounting$discount.time), length)
 
 #Across Lie Amount and Time
-tapply(s8_discounting$discount.value, list(s8_discounting$lie, s8_discounting$discount.time), mean)
-tapply(s8_discounting$discount.value, list(s8_discounting$lie, s8_discounting$discount.time), sd)
-tapply(s8_discounting$discount.value, list(s8_discounting$lie, s8_discounting$discount.time), length)
+tapply(s9_discounting$discount.value, list(s9_discounting$lie, s9_discounting$discount.time), mean)
+tapply(s9_discounting$discount.value, list(s9_discounting$lie, s9_discounting$discount.time), sd)
+tapply(s9_discounting$discount.value, list(s9_discounting$lie, s9_discounting$discount.time), length)
 
 #Across Proclamation
-tapply(s8_discounting$discount.value, s8_discounting$proclamation, mean)
-tapply(s8_discounting$discount.value, s8_discounting$proclamation, sd)
-tapply(s8_discounting$discount.value, s8_discounting$proclamation, length)
+tapply(s9_discounting$discount.value, s9_discounting$proclamation, mean)
+tapply(s9_discounting$discount.value, s9_discounting$proclamation, sd)
+tapply(s9_discounting$discount.value, s9_discounting$proclamation, length)
 
 #Across Lie Amount
-tapply(s8_discounting$discount.value, s8_discounting$lie, mean)
-tapply(s8_discounting$discount.value, s8_discounting$lie, sd)
-tapply(s8_discounting$discount.value, s8_discounting$lie, length)
+tapply(s9_discounting$discount.value, s9_discounting$lie, mean)
+tapply(s9_discounting$discount.value, s9_discounting$lie, sd)
+tapply(s9_discounting$discount.value, s9_discounting$lie, length)
 
 #Aross Time
-tapply(s8_discounting$discount.value, s8_discounting$discount.time, mean)
-tapply(s8_discounting$discount.value, s8_discounting$discount.time, sd)
-tapply(s8_discounting$discount.value, s8_discounting$discount.time, length)
+tapply(s9_discounting$discount.value, s9_discounting$discount.time, mean)
+tapply(s9_discounting$discount.value, s9_discounting$discount.time, sd)
+tapply(s9_discounting$discount.value, s9_discounting$discount.time, length)
 
 ```
 
@@ -289,7 +294,7 @@ tapply(s8_discounting$discount.value, s8_discounting$discount.time, length)
 
 ```{r}
 #Effect of proclamation just within multiple liars only at time two
-proc_multiplelies <- s8_discounting %>%
+proc_multiplelies <- s9_discounting %>%
   filter(lie == "repeat") #N = 588
 
 proc_multiplelies_time2 <- proc_multiplelies %>%
@@ -303,43 +308,43 @@ t_apa(t.test(discount.value ~ proclamation, data = proc_multiplelies_time2, var.
 ```
 
 
-#Honesty Ideals
+# Honesty Ideals (Goals) Model
 
-#Between-subjects ANOVA at Each Time Point and descriptives
+# Between-subjects ANOVA at Each Time Point and Descriptives
 
 ```{r}
 #Time one ANOVA
-goal_1.afex <- aov_car(goal_1 ~ proclamation * lie + Error(ID), s8)
+goal_1.afex <- aov_car(goal_1 ~ proclamation * lie + Error(ID), s9)
 summary(goal_1.afex )
 anova_apa(goal_1.afex )
 
 #Across Proclamation
-tapply(s8$goal_1, s8$proclamation, mean)
-tapply(s8$goal_1, s8$proclamation, sd)
-tapply(s8$goal_1, s8$proclamation, length)
+tapply(s9$goal_1, s9$proclamation, mean)
+tapply(s9$goal_1, s9$proclamation, sd)
+tapply(s9$goal_1, s9$proclamation, length)
 
 #Time two ANOVA
-goal_2.afex <- aov_car(goal_2 ~ proclamation * lie + Error(ID), s8)
+goal_2.afex <- aov_car(goal_2 ~ proclamation * lie + Error(ID), s9)
 summary(goal_2.afex)
 anova_apa(goal_2.afex)
 
 #Across Proclamation
-tapply(s8$goal_2, s8$proclamation, mean)
-tapply(s8$goal_2, s8$proclamation, sd)
-tapply(s8$goal_2, s8$proclamation, length)
+tapply(s9$goal_2, s9$proclamation, mean)
+tapply(s9$goal_2, s9$proclamation, sd)
+tapply(s9$goal_2, s9$proclamation, length)
 
 #Across Lie Amount
-tapply(s8$goal_2, s8$lie, mean)
-tapply(s8$goal_2, s8$lie, sd)
-tapply(s8$goal_2, s8$lie, length)
+tapply(s9$goal_2, s9$lie, mean)
+tapply(s9$goal_2, s9$lie, sd)
+tapply(s9$goal_2, s9$lie, length)
 
 ```
 
-#Frequencies - Honesty ideals
+# Frequencies - Honesty Ideals
 
 ```{r}
 #Time one
-table(s8$goal_1, s8$proclamation) 
+table(s9$goal_1, s9$proclamation) 
 
 #Absolute (299)
 #164 never - 55%
@@ -349,7 +354,7 @@ table(s8$goal_1, s8$proclamation)
 #224 sometimes - 77%
 
 #Time two
-table(s8$goal_2, s8$proclamation) 
+table(s9$goal_2, s9$proclamation) 
 
 #Absolute (299)
 #25 never - 88%
@@ -362,11 +367,11 @@ table(s8$goal_2, s8$proclamation)
 ```
 
 
-#Within subjects mixed anova and descriptives across time for honesty ideals
+# Within subjects mixed anova and descriptives across time for honesty ideals
 
 ```{r}
 #Dataframe for Honesty Ideals
-s8_goals <-melt(s8, 
+s9_goals <-melt(s9, 
                 id.vars=c("lie", "ID", "proclamation"),
                 #measure command is for the DV
                 measure.vars=c("goal_1","goal_2"),
@@ -378,57 +383,57 @@ s8_goals <-melt(s8,
 #ANOVA
 goals_time.afex <- aov_car(
   goal.value ~ proclamation*lie*goal.time + Error(ID/goal.time),
-  data=s8_goals)
+  data=s9_goals)
 summary(goals_time.afex)
 anova_apa(goals_time.afex)
 
 #Descriptives
 #Cells
-tapply(s8_goals$goal.value, 
-       list(s8_goals$proclamation, s8_goals$lie, s8_goals$goal.time), 
+tapply(s9_goals$goal.value, 
+       list(s9_goals$proclamation, s9_goals$lie, s9_goals$goal.time), 
        FUN = mean)
 
-tapply(s8_goals$goal.value, 
-       list(s8_goals$proclamation, s8_goals$lie, s8_goals$goal.time), 
+tapply(s9_goals$goal.value, 
+       list(s9_goals$proclamation, s9_goals$lie, s9_goals$goal.time), 
        FUN = sd)
 
-tapply(s8_goals$goal.value, 
-       list(s8_goals$proclamation, s8_goals$lie, s8_goals$goal.time), 
+tapply(s9_goals$goal.value, 
+       list(s9_goals$proclamation, s9_goals$lie, s9_goals$goal.time), 
        FUN = length)
 
 #Across Proclamation and Time 
-tapply(s8_goals$goal.value, list(s8_goals$proclamation, s8_goals$goal.time), mean)
-tapply(s8_goals$goal.value, list(s8_goals$proclamation, s8_goals$goal.time), sd)
-tapply(s8_goals$goal.value, list(s8_goals$proclamation, s8_goals$goal.time), length)
+tapply(s9_goals$goal.value, list(s9_goals$proclamation, s9_goals$goal.time), mean)
+tapply(s9_goals$goal.value, list(s9_goals$proclamation, s9_goals$goal.time), sd)
+tapply(s9_goals$goal.value, list(s9_goals$proclamation, s9_goals$goal.time), length)
 
 #Across Lie Amount and Time 
-tapply(s8_goals$goal.value, list(s8_goals$lie, s8_goals$goal.time), mean)
-tapply(s8_goals$goal.value, list(s8_goals$lie, s8_goals$goal.time), sd)
-tapply(s8_goals$goal.value, list(s8_goals$lie, s8_goals$goal.time), length)
+tapply(s9_goals$goal.value, list(s9_goals$lie, s9_goals$goal.time), mean)
+tapply(s9_goals$goal.value, list(s9_goals$lie, s9_goals$goal.time), sd)
+tapply(s9_goals$goal.value, list(s9_goals$lie, s9_goals$goal.time), length)
 
 #Across Proclamation
-tapply(s8_goals$goal.value, s8_goals$proclamation, mean)
-tapply(s8_goals$goal.value, s8_goals$proclamation, sd)
-tapply(s8_goals$goal.value, s8_goals$proclamation, length)
+tapply(s9_goals$goal.value, s9_goals$proclamation, mean)
+tapply(s9_goals$goal.value, s9_goals$proclamation, sd)
+tapply(s9_goals$goal.value, s9_goals$proclamation, length)
 
 #Across Lie Amount
-tapply(s8_goals$goal.value, s8_goals$lie, mean)
-tapply(s8_goals$goal.value, s8_goals$lie, sd)
-tapply(s8_goals$goal.value, s8_goals$lie, length)
+tapply(s9_goals$goal.value, s9_goals$lie, mean)
+tapply(s9_goals$goal.value, s9_goals$lie, sd)
+tapply(s9_goals$goal.value, s9_goals$lie, length)
 
 #Across Time
-tapply(s8_goals$goal.value, s8_goals$goal.time, mean)
-tapply(s8_goals$goal.value, s8_goals$goal.time, sd)
-tapply(s8_goals$goal.value, s8_goals$goal.time, length)
+tapply(s9_goals$goal.value, s9_goals$goal.time, mean)
+tapply(s9_goals$goal.value, s9_goals$goal.time, sd)
+tapply(s9_goals$goal.value, s9_goals$goal.time, length)
 
 
 ```
 
-#Difference in absolute v flexible just within repeat liars at time two - honesty ideals
+# Difference in absolute v flexible just within repeat liars at time two - honesty ideals
 
 ```{r}
 #Effect of proclamation just within multiple liars only at time two
-proc_multiplelies_ideals <- s8_goals%>%
+proc_multiplelies_ideals <- s9_goals%>%
   filter(lie == "repeat") 
 
 proc_multiplelies_ideals2 <- proc_multiplelies_ideals %>%
@@ -441,27 +446,27 @@ t_apa(t.test(goal.value ~ proclamation, data = proc_multiplelies_ideals2, var.eq
 
 ```
 
-#Supplemental - Counts as lying
+#Supplemental - Counts as Lying
 
 ```{r}
 #Ratings in agreement with, "This person believes that his/her behavior during the Random Outcome Task counts as lying"
 
 #Time one ANOVA
-counts.afex <- aov_car(counts ~ proclamation * lie + Error(ID), s8)
+counts.afex <- aov_car(counts ~ proclamation * lie + Error(ID), s9)
 summary(counts.afex)
 anova_apa(counts.afex)
 
 
 #Descriptives for Main Effects
 #Across Proclamation
-tapply(s8$counts, s8$proclamation, mean)
-tapply(s8$counts, s8$proclamation, sd)
-tapply(s8$counts, s8$proclamation, length)
+tapply(s9$counts, s9$proclamation, mean)
+tapply(s9$counts, s9$proclamation, sd)
+tapply(s9$counts, s9$proclamation, length)
 
 #Across Lie Amount
-tapply(s8$counts, s8$lie, mean)
-tapply(s8$counts, s8$lie, sd)
-tapply(s8$counts, s8$lie, length)
+tapply(s9$counts, s9$lie, mean)
+tapply(s9$counts, s9$lie, sd)
+tapply(s9$counts, s9$lie, length)
 
 ```
 

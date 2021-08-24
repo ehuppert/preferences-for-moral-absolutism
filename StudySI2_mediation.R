@@ -9,24 +9,24 @@ library(psych)
 
 #Read in data
 
-s7 <- read.csv(here("HypocrisyStudySI_2.csv"))
+s8 <- read.csv(here("HypocrisyStudySI_2.csv"))
 
 #Reorder proclamation
 
-s7$proclamation <- factor(s7$proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
+s8$proclamation <- factor(s8$proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
 
 #Composite Evaluation Variables
 
 #Hypocrisy
-hypocrisy7_df <- data.frame(s7$hypocrisy_1, s7$hypocrisy_2, s7$hypocrisy_3)
+hypocrisy7_df <- data.frame(s8$hypocrisy_1, s8$hypocrisy_2, s8$hypocrisy_3)
 summary(hypocrisy7_df)
 describe(hypocrisy7_df)
 psych::alpha(hypocrisy7_df) #alpha = 0.86
-s7<- mutate(s7, hypocrisy7_composite = ((s7$hypocrisy_1 + s7$hypocrisy_2 + s7$hypocrisy_3)/3))
+s8<- mutate(s8, hypocrisy7_composite = ((s8$hypocrisy_1 + s8$hypocrisy_2 + s8$hypocrisy_3)/3))
 
 #Morality
-cor.test(s7$moral_1, s7$moral_2) #r = 0.91
-s7<- mutate(s7, moral7_composite  = ((s7$moral_1 + s7$moral_2)/2))
+cor.test(s8$moral_1, s8$moral_2) #r = 0.91
+s8<- mutate(s8, moral7_composite  = ((s8$moral_1 + s8$moral_2)/2))
 
 #Model
 
@@ -47,7 +47,7 @@ total := c + (a1*b1) + (a2*b2)
 #covariances
 hypocrisy7_composite ~~ discomfort_1"
 
-fit_mutiple7 = sem(mult_med_mod_7, se = "boot", bootstrap = 1000, data = s7, 
+fit_mutiple7 = sem(mult_med_mod_7, se = "boot", bootstrap = 1000, data = s8, 
                    likelihood = "wishart")
 summary(fit_mutiple7, standardized = T, rsq = T)
 parameterEstimates((fit_mutiple7))

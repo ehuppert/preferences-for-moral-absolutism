@@ -9,7 +9,7 @@ library(lavaan)
 
 #Read in data
 
-s6 <- read.csv(here("HypocrisyStudySI_1.csv"))
+s7 <- read.csv(here("HypocrisyStudySI_1.csv"))
 
 #Model
 
@@ -30,7 +30,7 @@ total := c + (a1*b1) + (a2*b2)
 #covariances
 hypocrisy_1  ~~ discomfort_1 "
 
-fit_mutiple1 = sem(mult_med_mod_1, se = "boot", bootstrap = 10000, data = s6, 
+fit_mutiple1 = sem(mult_med_mod_1, se = "boot", bootstrap = 10000, data = s7, 
                    likelihood = "wishart")
 summary(fit_mutiple1, standardized = T, rsq = T)
 parameterEstimates((fit_mutiple1))

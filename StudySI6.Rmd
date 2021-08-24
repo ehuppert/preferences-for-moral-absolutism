@@ -31,7 +31,7 @@ library(dplyr)
 library(emmeans)
 
 #read in data
-s11 <- read.csv(here("HypocrisyStudySI_6.csv"))
+s12 <- read.csv(here("HypocrisyStudySI_6.csv"))
 
 ```
 
@@ -49,81 +49,87 @@ Condition 2 is specific (never okay to lie about PAC donations)
 # Factorize Condition, Sex, Subject (id)
 
 ```{r}
-s11$condition <- as.factor(s11$condition)
-s11$PID <- as.factor(s11$PID)
-s11$sex  <- as.factor(s11$sex)
+s12$condition <- as.factor(s12$condition)
+s12$PID <- as.factor(s12$PID)
+s12$sex  <- as.factor(s12$sex)
 
 ```
 
 # Composite Variables
 
 ```{r}
-#Hypocrsiy
-check_hypocrisy.df <- data.frame(s11$hypocrisy_1, s11$hypocrisy_2, s11$hypocrisy_3, s11$hypocrisy_4, s11$hypocrisy_5)
+#Hypocrisy
+check_hypocrisy.df <- data.frame(s12$hypocrisy_1, s12$hypocrisy_2, s12$hypocrisy_3, s12$hypocrisy_4, s12$hypocrisy_5)
 summary(check_hypocrisy.df)
 describe(check_hypocrisy.df)
 psych::alpha(check_hypocrisy.df) # alpha = .88 so combined
 
 #Combine for Hypocrisy Composite
-s11 <- mutate(s11, hypo_composite = 
-                ((s11$hypocrisy_1 + s11$hypocrisy_2 +s11$hypocrisy_3 + s11$hypocrisy_4 + s11$hypocrisy_5)/5))
+s12 <- mutate(s12, hypo_composite = 
+                ((s12$hypocrisy_1 + s12$hypocrisy_2 +s12$hypocrisy_3 + s12$hypocrisy_4 + s12$hypocrisy_5)/5))
 
 #Moral
 check_moral.df <- data.frame(
-  s11$moral_1, s11$moral_2, s11$moral_3)
+  s12$moral_1, s12$moral_2, s12$moral_3)
 summary(check_moral.df)
 describe(check_moral.df)
 psych::alpha(check_moral.df) # alpha = .95 so combined
 
 #Combine for Morality Composite
-s11 <- mutate(s11, 
-         moral_composite = ((s11$moral_1 + s11$moral_2 + s11$moral_3)/3))
+s12 <- mutate(s12, 
+         moral_composite = ((s12$moral_1 + s12$moral_2 + s12$moral_3)/3))
 ```
+
+
+Evaluation variables:
+
+hypo_composite = hypocrisy composite of 5 items 
+moral_composite = morality composite of 3 items 
 
 # Analysis
 
-# Voting
+# Voting Intentions Model and Descriptives
 
 Descriptives and t-tests:
 
 ```{r}
 #t-test
-t.test(vote_likely  ~ condition, s11, var.equal = TRUE)
-t_apa((t.test(vote_likely  ~ condition, s11, var.equal = TRUE)))
+t.test(vote_likely  ~ condition, s12, var.equal = TRUE)
+t_apa((t.test(vote_likely  ~ condition, s12, var.equal = TRUE)))
 
 #Descriptives
-tapply(s11$vote_likely, s11$condition, FUN = mean)
-tapply(s11$vote_likely, s11$condition, FUN = sd)
+tapply(s12$vote_likely, s12$condition, FUN = mean)
+tapply(s12$vote_likely, s12$condition, FUN = sd)
 
 ```
 
-# Hypocrisy 
+# Hypocrisy Model and Descriptives
 
 Descriptives and t-tests:
 
 ```{r}
 #t tests
-t.test(hypo_composite  ~ condition, s11, var.equal = TRUE)
-t_apa((t.test(hypo_composite ~ condition, s11, var.equal = TRUE)))
+t.test(hypo_composite  ~ condition, s12, var.equal = TRUE)
+t_apa((t.test(hypo_composite ~ condition, s12, var.equal = TRUE)))
 
 #Descriptives
-tapply(s11$hypo_composite, s11$condition, FUN = mean)
-tapply(s11$hypo_composite, s11$condition, FUN = sd)
+tapply(s12$hypo_composite, s12$condition, FUN = mean)
+tapply(s12$hypo_composite, s12$condition, FUN = sd)
 
 ```
 
-# Morality
+# Morality Model and Descriptives
 
 Descriptives and t-tests:
 
 ```{r}
 #t-test
-t.test(moral_composite  ~ condition, s11, var.equal = TRUE)
-t_apa((t.test(moral_composite ~ condition, s11, var.equal = TRUE)))
+t.test(moral_composite  ~ condition, s12, var.equal = TRUE)
+t_apa((t.test(moral_composite ~ condition, s12, var.equal = TRUE)))
 
 #Descriptives
-tapply(s11$moral_composite, s11$condition, FUN = mean)
-tapply(s11$moral_composite, s11$condition, FUN = sd)
+tapply(s12$moral_composite, s12$condition, FUN = mean)
+tapply(s12$moral_composite, s12$condition, FUN = sd)
 
 ```
 

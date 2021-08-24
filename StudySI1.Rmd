@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Set-up
+# Set-up
 
 You need to install the following packages to run this code:
 
@@ -35,7 +35,7 @@ library(dplyr)
 
 #read in data
 
-s6 <- read.csv(here("HypocrisyStudySI_1.csv"))
+s7 <- read.csv(here("HypocrisyStudySI_1.csv"))
 
 ```
 
@@ -65,21 +65,28 @@ Moral  (Ratings: 1-7)
 6. Trustbeh:
 KEEP or PASS in The Coin Flip Game, (0 = KEEP, 1 = PASS)
 
+# Factorize Subject (ID)
+
+```{r}
+s7$ID <- as.factor(s7$ID)
+```
+
+
 # Composite evaluation variables
 
 Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Attitudinal Trust
-cor.test(s6$trust_1, s6$trust_2) #r = 0.95
-s6<- mutate(s6, att_trust = ((s6$trust_1 + s6$trust_2)/2))
+cor.test(s7$trust_1, s7$trust_2) #r = 0.95
+s7 <- mutate(s7, att_trust = ((s7$trust_1 + s7$trust_2)/2))
 
 #Benevolence
-Benveolence_df <- data.frame(s6$benevolence_1, s6$benevolence_2, s6$benevolence_3)
+Benveolence_df <- data.frame(s7$benevolence_1, s7$benevolence_2, s7$benevolence_3)
 summary(Benveolence_df )
 describe(Benveolence_df )
 psych::alpha(Benveolence_df ) #alpha = 0.79
-s6 <- mutate(s6, Benevolence_composite = ((s6$benevolence_1 + s6$benevolence_2 + s6$benevolence_3)/3))
+s7 <- mutate(s7, Benevolence_composite = ((s7$benevolence_1 + s7$benevolence_2 + s7$benevolence_3)/3))
 
 ```
 
@@ -90,7 +97,7 @@ Benevolence_composite = composite of 3 items of benevolence (Ratings: 1-7)
 
 ```{r}
 #ANOVA
-hypocrisy6.aov <-aov_car(hypocrisy_1 ~ proclamation*lie.motives + Error(ID), data=s6)
+hypocrisy6.aov <-aov_car(hypocrisy_1 ~ proclamation*lie.motives + Error(ID), data=s7)
 summary(hypocrisy6.aov) 
 anova_apa(hypocrisy6.aov)
 
@@ -100,24 +107,24 @@ anova_apa(hypocrisy6.aov)
 
 ```{r}
 #Cells
-tapply(s6$hypocrisy_1, list(s6$proclamation, s6$lie.motives), FUN = length)
-tapply(s6$hypocrisy_1, list(s6$proclamation, s6$lie.motives), FUN = mean)
-tapply(s6$hypocrisy_1, list(s6$proclamation, s6$lie.motives), FUN = sd)
+tapply(s7$hypocrisy_1, list(s7$proclamation, s7$lie.motives), FUN = length)
+tapply(s7$hypocrisy_1, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$hypocrisy_1, list(s7$proclamation, s7$lie.motives), FUN = sd)
 
 #Across Proclamation
-tapply(s6$hypocrisy_1, s6$proclamation,FUN = length)
-tapply(s6$hypocrisy_1, s6$proclamation,FUN = mean)
-tapply(s6$hypocrisy_1, s6$proclamation,FUN = sd)
+tapply(s7$hypocrisy_1, s7$proclamation,FUN = length)
+tapply(s7$hypocrisy_1, s7$proclamation,FUN = mean)
+tapply(s7$hypocrisy_1, s7$proclamation,FUN = sd)
 
 #Across Lie.motives
-tapply(s6$hypocrisy_1, s6$lie.motives,FUN = length)
-tapply(s6$hypocrisy_1, s6$lie.motives,FUN = mean)
-tapply(s6$hypocrisy_1, s6$lie.motives,FUN = sd)
+tapply(s7$hypocrisy_1, s7$lie.motives,FUN = length)
+tapply(s7$hypocrisy_1, s7$lie.motives,FUN = mean)
+tapply(s7$hypocrisy_1, s7$lie.motives,FUN = sd)
 
 #Overall
-mean(s6$hypocrisy_1)
-sd(s6$hypocrisy_1)
-length(s6$hypocrisy_1)
+mean(s7$hypocrisy_1)
+sd(s7$hypocrisy_1)
+length(s7$hypocrisy_1)
 
 ```
 
@@ -126,7 +133,7 @@ length(s6$hypocrisy_1)
 
 ```{r}
 #ANOVA
-morality1.aov <-aov_car(moral ~ proclamation*lie.motives + Error(ID), data=s6)
+morality1.aov <-aov_car(moral ~ proclamation*lie.motives + Error(ID), data=s7)
 summary(morality1.aov)
 anova_apa(morality1.aov)
 ```
@@ -135,24 +142,24 @@ anova_apa(morality1.aov)
 
 ```{r}
 #Cells
-tapply(s6$moral, list(s6$proclamation, s6$lie.motives), FUN = mean)
-tapply(s6$moral, list(s6$proclamation, s6$lie.motives), FUN = sd)
-tapply(s6$moral, list(s6$proclamation, s6$lie.motives), FUN = length)
+tapply(s7$moral, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$moral, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$moral, list(s7$proclamation, s7$lie.motives), FUN = length)
 
 #Across Proclamation
-tapply(s6$moral, s6$proclamation,FUN = length)
-tapply(s6$moral, s6$proclamation,FUN = mean)
-tapply(s6$moral, s6$proclamation,FUN = sd)
+tapply(s7$moral, s7$proclamation,FUN = length)
+tapply(s7$moral, s7$proclamation,FUN = mean)
+tapply(s7$moral, s7$proclamation,FUN = sd)
 
 #Across Lie.motives
-tapply(s6$moral, s6$lie.motives,FUN = length)
-tapply(s6$moral, s6$lie.motives,FUN = mean)
-tapply(s6$moral, s6$lie.motives,FUN = sd)
+tapply(s7$moral, s7$lie.motives,FUN = length)
+tapply(s7$moral, s7$lie.motives,FUN = mean)
+tapply(s7$moral, s7$lie.motives,FUN = sd)
 
 #Overall
-mean(s6$moral)
-sd(s6$moral)
-length(s6$moral)
+mean(s7$moral)
+sd(s7$moral)
+length(s7$moral)
 
 ```
 
@@ -160,41 +167,41 @@ length(s6$moral)
 
 ```{r}
 #ANOVA
-discomfort1.aov <-aov_car(discomfort_1 ~ proclamation*lie.motives + Error(ID), data=s6)
+discomfort1.aov <-aov_car(discomfort_1 ~ proclamation*lie.motives + Error(ID), data=s7)
 summary(discomfort1.aov)
 anova_apa(discomfort1.aov)
 ```
 
-# Descriptives Guilt
+# Guilt Descriptives 
 
 ```{r}
 #Cells
-tapply(s6$discomfort_1, list(s6$proclamation, s6$lie.motives), FUN = mean)
-tapply(s6$discomfort_1, list(s6$proclamation, s6$lie.motives), FUN = sd)
-tapply(s6$discomfort_1, list(s6$proclamation, s6$lie.motives), FUN = length)
+tapply(s7$discomfort_1, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$discomfort_1, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$discomfort_1, list(s7$proclamation, s7$lie.motives), FUN = length)
 
 #Across Proclamation
-tapply(s6$discomfort_1, s6$proclamation,FUN = length)
-tapply(s6$discomfort_1, s6$proclamation,FUN = mean) 
-tapply(s6$discomfort_1, s6$proclamation,FUN = sd)
+tapply(s7$discomfort_1, s7$proclamation,FUN = length)
+tapply(s7$discomfort_1, s7$proclamation,FUN = mean) 
+tapply(s7$discomfort_1, s7$proclamation,FUN = sd)
 
 #Across Lie.motives
-tapply(s6$discomfort_1, s6$lie.motives,FUN = length)
-tapply(s6$discomfort_1, s6$lie.motives,FUN = mean)
-tapply(s6$discomfort_1, s6$lie.motives,FUN = sd)
+tapply(s7$discomfort_1, s7$lie.motives,FUN = length)
+tapply(s7$discomfort_1, s7$lie.motives,FUN = mean)
+tapply(s7$discomfort_1, s7$lie.motives,FUN = sd)
 
 #Overall
-mean(s6$discomfort_1)
-sd(s6$discomfort_1)
-length(s6$discomfort_1)
+mean(s7$discomfort_1)
+sd(s7$discomfort_1)
+length(s7$discomfort_1)
 
 ```
 
-# Attitudinal Trust
+# Attitudinal Trust Model
 
 ```{r}
 #ANOVA
-trust1.aov <-aov_car(att_trust ~ proclamation*lie.motives + Error(ID), data=s6)
+trust1.aov <-aov_car(att_trust ~ proclamation*lie.motives + Error(ID), data=s7)
 summary(trust1.aov)
 anova_apa(trust1.aov)
 ```
@@ -203,24 +210,24 @@ anova_apa(trust1.aov)
 
 ```{r}
 #Cells
-tapply(s6$att_trust, list(s6$proclamation, s6$lie.motives), FUN = mean)
-tapply(s6$att_trust, list(s6$proclamation, s6$lie.motives), FUN = sd)
-tapply(s6$att_trust, list(s6$proclamation, s6$lie.motives), FUN = length)
+tapply(s7$att_trust, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$att_trust, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$att_trust, list(s7$proclamation, s7$lie.motives), FUN = length)
 
 #Across Proclamation
-tapply(s6$att_trust, s6$proclamation,FUN = length)
-tapply(s6$att_trust, s6$proclamation,FUN = mean) 
-tapply(s6$att_trust, s6$proclamation,FUN = sd)
+tapply(s7$att_trust, s7$proclamation,FUN = length)
+tapply(s7$att_trust, s7$proclamation,FUN = mean) 
+tapply(s7$att_trust, s7$proclamation,FUN = sd)
 
 #Across Lie.motives
-tapply(s6$att_trust, s6$lie.motives,FUN = length)
-tapply(s6$att_trust, s6$lie.motives,FUN = mean)
-tapply(s6$att_trust, s6$lie.motives,FUN = sd)
+tapply(s7$att_trust, s7$lie.motives,FUN = length)
+tapply(s7$att_trust, s7$lie.motives,FUN = mean)
+tapply(s7$att_trust, s7$lie.motives,FUN = sd)
 
 #Overall
-mean(s6$att_trust)
-sd(s6$att_trust)
-length(s6$att_trust)
+mean(s7$att_trust)
+sd(s7$att_trust)
+length(s7$att_trust)
 
 ```
 
@@ -228,7 +235,7 @@ length(s6$att_trust)
 
 ```{r}
 #ANOVA
-ben.aov <- aov(Benevolence_composite ~ proclamation*lie.motives, data = s6)
+ben.aov <- aov(Benevolence_composite ~ proclamation*lie.motives, data = s7)
 summary(ben.aov)
 anova_apa(ben.aov)
 ```
@@ -237,38 +244,38 @@ anova_apa(ben.aov)
 
 ```{r}
 #Cells
-tapply(s6$Benevolence_composite, list(s6$proclamation, s6$lie.motives), FUN = mean)
-tapply(s6$Benevolence_composite, list(s6$proclamation, s6$lie.motives), FUN = sd)
-tapply(s6$Benevolence_composite, list(s6$proclamation, s6$lie.motives), FUN = length)
+tapply(s7$Benevolence_composite, list(s7$proclamation, s7$lie.motives), FUN = mean)
+tapply(s7$Benevolence_composite, list(s7$proclamation, s7$lie.motives), FUN = sd)
+tapply(s7$Benevolence_composite, list(s7$proclamation, s7$lie.motives), FUN = length)
 
 #Across Proclamation
-tapply(s6$Benevolence_composite, s6$proclamation,FUN = length)
-tapply(s6$Benevolence_composite, s6$proclamation,FUN = mean) 
-tapply(s6$Benevolence_composite, s6$proclamation,FUN = sd)
+tapply(s7$Benevolence_composite, s7$proclamation,FUN = length)
+tapply(s7$Benevolence_composite, s7$proclamation,FUN = mean) 
+tapply(s7$Benevolence_composite, s7$proclamation,FUN = sd)
 
 #Across Lie.motives
-tapply(s6$Benevolence_composite, s6$lie.motives,FUN = length)
-tapply(s6$Benevolence_composite, s6$lie.motives,FUN = mean)
-tapply(s6$Benevolence_composite, s6$lie.motives,FUN = sd)
+tapply(s7$Benevolence_composite, s7$lie.motives,FUN = length)
+tapply(s7$Benevolence_composite, s7$lie.motives,FUN = mean)
+tapply(s7$Benevolence_composite, s7$lie.motives,FUN = sd)
 
 #Overall
-mean(s6$Benevolence_composite)
-sd(s6$Benevolence_composite)
-length(s6$Benevolence_composite)
+mean(s7$Benevolence_composite)
+sd(s7$Benevolence_composite)
+length(s7$Benevolence_composite)
 
 ```
 
-# The Choice Game
+# The Choice Game (trust)
 
 ```{r}
 #Logistic regression
-model.1 <- glm(trustbeh ~ proclamation*lie.motives, data=s6, family = binomial(link = "logit"))
+model.1 <- glm(trustbeh ~ proclamation*lie.motives, data=s7, family = binomial(link = "logit"))
 summary(model.1)
 
 #Follow-ups
-chisq.test(s6$lie.motives, s6$trustbeh)
-table(s6$lie.motives, s6$trustbeh)
-table(s6$proclamation, s6$lie.motives, s6$trustbeh)
+chisq.test(s7$lie.motives, s7$trustbeh)
+table(s7$lie.motives, s7$trustbeh)
+table(s7$proclamation, s7$lie.motives, s7$trustbeh)
 
 ```
 

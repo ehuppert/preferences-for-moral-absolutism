@@ -30,7 +30,7 @@ library(emmeans)
 
 #read in data
 
-s9 <- read.csv(here("HypocrisyStudySI_4.csv")) #433
+s10 <- read.csv(here("HypocrisyStudySI_4.csv")) #433
 
 ```
 
@@ -57,257 +57,267 @@ Assignment to no advisor prep for the interview vs. political advisor prep for t
 
 6. imm = Perceived immorality of lying generally (not specific to Matthew Johnson)
 
+# Factorize  Subject (ID)
+
+```{r}
+s10$ID <- as.factor(s10$ID)
+```
+
+
 # Composite DVs
 
-Look at agreement with hypocrisy and morality.
-
+Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Hypocrisy
-hypocrisy9_check.df <- data.frame(s9$h1, s9$h2, s9$h3, s9$h4, s9$h5)
+hypocrisy9_check.df <- data.frame(s10$h1, s10$h2, s10$h3, s10$h4, s10$h5)
 summary(hypocrisy9_check.df )
 psych::alpha(hypocrisy9_check.df ) #alpha = 0.89
-s9<-  mutate(s9, 
-              Hypocrisy_composite9 = ((s9$h1 + s9$h2 + s9$h3 + s9$h4+ s9$h4)/5))
+s10<-  mutate(s10, 
+              Hypocrisy_composite9 = ((s10$h1 + s10$h2 + s10$h3 + s10$h4+ s10$h4)/5))
 
 #Morality
-moral9.check.df <- data.frame(s9$m1, s9$m2, s9$m3)
+moral9.check.df <- data.frame(s10$m1, s10$m2, s10$m3)
 summary(moral9.check.df)
 psych::alpha(moral9.check.df) #alpha = 0.96
-s9 <- mutate(s9, 
-             Moral_composite9 = ((s9$m1 + s9$m2 + s9$m3)/3))
+s10 <- mutate(s10, 
+             Moral_composite9 = ((s10$m1 + s10$m2 + s10$m3)/3))
 
 ```
+Evaluation variables:
 
-# Models 
+Hypocrisy_composite9 = hypocrisy composite of 5 items 
+Moral_composite9 = moral composite of 3 items 
+ 
+# Analysis
 
 Exclude Control Condition from 2 x 2 Anovas
 
 ```{r}
 #Eliminate control from this 2 x 2 ANOVA
-s9_no_control <- s9%>%
+s10_no_control <- s10%>%
   filter(proclamation != "control")%>%
   droplevels()
 ```
 
-# Voting Intentions
+# Voting Intentions Model
 
 ```{r}
 #ANOVA
-vote9.afex <-aov_car(vote ~ proclamation*advisor + Error(ID), data=s9_no_control)
+vote9.afex <-aov_car(vote ~ proclamation*advisor + Error(ID), data=s10_no_control)
 summary(vote9.afex) 
 anova_apa(vote9.afex)
 ```
 
-#Voting Intentions - Descriptives
+#Voting Intentions Descriptives
 
 ```{r}
 #Across Proclamation*Advisor
-tapply(s9_no_control$vote, list(s9_no_control$proclamation, s9_no_control$advisor), mean)
-tapply(s9_no_control$vote, list(s9_no_control$proclamation, s9_no_control$advisor), sd)
-tapply(s9_no_control$vote, list(s9_no_control$proclamation, s9_no_control$advisor), length)
+tapply(s10_no_control$vote, list(s10_no_control$proclamation, s10_no_control$advisor), mean)
+tapply(s10_no_control$vote, list(s10_no_control$proclamation, s10_no_control$advisor), sd)
+tapply(s10_no_control$vote, list(s10_no_control$proclamation, s10_no_control$advisor), length)
 
 #Across Proclamations
-tapply(s9_no_control$vote, s9_no_control$proclamation, mean)
-tapply(s9_no_control$vote, s9_no_control$proclamation, sd)
-tapply(s9_no_control$vote, s9_no_control$proclamation, length)
+tapply(s10_no_control$vote, s10_no_control$proclamation, mean)
+tapply(s10_no_control$vote, s10_no_control$proclamation, sd)
+tapply(s10_no_control$vote, s10_no_control$proclamation, length)
 
 #Across Advisor
-tapply(s9_no_control$vote, s9_no_control$advisor, mean)
-tapply(s9_no_control$vote, s9_no_control$advisor, sd)
-tapply(s9_no_control$vote, s9_no_control$advisor, length)
+tapply(s10_no_control$vote, s10_no_control$advisor, mean)
+tapply(s10_no_control$vote, s10_no_control$advisor, sd)
+tapply(s10_no_control$vote, s10_no_control$advisor, length)
 ```
 
-# Hypocrisy
+# Hypocrisy Model
 
 ```{r}
 #ANOVA
-hypocrisy9.afex <-aov_car(Hypocrisy_composite9 ~ proclamation*advisor + Error(ID), data=s9_no_control)
+hypocrisy9.afex <-aov_car(Hypocrisy_composite9 ~ proclamation*advisor + Error(ID), data=s10_no_control)
 summary(hypocrisy9.afex) 
 anova_apa(hypocrisy9.afex)
 ```
 
-# Hypocrisy - Descriptives
+# Hypocrisy Descriptives
 
 ```{r}
 #Across Proclamation*Advisor
-tapply(s9_no_control$Hypocrisy_composite9, list(s9_no_control$proclamation, s9_no_control$advisor), mean)
-tapply(s9_no_control$Hypocrisy_composite9, list(s9_no_control$proclamation, s9_no_control$advisor), sd)
-tapply(s9_no_control$Hypocrisy_composite9, list(s9_no_control$proclamation, s9_no_control$advisor), length)
+tapply(s10_no_control$Hypocrisy_composite9, list(s10_no_control$proclamation, s10_no_control$advisor), mean)
+tapply(s10_no_control$Hypocrisy_composite9, list(s10_no_control$proclamation, s10_no_control$advisor), sd)
+tapply(s10_no_control$Hypocrisy_composite9, list(s10_no_control$proclamation, s10_no_control$advisor), length)
 
 #Across Proclamations
-tapply(s9_no_control$Hypocrisy_composite9, s9_no_control$proclamation, mean)
-tapply(s9_no_control$Hypocrisy_composite9, s9_no_control$proclamation, sd)
-tapply(s9_no_control$Hypocrisy_composite9, s9_no_control$proclamation, length)
+tapply(s10_no_control$Hypocrisy_composite9, s10_no_control$proclamation, mean)
+tapply(s10_no_control$Hypocrisy_composite9, s10_no_control$proclamation, sd)
+tapply(s10_no_control$Hypocrisy_composite9, s10_no_control$proclamation, length)
 
 #Across Advisor
-tapply(s9_no_control$Hypocrisy_composite9, s9_no_control$advisor, mean)
-tapply(s9_no_control$Hypocrisy_composite9, s9_no_control$advisor, sd)
-tapply(s9_no_control$Hypocrisy_composite9, s9_no_control$advisor, length)
+tapply(s10_no_control$Hypocrisy_composite9, s10_no_control$advisor, mean)
+tapply(s10_no_control$Hypocrisy_composite9, s10_no_control$advisor, sd)
+tapply(s10_no_control$Hypocrisy_composite9, s10_no_control$advisor, length)
 ```
 
-# Morality
+# Morality Model
 
 ```{r}
 #ANOVA
-morality9.afex <-aov_car(Moral_composite9 ~ proclamation*advisor + Error(ID), data=s9_no_control)
+morality9.afex <-aov_car(Moral_composite9 ~ proclamation*advisor + Error(ID), data=s10_no_control)
 summary(morality9.afex)
 anova_apa(morality9.afex )
 ```
 
-# Moral Descriptives
+# Morality Descriptives
 
 ```{r}
 #Across Proclamation*Advisor
-tapply(s9_no_control$Moral_composite9, list(s9_no_control$proclamation, s9_no_control$advisor), mean)
-tapply(s9_no_control$Moral_composite9, list(s9_no_control$proclamation, s9_no_control$advisor), sd)
-tapply(s9_no_control$Moral_composite9, list(s9_no_control$proclamation, s9_no_control$advisor), length)
+tapply(s10_no_control$Moral_composite9, list(s10_no_control$proclamation, s10_no_control$advisor), mean)
+tapply(s10_no_control$Moral_composite9, list(s10_no_control$proclamation, s10_no_control$advisor), sd)
+tapply(s10_no_control$Moral_composite9, list(s10_no_control$proclamation, s10_no_control$advisor), length)
 
 #Across Proclamations
-tapply(s9_no_control$Moral_composite9, s9_no_control$proclamation, mean)
-tapply(s9_no_control$Moral_composite9, s9_no_control$proclamation, sd)
-tapply(s9_no_control$Moral_composite9, s9_no_control$proclamation, length)
+tapply(s10_no_control$Moral_composite9, s10_no_control$proclamation, mean)
+tapply(s10_no_control$Moral_composite9, s10_no_control$proclamation, sd)
+tapply(s10_no_control$Moral_composite9, s10_no_control$proclamation, length)
 
 #Across Advisor
-tapply(s9_no_control$Moral_composite9, s9_no_control$advisor, mean)
-tapply(s9_no_control$Moral_composite9, s9_no_control$advisor, sd)
-tapply(s9_no_control$Moral_composite9, s9_no_control$advisor, length)
+tapply(s10_no_control$Moral_composite9, s10_no_control$advisor, mean)
+tapply(s10_no_control$Moral_composite9, s10_no_control$advisor, sd)
+tapply(s10_no_control$Moral_composite9, s10_no_control$advisor, length)
 ```
 
-# Lying Behavior
+# Lying Behavior Model
 
 ```{r}
 #ANOVA
-liebehavior9.afex <-aov_car(d1 ~ proclamation*advisor + Error(ID), data=s9_no_control)
+liebehavior9.afex <-aov_car(d1 ~ proclamation*advisor + Error(ID), data=s10_no_control)
 summary(liebehavior9.afex )
 anova_apa(liebehavior9.afex )
 ```
 
-# Lying Behavior - Descriptives
+# Lying Behavior Descriptives
 
 ```{r}
 #Across Proclamation*Advisor
-tapply(s9_no_control$d1, list(s9_no_control$proclamation, s9_no_control$advisor), mean)
-tapply(s9_no_control$d1, list(s9_no_control$proclamation, s9_no_control$advisor), sd)
-tapply(s9_no_control$d1, list(s9_no_control$proclamation, s9_no_control$advisor), length)
+tapply(s10_no_control$d1, list(s10_no_control$proclamation, s10_no_control$advisor), mean)
+tapply(s10_no_control$d1, list(s10_no_control$proclamation, s10_no_control$advisor), sd)
+tapply(s10_no_control$d1, list(s10_no_control$proclamation, s10_no_control$advisor), length)
 
 #Across Proclamations
-tapply(s9_no_control$d1, s9_no_control$proclamation, mean)
-tapply(s9_no_control$d1, s9_no_control$proclamation, sd)
-tapply(s9_no_control$d1, s9_no_control$proclamation, length)
+tapply(s10_no_control$d1, s10_no_control$proclamation, mean)
+tapply(s10_no_control$d1, s10_no_control$proclamation, sd)
+tapply(s10_no_control$d1, s10_no_control$proclamation, length)
 
 #Across Advisor
-tapply(s9_no_control$d1, s9_no_control$advisor, mean)
-tapply(s9_no_control$d1, s9_no_control$advisor, sd)
-tapply(s9_no_control$d1, s9_no_control$advisor, length)
+tapply(s10_no_control$d1, s10_no_control$advisor, mean)
+tapply(s10_no_control$d1, s10_no_control$advisor, sd)
+tapply(s10_no_control$d1, s10_no_control$advisor, length)
 ```
 
-# Honesty Ideals
+# Honesty Ideals Model
 
 ```{r}
 #ANOVA
-intentions9.afex <-aov_car(g1 ~ proclamation*advisor + Error(ID), data=s9_no_control)
-summary(intentions9.afex)
-anova_apa(intentions9.afex)
+intentions10.afex <-aov_car(g1 ~ proclamation*advisor + Error(ID), data=s10_no_control)
+summary(intentions10.afex)
+anova_apa(intentions10.afex)
 ```
 
-# Honesty Ideals _ Descriptives
+# Honesty Ideals Descriptives
 
 ```{r}
 #Across Proclamation*Advisor
-tapply(s9_no_control$g1, list(s9_no_control$proclamation, s9_no_control$advisor), mean)
-tapply(s9_no_control$g1, list(s9_no_control$proclamation, s9_no_control$advisor), sd)
-tapply(s9_no_control$g1, list(s9_no_control$proclamation, s9_no_control$advisor), length)
+tapply(s10_no_control$g1, list(s10_no_control$proclamation, s10_no_control$advisor), mean)
+tapply(s10_no_control$g1, list(s10_no_control$proclamation, s10_no_control$advisor), sd)
+tapply(s10_no_control$g1, list(s10_no_control$proclamation, s10_no_control$advisor), length)
 
 #Across Proclamations
-tapply(s9_no_control$g1, s9_no_control$proclamation, mean)
-tapply(s9_no_control$g1, s9_no_control$proclamation, sd)
-tapply(s9_no_control$g1, s9_no_control$proclamation, length)
+tapply(s10_no_control$g1, s10_no_control$proclamation, mean)
+tapply(s10_no_control$g1, s10_no_control$proclamation, sd)
+tapply(s10_no_control$g1, s10_no_control$proclamation, length)
 
 #Across Advisor
-tapply(s9_no_control$g1, s9_no_control$advisor, mean)
-tapply(s9_no_control$g1, s9_no_control$advisor, sd)
-tapply(s9_no_control$g1, s9_no_control$advisor, length)
+tapply(s10_no_control$g1, s10_no_control$advisor, mean)
+tapply(s10_no_control$g1, s10_no_control$advisor, sd)
+tapply(s10_no_control$g1, s10_no_control$advisor, length)
 ```
 
-#Examination of the Control Condition
+# Examination of the Control Condition
 
 ```{r}
 #Moral rating by proc type
-tapply(s9$Moral_composite, s9$proclamation, FUN = mean)
-tapply(s9$Moral_composite, s9$proclamation, FUN = sd)
+tapply(s10$Moral_composite, s10$proclamation, FUN = mean)
+tapply(s10$Moral_composite, s10$proclamation, FUN = sd)
 
 
 #Moral ratings by proclamation within just no advisor type
-no_advisor_df <- s9 %>%
+no_advisor_df <- s10 %>%
   filter(advisor == "no") %>%
   droplevels()
 tapply(no_advisor_df$Moral_composite, no_advisor_df$proclamation, FUN = mean)
 
 #Compare moral ratings of candidates who make the abs to flex proc
-t.test(Moral_composite9  ~ proclamation, s9_no_control, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_control, var.equal = TRUE)) # abs v flex significant
+t.test(Moral_composite9  ~ proclamation, s10_no_control, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_control, var.equal = TRUE)) # abs v flex significant
 
 #Compare moral ratings of candidates who make the abs to flex with no advisor prep
-s9_no_control2 <- no_advisor_df  %>%
+s10_no_control2 <- no_advisor_df  %>%
    filter(proclamation != "control")%>%
   droplevels()
 
 #Compare moral ratings of candidates who make the abs to flex proc
-t.test(Moral_composite9  ~ proclamation, s9_no_control2, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_control2, var.equal = TRUE)) # abs v flex significant
+t.test(Moral_composite9  ~ proclamation, s10_no_control2, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_control2, var.equal = TRUE)) # abs v flex significant
 
 
 #Compare moral ratings of candidate who make the flex proc to control
-s9_no_abs<- s9 %>%
+s10_no_abs<- s10 %>%
    filter(proclamation != "absolute")%>%
   droplevels()
 
-t.test(Moral_composite9  ~ proclamation, s9_no_abs, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_abs, var.equal = TRUE)) # abs v flex significant
+t.test(Moral_composite9  ~ proclamation, s10_no_abs, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_abs, var.equal = TRUE)) # abs v flex significant
 
 #Aagin no advisor prep flex vs. control
-s9_no_abs2 <- no_advisor_df %>%
+s10_no_abs2 <- no_advisor_df %>%
    filter(proclamation != "absolute")%>%
   droplevels()
 
-t.test(Moral_composite9  ~ proclamation, s9_no_abs2, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_abs2, var.equal = TRUE)) # abs v flex significant
+t.test(Moral_composite9  ~ proclamation, s10_no_abs2, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_abs2, var.equal = TRUE)) # abs v flex significant
 
 
 #Compare moral ratings of candidate who makes the abs proc to control
-s9_no_flex <- s9 %>%
+s10_no_flex <- s10 %>%
    filter(proclamation != "flexible")%>%
   droplevels()
 
-t.test(Moral_composite9  ~ proclamation, s9_no_flex, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_flex, var.equal = TRUE)) # abs v flex significant
+t.test(Moral_composite9  ~ proclamation, s10_no_flex, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_flex, var.equal = TRUE)) # abs v flex significant
 
 #Again no advisor, abs vs. control
-s9_no_flex2 <- no_advisor_df %>%
+s10_no_flex2 <- no_advisor_df %>%
    filter(proclamation != "flexible")%>%
   droplevels()
 
-t.test(Moral_composite9  ~ proclamation, s9_no_flex2, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s9_no_flex2, var.equal = TRUE)) # abs v flex significant
+t.test(Moral_composite9  ~ proclamation, s10_no_flex2, var.equal = TRUE)
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_flex2, var.equal = TRUE)) # abs v flex significant
 
 
 #moral by proc and advisor
-tapply(s9$Moral_composite9, list(s9$proclamation, s9$advisor), FUN = mean)
+tapply(s10$Moral_composite9, list(s10$proclamation, s10$advisor), FUN = mean)
 ```
 
-# Perceived Immorality
+# Perceived Immorality Model - exploratory
 
 ```{r}
 #Does perceived immorality predict moral ratings?
 #ANOVA
-imm.afex <-aov_car(Moral_composite9 ~ imm*proclamation + Error(ID), data=s9_no_control)
+imm.afex <-aov_car(Moral_composite9 ~ imm*proclamation + Error(ID), data=s10_no_control)
 summary(imm.afex) 
 anova_apa(imm.afex) 
 
-tapply(s9$Moral_composite9, list(s9$imm, s9$proclamation), FUN = mean)
+tapply(s10$Moral_composite9, list(s10$imm, s10$proclamation), FUN = mean)
 #bar graph
-ggplot(data = s9_no_control) +
+ggplot(data = s10_no_control) +
 geom_smooth(mapping = aes(x = imm, y = Moral_composite9, color = proclamation))
 
 ```

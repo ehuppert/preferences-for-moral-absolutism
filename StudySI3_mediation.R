@@ -9,24 +9,24 @@ library(psych)
 
 #Read in data
 
-s8 <- read.csv(here("HypocrisyStudySI_3.csv"))
+s9 <- read.csv(here("HypocrisyStudySI_3.csv"))
 
 #Reorder proclamation
 
-s8$proclamation <- factor(s8$proclamation, levels = c("flexible", "absolute"))
+s9$proclamation <- factor(s9$proclamation, levels = c("flexible", "absolute"))
 
 #Create composite variables
 
 #Hypocrisy
-hypocrisySI3_df <- data.frame(s8$hypocrisy_1, s8$hypocrisy_2, s8$hypocrisy_3, s8$hypocrisy_4)
+hypocrisySI3_df <- data.frame(s9$hypocrisy_1, s9$hypocrisy_2, s9$hypocrisy_3, s9$hypocrisy_4)
 summary(hypocrisySI3_df)
 psych::alpha(hypocrisySI3_df) #alpha = 0.86
-s8 <- mutate(s8, HypocrisySI3_composite  = ((s8$hypocrisy_1 + s8$hypocrisy_2 + s8$hypocrisy_3 + s8$hypocrisy_4)/4))
+s9 <- mutate(s9, HypocrisySI3_composite  = ((s9$hypocrisy_1 + s9$hypocrisy_2 + s9$hypocrisy_3 + s9$hypocrisy_4)/4))
 
 #Morality
-moralSI3_df <- data.frame(s8$moral_1, s8$moral_2, s8$moral_3)
+moralSI3_df <- data.frame(s9$moral_1, s9$moral_2, s9$moral_3)
 psych::alpha(moralSI3_df) #alpha = 0.94
-s8 <- mutate(s8, MoralSI3_composite  = ((s8$moral_1 + s8$moral_2 + s8$moral_3)/3))
+s9 <- mutate(s9, MoralSI3_composite  = ((s9$moral_1 + s9$moral_2 + s9$moral_3)/3))
 
 #Model
 
@@ -48,7 +48,7 @@ total := c + (a1*b1) + (a2*b2)
 discounting_2  ~~ goal_2"
 
 fit_med_mod_exp_8 = sem(med_mod_exploratory_8, se = "boot", bootstrap = 1000, 
-                    data = s8, likelihood = "wishart")
+                    data = s9, likelihood = "wishart")
 summary(fit_med_mod_exp_8, standardized = T, rsq = T)
 parameterEstimates(fit_med_mod_exp_8)
 
