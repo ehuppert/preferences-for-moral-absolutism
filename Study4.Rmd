@@ -67,10 +67,11 @@ Supplemental:
 Pref = Attitudes towards honesty; 1-5 statement
 ("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
 
-# Factorize Subject (id)
+# Factorize Subject (id) and Trust (rv game pass or rely)
 
 ```{r}
 s4$ID <- as.factor(s4$ID)
+s4$rv_f <- as.factor(s4$rv)
 ```
 
 #Composite Evaluation Variables
@@ -263,7 +264,7 @@ post3 <- emmeans(hyp_model, ~ proclamation*behavior)
 pairs(post3) 
 ```
 
-#Morality 
+# Morality Model
 
 ```{r}
 #ANOVA
@@ -286,7 +287,7 @@ d4 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.3354498 (0.34)
 
 ```
 
-#Morality Descriptives
+# Morality Descriptives
 
 ```{r}
 #Cells
@@ -311,7 +312,7 @@ length(s4$Moral_composite4)
 
 ```
 
-#Morality Simple Effects
+# Morality Simple Effects
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
@@ -379,13 +380,13 @@ pairs(post3)
 #Commitment to Honesty
 
 ```{r}
-#ANOVA
+# ANOVA
 honesty_4.afex <- aov_car(Honest_composite4 ~ proclamation * behavior + Error(ID), s4)
 summary(honesty_4.afex)
 anova_apa(honesty_4.afex)
 ```
 
-#Commitment to Honesty Descriptives
+# Commitment to Honesty Descriptives
 
 ```{r}
 #Cells
@@ -410,7 +411,7 @@ length(s4$Honest_composite4)
 
 ```
 
-#Commitment to Honesty Simple Effects
+# Commitment to Honesty Simple Effects
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
@@ -471,7 +472,7 @@ post2 <- emmeans(hon_model, ~ proclamation)
 pairs(post2)  
 ```
 
-#Social Influence
+# Social Influence
 
 ```{r}
 #ANOVA
@@ -480,7 +481,7 @@ summary(SI.afex )
 anova_apa(SI.afex)
 ```
 
-#Social Influence Descriptives
+# Social Influence Descriptives
 
 ```{r}
 #Cells
@@ -505,7 +506,7 @@ length(s4$SI_composite4)
 
 ```
 
-#Social Benefit Simple Effects 
+# Social Benefit Simple Effects 
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
@@ -566,11 +567,22 @@ pairs(post1)
 # Behavior in the RELY-or-VERIFY game
 
 ```{r}
-#Reported Model
-rv_4.glm <- glm(rv ~ sometimes + rarely + behavlie 
+# Reported Model
+rv_4.glm <- glm(rv_f ~ sometimes + rarely + behavlie 
                 + sometimes*behavlie + rarely*behavlie, 
                 data=s4, family = binomial(link = "logit"))
-summary(rv_4.glm) 
+summary(rv_4.glm)
+
+# Replicate with factorized dummy variables to confirm 
+s4$sometimes_f <- as.factor(s4$sometimes)
+s4$rarely_f <- as.factor(s4$rarely)
+s4$behavlie_f <- as.factor(s4$behavlie)
+
+#re-run model
+rv_4_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f 
+                + sometimes_f*behavlie_f + rarely_f*behavlie_f, 
+                data=s4, family = binomial(link = "logit"))
+summary(rv_4_test.glm)
 
 #Exploratory
 rv.glm4_2 <- glm(rv ~ never + rarely + behavlie + 
@@ -578,10 +590,16 @@ rv.glm4_2 <- glm(rv ~ never + rarely + behavlie +
               data=s4, family = binomial(link = "logit"))
 summary(rv.glm4_2)
 
+# Replicate with factorized dummy variables to confirm 
+s4$never_f <- as.factor(s4$never)
 
+rv_test.glm4_2 <- glm(rv ~ never_f + rarely_f + behavlie_f + 
+                never_f*behavlie_f + rarely_f*behavlie_f,
+              data=s4, family = binomial(link = "logit"))
+summary(rv_test.glm4_2)
 
 #Frequencies - proclamation
-table(s4$proclamation, s4$rv) 
+table(s4$proclamation, s4$rv_f) 
 
 #never rely:  95/201, 47%
 #rarely rely: 83/197, 42%
@@ -593,8 +611,8 @@ table(s4$proclamation, s4$rv)
 #sometimes 137/198 verify, 69%
 
 #Frequencies proclamation and behavior by cell
-table(s4$proclamation, s4$behavior, s4$rv)
-table(s4$behavior, s4$rv) 
+table(s4$proclamation, s4$behavior, s4$rv_f)
+table(s4$behavior, s4$rv_f) 
 
 #178 prosocial rely, 117 verify - 178/295; 60%
 #61 selfish rely, 240 selfish verify - 61/01 - 20%
@@ -687,14 +705,14 @@ tapply(s4$SI_composite4, s4$rarely, sd)
 
 
 #Logistic Regression (trust) with own attitudes towards honesty
-rv4.4.glm <- glm(rv ~ sometimes*pref.center,
+rv4.4.glm <- glm(rv_f ~ sometimes*pref.center,
               data=s4, family = binomial(link = "logit"))
 summary(rv4.4.glm) 
 
 #Frequencies
-table(s4$rv, s4$pref, s4$sometimes)
+table(s4$rv_f, s4$pref, s4$sometimes)
 #0 = verify, 1 = rely
-table(s4$rv, s4$pref, s4$proclamation)
+table(s4$rv_f, s4$pref, s4$proclamation)
 #Percentages RELY on never
 #always 1/4 25%
 #often 1/9 11%
@@ -702,14 +720,15 @@ table(s4$rv, s4$pref, s4$proclamation)
 #rarely 45/330 14%
 #never 33/109 30%
 
-#Percentages that RELY on rarey
+#Percentages that RELY on rarely
 #always 1/4 25%
 #often 1/9 11%
 #sometimes 8/144 6%
 #rarely 62/330 19%
 #never 11/109
 
-#note that separate tables 0 = never/rarely , 1 = sometimes; within tables, 0 = verify, 1 = rely
+#note that separate tables 0 = never/rarely, 1 = sometimes; 
+#within tables, 0 = verify, 1 = rely
 #total per cell
 table(s4$pref)
 

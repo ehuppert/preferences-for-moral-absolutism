@@ -350,6 +350,7 @@ hypo5_SI_df <-melt(s11,
                     value.name="h5value"
 )
 
+
 #ANOVA
 hSI5.afex <- aov_car(
   h5value ~ proc*h5.time + Error(id/h5.time),

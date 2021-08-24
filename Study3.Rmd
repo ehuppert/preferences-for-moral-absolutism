@@ -5,7 +5,7 @@ date: "1/14/2020"
 output: pdf_document
 ---
 
-#Set-up and Read in Data
+# Set-up and Read in Data
 
 You need to install the following packages to run this code:
 
@@ -67,10 +67,11 @@ Supplemental:
 Pref = Attitudes towards honesty;1-5 statement
 ("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
 
-# Factorize Subject (id)
+# Factorize Subject (id) and Trust (rv game pass or rely)
 
 ```{r}
 s3$ID <- as.factor(s3$ID)
+s3$rv_f <- as.factor(s3$rv)
 ```
 
 # Composite Evaluation Variables
@@ -351,7 +352,7 @@ pairs(post2)
 
 ```
 
-#Commitment to Honesty  Model
+# Commitment to Honesty  Model
 
 ```{r}
 #ANOVA
@@ -360,7 +361,7 @@ summary(honesty_3.afex)
 anova_apa(honesty_3.afex)
 ```
 
-#Commitment to Honesty Descriptives
+# Commitment to Honesty Descriptives
 
 ```{r}
 #Cells
@@ -386,7 +387,7 @@ length(s3$Honest_composite3)
 
 ```
 
-#Commitment to Honesty Simple Effects - T-tests
+# Commitment to Honesty Simple Effects - T-tests
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
@@ -444,26 +445,46 @@ post2 <- emmeans(hon_model, ~ proclamation)
 pairs(post2)  
 ```
 
-#Behavior Model
+# Behavior Model
 
 "rv" is trust in the RELY-or-VERIFY game. 1 = RELY, 0 = VERIFY.
 
 ```{r}
 #Reported Model
-rv.glm <- glm(rv ~ sometimes + rarely + behavlie + 
+rv.glm <- glm(rv_f ~ sometimes + rarely + behavlie + 
                 sometimes*behavlie + rarely*behavlie,
               data=s3, family = binomial(link = "logit"))
 summary(rv.glm)
 
+# Confirm that the model looks the same with dummy-coded variables as factors
+#Factorize 0,1 integers (dummy-coded variables)
+s3$sometimes_f <- as.factor(s3$sometimes)
+s3$rarely_f <- as.factor(s3$rarely)
+s3$behavlie_f  <- as.factor(s3$behavlie)
+
+#re-run model
+rv_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f + 
+                sometimes_f*behavlie_f + rarely_f*behavlie_f,
+              data=s3, family = binomial(link = "logit"))
+summary(rv_test.glm)#confirmed
+
 #Exploratory
-rv.glm2 <- glm(rv ~ never + rarely + behavlie + 
+rv.glm2 <- glm(rv_f ~ never + rarely + behavlie + 
                 never*behavlie + rarely*behavlie,
               data=s3, family = binomial(link = "logit"))
 summary(rv.glm2)
 
+#factorize never
+s3$never_f <- as.factor(s3$never)
+
+#re-run model
+rv_test.glm2 <- glm(rv_f ~ never_f + rarely_f + behavlie_f + 
+                never_f*behavlie_f + rarely_f*behavlie_f,
+              data=s3, family = binomial(link = "logit"))
+summary(rv_test.glm2)
 
 #Frequencies - proclamation
-table(s3$proclamation, s3$rv) #1 = RELY, 0 = VERIFY
+table(s3$proclamation, s3$rv_f) #1 = RELY, 0 = VERIFY
 
 #never verify: 103/192, 54%
 #rarely verify: 111/202, 55%
@@ -474,8 +495,8 @@ table(s3$proclamation, s3$rv) #1 = RELY, 0 = VERIFY
 #sometimes  rely: 59/204, 29%
 
 #Frequencies proclamation and behavior by cell
-table(s3$proclamation, s3$behavior, s3$rv)
-table(s3$behavior, s3$rv) 
+table(s3$proclamation, s3$behavior, s3$rv_f)
+table(s3$behavior, s3$rv_f) 
 
 
 #Compare to equilibrium
@@ -552,15 +573,15 @@ tapply(s3$Honest_composite3, s3$sometimes, mean)
 tapply(s3$Honest_composite3, s3$sometimes, sd)
 
 #Logistic Regression (trust) with own attitudes towards honesty
-rv3.glm <- glm(rv ~ sometimes*pref.center,
+rv3.glm <- glm(rv_f ~ sometimes*pref.center,
               data=s3, family = binomial(link = "logit"))
 summary(rv3.glm)
 
 #Frequencies
-table(s3$rv, s3$pref, s3$sometimes)
+table(s3$rv_f, s3$pref, s3$sometimes)
 #0 = verify, 1 = rely
-table(s3$rv, s3$pref, s3$proclamation)
-table(s3$rv, s3$pref)
+table(s3$rv_f, s3$pref, s3$proclamation)
+table(s3$rv_f, s3$pref)
 #note that separate tables 0 = never/rarely , 1 = sometimes; 
 #within tables, 0 = verify, 1 = rely
 #total per cell
