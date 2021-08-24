@@ -159,6 +159,8 @@ length(s1$Hypocrisy_composite)
 
 # Morality Model
 
+Also Cohen's d for morality for post-hoc power.
+
 ```{r}
 #ANOVA
 moral_1.afex <-aov_car(Moral_composite ~ Proclamation*Perspective*Frame + Error(ID), data=s1)
@@ -166,13 +168,13 @@ summary(moral_1.afex)
 anova_apa(moral_1.afex)
 
 #Abs vs. Flex morality focal - need cohen's D
-#abs mean = 2.87, sd = 1.22, 528 
-#flex mean =  2.32, sd = 1.03, 493
-#pooled SD = sqrt(((1.22^2) + (1.03^2))/2)
-sqrt((((1.22^2) + (1.03^2))/2)) #1.129
+#abs mean = 2.868056 , sd = 1.228163, 528 
+#flex mean =  2.315754, sd = 1.025051, 493
+#pooled SD = sqrt(((1.228163^2) + (1.025051^2))/2)
+sqrt((((1.228163^2) + (1.025051^2))/2)) #1.131175
 
 #cohens = (mean - mean)/SD pooeld
-(2.87-2.32)/1.129 #0.487
+(2.868056 -2.315754)/1.131175 #0.488
 
 d <- cohens_d(t_test(Moral_composite ~ Proclamation, s1))
 d #Cohen's d abs. vs. flex. on morality (abs value)  = 0.487
