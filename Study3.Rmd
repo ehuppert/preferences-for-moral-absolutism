@@ -243,17 +243,17 @@ summary(moral_3.afex)
 anova_apa(moral_3.afex)
 
 #Abs vs. Flex morality focal - need cohen's D
-#abs mean =  5.03, sd = 1.43, 192 
-#flex mean =  4.08, sd = 1.42, 204
-#pooled SD = sqrt(((1.43^2) + (1.42^2))/2)
-sqrt((((1.43^2) + (1.42^2))/2)) #1.425009
+#abs mean =  5.027778, sd = 1.427859, 192 
+#flex mean =  4.075163, sd = 1.424938, 204
+#pooled SD = sqrt(((1.427859^2) + (1.424938^2))/2)
+sqrt((((1.427859^2) + (1.424938^2))/2)) #1.426399
 
 #cohens = (mean - mean)/SD pooeld
-(5.03-4.08)/1.425009 #0.67
+(5.027778-4.075163)/1.426399 #0.6678461
 
 d3 <- cohens_d(t_test(Moral_composite3 ~ proclamation, rarely_exclude)) 
 #see Hypocrisy Simple Effects above to exclude rarely, N = 396
-d3 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.67
+d3 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.6678664 (0.67)
 ```
 
 
@@ -555,7 +555,8 @@ table(s3$rv, s3$pref, s3$sometimes)
 #0 = verify, 1 = rely
 table(s3$rv, s3$pref, s3$proclamation)
 table(s3$rv, s3$pref)
-#note that separate tables 0 = never/rarely , 1 = sometimes; within tables, 0 = verify, 1 = rely
+#note that separate tables 0 = never/rarely , 1 = sometimes; 
+#within tables, 0 = verify, 1 = rely
 #total per cell
 table(s3$pref)
 
