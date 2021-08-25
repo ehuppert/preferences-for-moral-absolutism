@@ -1,5 +1,5 @@
 ---
-title: "Study 6"
+title: "Study 6 and Pilot Study 3 (CivicPulse Data)"
 author: "Elizabeth Huppert"
 date: "8/17/2021"
 output: html_document
@@ -31,8 +31,12 @@ CP <- read.csv(here("HypocrisyStudy6_public_access_dataset.csv"))
                
 ```
 
-Note: The current csv file imported for this analysis is a publically 
-available version of data collected with CivicPulse.
+Note: The current csv file imported for this analysis is a publicly 
+available version of data collected with CivicPulse. We collected Pilot Study 3 and Study 6 as two different modules within the same survey that was sent to government officials, which is why this data is combined.
+
+The code for Study 6 is listed first.
+
+# Study 6
 
 # Absolute estimates - variables
 
@@ -145,7 +149,7 @@ t.test(cp_omit2.2$flextrust, cp_omit2.2$flextrust2, paired = TRUE)
 t_apa((t.test(cp_omit2.2$flextrust, cp_omit2.2$flextrust2, paired = TRUE)))
 ```
 
-# Compare Absolute and Flexible
+# Compare Absolute and Flexible Conditions Directly
 
 ```{r}
 #Different NAs per set
@@ -164,7 +168,17 @@ unique(cp_omit_full$abtrust2)
 t.test(cp_omit_full$abtrust2, cp_omit_full$flextrust2, paired = TRUE) 
 t_apa((t.test(cp_omit_full$abtrust2, cp_omit_full$flextrust2, paired = TRUE)))
 
+#Also add Time one 
+t.test(cp_omit_full$abtrust, cp_omit_full$flextrust, paired = TRUE) 
+t_apa((t.test(cp_omit_full$abtrust, cp_omit_full$flextrust, paired = TRUE)))
+
+
 ```
+
+Now we lis the code for Pilot Study 3.
+
+# Pilot Study 3 
+
 # Attitudes Towards Honesty
 
 ```{r}
@@ -186,18 +200,19 @@ table(cp_omit3$personalbelief)
 # rarely 42 - 31%
 # sometimes 5 - 3%
 
+#frequency with full sample
+table(CP$personalbelief)
+#never 87
+#rarely 42
+#sometimes 5
+#NA 32
+
 #Proportion out of full sample
 #52% never
 #25% rarely
 #3% sometimes
 #19% choose not to response
 
-#Lie personal beliefs 166; NA = 32 
-#only never, rarely, sometimes chosen
-CP$personalbelief[CP$Lie_pers_belief =="Lying is never okay."] <- "1"
-CP$personalbelief[CP$Lie_pers_belief=="Lying is rarely okay."] <- "2"
-CP$personalbelief[CP$Lie_pers_belief=="Lying is sometimes okay."] <-  "3"
-CP$personalbelief <- as.numeric(CP$personalbelief) #166
 
 #Lie behaviors 166; NA = 39
 #only never, rarely, sometimes chosen
@@ -219,11 +234,13 @@ table(cp_omit3.2$liebehav)
 #61 rarely - 48%
 #7 sometimes - 6%
 
+#frequency with full sample
+table(CP$liebehav)
 #Behavior freq - full sample with NA
 #59 never - 36%
-#61 rarely - 29%
+#61 rarely - 37%
 #7 sometimes - 4%
-#NA 32 - 19%
+#NA 39 - 23%
 
 #Public beliefs 166; NA = 42 
 #only never, rarely, sometimes chosen

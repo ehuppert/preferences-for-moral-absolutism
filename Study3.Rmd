@@ -462,11 +462,11 @@ s3$sometimes_f <- as.factor(s3$sometimes)
 s3$rarely_f <- as.factor(s3$rarely)
 s3$behavlie_f  <- as.factor(s3$behavlie)
 
-#re-run model
+#re-run model - consistent
 rv_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f + 
                 sometimes_f*behavlie_f + rarely_f*behavlie_f,
               data=s3, family = binomial(link = "logit"))
-summary(rv_test.glm)#confirmed
+summary(rv_test.glm) #confirmed
 
 #Exploratory
 rv.glm2 <- glm(rv_f ~ never + rarely + behavlie + 
