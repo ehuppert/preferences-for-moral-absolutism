@@ -1,363 +1,363 @@
-ID,StartDate,EndDate,Gender,Economics_exp,Age,Perceived_purpose1,Perceived_purpose2,condition,trustbeh,proclamation,lie.motives,trust_1,trust_2,benevolence_1,benevolence_2,benevolence_3,hypocrisy_1,discomfort_1,moral
-1,8/9/18 7:52,8/9/18 7:56,Male,2,30,Understanding if people will sacrifice their own earnings for anothers benefit,If both players will be fair or selfish,2,1,honesty,prosocial,6,6,6,2,6,2,3,5
-2,8/9/18 7:53,8/9/18 7:58,Male,4,26,Cooperation ,Cooperation ,3,0,control,selfish,4,2,6,5,4,3,2,4
-3,8/9/18 7:53,8/9/18 7:58,Male,1,31,I dont know,Moral behavior,1,0,honesty,selfish,1,1,4,4,1,4,4,4
-4,8/9/18 7:52,8/9/18 7:58,Female,0,30,To see how willing we are to work.risk with others,To see how willing we are to work.risk with others,2,0,honesty,prosocial,2,2,4,4,4,2,4,4
-5,8/9/18 7:52,8/9/18 7:58,Female,2,42,"To see if someone will be honest, even if it means it might hurt them slightly.",To see if someone will trust someone else.,3,0,control,selfish,6,5,3,3,3,5,3,3
-6,8/9/18 7:53,8/9/18 7:58,Female,0,21,The see how willing people are to lie when it benefits them and they cannot get caught. ,"To examine how willing people are to trust a stranger, and if previous honesty/dishonesty affects that willingness to trust. ",1,0,honesty,selfish,3,2,2,2,5,5,3,2
-7,8/9/18 7:52,8/9/18 7:58,Male,3,28,Communication and seeing if you wanted to earn the other person $0 or lie to make them some money.,To see if we'd trust an anonymous person to send the money back.,4,1,control,prosocial,5,5,5,5,6,2,1,5
-8,8/9/18 7:53,8/9/18 7:58,Male,1,39,Not entirely sure.,I have no idea.,3,0,control,selfish,2,2,2,2,3,4,3,2
-9,8/9/18 7:53,8/9/18 7:58,Male,1,20,To see if the sender valued a $0.25 reduction in their own payment more than potentially helping the receiver get $1.,"To see if based on the Coin Flip Game results, Player 1 would have trust in Player 2 or not.",1,0,honesty,selfish,2,3,2,3,4,5,2,2
-10,8/9/18 7:53,8/9/18 7:58,Male,0,42,To see if someone would lie to maximize a bonus.,To see if we would trust the other person after learning what they were like in the coin flip game.,3,0,control,selfish,1,1,2,2,2,4,1,2
-11,8/9/18 7:52,8/9/18 7:59,Female,1,24,To see to what extent people would be willing to manipulate or lie to others to get what they want.,To see how trusting people are when given background information of others.,1,1,honesty,selfish,3,2,3,2,4,5,4,2
-12,8/9/18 7:53,8/9/18 7:59,Female,0,24,Not sure,Not sure,2,0,honesty,prosocial,3,3,3,3,4,4,5,3
-13,8/9/18 7:53,8/9/18 7:59,Male,3,28,The purpose of the Coin Flip Game was to measure honesty in the face of self-interested gain.,The purpose of the Choice Game was to see if someone would punish a participant for a selfish decision in the Coin Flip Game.,3,0,control,selfish,2,2,2,2,2,4,2,3
-14,8/9/18 7:54,8/9/18 7:59,Male,1,35,trusting others,lying to others,2,0,honesty,prosocial,4,4,1,1,7,4,4,1
-15,8/9/18 7:53,8/9/18 7:59,Female,0,48,to determine if a person is honest or not,to make a choice based on the other person's honesty in a previous game,3,0,control,selfish,1,1,1,1,1,5,1,1
-16,8/9/18 7:53,8/9/18 7:59,Male,0,40,I don't know.,I don't know.,4,0,control,prosocial,6,5,4,4,5,2,2,4
-17,8/9/18 7:53,8/9/18 7:59,Male,2,31,"To give information on how your partner would act in a similar, but slightly different game ",To assess on what conditions we will keep and send the money ,2,0,honesty,prosocial,5,3,5,5,6,1,4,6
-18,8/9/18 7:52,8/9/18 7:59,Female,0,39,decisions,trust,2,0,honesty,prosocial,1,1,2,6,2,5,1,2
-19,8/9/18 7:54,8/9/18 7:59,Male,0,30,Determine peoples character,See if we punish or reward the people,1,0,honesty,selfish,1,1,3,3,2,6,2,2
-20,8/9/18 7:54,8/9/18 7:59,Female,1,29,To see how honest people are.,To see how other peoples choices impact your own,2,0,honesty,prosocial,2,2,4,4,3,4,2,4
-21,8/9/18 7:53,8/9/18 7:59,Male,1,35,Perceptions of selfishness.,Perceptions of selfishness and judgement.,3,0,control,selfish,1,1,1,2,1,4,2,1
-22,8/9/18 7:52,8/9/18 7:59,Female,1,49,set up that your partner is dishonest,to determine how knowing that your partner was dishonest affects decision,3,0,control,selfish,3,2,4,3,3,4,5,4
-23,8/9/18 7:55,8/9/18 7:59,Female,0,26,to show some information about the way my partner might act in the choice game,to figure out how willing people are to trust others,3,0,control,selfish,1,1,2,2,2,2,1,2
-24,8/9/18 7:52,8/9/18 8:00,Male,1,58,test how selfish people may be,test how fair people may be,2,1,honesty,prosocial,4,4,5,5,6,1,4,6
-25,8/9/18 7:55,8/9/18 8:00,Female,3,22,To see if people will lie for their own benefit,To see if people will trust others for the possibility of a bigger payoff,1,0,honesty,selfish,1,1,2,2,3,6,3,2
-26,8/9/18 7:52,8/9/18 8:00,Female,0,27,How trusting someone can be,How much you trust a stranger to respond back in kindness,4,1,control,prosocial,7,7,5,5,6,1,1,5
-27,8/9/18 7:52,8/9/18 8:00,Male,1,28,To show us the personality of the player,To see if we trust the player based on previous actions,1,0,honesty,selfish,1,1,2,1,2,6,2,3
-28,8/9/18 7:52,8/9/18 8:00,Female,0,35,to see how you would trust a person based on their past decisions in  a game,see how you decide your decision based on information of your past partners decisions,2,0,honesty,prosocial,1,1,2,2,2,6,2,2
-29,8/9/18 7:56,8/9/18 8:00,Male,0,24,not sure,not sure,4,0,control,prosocial,5,5,4,2,6,4,4,4
-30,8/9/18 7:53,8/9/18 8:00,Female,1,28,To see how honest or dishonest people are when money is on the line,To see how much a person trusts another person when money is on the line,4,0,control,prosocial,2,2,5,3,6,4,4,5
-31,8/9/18 7:54,8/9/18 8:00,Male,3,28,To decide if you would be fair or maximize your earnings,To decide if you would be fair or maximize your earnings,1,0,honesty,selfish,2,2,2,2,3,5,1,3
-32,8/9/18 7:52,8/9/18 8:00,Male,0,21,Best to give the wrong answer as he only loses out on 25 cents and you get money.,I think it was a trust test honestly.,2,1,honesty,prosocial,7,6,6,6,6,2,3,5
-33,8/9/18 7:52,8/9/18 8:00,Male,2,38,To see if someone would lie to a stranger for a small benefit.,To see how people would react to the result of the coin flip game.,3,0,control,selfish,2,1,2,1,2,4,3,2
-34,8/9/18 7:53,8/9/18 8:00,Male,3,20,To see whether people will lie to increase pay off knowing the other person won't know the real outcome of the coin flip,To see what choices someone will make when their decision affects others,4,0,control,prosocial,3,3,2,2,4,4,3,1
-35,8/9/18 7:52,8/9/18 8:00,Male,3,52,Explore the impact of dishonest in a game involving two strangers.,Testing the trust you have in someone you don't know to do the right thing.,2,1,honesty,prosocial,6,6,4,5,6,2,3,6
-36,8/9/18 7:54,8/9/18 8:01,Male,1,28,The purpose of The Coin Flip Game was to find out how the SENDER feels about sharing money.,The purpose of The Choice Game was to find out how selfish Player 1 is.,4,0,control,prosocial,1,1,2,2,2,3,3,2
-37,8/9/18 7:53,8/9/18 8:01,Female,2,31,To see if people will lie to benefit themselves,To see what player1 will choose to do based on player 2's actions in another game,1,1,honesty,selfish,3,3,5,5,4,5,5,5
-38,8/9/18 7:54,8/9/18 8:01,Male,2,30,If you will tell the truth or lie,Trusting your partner,3,0,control,selfish,2,2,1,1,1,6,2,1
-39,8/9/18 7:54,8/9/18 8:01,Female,2,28,To see if the receiver would tell a truthful message and share money or lie and get a better outcome.,To see if the partner's previous choices would affect the decision of whether I keep the money or share.,1,0,honesty,selfish,2,1,2,2,3,5,3,3
-40,8/9/18 7:53,8/9/18 8:01,Male,2,29,To see who can be honest with each other,To see how we would divide money.,3,0,control,selfish,2,2,3,3,5,2,5,3
-41,8/9/18 7:54,8/9/18 8:01,Female,0,27,See how easily people trust one another,See how easily people can trust one another,4,1,control,prosocial,5,3,4,3,3,4,5,5
-42,8/9/18 7:54,8/9/18 8:01,Female,2,36,Honesty of players,Greed or honesty,2,0,honesty,prosocial,2,2,5,4,5,2,4,5
-43,8/9/18 7:53,8/9/18 8:01,Female,0,47,to see if they will choose to be selfish,to see if they will choose to be selfish,4,1,control,prosocial,6,6,5,5,6,2,4,5
-44,8/9/18 7:52,8/9/18 8:01,Male,1,38,neutral,neutral,4,1,control,prosocial,5,5,5,5,3,2,2,1
-45,8/9/18 7:52,8/9/18 8:01,Male,2,43,"A test of honesty, how moral of a person you are. ",It was based on decision. Whether you believe in being a moral person.,2,1,honesty,prosocial,4,4,3,3,3,5,3,3
-46,8/9/18 7:54,8/9/18 8:01,Male,0,28,see peoples honesty,see peoles honesty,1,1,honesty,selfish,7,7,7,7,7,1,7,7
-47,8/9/18 7:52,8/9/18 8:01,Female,1,39,To assess people's selfishness,To assess people's selfishness,3,1,control,selfish,5,5,4,4,5,2,5,4
-48,8/9/18 7:52,8/9/18 8:02,Female,0,38,Trusting strangers,Trusting strangers,3,1,control,selfish,2,2,3,2,2,4,3,2
-49,8/9/18 7:52,8/9/18 8:02,Male,2,26,To give us an idea of how moral the partner is before we play the choice game,To see if our choice is affected by preconcieved notions ,4,0,control,prosocial,1,1,4,3,5,6,5,3
-50,8/9/18 7:54,8/9/18 8:02,Female,3,27,make a judgement on the partner,see if we trust the partner,1,0,honesty,selfish,2,2,4,4,3,4,5,4
-51,8/9/18 7:54,8/9/18 8:02,Male,0,42,maximizing rewards,maximizing rewards,4,1,control,prosocial,6,6,5,5,6,2,2,6
-52,8/9/18 7:52,8/9/18 8:02,Male,5+,50,Determine how to maximize payoffs for participants depending on flip outcomes and whether or not to be truthful,Determine if a player will return money in order to reward original player for passing,1,1,honesty,selfish,3,3,2,2,5,5,3,2
-53,8/9/18 7:53,8/9/18 8:02,Female,1,30,"The first player could tell the second the coin flip was either heads or tails. Based on whether or not they told them correctly, each would get a payoff. The first player gets a bonus if they are dishonest, though","I could keep my $2 or pass it, where it would be increased to $5. The second player would then have the chance to pass half back to me or not.",3,0,control,selfish,2,2,2,2,3,5,3,2
-54,8/9/18 7:52,8/9/18 8:02,Female,1,30,i dont know,i dont know,1,1,honesty,selfish,6,6,4,5,6,4,4,5
-55,8/9/18 7:53,8/9/18 8:02,Male,1,29,the main purpose of coin flip game is how to take decisions,decision making,4,1,control,prosocial,6,5,6,5,2,6,5,5
-56,8/9/18 7:52,8/9/18 8:02,Male,1,25,To insert the notion that the partner is dishonest and has the ability to lie. ,To assess a decision after receiving information about the partner. ,3,1,control,selfish,3,2,2,2,3,2,2,2
-57,8/9/18 7:56,8/9/18 8:02,Male,2,27,To see how honest the sender is,To see how trusting the sender is,1,0,honesty,selfish,2,2,2,2,2,7,2,3
-58,8/9/18 7:52,8/9/18 8:03,Male,1,32,The purpose of the coin flip game was to determine if someone would purposely send a dishonest message to get a slightly better payout.,"The Choice Game was to determine how much trust you have in your partner, that they will send the money back despite having a much bigger payout if they don't.",3,1,control,selfish,3,3,3,2,3,5,5,2
-59,8/9/18 7:54,8/9/18 8:03,Female,0,23,Trust,Trust,1,1,honesty,selfish,4,4,5,4,5,4,3,5
-60,8/9/18 7:53,8/9/18 8:03,Male,1,35,Decision making. See if we would share our winnings,Test morality of player,2,1,honesty,prosocial,5,4,4,2,3,4,3,4
-61,8/9/18 7:54,8/9/18 8:03,Female,2,35,Judgments to see if people trust someone they don't know,same as the coin flip game -- judgments to see if people trust someone they don't know,4,1,control,prosocial,7,7,6,6,6,1,1,6
-62,8/9/18 7:54,8/9/18 8:03,Male,1,30,to see what others had percieved about the virtual partner ,to see what others had percieved about the virtual partner ,1,1,honesty,selfish,2,3,5,4,2,2,2,4
-63,8/9/18 7:57,8/9/18 8:03,Male,0,29,Not sure.,I have no idea.,1,0,honesty,selfish,1,1,4,4,4,4,4,4
-64,8/9/18 7:54,8/9/18 8:03,Female,0,32,To determine how people are influenced by knowledge,To determine how unselfish people are.,4,1,control,prosocial,5,6,5,6,6,1,2,4
-65,8/9/18 7:53,8/9/18 8:03,Male,0,38,To give me an example of my partner's morals.,To test my selfish or selflessness.,4,1,control,prosocial,2,2,4,4,4,1,1,4
-66,8/9/18 7:52,8/9/18 8:04,Female,1,26,To see how we react to people,To see how we react to people,3,0,control,selfish,1,1,2,2,2,4,2,2
-67,8/9/18 7:54,8/9/18 8:04,Female,2,43,To understand if people are willing to share winnings or keep all to themselves.,To  understand if people are willing to share winnings knowing that the other person did not share in a previous task.,1,0,honesty,selfish,2,1,5,3,1,4,2,6
-68,8/9/18 7:54,8/9/18 8:04,Male,1,34,get the opinion,get the opinion,1,1,honesty,selfish,5,4,3,4,4,4,5,4
-69,8/9/18 7:53,8/9/18 8:04,Male,5+,32,The sender knows the result of the coin flip and must communicate the correct answer to the responder. The amount of money that the participants gain depends on the response given by the responder. ,"Sender has the choice to either keep or send money to a partner with a chance for increased rewards. If the money is sent to the partner, its value is increased and the partner can choose to either keep the entire amount or return half its value to the sender. ",1,0,honesty,selfish,1,2,1,1,2,7,2,1
-70,8/9/18 7:54,8/9/18 8:04,Male,2,44,To see how much I trust someone. ,To see how much I trust someone. ,3,0,control,selfish,2,2,2,2,2,4,2,2
-71,8/9/18 7:53,8/9/18 8:04,Female,0,44,The purpose of the coin flip game was to evaluate how honest a person would be with their partner. ,The purpose of the choice game was to evaluate if one would punish their partner for being unfair in a previous game with another participant. ,1,0,honesty,selfish,1,1,2,2,2,5,2,2
-72,8/9/18 7:52,8/9/18 8:04,Female,1,66,I think that the purpose was to see how people deal with choices that might compromise their basic beliefs,To see if people will share resources,2,1,honesty,prosocial,4,4,4,4,5,3,4,4
-73,8/9/18 7:54,8/9/18 8:04,Female,5+,37,to reveal the character of the partner I will be playing with.,to determine if I would trust that the character of this person is consistent..,4,1,control,prosocial,6,6,6,6,6,2,2,6
-74,8/9/18 7:53,8/9/18 8:04,Male,0,43,Unsure,Unsure,4,0,control,prosocial,3,3,2,4,3,4,4,3
-75,8/9/18 7:53,8/9/18 8:04,Male,3,29,It was to see if others are willing to sacrifice a small amount so that both players can earn a modest amount.,The game was to test if one player was willing to take a chance and trust the second player so that both can earn a slight increase in their reward.,2,1,honesty,prosocial,6,6,6,7,6,2,5,5
-76,8/9/18 7:59,8/9/18 8:04,Female,1,26,"To see if someone would try and convince someone of an untruth to maximize earnings for them, at a slight cost to themselves.","To see if someone would trust another person, especially depending on their previous choices, to maximize both their earnings.",4,1,control,prosocial,5,4,4,4,5,1,3,4
-77,8/9/18 7:53,8/9/18 8:05,Male,2,40,based on our decision and luck also,this is based on other participant also,2,0,honesty,prosocial,4,4,5,5,4,5,4,4
-78,8/9/18 7:52,8/9/18 8:05,Female,2,32,To see how trusting people are.,To see what choices people make when money is on the line. ,2,1,honesty,prosocial,5,5,4,2,6,4,6,4
-79,8/9/18 7:58,8/9/18 8:05,Female,1,24,To see how someone will make decisions.,Observing allocations and trust.,4,1,control,prosocial,3,3,4,3,6,4,3,4
-80,8/9/18 7:57,8/9/18 8:05,Female,0,43,"FOR THE SENDER TO EITHER SEND A TRUE OR FALSE MESSAGE TO THE RECEIVER ABOUT WHAT THE COIN LANDED ON. THEREBY INCREASING EITHER THE PAY OUT FOR BOTH OF THEM OR ONLY THE PAY FOR THE SENDER. THIS WAS TO GIVE ME AN IDEA OF THE SENDERS PERSONALITY. HOWEVER, PEOPLE CHANGE DEPENDING ON AMOUNTS OF MONEY AND THE SITUATION, SO I DID NOT LET THAT GAME INFLUENCE ME","I WAS PLAYER ONE AND DECIDED HOW MUCH MONEY TO SEND TO PLAYER TWO, IF ANY. I CHOSE TO SEND NONE. PLAYER TWO DECIDED IF ANY, HOW MUCH MONEY THEY WOULD SEND BACK TO ME.",2,0,honesty,prosocial,2,2,3,3,6,4,4,3
-81,8/9/18 7:53,8/9/18 8:05,Female,2,22,To determine how trustworthy other players would be. ,To determine whether or not players trust the other player to do the moral thing or not. ,1,1,honesty,selfish,6,6,6,3,6,2,6,6
-82,8/9/18 7:58,8/9/18 8:05,Female,0,20,To show us if the player was true to his word,to seeif we trusted another player,1,1,honesty,selfish,5,5,4,4,5,6,3,4
-83,8/9/18 7:52,8/9/18 8:05,Female,1,33,to judge how people perceive others,to judge the actions of others,3,0,control,selfish,1,1,4,4,2,5,1,3
-84,8/9/18 7:58,8/9/18 8:05,Female,0,34,to see who would tell the truth,to see the honesty of someone,3,0,control,selfish,1,1,1,1,1,4,2,1
-85,8/9/18 7:53,8/9/18 8:05,Male,1,45,To determine how the player values honesty over generosity.,To determine trust,2,1,honesty,prosocial,6,6,6,6,7,1,3,6
-86,8/9/18 7:53,8/9/18 8:06,Female,2,54,TO TEST THE DECISIONS MADE BY LEARNING HOW THE OTHER PLAYER REACTED IN THE COIN FLIP GAME,TO DETERMINE THE DECISION MADE BY PLAYER ONE BASED ON PLAYER 2'S PLAYING OF THE COIN FLIP GAME,3,0,control,selfish,2,2,2,2,2,6,2,2
-87,8/9/18 7:53,8/9/18 8:06,Male,4,48,Do not know.,Do not know.,3,0,control,selfish,1,1,1,1,1,4,1,1
-88,8/9/18 7:52,8/9/18 8:06,Female,0,28,"To divide an amount of money between two people based on the outcome of the coin flip, and whether the player who does not know the actual outcome is correct or incorrect","To divide an amount of money between two people based on the first player either keeping an amount or passing it to the second player, trusting them to return some of it (in which case both players benefit)",4,1,control,prosocial,5,2,3,3,4,2,5,3
-89,8/9/18 7:54,8/9/18 8:06,Female,0,24,To describe to us the morality of our game partner when it comes to instructions and money.,To determine whether we would trust a stranger based on decisions they have previously made.,2,1,honesty,prosocial,5,3,5,2,6,4,5,5
-90,8/9/18 7:52,8/9/18 8:06,Female,5+,29,To observe how a person behaves in regards to money and others with limited information .,To study how participants behave when faced with an increased return and other blind participants. ,4,1,control,prosocial,6,6,6,7,7,1,1,6
-91,8/9/18 7:54,8/9/18 8:06,Male,1,42,The purpose was about trusting a person in reference to a positive or negative decision made by the person. ,The purpose was about trusting a person in reference to a positive or negative decision made by the person. ,2,0,honesty,prosocial,1,1,4,3,7,1,4,4
-92,8/9/18 7:54,8/9/18 8:06,Female,2,56,unsure,unsure,1,0,honesty,selfish,1,1,2,2,3,4,4,2
-93,8/9/18 7:55,8/9/18 8:06,Female,1,49,To determine the ethical behavior of the sender.,To determine if your partner's previous behavior will influence whether you send or keep the $2.,3,0,control,selfish,1,1,2,2,2,4,3,2
-94,8/9/18 7:53,8/9/18 8:06,Female,2,29,Perception of people on how they performance to make most money.,Perception of people on sharing money with others.,1,0,honesty,selfish,1,1,5,3,7,2,4,5
-95,8/9/18 7:54,8/9/18 8:07,Male,1,23,not sure it was mind intensive,also same thing,1,0,honesty,selfish,3,5,4,3,3,5,3,4
-96,8/9/18 7:53,8/9/18 8:07,Male,1,27,trust,trust,2,0,honesty,prosocial,1,1,4,4,1,6,6,4
-97,8/9/18 8:00,8/9/18 8:07,Female,1,57,Trust?,Trust?,4,0,control,prosocial,2,2,2,2,6,4,4,2
-98,8/9/18 8:02,8/9/18 8:07,Male,1,31,No idea,No idea,2,1,honesty,prosocial,5,4,5,5,7,3,5,6
-99,8/9/18 7:53,8/9/18 8:07,Male,2,58,to see how honest you are,to see how trusting you are,1,0,honesty,selfish,2,2,2,1,5,4,2,2
-100,8/9/18 7:54,8/9/18 8:07,Male,1,30,The purpose of The Coin Flip game is to either tell the truth to your counterpart and help them win earnings or be selfish and lie and keep it all to yourself.,The purpose of the Choice Game is whether you trust your partner enough to split the money with you or whether you would settle for a lesser amount.,3,0,control,selfish,2,2,2,4,5,4,2,2
-101,8/9/18 7:54,8/9/18 8:07,Male,0,66,To give an idea of how player 2 thought and acted,To perceive my behavior when given clues about the other player. to check my selfishness behavior.,2,0,honesty,prosocial,3,3,5,4,6,4,6,5
-102,8/9/18 7:53,8/9/18 8:07,Male,1,33,To judge selfishness and if the sender would sacrifice some of their bonus to give a bonus to the receiver. ,Trust. Especially in regards to taking into account a players previous actions. ,4,1,control,prosocial,7,6,6,5,6,2,2,6
-103,8/9/18 7:52,8/9/18 8:08,Female,1,58,To make informed decisions so that a good outcome is achieved,Making judgments and how we treat others,1,0,honesty,selfish,4,4,2,1,4,5,2,2
-104,8/9/18 7:52,8/9/18 8:08,Female,0,69,"Not sure, but perhaps to determine how/if respondents choose to be honest or not",Maybe to determine how many respondents trust others,1,0,honesty,selfish,6,6,3,3,5,4,3,2
-105,8/9/18 8:00,8/9/18 8:08,Male,0,32,To see if a person will lie for a more fair outcome.,To see if a person lying will modify a choice.,4,1,control,prosocial,6,6,6,6,6,1,2,6
-106,8/9/18 7:54,8/9/18 8:08,Male,2,54,Coin flip was to check honesty of sender.  Whether they tell truth or not.,To see how trusting player 1 is.  Whether they believe the partner will do the right thing so everyone wins.,3,1,control,selfish,5,4,4,2,2,4,5,3
-107,8/9/18 7:58,8/9/18 8:08,Male,0,36,To see how honest the person was. ,I'm not sure. ,3,0,control,selfish,1,1,2,2,2,4,3,2
-108,8/9/18 7:54,8/9/18 8:09,Female,2,52,To make a decision about a person's fairness and generosity,To make a decision about a person's reliability,2,1,honesty,prosocial,4,5,5,5,6,2,2,4
-109,8/9/18 7:53,8/9/18 8:09,Female,0,36,to see if people are truthful,to see how your image of someone effects your decision,4,0,control,prosocial,3,3,3,3,5,4,3,3
-110,8/9/18 7:54,8/9/18 8:09,Male,2,51,To determine if a person will provide dishonest information if it benefits the other person. ,To see if people think others will act in a fair manner. ,4,1,control,prosocial,6,6,6,6,6,1,4,6
-111,8/9/18 7:53,8/9/18 8:09,Female,0,47,A study in perception of trust in a stranger.,To gain knowledge of perception of how the other player in the choice game determines their choice. If you can trust their decision.,4,1,control,prosocial,5,5,5,3,4,3,3,4
-112,8/9/18 7:59,8/9/18 8:09,Female,0,40,"I have no idea what this study was about, it was very confusing with confusing directions. This game could have been about trust.","I am not sure what the purpose of The Choice Game was, this game could have been about trusting someone you do not know.",4,1,control,prosocial,1,1,7,7,7,4,4,7
-113,8/9/18 7:52,8/9/18 8:09,Male,0,40,Perceptions of players,Perceptions of trust,1,1,honesty,selfish,5,4,4,3,3,5,5,4
-114,8/9/18 8:02,8/9/18 8:09,Male,2,27,To determine the behavioral pattern of my partner.,To determine how I would react to my partners dishonesty in the coin game.,3,0,control,selfish,1,1,2,1,3,5,2,2
-115,8/9/18 7:56,8/9/18 8:10,Female,0,60,I am not exactly sure  maybe about trust,I am not exactly sure.  maybe about trust,4,0,control,prosocial,2,2,4,4,4,4,4,4
-116,8/9/18 8:00,8/9/18 8:10,Male,5+,33,judge a person's moral compass,Your personal moral compass,3,0,control,selfish,4,4,4,4,6,2,4,5
-117,8/9/18 7:53,8/9/18 8:10,Male,1,27,To see how honest players would be in their communication when it affects the rewards other players receive.,To see how much players trust other players in a game.,3,0,control,selfish,2,2,2,2,3,3,5,2
-118,8/9/18 8:00,8/9/18 8:10,Female,2,28,to see head or tail,to check mentality of player,2,0,honesty,prosocial,5,4,4,5,2,5,6,5
-119,8/9/18 7:52,8/9/18 8:10,Male,2,35,personal and financial decisions,personal decisions on moral choices,1,1,honesty,selfish,6,6,4,4,4,4,4,4
-120,8/9/18 7:58,8/9/18 8:11,Female,1,37,The purpose of The Coin Flip Game was to lie to the receiver so both participants could get a bonus.,The purpose of The Choice Game was to trust that your partner in giving them $2 and hoping they would return half of that to you afterwards enabling both of you to get a bonus.,4,1,control,prosocial,7,7,6,7,7,1,6,6
-121,8/9/18 8:05,8/9/18 8:11,Male,4,28,To determine if the sender would sacrifice some of their earnings by lying in oder to help the receiver.,To determine if Player 1 would be selfish and risk losing all chances of payment in exchange for the possibility of a bigger payout.,2,0,honesty,prosocial,3,3,4,4,2,6,4,4
-122,8/9/18 7:54,8/9/18 8:11,Female,0,22,"To see what your partner chose, if they chose to be deceitful or truthful.",To see if someone would trust their partner to return the money and get the bonus.,3,0,control,selfish,1,1,2,5,1,2,3,2
-123,8/9/18 7:53,8/9/18 8:11,Male,5+,36,to determine how honest people are,to see if people will punish others,3,0,control,selfish,1,1,2,2,2,4,1,2
-124,8/9/18 7:54,8/9/18 8:11,Male,2,24,trust and partnership,to see if people were honest,2,1,honesty,prosocial,6,6,4,4,4,6,5,4
-125,8/9/18 7:57,8/9/18 8:11,Male,1,25,It's like a game theory situation with incentives.,Decision making understanding,4,1,control,prosocial,6,6,4,5,3,2,3,5
-126,8/9/18 8:02,8/9/18 8:12,Male,1,27,Analyzing how altruistic others will be for the greater benefit and whether or not others trust each other to be altruistic for their good.,To determine if people will choose to be altruistic if they think it will benefit everyone involved.,4,1,control,prosocial,4,4,4,4,5,3,3,3
-127,8/9/18 8:03,8/9/18 8:12,Female,2,38,The purpose was to split the money as equally as possible.,The purpose was to split the money as equally as possible,4,1,control,prosocial,6,5,6,6,6,2,6,4
-128,8/9/18 8:05,8/9/18 8:13,Male,0,37,To see if people trusted one another.  To see if someone would be deceitful assuming the person was going to trust them.,To trust the sender to give money back.,4,1,control,prosocial,7,7,6,6,2,2,2,6
-129,8/9/18 7:56,8/9/18 8:13,Female,2,31,To review decision making,"Same as above, to see how information influences people's decision making",3,1,control,selfish,6,5,3,3,4,3,6,2
-130,8/9/18 8:02,8/9/18 8:13,Male,1,39,To see if the person will give a false answer to attempt to maximize the outcomes,To test how trustworthy one person thinks the other is,2,1,honesty,prosocial,6,5,5,5,6,2,3,5
-131,8/9/18 7:57,8/9/18 8:13,Female,1,30,To test if someone could send a dishonest message knowing that it would likely result in a better outcome for the other person.,To see if people trust others based on past benevolent decisions.,4,0,control,prosocial,3,3,4,4,6,4,2,3
-132,8/9/18 8:08,8/9/18 8:14,Male,2,35,not really sure,not really sure,4,0,control,prosocial,1,1,1,1,7,7,4,1
-133,8/9/18 8:03,8/9/18 8:14,Female,2,32,to find out if player will reply in an honest manner,to determine how people will react based on the results of the coin flip game ,1,0,honesty,selfish,1,1,2,2,3,5,2,2
-134,8/9/18 8:09,8/9/18 8:15,Male,2,34,see if someone is willing to lie to benefit another person,to test trust,4,0,control,prosocial,5,5,5,5,6,3,2,4
-135,8/9/18 7:54,8/9/18 8:15,Male,2,43,To evaluate the level of honesty the other player has.,To determine how I would react to the other player based on a previous experience.,3,0,control,selfish,1,1,3,2,4,4,2,1
-136,8/9/18 7:52,8/9/18 8:15,Male,0,31,To coach someone on the results of the Coin game.,To see what choices the players 1 and player 2 make,3,0,control,selfish,2,2,4,4,4,4,4,4
-137,8/9/18 8:11,8/9/18 8:15,Male,2,30,Don't know,Don't know,3,0,control,selfish,2,2,2,2,4,4,4,2
-138,8/9/18 8:06,8/9/18 8:16,Female,1,58,To determine someone's character by observing their actions,To see how much we can trust a stranger,2,1,honesty,prosocial,5,5,4,4,6,2,5,4
-139,8/9/18 8:09,8/9/18 8:16,Male,1,48,"See how people respond when they can influence someone's decision by telling the truth or fibbing, and how that matches their stated morals.",See how much people trust someone else to be benevolent or selfish.,1,0,honesty,selfish,1,1,3,1,3,5,3,3
-140,8/9/18 7:58,8/9/18 8:17,Female,0,51,To help us get a feel of how our partner will respond to the choice game.,"To see how much we trusted our partner, even though they did not tell the truth in the coin flip game",2,1,honesty,prosocial,5,5,6,6,6,3,5,6
-141,8/9/18 8:11,8/9/18 8:17,Male,0,30,To show us if our partner was trustworthy or not,To see if we would trust our partner,2,0,honesty,prosocial,4,3,5,5,6,2,2,6
-142,8/9/18 8:03,8/9/18 8:18,Male,4,34,To determine what the other player would do. ,To make a decision that enhanced money. ,1,0,honesty,selfish,2,3,4,3,4,4,4,4
-143,8/9/18 7:52,8/9/18 8:18,Male,0,28,to see people's intention when sharing money,the same to analyse people's thinking of sharing money with unknown,2,0,honesty,prosocial,1,1,4,4,4,7,4,4
-144,8/9/18 8:09,8/9/18 8:18,Female,1,46,To see if someone would disadvantage themselves in order to see someone else gain an advantage.,To see if we trusted someone who had lied?,1,0,honesty,selfish,2,2,2,1,3,6,2,2
-145,8/9/18 8:13,8/9/18 8:20,Female,1,18,Perceptions of honesty.,Perceptions of sharing.,2,1,honesty,prosocial,5,5,2,2,3,4,5,2
-146,8/9/18 7:58,8/9/18 8:20,Female,0,38,memory experinment,memory task,2,1,honesty,prosocial,6,6,6,7,3,6,7,7
-147,8/9/18 8:10,8/9/18 8:20,Male,3,25,"Coin flipping, coin tossing, or heads or tails is the practice of throwing a coin in the air and ... During a coin toss, the coin is thrown into the air such that it rotates ... the use of coin flips to break ties in Texas sports, instead using point-systems to ... In a game theoretic analysis it provides even odds to both sides involved, ...","The Stanley Parable is an exploration game, but it is also a narrative story game, and it is also a game of choice. It is all of these things, yet ...",3,0,control,selfish,5,6,5,6,2,6,5,7
-148,8/9/18 7:55,8/9/18 8:20,Male,2,30,i don't know,game ,1,1,honesty,selfish,7,6,4,4,4,6,7,4
-149,8/9/18 8:08,8/9/18 8:20,Female,0,25,to see our choice,to guilt us into making a decision,2,0,honesty,prosocial,2,2,4,5,7,4,4,4
-150,8/9/18 7:54,8/9/18 8:21,Female,1,35,The Sender would know the results and the possible payoff and would send a message to the receiver that would influence the likelihood of the payoff. ,To decide whether or not to share the money in the hopes it would be increased and shared. ,2,1,honesty,prosocial,6,6,6,6,6,2,6,5
-151,8/9/18 7:52,8/9/18 8:21,Male,0,33,"The purpose of the Coin flip game was too see whether or not someone would lie about something given the outcome is only known by said person. One person knows about the details and knows whether or not the coin lands on head or tails. The other person doesn't know the coin flip outcome and has to rely on the first person to tell them the truth about it. Since lying benefits the observer of the coin more so then telling the truth, the game is set up to see if the observer will choose to benefit himself or share with the other player. It also sets up the purpose of The Choice Game that comes later.","The purpose of the Choice Game was to see what decision someone would make after finding out what type of person their partner in the game was and what decision said partner made in a previous game with someone else. The player that is in control of sending the two dollars over has total control in this game. Sending the two dollars to the other player is risky because the other player, after the money grows, can keep all of the money to him/herself or split the money with the other player. However the player sending the money is told about the type of person his partner is via decisions that partner made in a previous task.",1,0,honesty,selfish,1,1,3,2,3,6,2,2
-152,8/9/18 8:11,8/9/18 8:21,Female,0,31,To see how we would make decision after being asked morality questions,To see how we would make decisions based on what we know about the other person ,2,1,honesty,prosocial,6,6,4,4,6,2,3,4
-153,8/9/18 8:16,8/9/18 8:21,Male,0,29,to see how greedy player one is,to see how trusting sender is,3,0,control,selfish,2,2,3,2,1,6,2,2
-154,8/9/18 8:03,8/9/18 8:21,Female,2,48,"To see if a person was able to find a valid excuse for lying... an ""end justifies the means"" situation. Of course I can see it that the person was a risk taker and may not agree that 90% agree with his/her advice. They may think that the odds are actually more in their favor.","To see if we are positively influenced by a person appearing benevolent in one situation when compared to another.  However, in the first scenario the sender only had a difference of $0.25 between one choice and another. He could afford to be benevolent. In the Choice game it felt more like an all or nothing situation and I did not want to risk it.",2,0,honesty,prosocial,2,2,4,3,6,5,2,4
-155,8/9/18 8:15,8/9/18 8:22,Male,0,33,To show what player 2 would do in a similar situation where they had to make a decision about money. ,To see what people would decide given the information about player 2's previous coin flip game. ,4,0,control,prosocial,1,1,4,2,3,4,2,4
-156,8/9/18 8:17,8/9/18 8:23,Male,4,25,good,interesting,1,0,honesty,selfish,5,6,6,5,3,5,5,5
-157,8/9/18 8:20,8/9/18 8:24,Male,1,36,perception,perception,4,0,control,prosocial,1,1,3,4,3,4,2,3
-158,8/9/18 8:10,8/9/18 8:25,Male,1,31,TO ANALYTICAL THE PERSON'E MIND,THE CHOICE GAME WAS VERY INTERESTING,2,1,honesty,prosocial,7,7,5,5,5,4,4,5
-159,8/9/18 8:20,8/9/18 8:26,Male,1,20,To see if you trust the partner,To see if you trust the partner,2,0,honesty,prosocial,5,5,4,5,3,5,4,4
-160,8/9/18 8:06,8/9/18 8:26,Male,1,31,To see how truthful your partner would be.,To see how fair your partner would be.,2,1,honesty,prosocial,7,7,5,6,7,1,5,5
-161,8/9/18 8:13,8/9/18 8:26,Female,1,65,To study whether people will lie to maximize payoffs for themselves and whether people trust other people,To study whether people will trust other people to share money when a limited amount of information is available about the other person,1,0,honesty,selfish,1,1,2,1,2,7,2,1
-162,8/9/18 8:10,8/9/18 8:26,Male,5+,39,Gives an example of your opponents behavior and choices made in the past. ,Knowing of your partner's previous decision making; you have choice to keep the money or take a chance with partner.  Since partner was dishonest  on coin flip game; my gut feelings was to keep the money.,3,0,control,selfish,2,2,2,3,1,4,3,3
-163,8/9/18 8:04,8/9/18 8:27,Female,2,55,trusting other people,trusting other people,3,0,control,selfish,2,2,2,2,2,5,2,2
-164,8/9/18 8:19,8/9/18 8:27,Male,1,32,"To see if a person would instruct another in a way which negatively impacted them nominally, to greatly benefit another. ",To see if a person would risk everything to gain a minor additional benefit. ,4,0,control,prosocial,6,6,6,6,6,1,1,4
-165,8/9/18 8:16,8/9/18 8:27,Male,1,52,idk,perception of trust,1,0,honesty,selfish,2,2,2,2,2,4,2,2
-166,8/9/18 8:13,8/9/18 8:27,Male,0,43,Deceive your partner for financial gain or be truthful & earn a little less money for yourself but some for your partner. I think it's a test of morals & judgment.,Be greedy & make the most money or be cooperative & earn a little less money for yourself but some for your partner. Since our choice is based on knowledge of how our partner behaved in the Coin Flip game this was a test of trust.,3,0,control,selfish,1,1,2,2,3,2,4,2
-167,8/9/18 8:00,8/9/18 8:27,Female,2,34,The Coin Flip Game clearly deals with trusting someone else based on limited information. ,This game also deals with trusting someone else based on limited information. ,1,0,honesty,selfish,2,2,4,4,6,5,5,4
-168,8/9/18 7:53,8/9/18 8:27,Female,1,35,to see if a person would lie to make more money,to see if you are willing to risk sending money and not receive anything in return,1,0,honesty,selfish,1,1,4,5,1,6,2,5
-169,8/9/18 8:23,8/9/18 8:28,Male,0,21,"To give an understanding of who your partner is, I guess.",To see if you trust your partner.,2,1,honesty,prosocial,5,5,5,4,5,2,3,5
-170,8/9/18 8:12,8/9/18 8:29,Male,3,24,To see what kind of choices someone would make in that situation,"To see how dishonest, or honest someone can be when money is involved",2,0,honesty,prosocial,1,1,6,4,3,2,5,5
-171,8/9/18 7:52,8/9/18 8:29,Male,5+,35, decision making tasks, decision making tasks,3,0,control,selfish,7,7,4,4,4,4,4,4
-172,8/9/18 8:24,8/9/18 8:30,Female,0,29,To see what kind of person my partner is,To punish my partner for being dishonest,3,0,control,selfish,1,1,2,2,2,5,6,2
-173,8/9/18 8:23,8/9/18 8:31,Male,1,40,To determine if people would be fair or greedy when given a choice. ,To determine if people would be fair or greedy when given a choice and some information about their partners previous actions in a similar task. ,3,0,control,selfish,2,2,2,2,6,4,2,2
-174,8/9/18 8:19,8/9/18 8:31,Male,2,44,To determine how likely a person is to be honest or dishonest for their own gain,To assess a person's level of trust,1,0,honesty,selfish,1,1,3,2,2,6,2,4
-175,8/9/18 8:14,8/9/18 8:31,Female,2,48,to analyse human behaviour,to analyse human behaviour,1,1,honesty,selfish,7,7,6,6,5,1,5,6
-176,8/9/18 8:06,8/9/18 8:31,Male,2,23,To test a person's honesty.,To test a person's generosity.,3,0,control,selfish,2,3,4,3,3,4,5,4
-177,8/9/18 8:19,8/9/18 8:32,Male,0,67,generosity vs honesty,trust,2,1,honesty,prosocial,4,2,5,5,6,5,6,5
-178,8/9/18 8:16,8/9/18 8:32,Male,1,18,yes heads and tails,yes so exiting the game.,2,1,honesty,prosocial,5,6,6,3,6,6,6,7
-179,8/9/18 8:25,8/9/18 8:32,Male,5+,60,to see if the other player was honest,to see if we would trust the other player given conflicting information ?,1,1,honesty,selfish,6,5,4,4,4,4,4,4
-180,8/9/18 8:16,8/9/18 8:32,Female,0,34,To see if people will be honest.,To see if people trust others.,2,0,honesty,prosocial,1,1,3,3,5,4,4,3
-181,8/9/18 8:15,8/9/18 8:33,Female,0,54,wanting to maximize own earnings or share,trusting others based on their actions and beliefs,2,0,honesty,prosocial,3,1,6,6,6,2,3,4
-182,8/9/18 8:18,8/9/18 8:34,Male,2,30,very nice,for entertainment,3,0,control,selfish,6,6,7,5,5,5,6,4
-183,8/9/18 8:17,8/9/18 8:34,Male,0,44,To gain trust or distrust.,To see if people are willing to take a risk.,3,0,control,selfish,1,1,5,2,5,4,4,4
-184,8/9/18 8:09,8/9/18 8:36,Male,1,50,To study the realistic character  about the player 2,Evaluate of the trust between the two persons after know some characteristic about the another player.,3,0,control,selfish,2,2,2,2,6,6,6,2
-185,8/9/18 8:31,8/9/18 8:37,Male,2,25,Trustfulness of a person,Same,2,0,honesty,prosocial,4,4,4,4,4,4,4,4
-186,8/9/18 8:12,8/9/18 8:38,Male,2,29,to understand trust between partners,to understand decision making,1,1,honesty,selfish,6,7,3,5,3,5,3,2
-187,8/9/18 8:20,8/9/18 8:38,Female,1,25,"The coin flip game was probably to see how honest people are. Either way, the sender would win something, so it had to see if they were kind enough to help the receiver win money, too.",The choice game was probably to see how much people trusted others when money was involved.,3,0,control,selfish,1,1,3,2,2,6,3,2
-188,8/9/18 8:32,8/9/18 8:39,Male,0,53,To see how we would react based on player 2's answers and his action in the past flip game,no idea,1,0,honesty,selfish,2,2,3,2,2,7,2,2
-189,8/9/18 8:28,8/9/18 8:39,Female,1,30,know the game,know the game,3,0,control,selfish,4,4,4,4,4,4,4,4
-190,8/9/18 8:10,8/9/18 8:40,Male,0,30,to understand the other player's character,no idea,4,1,control,prosocial,6,6,6,6,7,1,2,5
-191,8/9/18 8:36,8/9/18 8:40,Male,0,29,no idea,no idea,3,0,control,selfish,2,2,3,3,2,6,3,4
-192,8/9/18 8:35,8/9/18 8:40,Male,2,50,judging honesty,judging honesty,3,0,control,selfish,1,1,4,4,2,4,4,4
-193,8/9/18 8:34,8/9/18 8:40,Female,2,40,To see if someone will lie,To see if someone will lie,2,0,honesty,prosocial,2,2,4,4,3,4,3,4
-194,8/9/18 8:31,8/9/18 8:40,Female,0,27,I am not sure.,I am not sure.,4,0,control,prosocial,2,2,3,3,5,4,4,4
-195,8/9/18 8:25,8/9/18 8:41,Female,2,30,trust the decision of the other person,trust another person,4,1,control,prosocial,5,5,5,4,3,4,5,5
-196,8/9/18 8:31,8/9/18 8:41,Male,2,36,To see if people would act selfishly or not,To see if people trust other people.,1,0,honesty,selfish,2,2,2,2,1,4,4,2
-197,8/9/18 8:27,8/9/18 8:41,Female,1,29,Exposing moral choice,Exposing greed,1,0,honesty,selfish,1,1,2,6,2,4,1,2
-198,8/9/18 8:30,8/9/18 8:42,Female,0,27,To study morality ,Judgement and decision ,3,0,control,selfish,1,2,2,2,2,6,2,2
-199,8/9/18 8:24,8/9/18 8:43,Female,2,38,To determine human perception and outcome.,To determine perception with deception.,3,0,control,selfish,2,1,4,4,4,4,4,4
-200,8/9/18 8:23,8/9/18 8:44,Male,3,32,To earn money,To analyse confident about partner,3,0,control,selfish,6,4,5,4,2,5,5,2
-201,8/9/18 8:28,8/9/18 8:44,Female,2,30,IF keeping or giving the money makes you feel or look more moral and nice.,IIF keeping or giving the money makes you feel or look more moral and nice.,2,1,honesty,prosocial,6,6,6,4,7,1,6,5
-202,8/9/18 8:35,8/9/18 8:44,Male,0,35,The coin flip game lets you screw another player for money.,The coin flip game lets you screw another player for money.,1,0,honesty,selfish,1,1,2,2,2,6,4,2
-203,8/9/18 8:34,8/9/18 8:46,Female,1,23,Don't Know,Don't Know,2,0,honesty,prosocial,7,6,7,6,1,7,5,6
-204,8/9/18 8:34,8/9/18 8:46,Female,3,35,To see if someone would lie to benefit the other party,To see if we would act differently knowing the partner lied to benefit his partner in a previous game.,4,1,control,prosocial,5,6,6,5,6,2,3,7
-205,8/9/18 8:40,8/9/18 8:47,Male,2,29,The purpose on a study enjoyed game,good,2,1,honesty,prosocial,5,6,7,6,1,6,5,6
-206,8/9/18 8:38,8/9/18 8:47,Female,0,27,to give an idea about how the partner play,to gauge my decision making ,3,0,control,selfish,4,4,4,3,3,4,4,4
-207,8/9/18 8:37,8/9/18 8:47,Male,0,35,I think the purpose of the Coin Flip Game is to establish trust. The SENDER has to communicate incorrect information for the RECEIVER to actually benefit. The SENDER could just as easily communicate correct information and gains the most.,"The purpose of the Choice Game is to read into whether or not the partner, established from the Coin Flip Game, is trustworthy enough to return the money that was initially sent to them.",2,0,honesty,prosocial,3,4,4,5,6,4,3,4
-208,8/9/18 8:41,8/9/18 8:48,Female,4,26,Perceptions and trust of others based on limited info?,To test the trust of others with limited information?,4,1,control,prosocial,4,5,4,4,6,2,2,3
-209,8/9/18 8:36,8/9/18 8:48,Female,0,38,See if a small possible difference in income for someone is enough to try to deceive their opponent.,See how trusting people are of others.,4,0,control,prosocial,2,2,5,5,6,1,1,5
-210,8/9/18 8:39,8/9/18 8:49,Male,1,25,I think to what extent a person would lie for the benefit of another,I think to what extent we would trust a partner based on his previous decisions. My best guess,2,1,honesty,prosocial,6,6,6,6,6,2,2,6
-211,8/9/18 8:37,8/9/18 8:49,Female,0,63,"The purpose of the Coin Flip game was for the sender to flip a coin ending with either heads or tails, and the receiver then deciding which to choose for themselves.","The purpose of the Choice game was for the sender to decide to keep or to pass two dollars to the other player, with the other player having a choice to make after that which would impact the sender.",4,0,control,prosocial,5,5,5,4,5,4,5,5
-212,8/9/18 8:41,8/9/18 8:49,Female,0,49,To allow us to see if our partner was selfish and would lie,It was our chance to get back at someone for mistreating someone else. And to see if we would base our decision on our partners previous decision. ,1,0,honesty,selfish,1,1,2,4,2,7,2,2
-213,8/9/18 8:39,8/9/18 8:50,Female,0,47,To see how much a person can be trusted.,To see if we would trust a person who was dishonest.,3,0,control,selfish,1,1,2,2,2,6,1,2
-214,8/9/18 8:36,8/9/18 8:50,Female,1,38,about our truth to someone,same about the choice and the truth,2,1,honesty,prosocial,7,7,6,6,7,1,4,6
-215,8/9/18 8:42,8/9/18 8:50,Female,0,32,To maximize earnings for yourself.,To maximize earnings for yourself.,2,0,honesty,prosocial,2,2,5,5,5,2,4,5
-216,8/9/18 8:35,8/9/18 8:52,Male,1,30,thinking purpose of the coin flip game,payout for the purpose of the choice game,4,1,control,prosocial,6,5,6,5,2,6,5,5
-217,8/9/18 8:41,8/9/18 8:52,Male,0,63,Establishing trust or distrust.,Making an actual decision based on the trust/distrust established in the Coin Flip Game.,3,0,control,selfish,3,3,4,3,3,4,3,3
-218,8/9/18 8:47,8/9/18 8:52,Male,1,28,BEHAVIOR JUDGMENT,TRUST SURVEY,2,0,honesty,prosocial,3,3,2,2,6,2,2,2
-219,8/9/18 8:47,8/9/18 8:54,Male,2,35,To see if the person will put trust in the other person's recommendation,To see if one participant is trusting of a stranger,4,0,control,prosocial,1,1,4,4,4,4,4,4
-220,8/9/18 8:49,8/9/18 8:54,Male,1,33,"Coin flipping, coin tossing, or heads or tails is the practice of throwing a coin in the air","The Stanley Parable is an exploration game, but it is also a narrative story game, and it is also a game of choice",4,0,control,prosocial,7,6,6,7,1,7,7,5
-221,8/9/18 8:46,8/9/18 8:55,Male,2,32,I'm honestly not sure,Determine how generous the players are,2,1,honesty,prosocial,6,6,6,5,6,2,2,5
-222,8/9/18 8:45,8/9/18 8:55,Male,2,44,to determine if we find the person we are sending money to honest and trustworthy.,to see if we trust our partner to send back half,3,0,control,selfish,2,2,2,2,3,5,2,3
-223,8/9/18 8:48,8/9/18 8:56,Male,1,31,To judge how people feel about lying when the true is correlated to negative economic outcomes for the recipient of the lie.,To gauge how knowledge about someone's previous actions may impact levels of trust.,4,1,control,prosocial,5,5,5,5,6,2,3,4
-224,8/9/18 8:38,8/9/18 8:56,Female,1,28,Not sure,Not sure,2,0,honesty,prosocial,1,1,2,2,6,2,4,2
-225,8/9/18 8:45,8/9/18 8:56,Male,2,37,Judging moral decisions.,To see what decisions we all made.,3,0,control,selfish,2,2,2,2,2,4,2,2
-226,8/9/18 8:41,8/9/18 8:56,Male,4,1990,this game is very nice ,i like the game,1,1,honesty,selfish,6,7,4,5,2,4,6,7
-227,8/9/18 8:45,8/9/18 8:57,Male,0,50,To determine a person's moral character,To determine how much you judge and individual according to their actions,1,0,honesty,selfish,2,3,3,2,3,3,3,2
-228,8/9/18 8:43,8/9/18 8:57,Female,0,44,Judging honesty and morality,Judging trust,2,0,honesty,prosocial,4,3,5,5,6,4,2,5
-229,8/9/18 8:47,8/9/18 8:58,Male,1,20,To study trust between two strangers,To study trust between two strangers,4,0,control,prosocial,1,1,4,4,5,3,2,4
-230,8/9/18 8:30,8/9/18 8:58,Female,1,28,To test memory.,To test memory and morality.,2,1,honesty,prosocial,4,4,4,4,7,4,4,4
-231,8/9/18 8:48,8/9/18 8:59,Male,0,60,To see how how people make decisions.,To see if I trust a partner.,3,0,control,selfish,2,2,2,2,2,5,2,1
-232,8/9/18 8:50,8/9/18 9:00,Female,1,28,To see how greedy/dishonest the participants would or would not be.,To see how greedy/dishonest the participants would or would not be.,4,1,control,prosocial,6,6,4,1,6,2,6,4
-233,8/9/18 8:47,8/9/18 9:00,Female,3,29,BRAIN GAME,BRAIN GAME,1,0,honesty,selfish,6,6,6,5,3,6,5,6
-234,8/9/18 8:45,8/9/18 9:00,Male,2,33,probabiity,attention,1,0,honesty,selfish,6,6,6,5,4,6,5,5
-235,8/9/18 8:52,8/9/18 9:01,Female,0,45,To see if people would be honest.,To see if people would be selfish enough to take everything for themselves. ,3,1,control,selfish,5,5,5,4,5,4,5,4
-236,8/9/18 8:57,8/9/18 9:02,Female,1,30,I do not know,I do not know,4,1,control,prosocial,3,3,4,4,6,4,4,4
-237,8/9/18 8:57,8/9/18 9:02,Male,5+,30,Interactions and perceptions about morality,Morality choices,4,0,control,prosocial,1,1,1,1,1,7,7,1
-238,8/9/18 8:45,8/9/18 9:03,Female,2,33,To see how we react when interacting with a person even when that person is possibly untrustworthy or simply someone we dont know well enough to judge his character,To see the trustworthiness of a partner we don't immediately trust,4,0,control,prosocial,3,1,4,3,3,3,4,4
-239,8/9/18 8:40,8/9/18 9:03,Male,0,32,how people care about the other player,How people trust the other player based on his background,4,0,control,prosocial,3,3,4,3,6,4,4,4
-240,8/9/18 8:55,8/9/18 9:03,Female,2,31,to see if people would trust someone based on little information,the purpose of the choice game was to see how someone made choices,4,1,control,prosocial,6,4,4,4,4,4,2,4
-241,8/9/18 8:55,8/9/18 9:03,Male,1,25,I am not sure!,I am not sure!,4,1,control,prosocial,6,5,4,4,4,4,5,3
-242,8/9/18 8:56,8/9/18 9:03,Male,5+,33,Being able to learn about the moral character of your partner and if they are willing to lie.,Examining how trusting people are of others.,2,0,honesty,prosocial,3,2,5,5,6,5,6,6
-243,8/9/18 8:54,8/9/18 9:04,Female,0,58,see how much you trusted the other partner that lied,see if you would trust the other partner,1,0,honesty,selfish,2,2,2,2,3,4,2,2
-244,8/9/18 8:55,8/9/18 9:04,Male,1,23,The purpose of the coin flip game was to see how people manipulate players for personal gain or winnings.,The purpose of the choice game was to see if players think other people are inherently good or selfish.  ,1,1,honesty,selfish,4,5,4,4,4,4,5,5
-245,8/9/18 8:55,8/9/18 9:04,Female,2,27,The purpose of the coin flip game is to gauge how honest the sender would be for less of a pay out versus if they were dishonest.,The purpose of the choice game is to gauge how much trust player 1 has towards player 2.,3,0,control,selfish,1,3,2,2,2,6,2,4
-246,8/9/18 8:24,8/9/18 9:04,Female,5+,38,To see people's trustworthyness,I do not know,1,0,honesty,selfish,2,3,1,1,1,6,4,1
-247,8/9/18 8:54,8/9/18 9:05,Male,0,24,"Determining whether people are willing to sacrifice some of their own profits to ensure other people are profitable, and if they're willing to lie to do so.",Determining if seeing other people acting fairly increases your own desire to pass the money versus keeping it,2,1,honesty,prosocial,6,7,6,6,7,1,2,7
-248,8/9/18 8:53,8/9/18 9:05,Female,2,49,trust,trust,3,0,control,selfish,2,2,4,3,3,2,2,4
-249,8/9/18 8:53,8/9/18 9:05,Female,2,27,The purpose of the coin flip game was to demonstrate your partners actions in a previous experiment to help determine if you should pass or keep the money in the current experiment,The choice game was to determine the players attitudes toward their partner based on evidence from a previous game.,2,1,honesty,prosocial,6,6,6,6,6,2,6,6
-250,8/9/18 8:59,8/9/18 9:05,Male,3,23,To see what the person did and how they may act again. ,To see how people evaluate the actions of others and if there is any trust. ,4,1,control,prosocial,5,5,6,4,7,2,2,6
-251,8/9/18 8:55,8/9/18 9:05,Male,1,27,To see if the Sender would lie to increase the Receiver's payoff.,To see if Person 1 would trust Person 2 enough to risk losing their bonus.,2,1,honesty,prosocial,5,5,4,5,6,2,4,5
-252,8/9/18 8:55,8/9/18 9:07,Female,1,44,To see how trusting another player would be to accept what they were told by someone they don't know at all.,Also to see if you would trust a stranger to do the right thing and send back the money.,2,1,honesty,prosocial,5,5,5,5,6,2,3,6
-253,8/9/18 8:56,8/9/18 9:08,Male,1,37,Really not sure,I don't know...,1,0,honesty,selfish,1,1,2,3,5,6,3,2
-254,8/9/18 8:49,8/9/18 9:08,Male,1,28,To observe the trust relationship between two players wherein one player's payout depends on the trust paradigm with a primary player.,To observe the relationship between two players wherein the first player must decide if they choose to risk their payout to provide the second player with an opportunity to gain a monetary incentive. ,2,1,honesty,prosocial,2,5,6,6,6,2,2,6
-255,8/9/18 8:52,8/9/18 9:09,Female,0,61,The coin flip game involved me & a partner.  one person decides whether a coin lands heads or tails.  Depending on which way the coin lands decides the outcome ,The choice game involved me & a partner.  One person decides to keep or pass.  Depending on what the player chooses decides the outcome ,1,1,honesty,selfish,3,3,3,3,6,2,2,3
-256,8/9/18 8:57,8/9/18 9:09,Male,2,31,To see if people were willing to deceive others to earn a bigger pay off,To see how much people trust others they have never met before,3,0,control,selfish,1,1,2,1,2,4,1,2
-257,8/9/18 9:06,8/9/18 9:09,Male,2,30,I am not sure,I am not sure,3,0,control,selfish,1,1,1,1,1,7,1,1
-258,8/9/18 9:03,8/9/18 9:10,Male,0,46,not sure,not sure,2,0,honesty,prosocial,3,3,5,5,3,3,3,5
-259,8/9/18 8:55,8/9/18 9:10,Female,1,38,"To pair with a partner to make decisions, with greater of lesser degrees of information, which affect the outcome for both players.","To pair with a partner to make open, independent decisions which determine how much money each player will receive.",2,1,honesty,prosocial,3,3,4,5,6,4,2,5
-260,8/9/18 9:03,8/9/18 9:11,Female,2,36,How honest is the player,Can you trust the other player,2,0,honesty,prosocial,2,2,4,4,6,2,4,5
-261,8/9/18 9:06,8/9/18 9:12,Female,2,38,To see what people will do.  Are they more motivated to tell the truth or to get the extra .25?,"Again, it's to see what people do.  In this instance, how does what they know about the other person play into their decision.",1,1,honesty,selfish,5,5,2,2,3,5,5,3
-262,8/9/18 8:56,8/9/18 9:12,Male,0,29,Memory Power,Judgments,3,1,control,selfish,6,5,6,5,3,6,5,5
-263,8/9/18 9:01,8/9/18 9:12,Male,4,35,Feelings,Feelings adventure,1,0,honesty,selfish,4,5,2,1,1,4,4,2
-264,8/9/18 9:03,8/9/18 9:13,Male,1,43,To see if the participant would try to make their partner come out with some payment even if it meant a bit less for themselves,"The reward for being selfish was greater, so would the person still make it so their partner came out with payment",4,1,control,prosocial,5,4,4,5,6,2,2,4
-265,8/9/18 8:57,8/9/18 9:13,Female,2,61,To show how trustworthy and altruistic my partner is.,To use coin flip info to determine degree of trust in partner.,2,1,honesty,prosocial,6,6,5,5,6,2,4,5
-266,8/9/18 9:05,8/9/18 9:13,Male,0,34,To give me insight as to how Player 2 would react in my situation of being player 1.,To decide if I'd risk 2 dollars for 50 cents. ,4,0,control,prosocial,2,2,3,2,6,3,4,3
-267,8/9/18 9:01,8/9/18 9:14,Female,0,24,To see how people make decisions based on anothers previous experience,To see how much a stranger trusts another stranger,3,0,control,selfish,2,2,2,4,3,4,1,4
-268,8/9/18 8:58,8/9/18 9:14,Female,5+,40,to see how honest people are and how sacrificial,To see how  much they trust others. ,1,0,honesty,selfish,1,1,1,1,2,7,1,1
-269,8/9/18 8:56,8/9/18 9:15,Male,2,36,To try to get a bonus for you and your partner.,To choose whether or not to pass money or keep all for yourself.,2,1,honesty,prosocial,5,5,6,6,7,1,4,6
-270,8/9/18 9:05,8/9/18 9:15,Male,0,27,To determine how people make choices.,To determine how people make choices based on certain information received about their partner.,3,0,control,selfish,1,1,1,1,1,7,1,1
-271,8/9/18 9:04,8/9/18 9:17,Female,2,34,to show me more about who I was partnered with.,For me to judge the other participant and then decide how to distribute the money.,1,0,honesty,selfish,1,1,4,2,3,4,2,2
-272,8/9/18 9:08,8/9/18 9:17,Male,1,41,I think it was a study in generosity or selflessness.,I think it was a study in trust.,3,0,control,selfish,1,1,3,2,2,4,3,2
-273,8/9/18 9:04,8/9/18 9:17,Female,1,26,"For the sender, to see if you are willing to be honest to the receiver on which side the coin flipped and for the receiver to try and make a correct decision on which side the coin flipped and if you trust the sender's response as well.",To determine if you trusted your partner to return half of the money if you chose to give it away or decide to keep the money for yourself.,1,0,honesty,selfish,2,2,3,3,2,7,2,3
-274,8/9/18 8:57,8/9/18 9:18,Female,3,57,To help understand how people's treatment of others is affected when they are unaware if they are mistreated.(?),To help understand how morals and values of others affect the way we treat them.,3,0,control,selfish,2,2,2,2,2,4,5,2
-275,8/9/18 9:05,8/9/18 9:19,Male,4,29,to gauge whether the sender is selfish or not,not sure,4,0,control,prosocial,1,1,3,3,5,5,5,3
-276,8/9/18 9:08,8/9/18 9:20,Female,2,33,To see if someone would deceive another person or try to keep all the money for themself.,To see how selfish people are when it comes to money.,4,0,control,prosocial,1,1,4,2,6,4,4,4
-277,8/9/18 9:11,8/9/18 9:21,Female,1,41,The purpose is to test our perceptions of morality and honesty.,The purpose is to also test our perceptions of morality and honesty. ,3,1,control,selfish,5,5,5,5,5,2,6,4
-278,8/9/18 9:07,8/9/18 9:21,Male,0,21,The purpose of the coin flip game was to see how generous a person you are; either to have both people get almost an equal amount of money of for just one person to keep all the money.,"The choice game is like a game of trust. If you are are player one and decide to pass the money, you have to trust the other player to give half back. If you don't trust they will give you half back you keep the two dollars because you don't want to give them a chance to keep five dollars.",2,0,honesty,prosocial,1,1,6,6,6,2,2,4
-279,8/9/18 9:08,8/9/18 9:21,Female,0,39,To see if you can trust others???,To see how trusting you are??,1,0,honesty,selfish,2,3,4,4,2,4,4,4
-280,8/9/18 9:08,8/9/18 9:21,Male,5+,63,"To see how benevolent individuals might be. In terms of this study, to provide perceived insight into how a partner might think for the current game.",To see how prior knowledge of how a partner might behave in a game will affect the subject's choice of actions.,2,1,honesty,prosocial,5,5,5,5,6,2,3,5
-281,8/9/18 9:07,8/9/18 9:22,Male,0,67,"So that I would be able to determine what type of person my partner was, and use this to make my choice.",To see what my choice would be depending on the actions of my partner in the coin flip game. In other words if they proved themselves to be misleading would I choose to not trust them.,1,0,honesty,selfish,2,2,2,2,3,6,3,2
-282,8/9/18 9:08,8/9/18 9:22,Female,0,50,To show how honest and generous someone is?,To see how someone would answer the lying question?,1,0,honesty,selfish,2,2,2,2,2,6,2,2
-283,8/9/18 9:07,8/9/18 9:24,Male,2,28,To see if we are willing to trust strangers for money.,To see if we are willing to trust strangers for money.,3,1,control,selfish,5,5,4,2,7,3,5,6
-284,8/9/18 9:03,8/9/18 9:24,Male,0,63,To earn money and to judge how trusting people are of others.,The same reason as the coin flip game. to test the trustfulness of a person.,3,0,control,selfish,1,1,5,3,3,4,4,4
-285,8/9/18 9:13,8/9/18 9:25,Male,2,22,take out budgets,very good,1,0,honesty,selfish,4,5,5,6,3,5,4,4
-286,8/9/18 9:09,8/9/18 9:26,Male,2,47,To find out how selfish we are.,To find out how much we trust others.,4,0,control,prosocial,2,2,5,5,6,4,3,5
-287,8/9/18 8:56,8/9/18 9:29,Female,0,60,I think the purpose of The Coin Flip Game was to learn how many survey respondents (who were senders) would be honest when they sent a message to the receiver.,"I think the purpose of The Choice Game was to learn how many survey respondents (who were Player 1) would take a risk and pass $2 to Player 2, even after learning that Player 2 is dishonest. ",3,0,control,selfish,1,1,1,1,2,4,2,1
-288,8/9/18 9:18,8/9/18 9:30,Female,0,34,To see how truthful the sender would be in the message that he sent to the receiver. Also to see how the sender can use this game to their advantage.,To see if I were to trust my partner after the learning about their decision in The Coin Flip Game.,3,1,control,selfish,2,2,2,2,2,4,2,2
-289,8/9/18 9:21,8/9/18 9:33,Female,5+,46,To rate the integrity of the player?,To see how willing a person is to share?,1,1,honesty,selfish,6,6,5,5,5,4,4,5
-290,8/9/18 9:19,8/9/18 9:34,Female,0,59,To see if someone would lie for gain. ,To see if we would trust a dishonest person.  ,1,0,honesty,selfish,2,2,1,1,2,5,3,1
-291,8/9/18 9:17,8/9/18 9:36,Female,1,26,maybe to see if the sender would lie to earn some money,to see if the other person would share the money,2,1,honesty,prosocial,6,5,5,2,7,2,6,5
-292,8/9/18 9:26,8/9/18 9:37,Female,1,56,memory test for the directions?,something about trusting people?,3,1,control,selfish,6,6,4,4,6,2,5,4
-293,8/9/18 9:34,8/9/18 9:40,Male,2,29,To see if the sender would lie to make the receiver money. ,To see if player 2 sends the $2.5 back. ,4,1,control,prosocial,7,7,6,6,6,2,2,6
-294,8/9/18 9:34,8/9/18 9:40,Female,1,24,Whether the sender would lie to get an extra $.25 or if they would try to help the other person out,How much I would trust someone based off prior info of theirs,3,0,control,selfish,1,1,1,1,5,4,2,1
-295,8/9/18 9:29,8/9/18 9:42,Female,0,39,to see if the person deciding was honest,to see if the person who received money would keep the entire amount or share,4,0,control,prosocial,4,3,3,4,6,1,7,3
-296,8/9/18 9:36,8/9/18 9:42,Female,2,43,To see what choices the receiver would make as the sender.,To reflect our opinion after seeing the receiver's choice on the coin flip?,1,0,honesty,selfish,1,1,2,1,1,5,1,1
-297,8/9/18 9:18,8/9/18 9:43,Female,2,27,"To see if people would be honest, to keep the money for themselves, or dishonest in order to have a chance to share money with a partner.",To see if people would share money with a partner. ,4,0,control,prosocial,2,2,4,4,5,4,3,4
-298,8/9/18 9:28,8/9/18 9:46,Female,0,35,i would imagine you testing if people would choose to be honest so that everyone could benefit or if people would choose to only look out for themselves.,"how we choose to judge other people's actions. i am a very fair person, i had already made up my mind to send the 2$ before i saw what my partner had done. I always choose to the option where everyone wins, but then i saw how they answered the question and then did the complete opposite, they lie to themselves or they answered in a way to make the person grading the questions think they are a decent person, but that didn't reflect in their actions, therefore i couldn't trust they would be as fair to me as i was prepared to be towards them. so i didn't give them the opportunity to back stab me. I feel a little bad, because i would rather we both gain form the bonus, but i am also not about to let you win, while you purposely let me loose, when i have the opportunity to prevent that.",1,0,honesty,selfish,1,1,2,2,1,7,4,2
-299,8/9/18 9:39,8/9/18 9:47,Female,0,21,I don;t know,I don;t know,2,0,honesty,prosocial,2,2,2,2,5,2,2,2
-300,8/9/18 9:38,8/9/18 9:49,Male,3,33,The level of decision making with money,"Know how to use the money, whether to keep it or spend it",1,1,honesty,selfish,5,6,2,3,6,3,5,3
-301,8/9/18 9:42,8/9/18 9:50,Female,1,33,To see if people would lie in order to help another person.,"To see how much a person trusts another person to do the ""right thing"".",2,1,honesty,prosocial,5,5,6,4,6,3,5,6
-302,8/9/18 9:39,8/9/18 9:58,Female,1,37,The purpose of the coin flip game is to try to get the other person to answer the incorrect answer. You flip the coin and as a receiver you have to trust that the sender is going to give you an indication on if they're lying or being honest. ,"In the choice game, it's like blind faith. I can keep $2 and give nothing to the other player or risk giving all to the other person hoping they will share. ",4,1,control,prosocial,5,5,5,5,6,1,1,5
-303,8/9/18 9:51,8/9/18 10:00,Male,1,49,To see if the sender would lie to maximize their result,To see if the sender would punish the sender in the coin flip game ?,3,0,control,selfish,3,2,3,2,4,5,3,3
-304,8/9/18 9:55,8/9/18 10:08,Female,2,38,Show how honest people are.,To see how people make decisions when they know both sides of the outcome.,2,0,honesty,prosocial,4,4,5,5,3,1,1,5
-305,8/9/18 9:46,8/9/18 10:08,Female,2,32,to see how greedy people can be,to see how greedy people can be,2,0,honesty,prosocial,2,2,3,3,5,4,4,3
-306,8/9/18 10:05,8/9/18 10:13,Male,0,32,To influence people to lie for the benefit of others.,To see if the coin flip game results changed the outcome of sharing in the choice game.,2,0,honesty,prosocial,3,4,5,5,6,3,5,6
-307,8/9/18 10:08,8/9/18 10:13,Male,2,51,Decision Making,Decision Making,1,1,honesty,selfish,6,6,5,3,7,5,4,3
-308,8/9/18 10:03,8/9/18 10:15,Male,2,61,To elicit a reaction from an observer witnessing a lie.,How one manages the possibility of maximizing gain when faced with an unknown.,3,0,control,selfish,2,2,4,2,3,4,2,4
-309,8/9/18 9:49,8/9/18 10:17,Female,4,48,How someone make judgement and decisions.,How someone makes judgement and choices in everyday life.,4,1,control,prosocial,5,5,4,4,6,3,6,4
-310,8/9/18 10:13,8/9/18 10:18,Female,1,39,Perception of reciprocation?,Whether or not people would act fairly?,1,0,honesty,selfish,2,1,2,1,3,6,5,2
-311,8/9/18 10:13,8/9/18 10:21,Male,1,23,It was to see if the sender would lie based on the circumstances.,To see if player 1 would willing give up two dollars and trust player 2.,2,0,honesty,prosocial,2,3,2,3,3,5,3,3
-312,8/9/18 9:49,8/9/18 10:23,Female,0,28,I'm not sure.,I'm not sure.,1,0,honesty,selfish,2,2,2,2,4,5,2,2
-313,8/9/18 10:11,8/9/18 10:24,Female,0,23,to check if people lie to get more gainings,To see how people is influenced by other's previous behaviour,1,0,honesty,selfish,1,1,2,2,2,5,1,2
-314,8/9/18 10:18,8/9/18 10:28,Male,3,22,Games and Judgments,n/a,3,1,control,selfish,6,5,6,6,5,3,3,5
-315,8/9/18 10:27,8/9/18 10:35,Female,1,38,"To see if people would actively try to help their parter win money, or if they choose to keep it all for themselves","Same as the above, but also to see if you would trust a stranger to do the right thing. ",4,1,control,prosocial,5,5,5,5,6,1,2,5
-316,8/9/18 10:34,8/9/18 10:40,Male,0,27,To determine how truthful and fair a participant is.,To determine the amount of trust someone has for people they don't know.,1,0,honesty,selfish,1,1,2,2,2,7,1,2
-317,8/9/18 10:34,8/9/18 10:41,Female,1,25,i dont know,i dont know,3,1,control,selfish,1,1,3,3,6,4,3,2
-318,8/9/18 10:40,8/9/18 10:45,Female,0,41,Not sure,Not sure,4,1,control,prosocial,6,6,5,5,6,2,2,5
-319,8/9/18 10:47,8/9/18 10:51,Male,4,39,to see how we trust other people,also to see how we trust other people,4,0,control,prosocial,2,2,3,5,2,5,3,3
-320,8/9/18 10:48,8/9/18 10:58,Male,0,31,How trusting someone is when they have control over the outcome to something.,How much we trust someone after knowing how they behaved in a similar situation.,3,0,control,selfish,2,2,4,3,3,5,2,3
-321,8/9/18 10:46,8/9/18 11:01,Female,0,46,To show me how the previous player behaved with others.,Gauging my response based on my perceived honesty of the other player during their playing of the Coin Flip Game,1,0,honesty,selfish,2,2,4,3,2,6,3,3
-322,8/9/18 10:57,8/9/18 11:04,Male,0,25,see if we can trust the other player to share the money,see if we can trust the other player to share the money,1,1,honesty,selfish,6,6,4,1,6,3,3,4
-323,8/9/18 10:55,8/9/18 11:09,Male,3,31,AS THE SENDER I WILL LEARN THE COIN LANDED ON HEADS OR TAILS.,THE RECEIVER IS INCORRECT.,3,1,control,selfish,5,5,4,5,4,5,5,5
-324,8/9/18 11:03,8/9/18 11:12,Male,1,31,I have no idea.,I have no idea.,2,0,honesty,prosocial,2,2,3,3,4,4,4,3
-325,8/9/18 11:02,8/9/18 11:14,Female,2,27,To see how much you trust someone to do the right thing.,To see how much you can trust someone to return the favor.,2,1,honesty,prosocial,6,6,5,5,3,2,2,5
-326,8/9/18 11:01,8/9/18 11:25,Male,2,29,decision making,trusting someone else,4,0,control,prosocial,1,1,5,6,2,6,7,5
-327,8/9/18 10:54,8/9/18 11:26,Female,2,32,TO KNOW THE LUCK OF PERSON,JUST FOR FUN,3,0,control,selfish,5,6,7,7,1,6,5,7
-328,8/9/18 11:23,8/9/18 11:28,Male,1,27,For the sender to have pity on the receiver or no,To see if you trust your partner to give half the money back to you,3,0,control,selfish,1,1,2,2,2,6,3,2
-329,8/9/18 11:28,8/9/18 11:41,Female,0,42,Opinions on trust and chance,Opinions on trust,2,1,honesty,prosocial,5,5,5,3,7,2,6,6
-330,8/9/18 11:39,8/9/18 11:47,Male,2,31,It's a morality choice game.,It was a morality choice game.,4,0,control,prosocial,1,2,3,2,3,4,3,3
-331,8/9/18 11:40,8/9/18 11:48,Male,5+,58,Morality and sharing,Trusting based on prior behavior and personality traits.,2,1,honesty,prosocial,7,7,6,6,6,1,1,6
-332,8/9/18 11:37,8/9/18 11:49,Male,4,33,To see whether people would tell the truth if it meant a lower payoff for themselves.,To see if people trusted another player enough for a chance at a little extra money for themselves.,1,0,honesty,selfish,1,1,1,1,1,4,1,1
-333,8/9/18 11:44,8/9/18 11:51,Male,0,23,Don't know,Don't know,3,0,control,selfish,2,2,4,4,4,4,4,4
-334,8/9/18 11:52,8/9/18 12:07,Male,0,37,To test if a person would be willing to lie to benefit someone else.,To test the benevolence of both parties.,4,1,control,prosocial,6,6,5,5,7,2,2,5
-335,8/9/18 11:45,8/9/18 12:07,Male,0,25,Know thinking of players,know sharing mind of players,1,0,honesty,selfish,3,3,6,6,3,5,5,5
-336,8/9/18 7:52,8/9/18 12:41,Male,3,35,Evaluating if a persons past actions impact how people treat others in the future.,Evaluating if decisions to keep or pass would be impacted by the coin flip game.,3,1,control,selfish,6,6,4,4,3,3,5,4
-337,8/9/18 7:52,8/9/18 8:01,Female,0,36,To determine trust in games/matters of choice.,To determine how much/little we are inclined to deceive people,4,0,control,prosocial,5,3,3,4,5,2,4,4
-338,8/9/18 7:53,8/9/18 8:02,Male,3,30,I am not actually sure.,To see whether or not we will share our money or if we think they receiver will generously return what we shared.,1,0,honesty,selfish,4,4,5,5,3,4,5,5
-339,8/9/18 7:54,8/9/18 8:03,Female,1,30,"To see if they would send the truth about the coin flip or not, and to see if the receiver would believe them and trust what they said or not. ",To see if player one would trust player two enough to pass the 2$ and if they would choose to take the money and send back half. ,4,0,control,prosocial,2,1,2,4,5,4,2,2
-340,8/9/18 7:52,8/9/18 8:03,Male,0,30,To see if someone who knew the outcome of a random event would help another person earn some amount of money.,To see how willing people are to believe that other people will be generous.,2,1,honesty,prosocial,7,5,5,4,6,4,4,4
-341,8/9/18 7:54,8/9/18 8:08,Male,0,35,To paint a picture of the person you are playing the choice game with.,To see if a persons actions in he choice game were affected by how their opponent played the choice game. To see if äóìpunishmentäóù would be enacted,2,0,honesty,prosocial,1,1,2,2,5,2,4,2
-342,8/9/18 7:58,8/9/18 8:09,Female,2,26,See how people trust others. ,See if people will be selfish or share the wealth. ,2,0,honesty,prosocial,1,1,6,6,2,2,2,6
-343,8/9/18 8:02,8/9/18 8:16,Male,1,24,To see if people are trustworthy when it comes to monetary decisions.,To understand ones choices when faced with monetary decisions,4,0,control,prosocial,1,1,1,1,3,5,2,3
-344,8/9/18 8:08,8/9/18 8:16,Male,0,32,To study trust between strangers,To study risk taking between strangers,2,0,honesty,prosocial,1,1,6,6,6,1,4,5
-345,8/9/18 7:53,8/9/18 8:20,Male,2,41,I don't believe there was an actual coin flip game. It was a story for background.,Choices based on knowledge about a fictional partner.,2,1,honesty,prosocial,4,4,4,4,3,4,5,4
-346,8/9/18 8:05,8/9/18 8:21,Male,5+,25,think,think,1,1,honesty,selfish,6,7,7,6,3,7,5,5
-347,8/9/18 8:07,8/9/18 8:24,Male,2,30,"
+ÔªøID,Gender,Economics_exp,Age,Perceived_purpose1,Perceived_purpose2,condition,trustbeh,proclamation,lie.motives,trust_1,trust_2,benevolence_1,benevolence_2,benevolence_3,hypocrisy_1,discomfort_1,moral
+1,Male,2,30,Understanding if people will sacrifice their own earnings for anothers benefit,If both players will be fair or selfish,2,1,honesty,prosocial,6,6,6,2,6,2,3,5
+2,Male,4,26,Cooperation ,Cooperation ,3,0,control,selfish,4,2,6,5,4,3,2,4
+3,Male,1,31,I dont know,Moral behavior,1,0,honesty,selfish,1,1,4,4,1,4,4,4
+4,Female,0,30,To see how willing we are to work.risk with others,To see how willing we are to work.risk with others,2,0,honesty,prosocial,2,2,4,4,4,2,4,4
+5,Female,2,42,"To see if someone will be honest, even if it means it might hurt them slightly.",To see if someone will trust someone else.,3,0,control,selfish,6,5,3,3,3,5,3,3
+6,Female,0,21,The see how willing people are to lie when it benefits them and they cannot get caught. ,"To examine how willing people are to trust a stranger, and if previous honesty/dishonesty affects that willingness to trust. ",1,0,honesty,selfish,3,2,2,2,5,5,3,2
+7,Male,3,28,Communication and seeing if you wanted to earn the other person $0 or lie to make them some money.,To see if we'd trust an anonymous person to send the money back.,4,1,control,prosocial,5,5,5,5,6,2,1,5
+8,Male,1,39,Not entirely sure.,I have no idea.,3,0,control,selfish,2,2,2,2,3,4,3,2
+9,Male,1,20,To see if the sender valued a $0.25 reduction in their own payment more than potentially helping the receiver get $1.,"To see if based on the Coin Flip Game results, Player 1 would have trust in Player 2 or not.",1,0,honesty,selfish,2,3,2,3,4,5,2,2
+10,Male,0,42,To see if someone would lie to maximize a bonus.,To see if we would trust the other person after learning what they were like in the coin flip game.,3,0,control,selfish,1,1,2,2,2,4,1,2
+11,Female,1,24,To see to what extent people would be willing to manipulate or lie to others to get what they want.,To see how trusting people are when given background information of others.,1,1,honesty,selfish,3,2,3,2,4,5,4,2
+12,Female,0,24,Not sure,Not sure,2,0,honesty,prosocial,3,3,3,3,4,4,5,3
+13,Male,3,28,The purpose of the Coin Flip Game was to measure honesty in the face of self-interested gain.,The purpose of the Choice Game was to see if someone would punish a participant for a selfish decision in the Coin Flip Game.,3,0,control,selfish,2,2,2,2,2,4,2,3
+14,Male,1,35,trusting others,lying to others,2,0,honesty,prosocial,4,4,1,1,7,4,4,1
+15,Female,0,48,to determine if a person is honest or not,to make a choice based on the other person's honesty in a previous game,3,0,control,selfish,1,1,1,1,1,5,1,1
+16,Male,0,40,I don't know.,I don't know.,4,0,control,prosocial,6,5,4,4,5,2,2,4
+17,Male,2,31,"To give information on how your partner would act in a similar, but slightly different game ",To assess on what conditions we will keep and send the money ,2,0,honesty,prosocial,5,3,5,5,6,1,4,6
+18,Female,0,39,decisions,trust,2,0,honesty,prosocial,1,1,2,6,2,5,1,2
+19,Male,0,30,Determine peoples character,See if we punish or reward the people,1,0,honesty,selfish,1,1,3,3,2,6,2,2
+20,Female,1,29,To see how honest people are.,To see how other peoples choices impact your own,2,0,honesty,prosocial,2,2,4,4,3,4,2,4
+21,Male,1,35,Perceptions of selfishness.,Perceptions of selfishness and judgement.,3,0,control,selfish,1,1,1,2,1,4,2,1
+22,Female,1,49,set up that your partner is dishonest,to determine how knowing that your partner was dishonest affects decision,3,0,control,selfish,3,2,4,3,3,4,5,4
+23,Female,0,26,to show some information about the way my partner might act in the choice game,to figure out how willing people are to trust others,3,0,control,selfish,1,1,2,2,2,2,1,2
+24,Male,1,58,test how selfish people may be,test how fair people may be,2,1,honesty,prosocial,4,4,5,5,6,1,4,6
+25,Female,3,22,To see if people will lie for their own benefit,To see if people will trust others for the possibility of a bigger payoff,1,0,honesty,selfish,1,1,2,2,3,6,3,2
+26,Female,0,27,How trusting someone can be,How much you trust a stranger to respond back in kindness,4,1,control,prosocial,7,7,5,5,6,1,1,5
+27,Male,1,28,To show us the personality of the player,To see if we trust the player based on previous actions,1,0,honesty,selfish,1,1,2,1,2,6,2,3
+28,Female,0,35,to see how you would trust a person based on their past decisions in  a game,see how you decide your decision based on information of your past partners decisions,2,0,honesty,prosocial,1,1,2,2,2,6,2,2
+29,Male,0,24,not sure,not sure,4,0,control,prosocial,5,5,4,2,6,4,4,4
+30,Female,1,28,To see how honest or dishonest people are when money is on the line,To see how much a person trusts another person when money is on the line,4,0,control,prosocial,2,2,5,3,6,4,4,5
+31,Male,3,28,To decide if you would be fair or maximize your earnings,To decide if you would be fair or maximize your earnings,1,0,honesty,selfish,2,2,2,2,3,5,1,3
+32,Male,0,21,Best to give the wrong answer as he only loses out on 25 cents and you get money.,I think it was a trust test honestly.,2,1,honesty,prosocial,7,6,6,6,6,2,3,5
+33,Male,2,38,To see if someone would lie to a stranger for a small benefit.,To see how people would react to the result of the coin flip game.,3,0,control,selfish,2,1,2,1,2,4,3,2
+34,Male,3,20,To see whether people will lie to increase pay off knowing the other person won't know the real outcome of the coin flip,To see what choices someone will make when their decision affects others,4,0,control,prosocial,3,3,2,2,4,4,3,1
+35,Male,3,52,Explore the impact of dishonest in a game involving two strangers.,Testing the trust you have in someone you don't know to do the right thing.,2,1,honesty,prosocial,6,6,4,5,6,2,3,6
+36,Male,1,28,The purpose of The Coin Flip Game was to find out how the SENDER feels about sharing money.,The purpose of The Choice Game was to find out how selfish Player 1 is.,4,0,control,prosocial,1,1,2,2,2,3,3,2
+37,Female,2,31,To see if people will lie to benefit themselves,To see what player1 will choose to do based on player 2's actions in another game,1,1,honesty,selfish,3,3,5,5,4,5,5,5
+38,Male,2,30,If you will tell the truth or lie,Trusting your partner,3,0,control,selfish,2,2,1,1,1,6,2,1
+39,Female,2,28,To see if the receiver would tell a truthful message and share money or lie and get a better outcome.,To see if the partner's previous choices would affect the decision of whether I keep the money or share.,1,0,honesty,selfish,2,1,2,2,3,5,3,3
+40,Male,2,29,To see who can be honest with each other,To see how we would divide money.,3,0,control,selfish,2,2,3,3,5,2,5,3
+41,Female,0,27,See how easily people trust one another,See how easily people can trust one another,4,1,control,prosocial,5,3,4,3,3,4,5,5
+42,Female,2,36,Honesty of players,Greed or honesty,2,0,honesty,prosocial,2,2,5,4,5,2,4,5
+43,Female,0,47,to see if they will choose to be selfish,to see if they will choose to be selfish,4,1,control,prosocial,6,6,5,5,6,2,4,5
+44,Male,1,38,neutral,neutral,4,1,control,prosocial,5,5,5,5,3,2,2,1
+45,Male,2,43,"A test of honesty, how moral of a person you are. ",It was based on decision. Whether you believe in being a moral person.,2,1,honesty,prosocial,4,4,3,3,3,5,3,3
+46,Male,0,28,see peoples honesty,see peoles honesty,1,1,honesty,selfish,7,7,7,7,7,1,7,7
+47,Female,1,39,To assess people's selfishness,To assess people's selfishness,3,1,control,selfish,5,5,4,4,5,2,5,4
+48,Female,0,38,Trusting strangers,Trusting strangers,3,1,control,selfish,2,2,3,2,2,4,3,2
+49,Male,2,26,To give us an idea of how moral the partner is before we play the choice game,To see if our choice is affected by preconcieved notions ,4,0,control,prosocial,1,1,4,3,5,6,5,3
+50,Female,3,27,make a judgement on the partner,see if we trust the partner,1,0,honesty,selfish,2,2,4,4,3,4,5,4
+51,Male,0,42,maximizing rewards,maximizing rewards,4,1,control,prosocial,6,6,5,5,6,2,2,6
+52,Male,5+,50,Determine how to maximize payoffs for participants depending on flip outcomes and whether or not to be truthful,Determine if a player will return money in order to reward original player for passing,1,1,honesty,selfish,3,3,2,2,5,5,3,2
+53,Female,1,30,"The first player could tell the second the coin flip was either heads or tails. Based on whether or not they told them correctly, each would get a payoff. The first player gets a bonus if they are dishonest, though","I could keep my $2 or pass it, where it would be increased to $5. The second player would then have the chance to pass half back to me or not.",3,0,control,selfish,2,2,2,2,3,5,3,2
+54,Female,1,30,i dont know,i dont know,1,1,honesty,selfish,6,6,4,5,6,4,4,5
+55,Male,1,29,the main purpose of coin flip game is how to take decisions,decision making,4,1,control,prosocial,6,5,6,5,2,6,5,5
+56,Male,1,25,To insert the notion that the partner is dishonest and has the ability to lie. ,To assess a decision after receiving information about the partner. ,3,1,control,selfish,3,2,2,2,3,2,2,2
+57,Male,2,27,To see how honest the sender is,To see how trusting the sender is,1,0,honesty,selfish,2,2,2,2,2,7,2,3
+58,Male,1,32,The purpose of the coin flip game was to determine if someone would purposely send a dishonest message to get a slightly better payout.,"The Choice Game was to determine how much trust you have in your partner, that they will send the money back despite having a much bigger payout if they don't.",3,1,control,selfish,3,3,3,2,3,5,5,2
+59,Female,0,23,Trust,Trust,1,1,honesty,selfish,4,4,5,4,5,4,3,5
+60,Male,1,35,Decision making. See if we would share our winnings,Test morality of player,2,1,honesty,prosocial,5,4,4,2,3,4,3,4
+61,Female,2,35,Judgments to see if people trust someone they don't know,same as the coin flip game -- judgments to see if people trust someone they don't know,4,1,control,prosocial,7,7,6,6,6,1,1,6
+62,Male,1,30,to see what others had percieved about the virtual partner ,to see what others had percieved about the virtual partner ,1,1,honesty,selfish,2,3,5,4,2,2,2,4
+63,Male,0,29,Not sure.,I have no idea.,1,0,honesty,selfish,1,1,4,4,4,4,4,4
+64,Female,0,32,To determine how people are influenced by knowledge,To determine how unselfish people are.,4,1,control,prosocial,5,6,5,6,6,1,2,4
+65,Male,0,38,To give me an example of my partner's morals.,To test my selfish or selflessness.,4,1,control,prosocial,2,2,4,4,4,1,1,4
+66,Female,1,26,To see how we react to people,To see how we react to people,3,0,control,selfish,1,1,2,2,2,4,2,2
+67,Female,2,43,To understand if people are willing to share winnings or keep all to themselves.,To  understand if people are willing to share winnings knowing that the other person did not share in a previous task.,1,0,honesty,selfish,2,1,5,3,1,4,2,6
+68,Male,1,34,get the opinion,get the opinion,1,1,honesty,selfish,5,4,3,4,4,4,5,4
+69,Male,5+,32,The sender knows the result of the coin flip and must communicate the correct answer to the responder. The amount of money that the participants gain depends on the response given by the responder. ,"Sender has the choice to either keep or send money to a partner with a chance for increased rewards. If the money is sent to the partner, its value is increased and the partner can choose to either keep the entire amount or return half its value to the sender. ",1,0,honesty,selfish,1,2,1,1,2,7,2,1
+70,Male,2,44,To see how much I trust someone. ,To see how much I trust someone. ,3,0,control,selfish,2,2,2,2,2,4,2,2
+71,Female,0,44,The purpose of the coin flip game was to evaluate how honest a person would be with their partner. ,The purpose of the choice game was to evaluate if one would punish their partner for being unfair in a previous game with another participant. ,1,0,honesty,selfish,1,1,2,2,2,5,2,2
+72,Female,1,66,I think that the purpose was to see how people deal with choices that might compromise their basic beliefs,To see if people will share resources,2,1,honesty,prosocial,4,4,4,4,5,3,4,4
+73,Female,5+,37,to reveal the character of the partner I will be playing with.,to determine if I would trust that the character of this person is consistent..,4,1,control,prosocial,6,6,6,6,6,2,2,6
+74,Male,0,43,Unsure,Unsure,4,0,control,prosocial,3,3,2,4,3,4,4,3
+75,Male,3,29,It was to see if others are willing to sacrifice a small amount so that both players can earn a modest amount.,The game was to test if one player was willing to take a chance and trust the second player so that both can earn a slight increase in their reward.,2,1,honesty,prosocial,6,6,6,7,6,2,5,5
+76,Female,1,26,"To see if someone would try and convince someone of an untruth to maximize earnings for them, at a slight cost to themselves.","To see if someone would trust another person, especially depending on their previous choices, to maximize both their earnings.",4,1,control,prosocial,5,4,4,4,5,1,3,4
+77,Male,2,40,based on our decision and luck also,this is based on other participant also,2,0,honesty,prosocial,4,4,5,5,4,5,4,4
+78,Female,2,32,To see how trusting people are.,To see what choices people make when money is on the line. ,2,1,honesty,prosocial,5,5,4,2,6,4,6,4
+79,Female,1,24,To see how someone will make decisions.,Observing allocations and trust.,4,1,control,prosocial,3,3,4,3,6,4,3,4
+80,Female,0,43,"FOR THE SENDER TO EITHER SEND A TRUE OR FALSE MESSAGE TO THE RECEIVER ABOUT WHAT THE COIN LANDED ON. THEREBY INCREASING EITHER THE PAY OUT FOR BOTH OF THEM OR ONLY THE PAY FOR THE SENDER. THIS WAS TO GIVE ME AN IDEA OF THE SENDERS PERSONALITY. HOWEVER, PEOPLE CHANGE DEPENDING ON AMOUNTS OF MONEY AND THE SITUATION, SO I DID NOT LET THAT GAME INFLUENCE ME","I WAS PLAYER ONE AND DECIDED HOW MUCH MONEY TO SEND TO PLAYER TWO, IF ANY. I CHOSE TO SEND NONE. PLAYER TWO DECIDED IF ANY, HOW MUCH MONEY THEY WOULD SEND BACK TO ME.",2,0,honesty,prosocial,2,2,3,3,6,4,4,3
+81,Female,2,22,To determine how trustworthy other players would be. ,To determine whether or not players trust the other player to do the moral thing or not. ,1,1,honesty,selfish,6,6,6,3,6,2,6,6
+82,Female,0,20,To show us if the player was true to his word,to seeif we trusted another player,1,1,honesty,selfish,5,5,4,4,5,6,3,4
+83,Female,1,33,to judge how people perceive others,to judge the actions of others,3,0,control,selfish,1,1,4,4,2,5,1,3
+84,Female,0,34,to see who would tell the truth,to see the honesty of someone,3,0,control,selfish,1,1,1,1,1,4,2,1
+85,Male,1,45,To determine how the player values honesty over generosity.,To determine trust,2,1,honesty,prosocial,6,6,6,6,7,1,3,6
+86,Female,2,54,TO TEST THE DECISIONS MADE BY LEARNING HOW THE OTHER PLAYER REACTED IN THE COIN FLIP GAME,TO DETERMINE THE DECISION MADE BY PLAYER ONE BASED ON PLAYER 2'S PLAYING OF THE COIN FLIP GAME,3,0,control,selfish,2,2,2,2,2,6,2,2
+87,Male,4,48,Do not know.,Do not know.,3,0,control,selfish,1,1,1,1,1,4,1,1
+88,Female,0,28,"To divide an amount of money between two people based on the outcome of the coin flip, and whether the player who does not know the actual outcome is correct or incorrect","To divide an amount of money between two people based on the first player either keeping an amount or passing it to the second player, trusting them to return some of it (in which case both players benefit)",4,1,control,prosocial,5,2,3,3,4,2,5,3
+89,Female,0,24,To describe to us the morality of our game partner when it comes to instructions and money.,To determine whether we would trust a stranger based on decisions they have previously made.,2,1,honesty,prosocial,5,3,5,2,6,4,5,5
+90,Female,5+,29,To observe how a person behaves in regards to money and others with limited information .,To study how participants behave when faced with an increased return and other blind participants. ,4,1,control,prosocial,6,6,6,7,7,1,1,6
+91,Male,1,42,The purpose was about trusting a person in reference to a positive or negative decision made by the person. ,The purpose was about trusting a person in reference to a positive or negative decision made by the person. ,2,0,honesty,prosocial,1,1,4,3,7,1,4,4
+92,Female,2,56,unsure,unsure,1,0,honesty,selfish,1,1,2,2,3,4,4,2
+93,Female,1,49,To determine the ethical behavior of the sender.,To determine if your partner's previous behavior will influence whether you send or keep the $2.,3,0,control,selfish,1,1,2,2,2,4,3,2
+94,Female,2,29,Perception of people on how they performance to make most money.,Perception of people on sharing money with others.,1,0,honesty,selfish,1,1,5,3,7,2,4,5
+95,Male,1,23,not sure it was mind intensive,also same thing,1,0,honesty,selfish,3,5,4,3,3,5,3,4
+96,Male,1,27,trust,trust,2,0,honesty,prosocial,1,1,4,4,1,6,6,4
+97,Female,1,57,Trust?,Trust?,4,0,control,prosocial,2,2,2,2,6,4,4,2
+98,Male,1,31,No idea,No idea,2,1,honesty,prosocial,5,4,5,5,7,3,5,6
+99,Male,2,58,to see how honest you are,to see how trusting you are,1,0,honesty,selfish,2,2,2,1,5,4,2,2
+100,Male,1,30,The purpose of The Coin Flip game is to either tell the truth to your counterpart and help them win earnings or be selfish and lie and keep it all to yourself.,The purpose of the Choice Game is whether you trust your partner enough to split the money with you or whether you would settle for a lesser amount.,3,0,control,selfish,2,2,2,4,5,4,2,2
+101,Male,0,66,To give an idea of how player 2 thought and acted,To perceive my behavior when given clues about the other player. to check my selfishness behavior.,2,0,honesty,prosocial,3,3,5,4,6,4,6,5
+102,Male,1,33,To judge selfishness and if the sender would sacrifice some of their bonus to give a bonus to the receiver. ,Trust. Especially in regards to taking into account a players previous actions. ,4,1,control,prosocial,7,6,6,5,6,2,2,6
+103,Female,1,58,To make informed decisions so that a good outcome is achieved,Making judgments and how we treat others,1,0,honesty,selfish,4,4,2,1,4,5,2,2
+104,Female,0,69,"Not sure, but perhaps to determine how/if respondents choose to be honest or not",Maybe to determine how many respondents trust others,1,0,honesty,selfish,6,6,3,3,5,4,3,2
+105,Male,0,32,To see if a person will lie for a more fair outcome.,To see if a person lying will modify a choice.,4,1,control,prosocial,6,6,6,6,6,1,2,6
+106,Male,2,54,Coin flip was to check honesty of sender.  Whether they tell truth or not.,To see how trusting player 1 is.  Whether they believe the partner will do the right thing so everyone wins.,3,1,control,selfish,5,4,4,2,2,4,5,3
+107,Male,0,36,To see how honest the person was. ,I'm not sure. ,3,0,control,selfish,1,1,2,2,2,4,3,2
+108,Female,2,52,To make a decision about a person's fairness and generosity,To make a decision about a person's reliability,2,1,honesty,prosocial,4,5,5,5,6,2,2,4
+109,Female,0,36,to see if people are truthful,to see how your image of someone effects your decision,4,0,control,prosocial,3,3,3,3,5,4,3,3
+110,Male,2,51,To determine if a person will provide dishonest information if it benefits the other person. ,To see if people think others will act in a fair manner. ,4,1,control,prosocial,6,6,6,6,6,1,4,6
+111,Female,0,47,A study in perception of trust in a stranger.,To gain knowledge of perception of how the other player in the choice game determines their choice. If you can trust their decision.,4,1,control,prosocial,5,5,5,3,4,3,3,4
+112,Female,0,40,"I have no idea what this study was about, it was very confusing with confusing directions. This game could have been about trust.","I am not sure what the purpose of The Choice Game was, this game could have been about trusting someone you do not know.",4,1,control,prosocial,1,1,7,7,7,4,4,7
+113,Male,0,40,Perceptions of players,Perceptions of trust,1,1,honesty,selfish,5,4,4,3,3,5,5,4
+114,Male,2,27,To determine the behavioral pattern of my partner.,To determine how I would react to my partners dishonesty in the coin game.,3,0,control,selfish,1,1,2,1,3,5,2,2
+115,Female,0,60,I am not exactly sure  maybe about trust,I am not exactly sure.  maybe about trust,4,0,control,prosocial,2,2,4,4,4,4,4,4
+116,Male,5+,33,judge a person's moral compass,Your personal moral compass,3,0,control,selfish,4,4,4,4,6,2,4,5
+117,Male,1,27,To see how honest players would be in their communication when it affects the rewards other players receive.,To see how much players trust other players in a game.,3,0,control,selfish,2,2,2,2,3,3,5,2
+118,Female,2,28,to see head or tail,to check mentality of player,2,0,honesty,prosocial,5,4,4,5,2,5,6,5
+119,Male,2,35,personal and financial decisions,personal decisions on moral choices,1,1,honesty,selfish,6,6,4,4,4,4,4,4
+120,Female,1,37,The purpose of The Coin Flip Game was to lie to the receiver so both participants could get a bonus.,The purpose of The Choice Game was to trust that your partner in giving them $2 and hoping they would return half of that to you afterwards enabling both of you to get a bonus.,4,1,control,prosocial,7,7,6,7,7,1,6,6
+121,Male,4,28,To determine if the sender would sacrifice some of their earnings by lying in oder to help the receiver.,To determine if Player 1 would be selfish and risk losing all chances of payment in exchange for the possibility of a bigger payout.,2,0,honesty,prosocial,3,3,4,4,2,6,4,4
+122,Female,0,22,"To see what your partner chose, if they chose to be deceitful or truthful.",To see if someone would trust their partner to return the money and get the bonus.,3,0,control,selfish,1,1,2,5,1,2,3,2
+123,Male,5+,36,to determine how honest people are,to see if people will punish others,3,0,control,selfish,1,1,2,2,2,4,1,2
+124,Male,2,24,trust and partnership,to see if people were honest,2,1,honesty,prosocial,6,6,4,4,4,6,5,4
+125,Male,1,25,It's like a game theory situation with incentives.,Decision making understanding,4,1,control,prosocial,6,6,4,5,3,2,3,5
+126,Male,1,27,Analyzing how altruistic others will be for the greater benefit and whether or not others trust each other to be altruistic for their good.,To determine if people will choose to be altruistic if they think it will benefit everyone involved.,4,1,control,prosocial,4,4,4,4,5,3,3,3
+127,Female,2,38,The purpose was to split the money as equally as possible.,The purpose was to split the money as equally as possible,4,1,control,prosocial,6,5,6,6,6,2,6,4
+128,Male,0,37,To see if people trusted one another.  To see if someone would be deceitful assuming the person was going to trust them.,To trust the sender to give money back.,4,1,control,prosocial,7,7,6,6,2,2,2,6
+129,Female,2,31,To review decision making,"Same as above, to see how information influences people's decision making",3,1,control,selfish,6,5,3,3,4,3,6,2
+130,Male,1,39,To see if the person will give a false answer to attempt to maximize the outcomes,To test how trustworthy one person thinks the other is,2,1,honesty,prosocial,6,5,5,5,6,2,3,5
+131,Female,1,30,To test if someone could send a dishonest message knowing that it would likely result in a better outcome for the other person.,To see if people trust others based on past benevolent decisions.,4,0,control,prosocial,3,3,4,4,6,4,2,3
+132,Male,2,35,not really sure,not really sure,4,0,control,prosocial,1,1,1,1,7,7,4,1
+133,Female,2,32,to find out if player will reply in an honest manner,to determine how people will react based on the results of the coin flip game ,1,0,honesty,selfish,1,1,2,2,3,5,2,2
+134,Male,2,34,see if someone is willing to lie to benefit another person,to test trust,4,0,control,prosocial,5,5,5,5,6,3,2,4
+135,Male,2,43,To evaluate the level of honesty the other player has.,To determine how I would react to the other player based on a previous experience.,3,0,control,selfish,1,1,3,2,4,4,2,1
+136,Male,0,31,To coach someone on the results of the Coin game.,To see what choices the players 1 and player 2 make,3,0,control,selfish,2,2,4,4,4,4,4,4
+137,Male,2,30,Don't know,Don't know,3,0,control,selfish,2,2,2,2,4,4,4,2
+138,Female,1,58,To determine someone's character by observing their actions,To see how much we can trust a stranger,2,1,honesty,prosocial,5,5,4,4,6,2,5,4
+139,Male,1,48,"See how people respond when they can influence someone's decision by telling the truth or fibbing, and how that matches their stated morals.",See how much people trust someone else to be benevolent or selfish.,1,0,honesty,selfish,1,1,3,1,3,5,3,3
+140,Female,0,51,To help us get a feel of how our partner will respond to the choice game.,"To see how much we trusted our partner, even though they did not tell the truth in the coin flip game",2,1,honesty,prosocial,5,5,6,6,6,3,5,6
+141,Male,0,30,To show us if our partner was trustworthy or not,To see if we would trust our partner,2,0,honesty,prosocial,4,3,5,5,6,2,2,6
+142,Male,4,34,To determine what the other player would do. ,To make a decision that enhanced money. ,1,0,honesty,selfish,2,3,4,3,4,4,4,4
+143,Male,0,28,to see people's intention when sharing money,the same to analyse people's thinking of sharing money with unknown,2,0,honesty,prosocial,1,1,4,4,4,7,4,4
+144,Female,1,46,To see if someone would disadvantage themselves in order to see someone else gain an advantage.,To see if we trusted someone who had lied?,1,0,honesty,selfish,2,2,2,1,3,6,2,2
+145,Female,1,18,Perceptions of honesty.,Perceptions of sharing.,2,1,honesty,prosocial,5,5,2,2,3,4,5,2
+146,Female,0,38,memory experinment,memory task,2,1,honesty,prosocial,6,6,6,7,3,6,7,7
+147,Male,3,25,"Coin flipping, coin tossing, or heads or tails is the practice of throwing a coin in the air and ... During a coin toss, the coin is thrown into the air such that it rotates ... the use of coin flips to break ties in Texas sports, instead using point-systems to ... In a game theoretic analysis it provides even odds to both sides involved, ...","The Stanley Parable is an exploration game, but it is also a narrative story game, and it is also a game of choice. It is all of these things, yet ...",3,0,control,selfish,5,6,5,6,2,6,5,7
+148,Male,2,30,i don't know,game ,1,1,honesty,selfish,7,6,4,4,4,6,7,4
+149,Female,0,25,to see our choice,to guilt us into making a decision,2,0,honesty,prosocial,2,2,4,5,7,4,4,4
+150,Female,1,35,The Sender would know the results and the possible payoff and would send a message to the receiver that would influence the likelihood of the payoff. ,To decide whether or not to share the money in the hopes it would be increased and shared. ,2,1,honesty,prosocial,6,6,6,6,6,2,6,5
+151,Male,0,33,"The purpose of the Coin flip game was too see whether or not someone would lie about something given the outcome is only known by said person. One person knows about the details and knows whether or not the coin lands on head or tails. The other person doesn't know the coin flip outcome and has to rely on the first person to tell them the truth about it. Since lying benefits the observer of the coin more so then telling the truth, the game is set up to see if the observer will choose to benefit himself or share with the other player. It also sets up the purpose of The Choice Game that comes later.","The purpose of the Choice Game was to see what decision someone would make after finding out what type of person their partner in the game was and what decision said partner made in a previous game with someone else. The player that is in control of sending the two dollars over has total control in this game. Sending the two dollars to the other player is risky because the other player, after the money grows, can keep all of the money to him/herself or split the money with the other player. However the player sending the money is told about the type of person his partner is via decisions that partner made in a previous task.",1,0,honesty,selfish,1,1,3,2,3,6,2,2
+152,Female,0,31,To see how we would make decision after being asked morality questions,To see how we would make decisions based on what we know about the other person ,2,1,honesty,prosocial,6,6,4,4,6,2,3,4
+153,Male,0,29,to see how greedy player one is,to see how trusting sender is,3,0,control,selfish,2,2,3,2,1,6,2,2
+154,Female,2,48,"To see if a person was able to find a valid excuse for lying... an ""end justifies the means"" situation. Of course I can see it that the person was a risk taker and may not agree that 90% agree with his/her advice. They may think that the odds are actually more in their favor.","To see if we are positively influenced by a person appearing benevolent in one situation when compared to another.  However, in the first scenario the sender only had a difference of $0.25 between one choice and another. He could afford to be benevolent. In the Choice game it felt more like an all or nothing situation and I did not want to risk it.",2,0,honesty,prosocial,2,2,4,3,6,5,2,4
+155,Male,0,33,To show what player 2 would do in a similar situation where they had to make a decision about money. ,To see what people would decide given the information about player 2's previous coin flip game. ,4,0,control,prosocial,1,1,4,2,3,4,2,4
+156,Male,4,25,good,interesting,1,0,honesty,selfish,5,6,6,5,3,5,5,5
+157,Male,1,36,perception,perception,4,0,control,prosocial,1,1,3,4,3,4,2,3
+158,Male,1,31,TO ANALYTICAL THE PERSON'E MIND,THE CHOICE GAME WAS VERY INTERESTING,2,1,honesty,prosocial,7,7,5,5,5,4,4,5
+159,Male,1,20,To see if you trust the partner,To see if you trust the partner,2,0,honesty,prosocial,5,5,4,5,3,5,4,4
+160,Male,1,31,To see how truthful your partner would be.,To see how fair your partner would be.,2,1,honesty,prosocial,7,7,5,6,7,1,5,5
+161,Female,1,65,To study whether people will lie to maximize payoffs for themselves and whether people trust other people,To study whether people will trust other people to share money when a limited amount of information is available about the other person,1,0,honesty,selfish,1,1,2,1,2,7,2,1
+162,Male,5+,39,Gives an example of your opponents behavior and choices made in the past. ,Knowing of your partner's previous decision making; you have choice to keep the money or take a chance with partner.  Since partner was dishonest  on coin flip game; my gut feelings was to keep the money.,3,0,control,selfish,2,2,2,3,1,4,3,3
+163,Female,2,55,trusting other people,trusting other people,3,0,control,selfish,2,2,2,2,2,5,2,2
+164,Male,1,32,"To see if a person would instruct another in a way which negatively impacted them nominally, to greatly benefit another. ",To see if a person would risk everything to gain a minor additional benefit. ,4,0,control,prosocial,6,6,6,6,6,1,1,4
+165,Male,1,52,idk,perception of trust,1,0,honesty,selfish,2,2,2,2,2,4,2,2
+166,Male,0,43,Deceive your partner for financial gain or be truthful & earn a little less money for yourself but some for your partner. I think it's a test of morals & judgment.,Be greedy & make the most money or be cooperative & earn a little less money for yourself but some for your partner. Since our choice is based on knowledge of how our partner behaved in the Coin Flip game this was a test of trust.,3,0,control,selfish,1,1,2,2,3,2,4,2
+167,Female,2,34,The Coin Flip Game clearly deals with trusting someone else based on limited information. ,This game also deals with trusting someone else based on limited information. ,1,0,honesty,selfish,2,2,4,4,6,5,5,4
+168,Female,1,35,to see if a person would lie to make more money,to see if you are willing to risk sending money and not receive anything in return,1,0,honesty,selfish,1,1,4,5,1,6,2,5
+169,Male,0,21,"To give an understanding of who your partner is, I guess.",To see if you trust your partner.,2,1,honesty,prosocial,5,5,5,4,5,2,3,5
+170,Male,3,24,To see what kind of choices someone would make in that situation,"To see how dishonest, or honest someone can be when money is involved",2,0,honesty,prosocial,1,1,6,4,3,2,5,5
+171,Male,5+,35, decision making tasks, decision making tasks,3,0,control,selfish,7,7,4,4,4,4,4,4
+172,Female,0,29,To see what kind of person my partner is,To punish my partner for being dishonest,3,0,control,selfish,1,1,2,2,2,5,6,2
+173,Male,1,40,To determine if people would be fair or greedy when given a choice. ,To determine if people would be fair or greedy when given a choice and some information about their partners previous actions in a similar task. ,3,0,control,selfish,2,2,2,2,6,4,2,2
+174,Male,2,44,To determine how likely a person is to be honest or dishonest for their own gain,To assess a person's level of trust,1,0,honesty,selfish,1,1,3,2,2,6,2,4
+175,Female,2,48,to analyse human behaviour,to analyse human behaviour,1,1,honesty,selfish,7,7,6,6,5,1,5,6
+176,Male,2,23,To test a person's honesty.,To test a person's generosity.,3,0,control,selfish,2,3,4,3,3,4,5,4
+177,Male,0,67,generosity vs honesty,trust,2,1,honesty,prosocial,4,2,5,5,6,5,6,5
+178,Male,1,18,yes heads and tails,yes so exiting the game.,2,1,honesty,prosocial,5,6,6,3,6,6,6,7
+179,Male,5+,60,to see if the other player was honest,to see if we would trust the other player given conflicting information ?,1,1,honesty,selfish,6,5,4,4,4,4,4,4
+180,Female,0,34,To see if people will be honest.,To see if people trust others.,2,0,honesty,prosocial,1,1,3,3,5,4,4,3
+181,Female,0,54,wanting to maximize own earnings or share,trusting others based on their actions and beliefs,2,0,honesty,prosocial,3,1,6,6,6,2,3,4
+182,Male,2,30,very nice,for entertainment,3,0,control,selfish,6,6,7,5,5,5,6,4
+183,Male,0,44,To gain trust or distrust.,To see if people are willing to take a risk.,3,0,control,selfish,1,1,5,2,5,4,4,4
+184,Male,1,50,To study the realistic character  about the player 2,Evaluate of the trust between the two persons after know some characteristic about the another player.,3,0,control,selfish,2,2,2,2,6,6,6,2
+185,Male,2,25,Trustfulness of a person,Same,2,0,honesty,prosocial,4,4,4,4,4,4,4,4
+186,Male,2,29,to understand trust between partners,to understand decision making,1,1,honesty,selfish,6,7,3,5,3,5,3,2
+187,Female,1,25,"The coin flip game was probably to see how honest people are. Either way, the sender would win something, so it had to see if they were kind enough to help the receiver win money, too.",The choice game was probably to see how much people trusted others when money was involved.,3,0,control,selfish,1,1,3,2,2,6,3,2
+188,Male,0,53,To see how we would react based on player 2's answers and his action in the past flip game,no idea,1,0,honesty,selfish,2,2,3,2,2,7,2,2
+189,Female,1,30,know the game,know the game,3,0,control,selfish,4,4,4,4,4,4,4,4
+190,Male,0,30,to understand the other player's character,no idea,4,1,control,prosocial,6,6,6,6,7,1,2,5
+191,Male,0,29,no idea,no idea,3,0,control,selfish,2,2,3,3,2,6,3,4
+192,Male,2,50,judging honesty,judging honesty,3,0,control,selfish,1,1,4,4,2,4,4,4
+193,Female,2,40,To see if someone will lie,To see if someone will lie,2,0,honesty,prosocial,2,2,4,4,3,4,3,4
+194,Female,0,27,I am not sure.,I am not sure.,4,0,control,prosocial,2,2,3,3,5,4,4,4
+195,Female,2,30,trust the decision of the other person,trust another person,4,1,control,prosocial,5,5,5,4,3,4,5,5
+196,Male,2,36,To see if people would act selfishly or not,To see if people trust other people.,1,0,honesty,selfish,2,2,2,2,1,4,4,2
+197,Female,1,29,Exposing moral choice,Exposing greed,1,0,honesty,selfish,1,1,2,6,2,4,1,2
+198,Female,0,27,To study morality ,Judgement and decision ,3,0,control,selfish,1,2,2,2,2,6,2,2
+199,Female,2,38,To determine human perception and outcome.,To determine perception with deception.,3,0,control,selfish,2,1,4,4,4,4,4,4
+200,Male,3,32,To earn money,To analyse confident about partner,3,0,control,selfish,6,4,5,4,2,5,5,2
+201,Female,2,30,IF keeping or giving the money makes you feel or look more moral and nice.,IIF keeping or giving the money makes you feel or look more moral and nice.,2,1,honesty,prosocial,6,6,6,4,7,1,6,5
+202,Male,0,35,The coin flip game lets you screw another player for money.,The coin flip game lets you screw another player for money.,1,0,honesty,selfish,1,1,2,2,2,6,4,2
+203,Female,1,23,Don't Know,Don't Know,2,0,honesty,prosocial,7,6,7,6,1,7,5,6
+204,Female,3,35,To see if someone would lie to benefit the other party,To see if we would act differently knowing the partner lied to benefit his partner in a previous game.,4,1,control,prosocial,5,6,6,5,6,2,3,7
+205,Male,2,29,The purpose on a study enjoyed game,good,2,1,honesty,prosocial,5,6,7,6,1,6,5,6
+206,Female,0,27,to give an idea about how the partner play,to gauge my decision making ,3,0,control,selfish,4,4,4,3,3,4,4,4
+207,Male,0,35,I think the purpose of the Coin Flip Game is to establish trust. The SENDER has to communicate incorrect information for the RECEIVER to actually benefit. The SENDER could just as easily communicate correct information and gains the most.,"The purpose of the Choice Game is to read into whether or not the partner, established from the Coin Flip Game, is trustworthy enough to return the money that was initially sent to them.",2,0,honesty,prosocial,3,4,4,5,6,4,3,4
+208,Female,4,26,Perceptions and trust of others based on limited info?,To test the trust of others with limited information?,4,1,control,prosocial,4,5,4,4,6,2,2,3
+209,Female,0,38,See if a small possible difference in income for someone is enough to try to deceive their opponent.,See how trusting people are of others.,4,0,control,prosocial,2,2,5,5,6,1,1,5
+210,Male,1,25,I think to what extent a person would lie for the benefit of another,I think to what extent we would trust a partner based on his previous decisions. My best guess,2,1,honesty,prosocial,6,6,6,6,6,2,2,6
+211,Female,0,63,"The purpose of the Coin Flip game was for the sender to flip a coin ending with either heads or tails, and the receiver then deciding which to choose for themselves.","The purpose of the Choice game was for the sender to decide to keep or to pass two dollars to the other player, with the other player having a choice to make after that which would impact the sender.",4,0,control,prosocial,5,5,5,4,5,4,5,5
+212,Female,0,49,To allow us to see if our partner was selfish and would lie,It was our chance to get back at someone for mistreating someone else. And to see if we would base our decision on our partners previous decision. ,1,0,honesty,selfish,1,1,2,4,2,7,2,2
+213,Female,0,47,To see how much a person can be trusted.,To see if we would trust a person who was dishonest.,3,0,control,selfish,1,1,2,2,2,6,1,2
+214,Female,1,38,about our truth to someone,same about the choice and the truth,2,1,honesty,prosocial,7,7,6,6,7,1,4,6
+215,Female,0,32,To maximize earnings for yourself.,To maximize earnings for yourself.,2,0,honesty,prosocial,2,2,5,5,5,2,4,5
+216,Male,1,30,thinking purpose of the coin flip game,payout for the purpose of the choice game,4,1,control,prosocial,6,5,6,5,2,6,5,5
+217,Male,0,63,Establishing trust or distrust.,Making an actual decision based on the trust/distrust established in the Coin Flip Game.,3,0,control,selfish,3,3,4,3,3,4,3,3
+218,Male,1,28,BEHAVIOR JUDGMENT,TRUST SURVEY,2,0,honesty,prosocial,3,3,2,2,6,2,2,2
+219,Male,2,35,To see if the person will put trust in the other person's recommendation,To see if one participant is trusting of a stranger,4,0,control,prosocial,1,1,4,4,4,4,4,4
+220,Male,1,33,"Coin flipping, coin tossing, or heads or tails is the practice of throwing a coin in the air","The Stanley Parable is an exploration game, but it is also a narrative story game, and it is also a game of choice",4,0,control,prosocial,7,6,6,7,1,7,7,5
+221,Male,2,32,I'm honestly not sure,Determine how generous the players are,2,1,honesty,prosocial,6,6,6,5,6,2,2,5
+222,Male,2,44,to determine if we find the person we are sending money to honest and trustworthy.,to see if we trust our partner to send back half,3,0,control,selfish,2,2,2,2,3,5,2,3
+223,Male,1,31,To judge how people feel about lying when the true is correlated to negative economic outcomes for the recipient of the lie.,To gauge how knowledge about someone's previous actions may impact levels of trust.,4,1,control,prosocial,5,5,5,5,6,2,3,4
+224,Female,1,28,Not sure,Not sure,2,0,honesty,prosocial,1,1,2,2,6,2,4,2
+225,Male,2,37,Judging moral decisions.,To see what decisions we all made.,3,0,control,selfish,2,2,2,2,2,4,2,2
+226,Male,4,1990,this game is very nice ,i like the game,1,1,honesty,selfish,6,7,4,5,2,4,6,7
+227,Male,0,50,To determine a person's moral character,To determine how much you judge and individual according to their actions,1,0,honesty,selfish,2,3,3,2,3,3,3,2
+228,Female,0,44,Judging honesty and morality,Judging trust,2,0,honesty,prosocial,4,3,5,5,6,4,2,5
+229,Male,1,20,To study trust between two strangers,To study trust between two strangers,4,0,control,prosocial,1,1,4,4,5,3,2,4
+230,Female,1,28,To test memory.,To test memory and morality.,2,1,honesty,prosocial,4,4,4,4,7,4,4,4
+231,Male,0,60,To see how how people make decisions.,To see if I trust a partner.,3,0,control,selfish,2,2,2,2,2,5,2,1
+232,Female,1,28,To see how greedy/dishonest the participants would or would not be.,To see how greedy/dishonest the participants would or would not be.,4,1,control,prosocial,6,6,4,1,6,2,6,4
+233,Female,3,29,BRAIN GAME,BRAIN GAME,1,0,honesty,selfish,6,6,6,5,3,6,5,6
+234,Male,2,33,probabiity,attention,1,0,honesty,selfish,6,6,6,5,4,6,5,5
+235,Female,0,45,To see if people would be honest.,To see if people would be selfish enough to take everything for themselves. ,3,1,control,selfish,5,5,5,4,5,4,5,4
+236,Female,1,30,I do not know,I do not know,4,1,control,prosocial,3,3,4,4,6,4,4,4
+237,Male,5+,30,Interactions and perceptions about morality,Morality choices,4,0,control,prosocial,1,1,1,1,1,7,7,1
+238,Female,2,33,To see how we react when interacting with a person even when that person is possibly untrustworthy or simply someone we dont know well enough to judge his character,To see the trustworthiness of a partner we don't immediately trust,4,0,control,prosocial,3,1,4,3,3,3,4,4
+239,Male,0,32,how people care about the other player,How people trust the other player based on his background,4,0,control,prosocial,3,3,4,3,6,4,4,4
+240,Female,2,31,to see if people would trust someone based on little information,the purpose of the choice game was to see how someone made choices,4,1,control,prosocial,6,4,4,4,4,4,2,4
+241,Male,1,25,I am not sure!,I am not sure!,4,1,control,prosocial,6,5,4,4,4,4,5,3
+242,Male,5+,33,Being able to learn about the moral character of your partner and if they are willing to lie.,Examining how trusting people are of others.,2,0,honesty,prosocial,3,2,5,5,6,5,6,6
+243,Female,0,58,see how much you trusted the other partner that lied,see if you would trust the other partner,1,0,honesty,selfish,2,2,2,2,3,4,2,2
+244,Male,1,23,The purpose of the coin flip game was to see how people manipulate players for personal gain or winnings.,The purpose of the choice game was to see if players think other people are inherently good or selfish.  ,1,1,honesty,selfish,4,5,4,4,4,4,5,5
+245,Female,2,27,The purpose of the coin flip game is to gauge how honest the sender would be for less of a pay out versus if they were dishonest.,The purpose of the choice game is to gauge how much trust player 1 has towards player 2.,3,0,control,selfish,1,3,2,2,2,6,2,4
+246,Female,5+,38,To see people's trustworthyness,I do not know,1,0,honesty,selfish,2,3,1,1,1,6,4,1
+247,Male,0,24,"Determining whether people are willing to sacrifice some of their own profits to ensure other people are profitable, and if they're willing to lie to do so.",Determining if seeing other people acting fairly increases your own desire to pass the money versus keeping it,2,1,honesty,prosocial,6,7,6,6,7,1,2,7
+248,Female,2,49,trust,trust,3,0,control,selfish,2,2,4,3,3,2,2,4
+249,Female,2,27,The purpose of the coin flip game was to demonstrate your partners actions in a previous experiment to help determine if you should pass or keep the money in the current experiment,The choice game was to determine the players attitudes toward their partner based on evidence from a previous game.,2,1,honesty,prosocial,6,6,6,6,6,2,6,6
+250,Male,3,23,To see what the person did and how they may act again. ,To see how people evaluate the actions of others and if there is any trust. ,4,1,control,prosocial,5,5,6,4,7,2,2,6
+251,Male,1,27,To see if the Sender would lie to increase the Receiver's payoff.,To see if Person 1 would trust Person 2 enough to risk losing their bonus.,2,1,honesty,prosocial,5,5,4,5,6,2,4,5
+252,Female,1,44,To see how trusting another player would be to accept what they were told by someone they don't know at all.,Also to see if you would trust a stranger to do the right thing and send back the money.,2,1,honesty,prosocial,5,5,5,5,6,2,3,6
+253,Male,1,37,Really not sure,I don't know...,1,0,honesty,selfish,1,1,2,3,5,6,3,2
+254,Male,1,28,To observe the trust relationship between two players wherein one player's payout depends on the trust paradigm with a primary player.,To observe the relationship between two players wherein the first player must decide if they choose to risk their payout to provide the second player with an opportunity to gain a monetary incentive. ,2,1,honesty,prosocial,2,5,6,6,6,2,2,6
+255,Female,0,61,The coin flip game involved me & a partner.  one person decides whether a coin lands heads or tails.  Depending on which way the coin lands decides the outcome ,The choice game involved me & a partner.  One person decides to keep or pass.  Depending on what the player chooses decides the outcome ,1,1,honesty,selfish,3,3,3,3,6,2,2,3
+256,Male,2,31,To see if people were willing to deceive others to earn a bigger pay off,To see how much people trust others they have never met before,3,0,control,selfish,1,1,2,1,2,4,1,2
+257,Male,2,30,I am not sure,I am not sure,3,0,control,selfish,1,1,1,1,1,7,1,1
+258,Male,0,46,not sure,not sure,2,0,honesty,prosocial,3,3,5,5,3,3,3,5
+259,Female,1,38,"To pair with a partner to make decisions, with greater of lesser degrees of information, which affect the outcome for both players.","To pair with a partner to make open, independent decisions which determine how much money each player will receive.",2,1,honesty,prosocial,3,3,4,5,6,4,2,5
+260,Female,2,36,How honest is the player,Can you trust the other player,2,0,honesty,prosocial,2,2,4,4,6,2,4,5
+261,Female,2,38,To see what people will do.  Are they more motivated to tell the truth or to get the extra .25?,"Again, it's to see what people do.  In this instance, how does what they know about the other person play into their decision.",1,1,honesty,selfish,5,5,2,2,3,5,5,3
+262,Male,0,29,Memory Power,Judgments,3,1,control,selfish,6,5,6,5,3,6,5,5
+263,Male,4,35,Feelings,Feelings adventure,1,0,honesty,selfish,4,5,2,1,1,4,4,2
+264,Male,1,43,To see if the participant would try to make their partner come out with some payment even if it meant a bit less for themselves,"The reward for being selfish was greater, so would the person still make it so their partner came out with payment",4,1,control,prosocial,5,4,4,5,6,2,2,4
+265,Female,2,61,To show how trustworthy and altruistic my partner is.,To use coin flip info to determine degree of trust in partner.,2,1,honesty,prosocial,6,6,5,5,6,2,4,5
+266,Male,0,34,To give me insight as to how Player 2 would react in my situation of being player 1.,To decide if I'd risk 2 dollars for 50 cents. ,4,0,control,prosocial,2,2,3,2,6,3,4,3
+267,Female,0,24,To see how people make decisions based on anothers previous experience,To see how much a stranger trusts another stranger,3,0,control,selfish,2,2,2,4,3,4,1,4
+268,Female,5+,40,to see how honest people are and how sacrificial,To see how  much they trust others. ,1,0,honesty,selfish,1,1,1,1,2,7,1,1
+269,Male,2,36,To try to get a bonus for you and your partner.,To choose whether or not to pass money or keep all for yourself.,2,1,honesty,prosocial,5,5,6,6,7,1,4,6
+270,Male,0,27,To determine how people make choices.,To determine how people make choices based on certain information received about their partner.,3,0,control,selfish,1,1,1,1,1,7,1,1
+271,Female,2,34,to show me more about who I was partnered with.,For me to judge the other participant and then decide how to distribute the money.,1,0,honesty,selfish,1,1,4,2,3,4,2,2
+272,Male,1,41,I think it was a study in generosity or selflessness.,I think it was a study in trust.,3,0,control,selfish,1,1,3,2,2,4,3,2
+273,Female,1,26,"For the sender, to see if you are willing to be honest to the receiver on which side the coin flipped and for the receiver to try and make a correct decision on which side the coin flipped and if you trust the sender's response as well.",To determine if you trusted your partner to return half of the money if you chose to give it away or decide to keep the money for yourself.,1,0,honesty,selfish,2,2,3,3,2,7,2,3
+274,Female,3,57,To help understand how people's treatment of others is affected when they are unaware if they are mistreated.(?),To help understand how morals and values of others affect the way we treat them.,3,0,control,selfish,2,2,2,2,2,4,5,2
+275,Male,4,29,to gauge whether the sender is selfish or not,not sure,4,0,control,prosocial,1,1,3,3,5,5,5,3
+276,Female,2,33,To see if someone would deceive another person or try to keep all the money for themself.,To see how selfish people are when it comes to money.,4,0,control,prosocial,1,1,4,2,6,4,4,4
+277,Female,1,41,The purpose is to test our perceptions of morality and honesty.,The purpose is to also test our perceptions of morality and honesty. ,3,1,control,selfish,5,5,5,5,5,2,6,4
+278,Male,0,21,The purpose of the coin flip game was to see how generous a person you are; either to have both people get almost an equal amount of money of for just one person to keep all the money.,"The choice game is like a game of trust. If you are are player one and decide to pass the money, you have to trust the other player to give half back. If you don't trust they will give you half back you keep the two dollars because you don't want to give them a chance to keep five dollars.",2,0,honesty,prosocial,1,1,6,6,6,2,2,4
+279,Female,0,39,To see if you can trust others???,To see how trusting you are??,1,0,honesty,selfish,2,3,4,4,2,4,4,4
+280,Male,5+,63,"To see how benevolent individuals might be. In terms of this study, to provide perceived insight into how a partner might think for the current game.",To see how prior knowledge of how a partner might behave in a game will affect the subject's choice of actions.,2,1,honesty,prosocial,5,5,5,5,6,2,3,5
+281,Male,0,67,"So that I would be able to determine what type of person my partner was, and use this to make my choice.",To see what my choice would be depending on the actions of my partner in the coin flip game. In other words if they proved themselves to be misleading would I choose to not trust them.,1,0,honesty,selfish,2,2,2,2,3,6,3,2
+282,Female,0,50,To show how honest and generous someone is?,To see how someone would answer the lying question?,1,0,honesty,selfish,2,2,2,2,2,6,2,2
+283,Male,2,28,To see if we are willing to trust strangers for money.,To see if we are willing to trust strangers for money.,3,1,control,selfish,5,5,4,2,7,3,5,6
+284,Male,0,63,To earn money and to judge how trusting people are of others.,The same reason as the coin flip game. to test the trustfulness of a person.,3,0,control,selfish,1,1,5,3,3,4,4,4
+285,Male,2,22,take out budgets,very good,1,0,honesty,selfish,4,5,5,6,3,5,4,4
+286,Male,2,47,To find out how selfish we are.,To find out how much we trust others.,4,0,control,prosocial,2,2,5,5,6,4,3,5
+287,Female,0,60,I think the purpose of The Coin Flip Game was to learn how many survey respondents (who were senders) would be honest when they sent a message to the receiver.,"I think the purpose of The Choice Game was to learn how many survey respondents (who were Player 1) would take a risk and pass $2 to Player 2, even after learning that Player 2 is dishonest. ",3,0,control,selfish,1,1,1,1,2,4,2,1
+288,Female,0,34,To see how truthful the sender would be in the message that he sent to the receiver. Also to see how the sender can use this game to their advantage.,To see if I were to trust my partner after the learning about their decision in The Coin Flip Game.,3,1,control,selfish,2,2,2,2,2,4,2,2
+289,Female,5+,46,To rate the integrity of the player?,To see how willing a person is to share?,1,1,honesty,selfish,6,6,5,5,5,4,4,5
+290,Female,0,59,To see if someone would lie for gain. ,To see if we would trust a dishonest person.  ,1,0,honesty,selfish,2,2,1,1,2,5,3,1
+291,Female,1,26,maybe to see if the sender would lie to earn some money,to see if the other person would share the money,2,1,honesty,prosocial,6,5,5,2,7,2,6,5
+292,Female,1,56,memory test for the directions?,something about trusting people?,3,1,control,selfish,6,6,4,4,6,2,5,4
+293,Male,2,29,To see if the sender would lie to make the receiver money. ,To see if player 2 sends the $2.5 back. ,4,1,control,prosocial,7,7,6,6,6,2,2,6
+294,Female,1,24,Whether the sender would lie to get an extra $.25 or if they would try to help the other person out,How much I would trust someone based off prior info of theirs,3,0,control,selfish,1,1,1,1,5,4,2,1
+295,Female,0,39,to see if the person deciding was honest,to see if the person who received money would keep the entire amount or share,4,0,control,prosocial,4,3,3,4,6,1,7,3
+296,Female,2,43,To see what choices the receiver would make as the sender.,To reflect our opinion after seeing the receiver's choice on the coin flip?,1,0,honesty,selfish,1,1,2,1,1,5,1,1
+297,Female,2,27,"To see if people would be honest, to keep the money for themselves, or dishonest in order to have a chance to share money with a partner.",To see if people would share money with a partner. ,4,0,control,prosocial,2,2,4,4,5,4,3,4
+298,Female,0,35,i would imagine you testing if people would choose to be honest so that everyone could benefit or if people would choose to only look out for themselves.,"how we choose to judge other people's actions. i am a very fair person, i had already made up my mind to send the 2$ before i saw what my partner had done. I always choose to the option where everyone wins, but then i saw how they answered the question and then did the complete opposite, they lie to themselves or they answered in a way to make the person grading the questions think they are a decent person, but that didn't reflect in their actions, therefore i couldn't trust they would be as fair to me as i was prepared to be towards them. so i didn't give them the opportunity to back stab me. I feel a little bad, because i would rather we both gain form the bonus, but i am also not about to let you win, while you purposely let me loose, when i have the opportunity to prevent that.",1,0,honesty,selfish,1,1,2,2,1,7,4,2
+299,Female,0,21,I don;t know,I don;t know,2,0,honesty,prosocial,2,2,2,2,5,2,2,2
+300,Male,3,33,The level of decision making with money,"Know how to use the money, whether to keep it or spend it",1,1,honesty,selfish,5,6,2,3,6,3,5,3
+301,Female,1,33,To see if people would lie in order to help another person.,"To see how much a person trusts another person to do the ""right thing"".",2,1,honesty,prosocial,5,5,6,4,6,3,5,6
+302,Female,1,37,The purpose of the coin flip game is to try to get the other person to answer the incorrect answer. You flip the coin and as a receiver you have to trust that the sender is going to give you an indication on if they're lying or being honest. ,"In the choice game, it's like blind faith. I can keep $2 and give nothing to the other player or risk giving all to the other person hoping they will share. ",4,1,control,prosocial,5,5,5,5,6,1,1,5
+303,Male,1,49,To see if the sender would lie to maximize their result,To see if the sender would punish the sender in the coin flip game ?,3,0,control,selfish,3,2,3,2,4,5,3,3
+304,Female,2,38,Show how honest people are.,To see how people make decisions when they know both sides of the outcome.,2,0,honesty,prosocial,4,4,5,5,3,1,1,5
+305,Female,2,32,to see how greedy people can be,to see how greedy people can be,2,0,honesty,prosocial,2,2,3,3,5,4,4,3
+306,Male,0,32,To influence people to lie for the benefit of others.,To see if the coin flip game results changed the outcome of sharing in the choice game.,2,0,honesty,prosocial,3,4,5,5,6,3,5,6
+307,Male,2,51,Decision Making,Decision Making,1,1,honesty,selfish,6,6,5,3,7,5,4,3
+308,Male,2,61,To elicit a reaction from an observer witnessing a lie.,How one manages the possibility of maximizing gain when faced with an unknown.,3,0,control,selfish,2,2,4,2,3,4,2,4
+309,Female,4,48,How someone make judgement and decisions.,How someone makes judgement and choices in everyday life.,4,1,control,prosocial,5,5,4,4,6,3,6,4
+310,Female,1,39,Perception of reciprocation?,Whether or not people would act fairly?,1,0,honesty,selfish,2,1,2,1,3,6,5,2
+311,Male,1,23,It was to see if the sender would lie based on the circumstances.,To see if player 1 would willing give up two dollars and trust player 2.,2,0,honesty,prosocial,2,3,2,3,3,5,3,3
+312,Female,0,28,I'm not sure.,I'm not sure.,1,0,honesty,selfish,2,2,2,2,4,5,2,2
+313,Female,0,23,to check if people lie to get more gainings,To see how people is influenced by other's previous behaviour,1,0,honesty,selfish,1,1,2,2,2,5,1,2
+314,Male,3,22,Games and Judgments,n/a,3,1,control,selfish,6,5,6,6,5,3,3,5
+315,Female,1,38,"To see if people would actively try to help their parter win money, or if they choose to keep it all for themselves","Same as the above, but also to see if you would trust a stranger to do the right thing. ",4,1,control,prosocial,5,5,5,5,6,1,2,5
+316,Male,0,27,To determine how truthful and fair a participant is.,To determine the amount of trust someone has for people they don't know.,1,0,honesty,selfish,1,1,2,2,2,7,1,2
+317,Female,1,25,i dont know,i dont know,3,1,control,selfish,1,1,3,3,6,4,3,2
+318,Female,0,41,Not sure,Not sure,4,1,control,prosocial,6,6,5,5,6,2,2,5
+319,Male,4,39,to see how we trust other people,also to see how we trust other people,4,0,control,prosocial,2,2,3,5,2,5,3,3
+320,Male,0,31,How trusting someone is when they have control over the outcome to something.,How much we trust someone after knowing how they behaved in a similar situation.,3,0,control,selfish,2,2,4,3,3,5,2,3
+321,Female,0,46,To show me how the previous player behaved with others.,Gauging my response based on my perceived honesty of the other player during their playing of the Coin Flip Game,1,0,honesty,selfish,2,2,4,3,2,6,3,3
+322,Male,0,25,see if we can trust the other player to share the money,see if we can trust the other player to share the money,1,1,honesty,selfish,6,6,4,1,6,3,3,4
+323,Male,3,31,AS THE SENDER I WILL LEARN THE COIN LANDED ON HEADS OR TAILS.,THE RECEIVER IS INCORRECT.,3,1,control,selfish,5,5,4,5,4,5,5,5
+324,Male,1,31,I have no idea.,I have no idea.,2,0,honesty,prosocial,2,2,3,3,4,4,4,3
+325,Female,2,27,To see how much you trust someone to do the right thing.,To see how much you can trust someone to return the favor.,2,1,honesty,prosocial,6,6,5,5,3,2,2,5
+326,Male,2,29,decision making,trusting someone else,4,0,control,prosocial,1,1,5,6,2,6,7,5
+327,Female,2,32,TO KNOW THE LUCK OF PERSON,JUST FOR FUN,3,0,control,selfish,5,6,7,7,1,6,5,7
+328,Male,1,27,For the sender to have pity on the receiver or no,To see if you trust your partner to give half the money back to you,3,0,control,selfish,1,1,2,2,2,6,3,2
+329,Female,0,42,Opinions on trust and chance,Opinions on trust,2,1,honesty,prosocial,5,5,5,3,7,2,6,6
+330,Male,2,31,It's a morality choice game.,It was a morality choice game.,4,0,control,prosocial,1,2,3,2,3,4,3,3
+331,Male,5+,58,Morality and sharing,Trusting based on prior behavior and personality traits.,2,1,honesty,prosocial,7,7,6,6,6,1,1,6
+332,Male,4,33,To see whether people would tell the truth if it meant a lower payoff for themselves.,To see if people trusted another player enough for a chance at a little extra money for themselves.,1,0,honesty,selfish,1,1,1,1,1,4,1,1
+333,Male,0,23,Don't know,Don't know,3,0,control,selfish,2,2,4,4,4,4,4,4
+334,Male,0,37,To test if a person would be willing to lie to benefit someone else.,To test the benevolence of both parties.,4,1,control,prosocial,6,6,5,5,7,2,2,5
+335,Male,0,25,Know thinking of players,know sharing mind of players,1,0,honesty,selfish,3,3,6,6,3,5,5,5
+336,Male,3,35,Evaluating if a persons past actions impact how people treat others in the future.,Evaluating if decisions to keep or pass would be impacted by the coin flip game.,3,1,control,selfish,6,6,4,4,3,3,5,4
+337,Female,0,36,To determine trust in games/matters of choice.,To determine how much/little we are inclined to deceive people,4,0,control,prosocial,5,3,3,4,5,2,4,4
+338,Male,3,30,I am not actually sure.,To see whether or not we will share our money or if we think they receiver will generously return what we shared.,1,0,honesty,selfish,4,4,5,5,3,4,5,5
+339,Female,1,30,"To see if they would send the truth about the coin flip or not, and to see if the receiver would believe them and trust what they said or not. ",To see if player one would trust player two enough to pass the 2$ and if they would choose to take the money and send back half. ,4,0,control,prosocial,2,1,2,4,5,4,2,2
+340,Male,0,30,To see if someone who knew the outcome of a random event would help another person earn some amount of money.,To see how willing people are to believe that other people will be generous.,2,1,honesty,prosocial,7,5,5,4,6,4,4,4
+341,Male,0,35,To paint a picture of the person you are playing the choice game with.,To see if a persons actions in he choice game were affected by how their opponent played the choice game. To see if √§√≥√¨punishment√§√≥√π would be enacted,2,0,honesty,prosocial,1,1,2,2,5,2,4,2
+342,Female,2,26,See how people trust others. ,See if people will be selfish or share the wealth. ,2,0,honesty,prosocial,1,1,6,6,2,2,2,6
+343,Male,1,24,To see if people are trustworthy when it comes to monetary decisions.,To understand ones choices when faced with monetary decisions,4,0,control,prosocial,1,1,1,1,3,5,2,3
+344,Male,0,32,To study trust between strangers,To study risk taking between strangers,2,0,honesty,prosocial,1,1,6,6,6,1,4,5
+345,Male,2,41,I don't believe there was an actual coin flip game. It was a story for background.,Choices based on knowledge about a fictional partner.,2,1,honesty,prosocial,4,4,4,4,3,4,5,4
+346,Male,5+,25,think,think,1,1,honesty,selfish,6,7,7,6,3,7,5,5
+347,Male,2,30,"
 it's a good game to see how selfish people are","
 it's a good game to see how selfish people are",1,0,honesty,selfish,4,5,5,4,5,3,4,5
-348,8/9/18 8:09,8/9/18 8:26,Male,1,29,See how trustworthy someone is,Whether or not I trusted my partner,1,0,honesty,selfish,1,1,2,2,2,6,4,2
-349,8/9/18 8:18,8/9/18 8:34,Male,1,30,mind thinking of the coin flip game,entertainment of the choice the game,2,1,honesty,prosocial,6,5,6,5,2,5,6,5
-350,8/9/18 8:11,8/9/18 8:35,Female,1,51,this is the study about how to build trust with someone,this is the study about how a person is trust to others,4,1,control,prosocial,6,7,6,6,7,2,2,6
-351,8/9/18 8:31,8/9/18 8:40,Female,1,36,To see if I would share with someone else. ,To see if I would risk all my money to share or just keep it and not share. ,4,1,control,prosocial,5,5,5,4,6,2,3,5
-352,8/9/18 8:31,8/9/18 8:46,Male,4,34,whether the coin is flip at head or tail that we guess,the purpose of the game is to know when we pass 2$ to player 2 or when we keep 2$ for knowing benefit,1,0,honesty,selfish,5,7,6,7,7,7,7,7
-353,8/9/18 8:00,8/9/18 8:46,Female,2,29,interesting,interesting,2,1,honesty,prosocial,5,6,5,6,4,5,6,5
-354,8/9/18 8:53,8/9/18 9:02,Male,0,60,Establishing whether a player would try to deceive or not,Testing how much people trust someone they know deceived in a different game,4,1,control,prosocial,4,4,2,2,4,3,4,2
-355,8/9/18 8:56,8/9/18 9:02,Female,0,28,To see if people will deceive each other for more money. ,To see if people trust one another to be nice back to them. ,1,0,honesty,selfish,2,2,3,3,3,3,3,3
-356,8/9/18 8:55,8/9/18 9:02,Female,2,29,I think the purpose of this game was to learn about how people make judgements and decisions about each other. ,I think the purpose of this game was to learn about how people make judgements and decisions about each other. ,4,1,control,prosocial,6,6,4,4,5,2,3,4
-357,8/9/18 8:57,8/9/18 9:04,Male,0,30,To show the true colors of your partner.,To see if you would treat someone unfairly if you were shown that that person themselves were unfair to someone else.,3,0,control,selfish,1,1,2,4,2,5,2,2
-358,8/9/18 7:54,8/9/18 10:01,Female,2,56,To see if people will lie to help another person.,To see how much we will trust a stranger.,2,1,honesty,prosocial,6,6,6,6,7,2,5,4
-359,8/9/18 10:01,8/9/18 10:11,Female,2,45,mind game,good,1,1,honesty,selfish,6,6,6,6,2,6,6,6
-360,8/9/18 9:22,8/9/18 14:33,Female,0,56,trust?,trust? ,1,1,honesty,selfish,5,4,4,4,4,3,4,4
+348,Male,1,29,See how trustworthy someone is,Whether or not I trusted my partner,1,0,honesty,selfish,1,1,2,2,2,6,4,2
+349,Male,1,30,mind thinking of the coin flip game,entertainment of the choice the game,2,1,honesty,prosocial,6,5,6,5,2,5,6,5
+350,Female,1,51,this is the study about how to build trust with someone,this is the study about how a person is trust to others,4,1,control,prosocial,6,7,6,6,7,2,2,6
+351,Female,1,36,To see if I would share with someone else. ,To see if I would risk all my money to share or just keep it and not share. ,4,1,control,prosocial,5,5,5,4,6,2,3,5
+352,Male,4,34,whether the coin is flip at head or tail that we guess,the purpose of the game is to know when we pass 2$ to player 2 or when we keep 2$ for knowing benefit,1,0,honesty,selfish,5,7,6,7,7,7,7,7
+353,Female,2,29,interesting,interesting,2,1,honesty,prosocial,5,6,5,6,4,5,6,5
+354,Male,0,60,Establishing whether a player would try to deceive or not,Testing how much people trust someone they know deceived in a different game,4,1,control,prosocial,4,4,2,2,4,3,4,2
+355,Female,0,28,To see if people will deceive each other for more money. ,To see if people trust one another to be nice back to them. ,1,0,honesty,selfish,2,2,3,3,3,3,3,3
+356,Female,2,29,I think the purpose of this game was to learn about how people make judgements and decisions about each other. ,I think the purpose of this game was to learn about how people make judgements and decisions about each other. ,4,1,control,prosocial,6,6,4,4,5,2,3,4
+357,Male,0,30,To show the true colors of your partner.,To see if you would treat someone unfairly if you were shown that that person themselves were unfair to someone else.,3,0,control,selfish,1,1,2,4,2,5,2,2
+358,Female,2,56,To see if people will lie to help another person.,To see how much we will trust a stranger.,2,1,honesty,prosocial,6,6,6,6,7,2,5,4
+359,Female,2,45,mind game,good,1,1,honesty,selfish,6,6,6,6,2,6,6,6
+360,Female,0,56,trust?,trust? ,1,1,honesty,selfish,5,4,4,4,4,3,4,4
