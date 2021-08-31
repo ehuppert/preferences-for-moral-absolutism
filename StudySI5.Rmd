@@ -338,6 +338,50 @@ SI_moral_composite2 = morality composite of 3 items at timepoint 2
 
 # Analysis
 
+# Correlation of Moral Judgments Across Time
+
+```{r}
+#Absolute time one vs. time two
+absolute_s11 <- s11 %>%
+  filter(proc ==  "absolute") #n = 100
+
+#Just using US 
+absolute_S11_us <- absolute_s11 %>%
+  filter(Country == "2") #46
+
+#Flexible time one vs. time two
+flexible_s11 <- s11 %>%
+  filter(proc ==  "flexible") #n = 96
+
+#Just using US 
+flexible_s11_us <- flexible_s11 %>%
+  filter(Country == "2") #54
+
+#Use just the absolute dataset with us only
+cor.test(absolute_S11_us$SI_moral_composite, 
+         absolute_S11_us$SI_moral_composite2)
+#r = 0.06927773  
+
+#Use just the flex dataset with us only
+cor.test(flexible_s11_us$SI_moral_composite, 
+         flexible_s11_us$SI_moral_composite2)
+#r = 0.4563668 
+```
+
+# Correlation of Moral Judgments Across Time
+
+```{r}
+#Absolute time one vs. time two
+#Use just the absolute dataset
+length(absolute_s5$ID) #306
+cor.test(absolute_s5$Moral.1_composite5, absolute_s5$Moral.2_composite5 )
+#r = 0.5005439 
+
+length(flexible_s5$ID) #294
+cor.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5 )
+#r = 0.627813
+```
+
 # Hypocrisy Model
 
 ```{r}

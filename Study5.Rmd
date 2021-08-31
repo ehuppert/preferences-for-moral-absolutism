@@ -154,6 +154,7 @@ Guilt.2_composite = guilt composite of 2 items at timepoint 2
 Moral.2_composite5 = morality composite of 3 items at timepoint 2
 Honest.2_composite5 = committment to honesty composite of 4 items at timepoint 2
 
+
 # Analysis
 
 # Hypocrisy Model
@@ -519,6 +520,20 @@ post3 <- emmeans(mor_model, ~ moral.time|order)
 pairs(post3)  
 
 
+```
+
+# Correlation of Moral Judgments Across Time
+
+```{r}
+#Absolute time one vs. time two
+#Use just the absolute dataset
+length(absolute_s5$ID) #306
+cor.test(absolute_s5$Moral.1_composite5, absolute_s5$Moral.2_composite5 )
+#r = 0.5005439 
+
+length(flexible_s5$ID) #294
+cor.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5 )
+#r = 0.627813
 ```
 
 # Commitment to Honesty Model
