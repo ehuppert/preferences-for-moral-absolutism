@@ -32,7 +32,9 @@ CP <- read.csv(here("HypocrisyStudy6_public_access_dataset.csv"))
 ```
 
 Note: The current csv file imported for this analysis is a publicly 
-available version of data collected with CivicPulse. We collected Pilot Study 3 and Study 6 as two different modules within the same survey that was sent to government officials, which is why this data is combined.
+available version of data collected with CivicPulse. We collected Pilot Study 3 and Study 6 as two different modules within the same survey that was sent to government officials, which is why this data is combined. 
+
+This survey also included modules for an unrelated project and those items have been deleted from this dataset for this analysis.
 
 The code for Study 6 is listed first.
 
@@ -113,7 +115,7 @@ CP$flextrust <- as.numeric(CP$flextrust) #166
 cp_omit2 <- CP %>%
   drop_na(flextrust) #N = 152
 mean(cp_omit2$flextrust) # mean = 1.6 
-sd(cp_omit2$flextrust) # sd = 2
+sd(cp_omit2$flextrust) # sd = 1.03
 
 
 #lie_stan_abs 166; NA = 21 
