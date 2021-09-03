@@ -277,6 +277,11 @@ chisq.test(s7$lie.motives, s7$trustbeh)
 table(s7$lie.motives, s7$trustbeh)
 table(s7$proclamation, s7$lie.motives, s7$trustbeh)
 
+#model 2
+#Logistic regression
+model.2 <- glm(trustbeh ~ proclamation + lie.motives, data=s7, family = binomial(link = "logit"))
+summary(model.2)
+
 ```
 
 

@@ -783,6 +783,19 @@ trust.afex <- aov_car(
   data = trust_df)
 summary(trust.afex)
 anova_apa(trust.afex)
+
+
+
+#Across Proclamation
+tapply(trust_df$advice, trust_df$proc, FUN = mean)
+tapply(trust_df$advice, trust_df$proc,FUN = sd)
+tapply(trust_df$advice, trust_df$proc,FUN = length)
+
+
+#Overall
+mean(trust_df$advice)
+sdtrust_df$advice)
+length(trust_df$advice)
 ```
 
 # Country and Advice Game
