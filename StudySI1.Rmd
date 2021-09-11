@@ -268,7 +268,11 @@ length(s7$Benevolence_composite)
 # The Choice Game (trust)
 
 ```{r}
-#Logistic regression
+#Logistic regression without interaction
+model.1 <- glm(trustbeh ~ proclamation + lie.motives, data=s7, family = binomial(link = "logit"))
+summary(model.1)
+
+#Logistic regression with interaction
 model.1 <- glm(trustbeh ~ proclamation*lie.motives, data=s7, family = binomial(link = "logit"))
 summary(model.1)
 
@@ -276,7 +280,6 @@ summary(model.1)
 chisq.test(s7$lie.motives, s7$trustbeh)
 table(s7$lie.motives, s7$trustbeh)
 table(s7$proclamation, s7$lie.motives, s7$trustbeh)
-
 ```
 
 

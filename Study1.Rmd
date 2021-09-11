@@ -344,32 +344,32 @@ length(s1$Voting)
 #How does Proclamation vary within just third-person lie frame?
 thirdperson_lie <- s1 %>%
   filter(Perspective == "general") %>%
-  filter(Frame == "lie") #174
+  filter(Frame == "lie") #146
 
 #How does Proclamation vary within just third-person truth frame?
 thirdperson_truth <- s1 %>%
   filter(Perspective == "general") %>%
-  filter(Frame == "truth") #208
+  filter(Frame == "truth") #178
 
 #How does Proclamation vary within just first-person lie frame?
 firstperson_lie <- s1 %>%
   filter(Perspective == "I") %>%
-  filter(Frame == "lie") #207
+  filter(Frame == "lie") #174
 
 #How does Proclamation vary within just first-person truth frame?
 firstperson_truth <- s1 %>%
   filter(Perspective == "I") %>%
-  filter(Frame == "truth") #213
+  filter(Frame == "truth") #178
 
 #How does Proclamation vary within just second-person lie frame?
 secperson_lie <- s1 %>%
   filter(Perspective == "you") %>%
-  filter(Frame == "lie") #211
+  filter(Frame == "lie") #175
 
 #How does Proclamation vary within just second-person truth frame?
 secperson_truth <- s1 %>%
   filter(Perspective == "you") %>%
-  filter(Frame == "truth") #192
+  filter(Frame == "truth") #170
 ```
 
 # Voting Simple Effects - T-tests
