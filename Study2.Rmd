@@ -15,6 +15,7 @@ You need to install the following packages to run this code:
 -apa
 -psych
 -dplyr
+-lavaan
 
 
 ```{r setup, include=FALSE}
@@ -47,7 +48,7 @@ Likelihood of voting for Matthew Johnson (1 -7)
 Extent to which participants actually think Matthew Johnson lies (1-7)
 
 4. Goals
-Extent to which participants actually think Matthew Johnsons thinks its okay to lie (1-7)
+Extent to which participants actually think Matthew Johnsons thinks it's okay to lie (1-7)
 
 # Factorize Subject (id)
 
@@ -73,7 +74,6 @@ moral2_check <- data.frame(s2$Moral_1, s2$Moral_2, s2$Moral_3)
 summary(moral2_check)
 describe(moral2_check)
 psych::alpha(moral2_check) #alpha = 0.94 
-
 s2 <- mutate(s2, Moral_composite2 = ((s2$Moral_1 + s2$Moral_2 +s2$Moral_3)/3))
 
 #Future Honesty
@@ -86,7 +86,6 @@ s2 <- mutate(s2, Honest_composite2 =
 
 #Social benefit of the proclamation
 cor.test(s2$Social_1, s2$Social_2) #r = 0.87
-
 s2 <- mutate(s2, SI_composite2 = ((s2$Social_1 + s2$Social_2)/2))
 
 ```
@@ -200,7 +199,7 @@ sqrt((((1.073977^2) + (1.100064^2))/2)) #1.087099
 #cohens = (mean - mean)/SD pooeld
 (2.698795-2.392405)/1.087099 #0.282
 
-d2 <- cohens_d(t_test(Moral_composite2 ~ Proclamation, absflex_only)) 
+d2 <- cohens_d(t_test(Moral_composite2 ~ Proclamation, control_exclude)) 
 #see Subset Data section below to exclude control and use subsetted data
 #comparing abs vs. flex only
 d2 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.282, enter 0.28
@@ -272,19 +271,10 @@ t_apa(t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 # Social Benefit of the Proclamation Model - New Subsetted Data
 
 
-# Subset Data
-
-```{r}
-#Exclude participants in the control condition, as they were not asked this question
-absflex_only <- s2 %>%
-  filter (Proclamation != "control")
-```
-
-
 # Social Benefit of the Proclamation Model
 
 ```{r}
-SI_2.afex <-aov_car(SI_composite2 ~ Proclamation + Error(ID), data= absflex_only)
+SI_2.afex <-aov_car(SI_composite2 ~ Proclamation + Error(ID), data= control_exclude)
 summary(SI_2.afex) 
 anova_apa(SI_2.afex) 
 ```
