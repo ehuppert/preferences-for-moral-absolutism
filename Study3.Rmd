@@ -65,7 +65,7 @@ Dummy-coded proclamation variable (never = 1, sometimes/rarely = 0)
 Supplemental:
 
 Pref = Attitudes towards honesty;1-5 statement
-("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
+("Lying is [always/often/sometimes/rarely/never] okay" = 1-5)
 
 # Factorize Subject (id) and Trust (rv game pass or rely)
 
@@ -450,9 +450,15 @@ pairs(post2)
 "rv" is trust in the RELY-or-VERIFY game. 1 = RELY, 0 = VERIFY.
 
 ```{r}
-#Reported Model
-rv.glm <- glm(rv_f ~ sometimes + rarely + behavlie + 
-                sometimes*behavlie + rarely*behavlie,
+#Reported Models
+#Model 1
+rv.glm <- glm(rv_f ~ never + rarely + behavlie,
+              data=s3, family = binomial(link = "logit"))
+summary(rv.glm)
+
+#Model 2
+rv.glm <- glm(rv_f ~ never + rarely + behavlie + 
+                never*behavlie + rarely*behavlie,
               data=s3, family = binomial(link = "logit"))
 summary(rv.glm)
 
@@ -461,27 +467,13 @@ summary(rv.glm)
 s3$sometimes_f <- as.factor(s3$sometimes)
 s3$rarely_f <- as.factor(s3$rarely)
 s3$behavlie_f  <- as.factor(s3$behavlie)
-
-#re-run model - consistent
-rv_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f + 
-                sometimes_f*behavlie_f + rarely_f*behavlie_f,
-              data=s3, family = binomial(link = "logit"))
-summary(rv_test.glm) #confirmed
-
-#Exploratory
-rv.glm2 <- glm(rv_f ~ never + rarely + behavlie + 
-                never*behavlie + rarely*behavlie,
-              data=s3, family = binomial(link = "logit"))
-summary(rv.glm2)
-
-#factorize never
 s3$never_f <- as.factor(s3$never)
 
-#re-run model
-rv_test.glm2 <- glm(rv_f ~ never_f + rarely_f + behavlie_f + 
+#re-run model - consistent
+rv_test.glm <- glm(rv_f ~ never_f + rarely_f + behavlie_f + 
                 never_f*behavlie_f + rarely_f*behavlie_f,
               data=s3, family = binomial(link = "logit"))
-summary(rv_test.glm2)
+summary(rv_test.glm) #confirmed
 
 #Frequencies - proclamation
 table(s3$proclamation, s3$rv_f) #1 = RELY, 0 = VERIFY
@@ -528,12 +520,28 @@ s3 <- mutate(s3, pref.center = scale(s3$pref))
 
 ```
 
+#Dummy to indicate if participants and targets shared honesty preferences
+```{r}
+#Subset of participants whose honesty preferences could match the target
+s3match <- s3[s3$pref >= 3, ]
+
+#Dummy indicator for matching preferences
+s3match$match <- ifelse((s3match$never==1 & s3match$pref==5) | (s3match$rarely==1 & s3match$pref==4) | (s3match$sometimes==1 & s3match$pref==3), 1, 0)
+
+```
+
 # SI Appendix 3 - Regressions
 
 ```{r}
 #Preferences Regression - Hypocrisy
-hypocrisy.lm <- lm(Hypocrisy_composite3 ~ sometimes*pref.center, data= s3)
-summary(hypocrisy.lm)
+#Model 1
+hypocrisy.lm1 <- lm(Hypocrisy_composite3 ~ never + rarely + match, data= s3match)
+summary(hypocrisy.lm1)
+
+#Model 2
+hypocrisy.lm2 <- lm(Hypocrisy_composite3 ~ never + rarely + match
+                   + rarely*match + never*match, data= s3match)
+summary(hypocrisy.lm2)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s3$Hypocrisy_composite3, list(s3$proclamation, s3$pref), mean)
@@ -544,8 +552,14 @@ tapply(s3$Hypocrisy_composite3, s3$sometimes, mean)
 tapply(s3$Hypocrisy_composite3, s3$sometimes, sd)
 
 #Preferences Regression - Morality
-moral.lm <- lm(Moral_composite3 ~ sometimes*pref.center, data= s3)
-summary(moral.lm)
+#Model 1
+moral.lm1 <- lm(Moral_composite3 ~ never + rarely + match, data= s3match)
+summary(moral.lm1)
+
+#Model 2
+moral.lm2 <- lm(Moral_composite3 ~ never + rarely + match
+                   + rarely*match + never*match, data= s3match)
+summary(moral.lm2)
 
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s3$Moral_composite3, list(s3$proclamation, s3$pref), mean)
@@ -559,8 +573,14 @@ tapply(s3$Moral_composite3, s3$sometimes, mean)
 tapply(s3$Moral_composite3, s3$sometimes,sd)
 
 #Preferences Regression - Commitment to Honesty
-honest.lm <- lm(Honest_composite3 ~  sometimes*pref.center, data= s3)
-summary(honest.lm)
+#Model 1
+honest.lm1 <- lm(Honest_composite3 ~ never + rarely + match, data= s3match)
+summary(honest.lm1)
+
+#Model 2
+honest.lm2 <- lm(Honest_composite3 ~ never + rarely + match
+                   + rarely*match + never*match, data= s3match)
+summary(honest.lm2)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s3$Honest_composite3, list(s3$proclamation, s3$pref), mean)
@@ -571,11 +591,6 @@ tapply(s3$Honest_composite3, s3$pref, mean)
 tapply(s3$Honest_composite3, s3$rarely, mean)
 tapply(s3$Honest_composite3, s3$sometimes, mean)
 tapply(s3$Honest_composite3, s3$sometimes, sd)
-
-#Logistic Regression (trust) with own attitudes towards honesty
-rv3.glm <- glm(rv_f ~ sometimes*pref.center,
-              data=s3, family = binomial(link = "logit"))
-summary(rv3.glm)
 
 #Frequencies
 table(s3$rv_f, s3$pref, s3$sometimes)
@@ -606,7 +621,7 @@ table(s3$pref)
 #often, 3/10 30%
 #sometimes, 45/195 23%
 #rarely, 99/297 33%
-#never, 33/94
+#never, 33/94 #35%
 
 #Percentages RELY on sometimes
 #always 0/2, 0%
@@ -614,6 +629,37 @@ table(s3$pref)
 #sometimes, 28/195 14%
 #rarely, 26/297 9%
 #never, 4/94 4%
+
+#Preferences Regression - Trust 
+#Model 1
+rv.glm <- glm(rv_f ~ never + rarely + match,
+              data=s3match, family = binomial(link = "logit"))
+summary(rv.glm)
+
+#Model 2
+rv.glm <- glm(rv_f ~ never + rarely + match + 
+                never*match + rarely*match,
+              data=s3match, family = binomial(link = "logit"))
+summary(rv.glm)
+
+#Model 3
+rv.glm <- glm(rv_f ~ sometimes + match + 
+                 sometimes*match,
+              data=s3match, family = binomial(link = "logit"))
+summary(rv.glm)
+
+#Old Model
+rv.glm <- glm(rv_f ~ sometimes*pref.center,
+              data=s3, family = binomial(link = "logit"))
+summary(rv.glm)
+
+rv.glm <- glm(rv_f ~ never + rarely,
+              data=s3, family = binomial(link = "logit"))
+summary(rv.glm)
+
+rv.glm <- glm(rv_f ~ never + rarely + pref.center + never*pref.center + rarely*pref.center,
+              data=s3, family = binomial(link = "logit"))
+summary(rv.glm)
 
 ```
 
