@@ -1113,8 +1113,13 @@ length(s5$guilt_2.2)
 
 ```{r}
 #Logistic Regression
-model.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s5, family = binomial(link = "logit"))
-summary(model.trust_study5)
+#Model 1
+model1.trust_study5 <- glm(trustbeh ~ proclamation + order, data=s5, family = binomial(link = "logit"))
+summary(model1.trust_study5)
+
+#Model 2
+model2.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s5, family = binomial(link = "logit"))
+summary(model2.trust_study5)
 #1 = pass, 0 = keep
 
 chisq.test(s5$proclamation, s5$trustbeh)

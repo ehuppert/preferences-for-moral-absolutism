@@ -1,4 +1,4 @@
-#Study 4 multiple mediation analysis
+#Study 5 multiple mediation analysis
 
 #Load packages
 
