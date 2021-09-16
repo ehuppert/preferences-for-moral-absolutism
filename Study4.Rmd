@@ -41,7 +41,7 @@ The raw data and more information about the cleaning/coding of variables that we
 Key variable names (also see codebook for more information):
 
 1. Proclamation:
-Assignment to one of three conditions: "Lying is never [rarely/sometimes] okay" (absolute vs. ambitious vs. flexible)
+Assignment to one of three conditions: "Lying is [never/rarely/sometimes] okay" (absolute vs. ambitious vs. flexible)
 
 2. Behavior:
 Assignment to "prosocial.truth" vs. "selfish.lie" 
@@ -65,7 +65,7 @@ Dummy-coded proclamation variable (never = 1, sometimes/rarely = 0)
 Supplemental:
 
 Pref = Attitudes towards honesty; 1-5 statement
-("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
+("Lying is [always/often/sometimes/rarely/never] okay" = 1-5)
 
 # Factorize Subject (id) and Trust (rv game pass or rely)
 
@@ -242,7 +242,7 @@ t_apa(t.test(Hypocrisy_composite4 ~ proclamation, rarely_truth_5, var.equal = TR
 t.test(Hypocrisy_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
 t_apa(t.test(Hypocrisy_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
 
-#Prosocial truth never vs. rarely
+#Prosocial truth: never vs. rarely
 t.test(Hypocrisy_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
 t_apa(t.test(Hypocrisy_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
 
@@ -643,12 +643,32 @@ s4 <- mutate(s4, pref.center = scale(s4$pref))
 
 ```
 
+#Dummy to indicate if participants and targets shared honesty preferences
+```{r}
+#Subset of participants whose honesty preferences could match the target
+s4match <- s4[s4$pref >= 3, ]
+
+#Dummy indicator for matching preferences
+s4match$match <- ifelse((s4match$never==1 & s4match$pref==5) | (s4match$rarely==1 & s4match$pref==4) | (s4match$sometimes==1 & s4match$pref==3), 1, 0)
+
+```
+
 # SI Appendix 3 - Regressions
 
 ```{r}
 #Preferences Regression - Hypocrisy
 hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s4)
 summary(hypocrisy_4.lm )
+
+#Preferences Regression - Hypocrisy Matching
+#Model 1
+hypocrisy_4.lm1 <- lm(Hypocrisy_composite4 ~ never + rarely + match, data= s4match)
+summary(hypocrisy_4.lm1)
+
+#Model 2
+hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ never + rarely + match
+                   + rarely*match + never*match, data= s4match)
+summary(hypocrisy_4.lm2)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), mean)
@@ -665,6 +685,16 @@ tapply(s4$Hypocrisy_composite4, s4$sometimes, sd)
 moral_4.lm <- lm(Moral_composite4 ~ sometimes*pref.center, data= s4)
 summary(moral_4.lm)
 
+#Preferences Regression - Morality Matching
+#Model 1
+moral_4.lm1 <- lm(Moral_composite4 ~ never + rarely + match, data= s4match)
+summary(moral_4.lm1)
+
+#Model 2
+moral_4.lm2 <- lm(Moral_composite4 ~ never + rarely + match
+                   + rarely*match + never*match, data= s4match)
+summary(moral_4.lm2)
+
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), mean)
 tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), sd)
@@ -679,6 +709,16 @@ tapply(s4$Moral_composite4, s4$rarely, sd)
 #Preferences Regression - Commitment to Honesty
 honest_4.lm <- lm(Honest_composite4 ~ sometimes*pref.center, data= s4)
 summary(honest_4.lm)
+
+#Preferences Regression - Commitment to Honesty Matching
+#Model 1
+honest_4.lm1 <- lm(Honest_composite4 ~ never + rarely + match, data= s4match)
+summary(moral_4.lm1)
+
+#Model 2
+honest_4.lm2 <- lm(Honest_composite4 ~ never + rarely + match
+                   + rarely*match + never*match, data= s4match)
+summary(honest_4.lm2)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), mean)
@@ -695,6 +735,17 @@ tapply(s4$Honest_composite4, s4$rarely, sd)
 SI.lm <- lm(SI_composite4 ~ sometimes*pref.center, data= s4)
 summary(SI.lm )
 
+#Preferences Regression - Social Benefit (SI) Matching
+#Model 1
+SI.lm1 <- lm(SI_composite4 ~ never + rarely + match, data= s4match)
+summary(SI.lm1)
+
+#Model 2
+SI.lm2 <- lm(SI_composite4 ~ never + rarely + match
+                   + rarely*match + never*match, data= s4match)
+summary(SI.lm2)
+
+
 #Look at mean SI ratings by proclamation and preferences 
 tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), mean)
 tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), sd)
@@ -708,6 +759,19 @@ tapply(s4$SI_composite4, s4$rarely, sd)
 rv4.4.glm <- glm(rv_f ~ sometimes*pref.center,
               data=s4, family = binomial(link = "logit"))
 summary(rv4.4.glm) 
+
+#Logistic Regression (trust) with own honesty preferences (matching)
+#Model 1
+rv4.4.glm.1 <- glm(rv_f ~ never + rarely + match,
+              data=s4match, family = binomial(link = "logit"))
+summary(rv4.4.glm.1)
+
+#Model 2
+rv4.4.glm.2 <- glm(rv_f ~ never + rarely + match
+                   + never*match + rarely*match,
+              data=s4match, family = binomial(link = "logit"))
+summary(rv4.4.glm.2)
+
 
 #Frequencies
 table(s4$rv_f, s4$pref, s4$sometimes)
@@ -725,7 +789,7 @@ table(s4$rv_f, s4$pref, s4$proclamation)
 #often 1/9 11%
 #sometimes 8/144 6%
 #rarely 62/330 19%
-#never 11/109
+#never 11/109 10%
 
 #note that separate tables 0 = never/rarely, 1 = sometimes; 
 #within tables, 0 = verify, 1 = rely
