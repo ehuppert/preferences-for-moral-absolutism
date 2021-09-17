@@ -789,7 +789,7 @@ EXECUTE.
 
 *2. Run mediation analysis to get indirect effects. - use point and click within Process Macro*
 
-*Run Hayes’ (2016) PROCESS Macro for SPSS, Model 7, 10,000 bootstraps*
+*Run Hayes’ (2017) PROCESS Macro for SPSS, Model 7, 10,000 bootstraps*
 IV = sometimes
 M1 = Honesty_C
 M2 = Hypocrisy_C
