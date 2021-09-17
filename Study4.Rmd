@@ -840,7 +840,7 @@ REGRESSION
   /DEPENDENT  SocBen_C
   /METHOD=ENTER sometimes.
   
-Study 3 Morality: Use the same data file in SPSS.
+Study 4 Morality: Use the same data file in SPSS.
 
 *1. Recreate composite variables*
 
