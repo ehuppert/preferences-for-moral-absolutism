@@ -373,12 +373,12 @@ cor.test(flexible_s11_us$SI_moral_composite,
 ```{r}
 #Absolute time one vs. time two
 #Use just the absolute dataset
-length(absolute_s5$ID) #306
-cor.test(absolute_s5$Moral.1_composite5, absolute_s5$Moral.2_composite5 )
+length(absolute_s11$ID) #306
+cor.test(absolute_s11$S1_moral_composite, absolute_s11$S1_moral_composite2)
 #r = 0.5005439 
 
-length(flexible_s5$ID) #294
-cor.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5 )
+length(flexible_s11$ID) #294
+cor.test(flexible_s11$S1_moral_composite, flexible_s11$S1_moral_composite2)
 #r = 0.627813
 ```
 
@@ -663,7 +663,7 @@ tapply(honest5_SI_df$honest5value , list(honest5_SI_df$proc, honest5_SI_df$hones
 #Across Proclamation
 tapply(honest5_SI_df$honest5value, honest5_SI_df$proc, FUN = mean)
 tapply(honest5_SI_df$honest5value, honest5_SI_df$proc,FUN = sd)
-tapply(honest5_SI_df$honest5value, hhonest5_SI_df$proc,FUN = length)
+tapply(honest5_SI_df$honest5value, honest5_SI_df$proc,FUN = length)
 
 #Across Time
 tapply(honest5_SI_df$honest5value, honest5_SI_df$honest5.time,FUN = mean)
