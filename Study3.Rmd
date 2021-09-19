@@ -525,6 +525,7 @@ table(s3$pref)
 
 ```{r}
 s3 <- mutate(s3, pref.center = scale(s3$pref))
+s3 <- mutate(s3, pref.center.2 = scale(s3$pref, scale = FALSE))
 
 ```
 
@@ -532,8 +533,13 @@ s3 <- mutate(s3, pref.center = scale(s3$pref))
 
 ```{r}
 #Preferences Regression - Hypocrisy
+#Scaled by mean and SD
 hypocrisy.lm <- lm(Hypocrisy_composite3 ~ sometimes*pref.center, data= s3)
 summary(hypocrisy.lm)
+
+#Mean centered
+hypocrisy.lm2 <- lm(Hypocrisy_composite3 ~ sometimes*pref.center.2, data= s3)
+summary(hypocrisy.lm2)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s3$Hypocrisy_composite3, list(s3$proclamation, s3$pref), mean)
@@ -544,8 +550,13 @@ tapply(s3$Hypocrisy_composite3, s3$sometimes, mean)
 tapply(s3$Hypocrisy_composite3, s3$sometimes, sd)
 
 #Preferences Regression - Morality
+#Scaled by mean and SD
 moral.lm <- lm(Moral_composite3 ~ sometimes*pref.center, data= s3)
 summary(moral.lm)
+
+#Mean centered
+moral.lm2 <- lm(Moral_composite3 ~ sometimes*pref.center.2, data= s3)
+summary(moral.lm2)
 
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s3$Moral_composite3, list(s3$proclamation, s3$pref), mean)
@@ -559,8 +570,13 @@ tapply(s3$Moral_composite3, s3$sometimes, mean)
 tapply(s3$Moral_composite3, s3$sometimes,sd)
 
 #Preferences Regression - Commitment to Honesty
+#Scaled by mean and SD
 honest.lm <- lm(Honest_composite3 ~  sometimes*pref.center, data= s3)
 summary(honest.lm)
+
+#Mean centered
+honest.lm2 <- lm(Honest_composite3 ~  sometimes*pref.center.2, data= s3)
+summary(honest.lm2)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s3$Honest_composite3, list(s3$proclamation, s3$pref), mean)
@@ -595,11 +611,11 @@ table(s3$pref)
 #never 20/94 21%
 
 #Percentages RELY on rarely
-#always 0 0%
-#often 0 0%
-#sometimes 23 12%
-#rarely 55 19%
-#never 13 14%
+#always 0/2 0%
+#often 0/10 0%
+#sometimes 23/195 12%
+#rarely 55/297 19%
+#never 13/94 14%
 
 #Percentages RELY on never/rarely
 #always 0/2, 0%
