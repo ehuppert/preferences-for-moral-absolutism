@@ -315,6 +315,10 @@ imm.afex <-aov_car(Moral_composite9 ~ imm*proclamation + Error(ID), data=s10_no_
 summary(imm.afex) 
 anova_apa(imm.afex) 
 
+#Linear regressions
+imm.lm <- lm(Moral_composite9 ~ imm*proclamation, data=s10_no_control)
+summary(imm.lm)
+
 tapply(s10$Moral_composite9, list(s10$imm, s10$proclamation), FUN = mean)
 #bar graph
 ggplot(data = s10_no_control) +
