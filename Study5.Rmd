@@ -1117,6 +1117,10 @@ model.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s5, family = binom
 summary(model.trust_study5)
 #1 = pass, 0 = keep
 
+#and with no interaction
+model.trust_study5_2 <- glm(trustbeh ~ proclamation + order, data=s5, family = binomial(link = "logit"))
+summary(model.trust_study5_2 )
+
 chisq.test(s5$proclamation, s5$trustbeh)
 table(s5$proclamation,s5$trustbeh)
 
