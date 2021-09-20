@@ -72,6 +72,8 @@ Pref = Attitudes towards honesty;1-5 statement
 ```{r}
 s3$ID <- as.factor(s3$ID)
 s3$rv_f <- as.factor(s3$rv)
+s3$proclamation <- as.factor(s3$proclamation)
+s3$behavior <- as.factor(s3$behavior)
 ```
 
 # Composite Evaluation Variables
@@ -524,7 +526,10 @@ table(s3$pref)
 #Center honesty preferences for use in models
 
 ```{r}
+#standardize - reported
 s3 <- mutate(s3, pref.center = scale(s3$pref))
+
+#mean center - for comparison
 s3 <- mutate(s3, pref.center.2 = scale(s3$pref, scale = FALSE))
 
 ```
@@ -593,6 +598,11 @@ rv3.glm <- glm(rv_f ~ sometimes*pref.center,
               data=s3, family = binomial(link = "logit"))
 summary(rv3.glm)
 
+#Just main effect model
+rv4.glm <- glm(rv_f ~ sometimes + pref.center,
+              data=s3, family = binomial(link = "logit"))
+summary(rv4.glm)
+
 #Frequencies
 table(s3$rv_f, s3$pref, s3$sometimes)
 #0 = verify, 1 = rely
@@ -633,7 +643,7 @@ table(s3$pref)
 
 ```
 
-# Attitudes as a Covariate - exploration
+# Attitudes as a Covariate - pre-registered
 
 ```{r}
 #Preferences Covariate - Hypocrisy

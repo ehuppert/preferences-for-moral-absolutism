@@ -639,14 +639,22 @@ table(s4$pref)
 #Center honesty preferences for use in models
 
 ```{r}
+#standardize - reported
 s4 <- mutate(s4, pref.center = scale(s4$pref))
+
+#mean center - for comparison
 s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
 
 ```
 
-# SI Appendix 3 - Regressions
+# SI Appendix 4 - Regressions
 
 ```{r}
+#pre-registered ANOVA
+hypocrisy_attitudes.afex <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + Error(ID), s4)
+summary(hypocrisy_4.afex)
+anova_apa(hypocrisy_4.afex)
+
 #Preferences Regression - Hypocrisy
 #Scaled by mean and SD
 hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s4)
@@ -655,7 +663,6 @@ summary(hypocrisy_4.lm )
 #Mean centered
 hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ sometimes*pref.center.2, data= s4)
 summary(hypocrisy_4.lm2)
-
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), mean)
@@ -730,6 +737,11 @@ tapply(s4$SI_composite4, s4$rarely, sd)
 rv4.4.glm <- glm(rv_f ~ sometimes*pref.center,
               data=s4, family = binomial(link = "logit"))
 summary(rv4.4.glm) 
+
+#Just main effect model
+rv5.glm <- glm(rv_f ~ sometimes + pref.center,
+              data=s4, family = binomial(link = "logit"))
+summary(rv5.glm)
 
 #Frequencies
 table(s4$rv_f, s4$pref, s4$sometimes)
