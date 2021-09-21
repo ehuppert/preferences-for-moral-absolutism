@@ -529,7 +529,7 @@ table(s3$pref)
 #standardize - reported
 s3 <- mutate(s3, pref.center = scale(s3$pref))
 
-#mean center - for comparison
+#mean center - for comparison (same key results)
 s3 <- mutate(s3, pref.center.2 = scale(s3$pref, scale = FALSE))
 
 ```
@@ -542,9 +542,13 @@ s3 <- mutate(s3, pref.center.2 = scale(s3$pref, scale = FALSE))
 hypocrisy.lm <- lm(Hypocrisy_composite3 ~ sometimes*pref.center, data= s3)
 summary(hypocrisy.lm)
 
-#Mean centered
-hypocrisy.lm2 <- lm(Hypocrisy_composite3 ~ sometimes*pref.center.2, data= s3)
+#just main effects
+hypocrisy.lm2 <- lm(Hypocrisy_composite3 ~ sometimes + pref.center, data= s3)
 summary(hypocrisy.lm2)
+
+#Mean centered for reference
+hypocrisy.lm3 <- lm(Hypocrisy_composite3 ~ sometimes*pref.center.2, data= s3)
+summary(hypocrisy.lm3)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s3$Hypocrisy_composite3, list(s3$proclamation, s3$pref), mean)
@@ -558,10 +562,13 @@ tapply(s3$Hypocrisy_composite3, s3$sometimes, sd)
 #Scaled by mean and SD
 moral.lm <- lm(Moral_composite3 ~ sometimes*pref.center, data= s3)
 summary(moral.lm)
-
-#Mean centered
-moral.lm2 <- lm(Moral_composite3 ~ sometimes*pref.center.2, data= s3)
+#main effects
+moral.lm2 <- lm(Moral_composite3 ~ sometimes + pref.center, data= s3)
 summary(moral.lm2)
+
+#Mean centered for reference
+moral.lm3 <- lm(Moral_composite3 ~ sometimes*pref.center.2, data= s3)
+summary(moral.lm3)
 
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s3$Moral_composite3, list(s3$proclamation, s3$pref), mean)
@@ -579,9 +586,13 @@ tapply(s3$Moral_composite3, s3$sometimes,sd)
 honest.lm <- lm(Honest_composite3 ~  sometimes*pref.center, data= s3)
 summary(honest.lm)
 
-#Mean centered
-honest.lm2 <- lm(Honest_composite3 ~  sometimes*pref.center.2, data= s3)
+#Main effect
+honest.lm2 <- lm(Honest_composite3 ~  sometimes + pref.center, data= s3)
 summary(honest.lm2)
+
+#Mean centered for reference
+honest.lm3 <- lm(Honest_composite3 ~  sometimes*pref.center.2, data= s3)
+summary(honest.lm3)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s3$Honest_composite3, list(s3$proclamation, s3$pref), mean)

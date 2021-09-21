@@ -642,7 +642,7 @@ table(s4$pref)
 #standardize - reported
 s4 <- mutate(s4, pref.center = scale(s4$pref))
 
-#mean center - for comparison
+#mean center - for comparison (same key results)
 s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
 
 ```
@@ -655,9 +655,13 @@ s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
 hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s4)
 summary(hypocrisy_4.lm )
 
-#Mean centered
-hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ sometimes*pref.center.2, data= s4)
+#Main effects
+hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ sometimes + pref.center, data= s4)
 summary(hypocrisy_4.lm2)
+
+#Mean centered for reference
+hypocrisy_4.lm3 <- lm(Hypocrisy_composite4 ~ sometimes*pref.center.2, data= s4)
+summary(hypocrisy_4.lm3)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
 tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), mean)
@@ -675,9 +679,12 @@ tapply(s4$Hypocrisy_composite4, s4$sometimes, sd)
 moral_4.lm <- lm(Moral_composite4 ~ sometimes*pref.center, data= s4)
 summary(moral_4.lm)
 
-#Mean centered
-moral_4.lm2 <- lm(Moral_composite4 ~ sometimes*pref.center.2, data= s4)
+moral_4.lm2 <- lm(Moral_composite4 ~ sometimes + pref.center, data= s4)
 summary(moral_4.lm2)
+
+#Mean centered for reference
+moral_4.lm3 <- lm(Moral_composite4 ~ sometimes*pref.center.2, data= s4)
+summary(moral_4.lm3)
 
 #Look at mean morality ratings by proclamation and preferences 
 tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), mean)
@@ -695,9 +702,13 @@ tapply(s4$Moral_composite4, s4$rarely, sd)
 honest_4.lm <- lm(Honest_composite4 ~ sometimes*pref.center, data= s4)
 summary(honest_4.lm)
 
-#Mean centered
-honest_4.lm2 <- lm(Honest_composite4 ~ sometimes*pref.center.2, data= s4)
+#Main effects
+honest_4.lm2 <- lm(Honest_composite4 ~ sometimes + pref.center, data= s4)
 summary(honest_4.lm2)
+
+#Mean centered for reference
+honest_4.lm3 <- lm(Honest_composite4 ~ sometimes*pref.center.2, data= s4)
+summary(honest_4.lm3)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
 tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), mean)
@@ -715,9 +726,13 @@ tapply(s4$Honest_composite4, s4$rarely, sd)
 SI.lm <- lm(SI_composite4 ~ sometimes*pref.center, data= s4)
 summary(SI.lm )
 
-#Mean centered
-SI.lm2 <- lm(SI_composite4 ~ sometimes*pref.center.2, data= s4)
+#Main effects
+SI.lm2 <- lm(SI_composite4 ~ sometimes + pref.center, data= s4)
 summary(SI.lm2)
+
+#Mean centered for reference
+SI.lm3 <- lm(SI_composite4 ~ sometimes*pref.center.2, data= s4)
+summary(SI.lm3)
 
 #Look at mean SI ratings by proclamation and preferences 
 tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), mean)
