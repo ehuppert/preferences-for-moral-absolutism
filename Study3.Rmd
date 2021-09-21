@@ -604,9 +604,9 @@ rv4.glm <- glm(rv_f ~ sometimes + pref.center,
 summary(rv4.glm)
 
 #Frequencies
-table(s3$rv_f, s3$pref, s3$sometimes)
-#0 = verify, 1 = rely
+table(s3$pref, s3$proclamation)
 table(s3$rv_f, s3$pref, s3$proclamation)
+#0 = verify, 1 = rely
 table(s3$rv_f, s3$pref)
 #note that separate tables 0 = never/rarely , 1 = sometimes; 
 #within tables, 0 = verify, 1 = rely

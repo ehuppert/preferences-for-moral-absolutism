@@ -650,11 +650,6 @@ s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
 # SI Appendix 4 - Regressions
 
 ```{r}
-#pre-registered ANOVA
-hypocrisy_attitudes.afex <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + Error(ID), s4)
-summary(hypocrisy_4.afex)
-anova_apa(hypocrisy_4.afex)
-
 #Preferences Regression - Hypocrisy
 #Scaled by mean and SD
 hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s4)
@@ -744,7 +739,8 @@ rv5.glm <- glm(rv_f ~ sometimes + pref.center,
 summary(rv5.glm)
 
 #Frequencies
-table(s4$rv_f, s4$pref, s4$sometimes)
+table(s4$pref, s4$proclamation)
+table(s4$rv_f, s4$pref, s4$proclamation)
 #0 = verify, 1 = rely
 table(s4$rv_f, s4$pref, s4$proclamation)
 #Percentages RELY on never
@@ -781,7 +777,7 @@ table(s4$pref)
 #never, 4/109 4%
 ```
 
-#Attitudes as a Covariate - exploration
+#Attitudes as a Covariate - pre-registered
 
 ```{r}
 #Preferences Covariate - Hypocrisy
