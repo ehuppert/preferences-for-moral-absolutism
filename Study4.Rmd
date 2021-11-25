@@ -617,6 +617,27 @@ table(s4$behavior, s4$rv_f)
 #178 prosocial rely, 117 verify - 178/295; 60%
 #61 selfish rely, 240 selfish verify - 61/01 - 20%
 
+#Individual comparison
+#Prosocial truth tellers: nevers vs. sometimes, rarely_truth_5
+rv_PL3.glm <- glm(rv_f ~ proclamation,
+              data=rarely_truth_5, family = binomial(link = "logit"))
+summary(rv_PL3.glm)
+
+#Selfish liars: never vs. sometimes, rarely_lie_5
+rv_PL4.glm <- glm(rv_f ~ proclamation,
+              data=rarely_lie_5, family = binomial(link = "logit"))
+summary(rv_PL4.glm)
+
+#Check prosocial truth tellers never vs. rarely,sometimes_truth_5
+rv_PL5.glm <- glm(rv_f ~ proclamation,
+              data=sometimes_truth_5, family = binomial(link = "logit"))
+summary(rv_PL5.glm)
+
+#Check selfish liars
+rv_PL6.glm <- glm(rv_f ~ proclamation,
+              data=sometimes_lie_5, family = binomial(link = "logit"))
+summary(rv_PL6.glm)
+
 ```
 
 #Attitudes Towards Honesty Measure

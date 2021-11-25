@@ -506,6 +506,30 @@ table(s3$behavior, s3$rv_f)
 #equilibrium 40% rely
 #sometimes = 29% rely
 prop.test(59, 204, p = .4, correct = FALSE)
+
+#Individual comparison
+#Prosocial liars: nevers vs. sometimes, rarely_lie
+rv_PL1.glm <- glm(rv_f ~ proclamation,
+              data=rarely_lie, family = binomial(link = "logit"))
+summary(rv_PL1.glm)
+
+#Selfish truth-tellers: never vs. sometimes, rarely_truth
+rv_PL2.glm <- glm(rv_f ~ proclamation,
+              data=rarely_truth, family = binomial(link = "logit"))
+summary(rv_PL2.glm)
+
+#Double check
+#Selfish truth-tellers: never vs. rarely, sometimes_truth
+rv_PL1_2.glm <- glm(rv_f ~ proclamation,
+              data=sometimes_truth, family = binomial(link = "logit"))
+summary(rv_PL1_2.glm)
+
+#Prosocial liars: nevers vs. rarely, 
+rv_PL2_2.glm <- glm(rv_f ~ proclamation,
+              data=sometimes_lie, family = binomial(link = "logit"))
+summary(rv_PL2_2.glm)
+
+
 ```
 
 #Attitudes Towards Honesty Measure
