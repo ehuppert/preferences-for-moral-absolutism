@@ -1,7 +1,7 @@
 ---
-title: "Study 2"
+title: "Supplemental Study 7 (Study 13)"
 author: "Elizabeth Huppert"
-date: "11/7/2022"
+date: "1/6/2021"
 output: pdf_document
 ---
 
@@ -28,7 +28,7 @@ library(lavaan)
 
 #read in data
 
-s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #265
+s13 <- read.csv(here("HypocrisyStudySI7_cleaned.csv")) #265
 ```
 
 Note: The current csv file imported for this analysis reflects cleaned data. 
@@ -43,11 +43,16 @@ Assignment to absolute honesty stance vs. flexible honesty stance vs. control
 2. Voting:
 Likelihood of voting for Matthew Johnson (1 -7)
 
+3. Discount:
+Extent to which participants actually think Matthew Johnson lies (1-7)
+
+4. Goals
+Extent to which participants actually think Matthew Johnsons thinks its okay to lie (1-7)
 
 # Factorize Subject (id)
 
 ```{r}
-s2$ID <- as.factor(s2$ID)
+s13$ID <- as.factor(s13$ID)
 ```
 
 # Composite Evaluation Variables 
@@ -56,28 +61,33 @@ Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Hypocrisy
-hypocrisy2_check <- data.frame(s2$Hypocrisy_1, s2$Hypocrisy_2, s2$Hypocrisy_3, s2$Hypocrisy_4, s2$Hypocrisy_5)
+hypocrisy2_check <- data.frame(s13$Hypocrisy_1, s13$Hypocrisy_2, s13$Hypocrisy_3, s13$Hypocrisy_4, s13$Hypocrisy_5)
 summary(hypocrisy2_check)
 describe(hypocrisy2_check)
 psych::alpha(hypocrisy2_check) #alpha = 0.89 
-s2 <- mutate(s2, Hypocrisy_composite2= 
-               ((s2$Hypocrisy_1 + s2$Hypocrisy_2 + s2$Hypocrisy_3 + s2$Hypocrisy_4 +   s2$Hypocrisy_5)/5))
+s13  <- mutate(s13, Hypocrisy_composite2= 
+               ((s13$Hypocrisy_1 + s13$Hypocrisy_2 + s13$Hypocrisy_3 + s13$Hypocrisy_4 +  s13$Hypocrisy_5)/5))
 
 #Morality
-moral2_check <- data.frame(s2$Moral_1, s2$Moral_2, s2$Moral_3)
+moral2_check <- data.frame(s13$Moral_1, s13$Moral_2, s13$Moral_3)
 summary(moral2_check)
 describe(moral2_check)
 psych::alpha(moral2_check) #alpha = 0.94 
 
-s2 <- mutate(s2, Moral_composite2 = ((s2$Moral_1 + s2$Moral_2 +s2$Moral_3)/3))
+s13  <- mutate(s13 , Moral_composite2 = ((s13$Moral_1 + s13$Moral_2 +s13$Moral_3)/3))
 
 #Future Honesty
-honesty2_check  <- data.frame(s2$Honest_frequency, s2$Honest_likelihood, s2$Honest_extreme, s2$Honest_committment)
+honesty2_check  <- data.frame(s13$Honest_frequency, s13$Honest_likelihood, s13$Honest_extreme, s13$Honest_committment)
 summary(honesty2_check)
 describe(honesty2_check)
 psych::alpha(honesty2_check) #alpha = 0.74
-s2 <- mutate(s2, Honest_composite2 = 
-               ((s2$Honest_frequency + s2$Honest_likelihood + s2$Honest_extreme + s2$Honest_committment)/4))
+s13  <- mutate(s13, Honest_composite2 = 
+               ((s13$Honest_frequency + s13$Honest_likelihood + s13$Honest_extreme + s13$Honest_committment)/4))
+
+#Social benefit of the proclamation
+cor.test(s13$Social_1, s13$Social_2) #r = 0.87
+
+s13  <- mutate(s13 , SI_composite2 = ((s13$Social_1 + s13$Social_2)/2))
 
 ```
 
@@ -92,7 +102,7 @@ SI_composite2 = perceived social benefit of the proclamation composite of 2 item
 # Voting Intentions Model
 
 ```{r}
-Voting_2.afex <-aov_car(Voting ~ Proclamation + Error(ID), data= ss2)
+Voting_2.afex <-aov_car(Voting ~ Proclamation + Error(ID), data= s13 )
 summary(Voting_2.afex) 
 anova_apa(Voting_2.afex)  
 ```
@@ -101,22 +111,22 @@ anova_apa(Voting_2.afex)
 
 ```{r}
 #Across Proclamations
-tapply(ss2$Voting, s13$Proclamation, mean)
-tapply(ss2$Voting, s13$Proclamation, sd)
-tapply(ss2$Voting, s13$Proclamation, length)
+tapply(s13$Voting, s13$Proclamation, mean)
+tapply(s13$Voting, s13$Proclamation, sd)
+tapply(s13$Voting, s13$Proclamation, length)
 ```
 
 # Voting Simple Effects - Subsetting Data
 
 ```{r}
 #Subset for main effects tests
-abs_exclude <- ss2 %>%
+abs_exclude <- s13  %>%
   filter(Proclamation != "absolute") #182
 
-flex_exclude  <- ss2 %>%
+flex_exclude  <- s13  %>%
   filter(Proclamation != "flexible") #186 - rarely
 
-control_exclude <- ss2 %>%
+control_exclude <- s13  %>%
   filter(Proclamation != "control") #162
 
 
@@ -134,12 +144,14 @@ t.test(Voting ~ Proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(Voting ~ Proclamation, abs_exclude, var.equal = TRUE))
 
 ```
+
+
 # Hypocrisy Model
 
 ```{r}
-hypocrisy_2.afex <-aov_car(Hypocrisy_composite2 ~ Proclamation + Error(ID), data= ss2)
+hypocrisy_2.afex <-aov_car(Hypocrisy_composite2 ~ Proclamation + Error(ID), data= s13 )
 summary(hypocrisy_2.afex) 
-anova_apa(hypocrisy_2.afex) 
+anova_apa(hypocrisy_2.afex)  
 ```
 
 # Hypocrisy Descriptives
@@ -172,11 +184,26 @@ t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
 
 # Morality Model
 
+Also Cohen's d for morality for post-hoc power.
+
 ```{r}
-```{r}
-morality_2.afex <-aov_car(Moral_composite2 ~ Proclamation + Error(ID), data= ss2)
+morality_2.afex <-aov_car(Moral_composite2 ~ Proclamation + Error(ID), data= s13 )
 summary(morality_2.afex) 
 anova_apa(morality_2.afex)
+
+#Abs vs. Flex morality focal - need cohen's D
+#abs mean = 2.698795, sd = 1.073977, 83 
+#flex mean =  2.392405, sd = 1.100064, 79
+#pooled SD = sqrt(((1.073977^2) + (1.100064^2))/2)
+sqrt((((1.073977^2) + (1.100064^2))/2)) #1.087099
+
+#cohens = (mean - mean)/SD pooeld
+(2.698795-2.392405)/1.087099 #0.282
+
+d2 <- cohens_d(t_test(Moral_composite2 ~ Proclamation, control_exclude)) 
+#see Subset Data section below to exclude control and use subsetted data
+#comparing abs vs. flex only
+d2 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.282, enter 0.28
 
 ```
 
@@ -210,7 +237,7 @@ t_apa(t.test(Moral_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 # Future Honesty Model
 
 ```{r}
-honesty_2.afex <-aov_car(Honest_composite2 ~ Proclamation + Error(ID), data= ss2)
+honesty_2.afex <-aov_car(Honest_composite2 ~ Proclamation + Error(ID), data= s13 )
 summary(honesty_2.afex) 
 anova_apa(honesty_2.afex)  
 ```
@@ -242,5 +269,63 @@ t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 ```
 
+# Social Benefit of the Proclamation Model - New Subsetted Data
 
+
+# Social Benefit of the Proclamation Model
+
+Use the previously subsetted data from earlier section.
+
+```{r}
+SI_2.afex <-aov_car(SI_composite2 ~ Proclamation + Error(ID), data= control_exclude)
+summary(SI_2.afex) 
+anova_apa(SI_2.afex)
+```
+
+# Social Benefit of the Proclamation Descriptives
+
+```{r}
+#Across Proclamations
+tapply(s13$SI_composite2, s13$Proclamation, mean)
+tapply(s13$SI_composite2, s13$Proclamation, sd)
+tapply(s13$SI_composite2, s13$Proclamation, length)
+```
+
+# Lying Behavior Model (Discounting)
+
+```{r}
+Discounting2.afex <-aov_car(Discount ~ Proclamation + Error(ID), data= s13 )
+summary(Discounting2.afex) 
+anova_apa(Discounting2.afex) 
+```
+
+# Lying Behavior (Discounting) Descriptives
+
+```{r}
+#Across Proclamations
+tapply(s13$Discount, s13$Proclamation, mean)
+tapply(s13$Discount, s13$Proclamation, sd)
+tapply(s13$Discount, s13$Proclamation, length)
+```
+
+# Honesty Intentions (Goals)  Model
+
+```{r}
+goals13.afex <-aov_car(Goals ~ Proclamation + Error(ID), data= s13 )
+summary(goals13.afex) 
+anova_apa(goals13.afex)  
+```
+
+# Honesty Intentions (Goals) Descriptives
+
+```{r}
+#Across Proclamations
+tapply(s13$Goals, s13$Proclamation, mean)
+tapply(s13$Goals, s13$Proclamation, sd)
+tapply(s13$Goals, s13$Proclamation, length)
+```
+
+# Exploratory Continued
+
+See the attached R script "Study2_mediation.R" for the multiple mediation analyses. As mentioned, further analysis notes available upon request. 
 

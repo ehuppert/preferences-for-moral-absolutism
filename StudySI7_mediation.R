@@ -1,44 +1,45 @@
 #Read in data
 
-s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #265
+s13 <- read.csv(here("HypocrisyStudySI7_cleaned.csv")) #265
 
 
 # Add in composite variables
 #Hypocrisy
-hypocrisy2_check <- data.frame(s2$Hypocrisy_1, s2$Hypocrisy_2, s2$Hypocrisy_3, s2$Hypocrisy_4, s2$Hypocrisy_5)
+hypocrisy2_check <- data.frame(s13$Hypocrisy_1, s13$Hypocrisy_2, s13$Hypocrisy_3, s13$Hypocrisy_4, s13$Hypocrisy_5)
 summary(hypocrisy2_check)
 describe(hypocrisy2_check)
 psych::alpha(hypocrisy2_check) #alpha = 0.89 
-s2 <- mutate(s2, Hypocrisy_composite2= 
-               ((s2$Hypocrisy_1 + s2$Hypocrisy_2 + s2$Hypocrisy_3 + s2$Hypocrisy_4 +   s2$Hypocrisy_5)/5))
+s13 <- mutate(s13, Hypocrisy_composite2= 
+               ((s13$Hypocrisy_1 + s13$Hypocrisy_2 + s13$Hypocrisy_3 + s13$Hypocrisy_4 +   s13$Hypocrisy_5)/5))
 
 #Morality
-moral2_check <- data.frame(s2$Moral_1, s2$Moral_2, s2$Moral_3)
+moral2_check <- data.frame(s13$Moral_1, s13$Moral_2, s13$Moral_3)
 summary(moral2_check)
 describe(moral2_check)
 psych::alpha(moral2_check) #alpha = 0.94 
 
-s2 <- mutate(s2, Moral_composite2 = ((s2$Moral_1 + s2$Moral_2 +s2$Moral_3)/3))
+s13 <- mutate(s13, Moral_composite2 = ((s13$Moral_1 + s13$Moral_2 +s13$Moral_3)/3))
 
 #Future Honesty
-honesty2_check  <- data.frame(s2$Honest_frequency, s2$Honest_likelihood, s2$Honest_extreme, s2$Honest_committment)
+honesty2_check  <- data.frame(s13$Honest_frequency, s13$Honest_likelihood, s13$Honest_extreme, s13$Honest_committment)
 summary(honesty2_check)
 describe(honesty2_check)
 psych::alpha(honesty2_check) #alpha = 0.74
-s2 <- mutate(s2, Honest_composite2 = 
-               ((s2$Honest_frequency + s2$Honest_likelihood + s2$Honest_extreme + s2$Honest_committment)/4))
+s13 <- mutate(s13, Honest_composite2 = 
+               ((s13$Honest_frequency + s13$Honest_likelihood + s13$Honest_extreme + s13$Honest_committment)/4))
 
 #Social benefit of the proclamation
-cor.test(s2$Social_1, s2$Social_2) #r = 0.87
+cor.test(s13$Social_1, s13$Social_2) #r = 0.87
 
-s2 <- mutate(s2, SI_composite2 = ((s2$Social_1 + s2$Social_2)/2))
+s13 <- mutate(s13, SI_composite2 = ((s13$Social_1 + s13$Social_2)/2))
 
 
 # Use subsetted data with no control condition
-absflex_only <- s2 %>%
+absflex_only <- s13 %>%
   filter (Proclamation != "control")
 
 glimpse(absflex_only$Proclamation)
+absflex_only$Proclamation <- as.factor(absflex_only$Proclamation)
 absflex_only$Proclamation <- droplevels(absflex_only$Proclamation)
 levels(absflex_only$Proclamation)
 
@@ -53,7 +54,7 @@ absflex_only$Proclamation <- factor(absflex_only$Proclamation, levels = c("flexi
 
 #DV: morality (Moral_composite2)
 
-multipleMed_politics2 = "Hypocrisy_composite2  ~ a1*Proclamation
+multipleMed_politics13 = "Hypocrisy_composite2  ~ a1*Proclamation
 Honest_composite2 ~ a2*Proclamation
 SI_composite2 ~ a3*Proclamation
 Moral_composite2 ~ b1*Hypocrisy_composite2  + b2*Honest_composite2 + b3*SI_composite2 + c*Proclamation
