@@ -28,7 +28,7 @@ library(lavaan)
 
 #read in data
 
-s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #265
+s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #564
 ```
 
 Note: The current csv file imported for this analysis reflects cleaned data. 
@@ -54,39 +54,75 @@ s2$ID <- as.factor(s2$ID)
 
 Items with high agreement were combined as per our pre-registration.
 
+# Time One Variables
+
+```{r}
+#Moral
+moral2_t1_check <- data.frame(s2$Moral1_T1, s2$Moral2_T1, s2$Moral3_T1)
+summary(moral2_t1_check)
+describe(moral2_t1_check)
+psych::alpha(moral2_t1_check) #alpha = 0.98
+
+s2 <- mutate(s2, 
+             Moral_composite2_t1 = 
+               ((s2$Moral1_T1 + s2$Moral2_T1 + s2$Moral3_T1)/3))
+
+#Future Honesty
+honesty2_t1_check  <- data.frame(s2$Honest_frequencyT1, s2$Honest_likelihoodT1,
+                                 s2$Honest_extremeT1, s2$Honest_committmentT1)
+summary(honesty2_t1_check)
+describe(honesty2_t1_check)
+psych::alpha(honesty2_t1_check) #alpha = 0.89
+s2 <- mutate(s2, Honest_composite2_t1 = 
+               ((s2$Honest_frequencyT1+ s2$Honest_likelihoodT1+
+                   s2$Honest_extremeT1 + s2$Honest_committmentT1)/4))
+
+```
+
+Evaluation variables:
+
+Moral_composite2_t1 = morality composite of 3 items (Ratings: 1-7)
+Honest_composite2_t1 = honesty thresholds composite of 4 items (Ratings: 1-7)
+
+# Time Two Variables
+
 ```{r}
 #Hypocrisy
 hypocrisy2_check <- data.frame(s2$Hypocrisy_1, s2$Hypocrisy_2, s2$Hypocrisy_3, s2$Hypocrisy_4, s2$Hypocrisy_5)
 summary(hypocrisy2_check)
 describe(hypocrisy2_check)
-psych::alpha(hypocrisy2_check) #alpha = 0.89 
+psych::alpha(hypocrisy2_check) #alpha = 0.88
 s2 <- mutate(s2, Hypocrisy_composite2= 
-               ((s2$Hypocrisy_1 + s2$Hypocrisy_2 + s2$Hypocrisy_3 + s2$Hypocrisy_4 +   s2$Hypocrisy_5)/5))
+               ((s2$Hypocrisy_1 + s2$Hypocrisy_2 + s2$Hypocrisy_3 +
+                   s2$Hypocrisy_4 + s2$Hypocrisy_5)/5))
 
 #Morality
-moral2_check <- data.frame(s2$Moral_1, s2$Moral_2, s2$Moral_3)
-summary(moral2_check)
-describe(moral2_check)
-psych::alpha(moral2_check) #alpha = 0.94 
+moral2_t2_check <- data.frame(s2$Moral1_T2, s2$Moral2_T2, s2$Moral3_T2)
+summary(moral2_t2_check)
+describe(moral2_t2_check)
+psych::alpha(moral2_t2_check) #alpha = 0.97
 
-s2 <- mutate(s2, Moral_composite2 = ((s2$Moral_1 + s2$Moral_2 +s2$Moral_3)/3))
+s2 <- mutate(s2, 
+             Moral_composite2_t2 = 
+               ((s2$Moral1_T2 + s2$Moral2_T2+s2$Moral3_T2)/3))
 
 #Future Honesty
-honesty2_check  <- data.frame(s2$Honest_frequency, s2$Honest_likelihood, s2$Honest_extreme, s2$Honest_committment)
-summary(honesty2_check)
-describe(honesty2_check)
-psych::alpha(honesty2_check) #alpha = 0.74
-s2 <- mutate(s2, Honest_composite2 = 
-               ((s2$Honest_frequency + s2$Honest_likelihood + s2$Honest_extreme + s2$Honest_committment)/4))
+honesty2_t2_check  <- data.frame(s2$Honest_frequencyT2, s2$Honest_likelihoodT2, s2$Honest_extremeT2, s2$Honest_committmentT2)
+summary(honesty2_t2_check)
+describe(honesty2_t2_check)
+psych::alpha(honesty2_t2_check) #alpha = 0.81
+s2 <- mutate(s2, 
+             Honest_composite2_t2 = 
+               ((s2$Honest_frequencyT2 + s2$Honest_likelihoodT2 +
+                   s2$Honest_extremeT2 + s2$Honest_committmentT2)/4))
 
 ```
 
 Evaluation variables:
 
 Hypocrisy_composite2 = hypocrisy composite of 5 items (Ratings: 1-7)
-Moral_composite2 = morality composite of 3 items (Ratings: 1-7)
-Honest_composite2 = honesty thresholds composite of 4 items (Ratings: 1-7)
-SI_composite2 = perceived social benefit of the proclamation composite of 2 items (Ratings: 1-7)
+Moral_composite2_t2 = morality composite of 3 items (Ratings: 1-7)
+Honest_composite2_t2 = honesty thresholds composite of 4 items (Ratings: 1-7)
 
 
 # Voting Intentions Model
