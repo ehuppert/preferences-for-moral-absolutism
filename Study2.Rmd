@@ -15,6 +15,7 @@ You need to install the following packages to run this code:
 -apa
 -psych
 -dplyr
+-reshape2
 
 
 ```{r setup, include=FALSE}
@@ -25,6 +26,7 @@ library(apa)
 library(psych)
 library(dplyr)
 library(lavaan)
+library(reshape2)
 
 #read in data
 
@@ -44,10 +46,13 @@ Assignment to absolute honesty stance vs. flexible honesty stance vs. control
 Likelihood of voting for Matthew Johnson (1 -7)
 
 
-# Factorize Subject (id)
+# Factorize Subject (id) and Proclamation
 
 ```{r}
 s2$ID <- as.factor(s2$ID)
+s2$Proclamation <- as.factor(s2$Proclamation)
+
+
 ```
 
 # Composite Evaluation Variables 
@@ -128,48 +133,189 @@ Honest_composite2_t2 = honesty thresholds composite of 4 items (Ratings: 1-7)
 # Voting Intentions Model
 
 ```{r}
-Voting_2.afex <-aov_car(Voting ~ Proclamation + Error(ID), data= ss2)
-summary(Voting_2.afex) 
-anova_apa(Voting_2.afex)  
+#Dataframe for Voting
+vote2_df <-melt(s2, 
+                id.vars=c("ID", "Proclamation"),
+                #measure command is for the DV
+                measure.vars=c("Voting_T1","Voting_T2"),
+                variable.name="vote.time",
+                value.name="vote.value"
+)
+
+#ANOVA
+vote2.afex <- aov_car(
+  vote.value ~ Proclamation*vote.time + Error(ID/vote.time),
+  data = vote2_df)
+summary(vote2.afex)
+anova_apa(vote2.afex)
+
 ```
 
 # Voting Descriptives
 
 ```{r}
-#Across Proclamations
-tapply(ss2$Voting, s13$Proclamation, mean)
-tapply(ss2$Voting, s13$Proclamation, sd)
-tapply(ss2$Voting, s13$Proclamation, length)
+#Across Proclamation and Time
+tapply(vote2_df$vote.value, list(vote2_df$Proclamation, vote2_df$vote.time),
+       FUN = length)
+
+tapply(vote2_df$vote.value, list(vote2_df$Proclamation, vote2_df$vote.time),
+       FUN = mean)
+tapply(vote2_df$vote.value, list(vote2_df$Proclamation, vote2_df$vote.time),
+       FUN = sd)
+
+#Across Proclamations 
+tapply(vote2_df$vote.value, vote2_df$Proclamation, mean)
+tapply(vote2_df$vote.value, vote2_df$Proclamation, sd)
+tapply(vote2_df$vote.value, vote2_df$Proclamation, length)
+#Across Time
+tapply(vote2_df$vote.value, vote2_df$vote.time, mean)
+tapply(vote2_df$vote.value, vote2_df$vote.time, sd)
+tapply(vote2_df$vote.value, vote2_df$vote.time, length)
+
+#Just at each time point
+
+#Across Proclamations Time One
+tapply(s2$Voting_T1, s2$Proclamation, mean)
+tapply(s2$Voting_T1, s2$Proclamation, sd)
+tapply(s2$Voting_T1, s2$Proclamation, length)
+
+#Across Proclamations Time One
+tapply(s2$Voting_T2, s2$Proclamation, mean)
+tapply(s2$Voting_T2, s2$Proclamation, sd)
+tapply(s2$Voting_T2, s2$Proclamation, length)
 ```
 
 # Voting Simple Effects - Subsetting Data
 
 ```{r}
+#Melted df should have 1128
+
 #Subset for main effects tests
-abs_exclude <- ss2 %>%
-  filter(Proclamation != "absolute") #182
+abs_exclude2 <- vote2_df %>%
+  filter(Proclamation != "absolute") #788 (394 x 2)
 
-flex_exclude  <- ss2 %>%
-  filter(Proclamation != "flexible") #186 - rarely
+flex_exclude2  <- vote2_df %>%
+  filter(Proclamation != "flexible") #758 (379 x 2)
 
-control_exclude <- ss2 %>%
-  filter(Proclamation != "control") #162
+control_exclude2 <- vote2_df %>%
+  filter(Proclamation != "control") #710 (355 x 2)
 
+abs_only<- vote2_df %>%
+  filter(Proclamation == "absolute") #340 (170 x 2)
+
+flex_only<- vote2_df %>%
+  filter(Proclamation == "flexible") #370 (185 x 2)
+
+control_only<- vote2_df %>%
+  filter(Proclamation == "control") #418 (209 x 2)
+
+#Abs time effect
+t.test(vote.value~ vote.time, abs_only, var.equal = TRUE)
+t_apa(t.test(vote.value~ vote.time, abs_only, var.equal = TRUE))
+
+#Flex time effect
+t.test(vote.value~ vote.time, flex_only, var.equal = TRUE)
+t_apa(t.test(vote.value~ vote.time, flex_only, var.equal = TRUE))
+
+#Control  time effect
+t.test(vote.value~ vote.time, control_only, var.equal = TRUE)
+t_apa(t.test(vote.value~ vote.time, control_only, var.equal = TRUE))
 
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
-t.test(Voting ~ Proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(Voting ~ Proclamation, control_exclude, var.equal = TRUE))
+t.test(vote.value~ Proclamation, control_exclude2, var.equal = TRUE)
+t_apa(t.test(vote.value~ Proclamation, control_exclude2, var.equal = TRUE))
 
 #Abs vs. control
-t.test(Voting ~ Proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(Voting ~ Proclamation, flex_exclude, var.equal = TRUE))
+t.test(vote.value~ Proclamation, flex_exclude2, var.equal = TRUE)
+t_apa(t.test(vote.value~ Proclamation, flex_exclude2, var.equal = TRUE))
 
 #Flex vs. control
-t.test(Voting ~ Proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(Voting ~ Proclamation, abs_exclude, var.equal = TRUE))
+t.test(vote.value~ Proclamation, abs_exclude2, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, abs_exclude2, var.equal = TRUE))
+
+#Abs v Flex at Time 2 alone
+# Use the control exclude but subset for only time 2
+nocontrol_time2 <- control_exclude2  %>%
+  filter(vote.time != "Voting_T1") #355
+# t test
+t.test(vote.value ~ Proclamation, nocontrol_time2, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, nocontrol_time2, var.equal = TRUE))
+
+#Control v Flex at Time 2 alone
+# Use the control exclude but subset for only time 2
+noabs_time2 <- abs_exclude2  %>%
+  filter(vote.time != "Voting_T1") #394
+# t test
+t.test(vote.value ~ Proclamation, noabs_time2, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, noabs_time2, var.equal = TRUE))
+
+#Control v Abs at Time 2 alone
+# Use the flex exclude but subset for only time 2
+noflex_time2 <- flex_exclude2  %>%
+  filter(vote.time != "Voting_T1") #379
+# t test
+t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE))
 
 ```
+
+# Morality Model
+
+```{r}
+#Dataframe for Voting
+moral2_df <-melt(s2, 
+                id.vars=c("ID", "Proclamation"),
+                #measure command is for the DV
+                measure.vars=c("Moral_composite2_t1","Moral_composite2_t2"),
+                variable.name="moral.time",
+                value.name="moral.value"
+)
+
+#ANOVA
+moral2.afex <- aov_car(
+moral.value ~ Proclamation*moral.time + Error(ID/moral.time),
+  data = moral2_df)
+summary(moral2.afex)
+anova_apa(moral2.afex)
+
+```
+
+# Moral Descriptives
+
+```{r}
+#Across Proclamation and Time
+tapply(moral2_df$moral.value, list(moral2_df$Proclamation, moral2_df$moral.time),
+       FUN = length)
+
+tapply(moral2_df$moral.value, list(moral2_df$Proclamation, moral2_df$moral.time),
+       FUN = mean)
+tapply(moral2_df$moral.value, list(moral2_df$Proclamation, moral2_df$moral.time),
+       FUN = sd)
+
+#Across Proclamations 
+tapply(moral2_df$moral.value, moral2_df$Proclamation, mean)
+tapply(moral2_df$moral.value, moral2_df$Proclamation, sd)
+tapply(moral2_df$moral.value, moral2_df$Proclamation, length)
+#Across Time
+tapply(moral2_df$moral.value, moral2_df$moral.time, mean)
+tapply(moral2_df$moral.value, moral2_df$moral.time, sd)
+tapply(moral2_df$moral.value, moral2_df$moral.time, length)
+
+#Just at each time point
+
+#Across Proclamations Time One
+tapply(s2$Voting_T1, s2$Proclamation, mean)
+tapply(s2$Voting_T1, s2$Proclamation, sd)
+tapply(s2$Voting_T1, s2$Proclamation, length)
+
+#Across Proclamations Time One
+tapply(s2$Voting_T2, s2$Proclamation, mean)
+tapply(s2$Voting_T2, s2$Proclamation, sd)
+tapply(s2$Voting_T2, s2$Proclamation, length)
+```
+
+
 # Hypocrisy Model
 
 ```{r}
@@ -206,77 +352,6 @@ t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
 
 ```
 
-# Morality Model
-
-```{r}
-```{r}
-morality_2.afex <-aov_car(Moral_composite2 ~ Proclamation + Error(ID), data= ss2)
-summary(morality_2.afex) 
-anova_apa(morality_2.afex)
-
-```
-
-# Morality Descriptives
-
-```{r}
-#Across Proclamations
-tapply(s13$Moral_composite2, s13$Proclamation, mean)
-tapply(s13$Moral_composite2, s13$Proclamation, sd)
-tapply(s13$Moral_composite2, s13$Proclamation, length)
-
-```
-
-# Morality Simple Effects - Use Subsetted Data from Voting Intentions Model
-
-```{r}
-# Main effect: abs vs. flex vs. control
-#Abs vs. Flex 
-t.test(Moral_composite2 ~ Proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(Moral_composite2 ~ Proclamation, control_exclude, var.equal = TRUE))
-
-#Abs vs. control
-t.test(Moral_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(Moral_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE))
-
-#Flex vs. control
-t.test(Moral_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(Moral_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
-```
-
-# Future Honesty Model
-
-```{r}
-honesty_2.afex <-aov_car(Honest_composite2 ~ Proclamation + Error(ID), data= ss2)
-summary(honesty_2.afex) 
-anova_apa(honesty_2.afex)  
-```
-
-# Future Honesty Descriptives
-
-```{r}
-#Across Proclamations
-tapply(s13$Honest_composite2, s13$Proclamation, mean)
-tapply(s13$Honest_composite2, s13$Proclamation, sd)
-tapply(s13$Honest_composite2, s13$Proclamation, length)
-
-```
-
-# Future Honesty Simple Effects - Use Subsetted Data from Voting Intentions Model
-
-```{r}
-# Main effect: abs vs. flex vs. control
-#Abs vs. Flex 
-t.test(Honest_composite2 ~ Proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(Honest_composite2 ~ Proclamation, control_exclude, var.equal = TRUE))
-
-#Abs vs. control
-t.test(Honest_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(Honest_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE))
-
-#Flex vs. control
-t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
-```
 
 
 
