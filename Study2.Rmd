@@ -263,7 +263,6 @@ t_apa(t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE))
 # Morality Model
 
 ```{r}
-#Dataframe for Voting
 moral2_df <-melt(s2, 
                 id.vars=c("ID", "Proclamation"),
                 #measure command is for the DV
@@ -305,21 +304,227 @@ tapply(moral2_df$moral.value, moral2_df$moral.time, length)
 #Just at each time point
 
 #Across Proclamations Time One
-tapply(s2$Voting_T1, s2$Proclamation, mean)
-tapply(s2$Voting_T1, s2$Proclamation, sd)
-tapply(s2$Voting_T1, s2$Proclamation, length)
+tapply(s2$Moral_composite2_t1, s2$Proclamation, mean)
+tapply(s2$Moral_composite2_t1, s2$Proclamation, sd)
+tapply(s2$Moral_composite2_t1, s2$Proclamation, length)
 
 #Across Proclamations Time One
-tapply(s2$Voting_T2, s2$Proclamation, mean)
-tapply(s2$Voting_T2, s2$Proclamation, sd)
-tapply(s2$Voting_T2, s2$Proclamation, length)
+tapply(s2$Moral_composite2_t2, s2$Proclamation, mean)
+tapply(s2$Moral_composite2_t2, s2$Proclamation, sd)
+tapply(s2$Moral_composite2_t2, s2$Proclamation, length)
+```
+
+# Subset Morality Data for Simple Effects tests
+
+```{r}
+#Subset for main effects tests
+abs_exclude2m <- moral2_df %>%
+  filter(Proclamation != "absolute") #788 (394 x 2)
+
+flex_exclude2m  <- moral2_df %>%
+  filter(Proclamation != "flexible") #758 (379 x 2)
+
+control_exclude2m <- moral2_df %>%
+  filter(Proclamation != "control") #710 (355 x 2)
+
+abs_onlym <- moral2_df %>%
+  filter(Proclamation == "absolute") #340 (170 x 2)
+
+flex_onlym <- moral2_df %>%
+  filter(Proclamation == "flexible") #370 (185 x 2)
+
+control_onlym <- moral2_df %>%
+  filter(Proclamation == "control") #418 (209 x 2)
+
+#Main effect of time
+#Abs time effect
+t.test(moral.value~ moral.time, abs_onlym, var.equal = TRUE)
+t_apa(t.test(moral.value~ moral.time, abs_onlym, var.equal = TRUE))
+
+#Flex time effect
+t.test(moral.value~ moral.time, flex_onlym, var.equal = TRUE)
+t_apa(t.test(moral.value~ moral.time, flex_onlym, var.equal = TRUE))
+
+#Control  time effect
+t.test(moral.value~ moral.time, control_onlym, var.equal = TRUE)
+t_apa(t.test(moral.value~ moral.time, control_onlym, var.equal = TRUE))
+
+# Main effect: Proclamation
+
+#Abs vs. Flex 
+t.test(moral.value ~ Proclamation, control_exclude2m, var.equal = TRUE)
+t_apa(t.test(moral.value ~ Proclamation, control_exclude2m, var.equal = TRUE))
+
+#Abs vs. control
+t.test(moral.value~ Proclamation, flex_exclude2m, var.equal = TRUE)
+t_apa(t.test(moral.value ~ Proclamation, flex_exclude2m, var.equal = TRUE))
+
+#Flex vs. control
+t.test(moral.value~ Proclamation, abs_exclude2m, var.equal = TRUE)
+t_apa(t.test(moral.value ~ Proclamation, abs_exclude2m, var.equal = TRUE))
+
+#Abs v Flex at Time 2 alone
+# Use the control exclude but subset for only time 2
+nocontrol_time2m <- control_exclude2m  %>%
+  filter(moral.time != "Moral_composite2_t1") #355
+# t test
+t.test(moral.value ~ Proclamation, nocontrol_time2m, var.equal = TRUE)
+t_apa(t.test(moral.value ~ Proclamation, nocontrol_time2m, var.equal = TRUE))
+
+#Control v Flex at Time 2 alone
+# Use the control exclude but subset for only time 2
+noabs_time2m <- abs_exclude2m  %>%
+  filter(moral.time != "Moral_composite2_t1") #394
+# t test
+t.test(moral.value~ Proclamation, noabs_time2m, var.equal = TRUE)
+t_apa(t.test(moral.value~ Proclamation, noabs_time2m, var.equal = TRUE))
+
+#Control v Abs at Time 2 alone
+# Use the flex exclude but subset for only time 2
+noflex_time2m <- flex_exclude2m  %>%
+  filter(moral.time != "Moral_composite2_t1") #379
+# t test
+t.test(moral.value ~ Proclamation, noflex_time2m, var.equal = TRUE)
+t_apa(t.test(moral.value ~ Proclamation, noflex_time2m, var.equal = TRUE))
+
+```
+
+# Future Honesty Model
+
+```{r}
+honest2_df <-melt(s2, 
+                id.vars=c("ID", "Proclamation"),
+                #measure command is for the DV
+                measure.vars=c("Honest_composite2_t1","Honest_composite2_t2"),
+                variable.name="honest.time",
+                value.name="honest.value"
+)
+
+#ANOVA
+honest2.afex <- aov_car(
+honest.value ~ Proclamation*honest.time + Error(ID/honest.time),
+  data = honest2_df)
+summary(honest2.afex)
+anova_apa(honest2.afex)
+
+```
+
+# Future Honesty Descriptives
+
+```{r}
+#Across Proclamation and Time
+tapply(honest2_df$honest.value, list(honest2_df$Proclamation, honest2_df$honest.time),
+       FUN = length)
+
+tapply(honest2_df$honest.value, list(honest2_df$Proclamation, honest2_df$honest.time),
+       FUN = mean)
+tapply(honest2_df$honest.value, list(honest2_df$Proclamation, honest2_df$honest.time),
+       FUN = sd)
+
+#Across Proclamations 
+tapply(honest2_df$honest.value, honest2_df$Proclamation, mean)
+tapply(honest2_df$honest.value, honest2_df$Proclamation, sd)
+tapply(honest2_df$honest.value, honest2_df$Proclamation, length)
+#Across Time
+tapply(honest2_df$honest.value, honest2_df$honest.time, mean)
+tapply(honest2_df$honest.value, honest2_df$honest.time, sd)
+tapply(honest2_df$honest.value, honest2_df$honest.time, length)
+
+#Just at each time point
+
+#Across Proclamations Time One
+tapply(s2$Honest_composite2_t1, s2$Proclamation, mean)
+tapply(s2$Honest_composite2_t1, s2$Proclamation, sd)
+tapply(s2$Honest_composite2_t1, s2$Proclamation, length)
+
+#Across Proclamations Time One
+tapply(s2$Honest_composite2_t2, s2$Proclamation, mean)
+tapply(s2$Honest_composite2_t2, s2$Proclamation, sd)
+tapply(s2$Honest_composite2_t2 s2$Proclamation, length)
+```
+
+# Subset Honesty Data for Simple Effects tests
+
+```{r}
+#Subset for main effects tests
+abs_exclude2h <- honest2_df %>%
+  filter(Proclamation != "absolute") #788 (394 x 2)
+
+flex_exclude2h  <- honest2_df %>%
+  filter(Proclamation != "flexible") #758 (379 x 2)
+
+control_exclude2h <- honest2_df %>%
+  filter(Proclamation != "control") #710 (355 x 2)
+
+abs_onlyh <- honest2_df %>%
+  filter(Proclamation == "absolute") #340 (170 x 2)
+
+flex_onlyh <- honest2_df %>%
+  filter(Proclamation == "flexible") #370 (185 x 2)
+
+control_onlyh <- honest2_df %>%
+  filter(Proclamation == "control") #418 (209 x 2)
+
+#Main effect of time
+#Abs time effect
+t.test(honest.value~ honest.time, abs_onlyh, var.equal = TRUE)
+t_apa(t.test(honest.value~ honest.time, abs_onlyh, var.equal = TRUE))
+
+#Flex time effect
+t.test(honest.value~ honest.time, flex_onlyh, var.equal = TRUE)
+t_apa(t.test(honest.value~ honest.time, flex_onlyh, var.equal = TRUE))
+
+#Control  time effect
+t.test(honest.value~ honest.time, control_onlyh, var.equal = TRUE)
+t_apa(t.test(honest.value~ honest.time, control_onlyh, var.equal = TRUE))
+
+# Main effect: Proclamation
+
+#Abs vs. Flex 
+t.test(honest.value ~ Proclamation, control_exclude2h, var.equal = TRUE)
+t_apa(t.test(honest.value ~ Proclamation, control_exclude2h, var.equal = TRUE))
+
+#Abs vs. control
+t.test(honest.value~ Proclamation, flex_exclude2h, var.equal = TRUE)
+t_apa(t.test(honest.value ~ Proclamation, flex_exclude2h, var.equal = TRUE))
+
+#Flex vs. control
+t.test(honest.value~ Proclamation, abs_exclude2h, var.equal = TRUE)
+t_apa(t.test(honest.value ~ Proclamation, abs_exclude2h, var.equal = TRUE))
+
+#Abs v Flex at Time 2 alone
+# Use the control exclude but subset for only time 2
+nocontrol_time2h <- control_exclude2h  %>%
+  filter(honest.time != "Honest_composite2_t1") #355
+# t test
+t.test(honest.value ~ Proclamation, nocontrol_time2h, var.equal = TRUE)
+t_apa(t.test(honest.value ~ Proclamation, nocontrol_time2h, var.equal = TRUE))
+
+#Control v Flex at Time 2 alone
+# Use the control exclude but subset for only time 2
+noabs_time2h <- abs_exclude2h  %>%
+  filter(honest.time != "Honest_composite2_t1") #394
+# t test
+t.test(honest.value~ Proclamation, noabs_time2h, var.equal = TRUE)
+t_apa(t.test(honest.value~ Proclamation, noabs_time2h, var.equal = TRUE))
+
+#Control v Abs at Time 2 alone
+# Use the flex exclude but subset for only time 2
+noflex_time2h <- flex_exclude2h %>%
+  filter(honest.time != "Honest_composite2_t1") #379
+# t test
+t.test(honest.value ~ Proclamation, noflex_time2h, var.equal = TRUE)
+t_apa(t.test(honest.value~ Proclamation, noflex_time2h, var.equal = TRUE))
+
 ```
 
 
 # Hypocrisy Model
 
+Hypocrisy si just at time one.
+
 ```{r}
-hypocrisy_2.afex <-aov_car(Hypocrisy_composite2 ~ Proclamation + Error(ID), data= ss2)
+hypocrisy_2.afex <-aov_car(Hypocrisy_composite2 ~ Proclamation + Error(ID), data= s2)
 summary(hypocrisy_2.afex) 
 anova_apa(hypocrisy_2.afex) 
 ```
@@ -328,27 +533,38 @@ anova_apa(hypocrisy_2.afex)
 
 ```{r}
 #Across Proclamations
-tapply(s13$Hypocrisy_composite2, s13$Proclamation, mean)
-tapply(s13$Hypocrisy_composite2, s13$Proclamation, sd)
-tapply(s13$Hypocrisy_composite2, s13$Proclamation, length)
+tapply(s2$Hypocrisy_composite2, s2$Proclamation, mean)
+tapply(s2$Hypocrisy_composite2, s2$Proclamation, sd)
+tapply(s2$Hypocrisy_composite2, s2$Proclamation, length)
 
 ```
 
-# Hypocrisy Simple Effects - Use Subsetted Data from Voting Intentions Model
+# Hypocrisy Simple Effects -
 
 ```{r}
+#Subset data for each proc
+#Exclude abs
+hypo2_noabs <- s2 %>%
+  filter(Proclamation != "absolute") #394
+
+hypo2_noflex  <- s2 %>%
+  filter(Proclamation != "flexible") #379
+
+hypo2_nocontrol <- s2%>%
+  filter(Proclamation != "control") #355
+
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
-t.test(Hypocrisy_composite2 ~ Proclamation, control_exclude, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, control_exclude, var.equal = TRUE))
+t.test(Hypocrisy_composite2 ~ Proclamation, hypo2_nocontrol, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, hypo2_nocontrol, var.equal = TRUE))
 
 #Abs vs. control
-t.test(Hypocrisy_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, flex_exclude, var.equal = TRUE))
+t.test(Hypocrisy_composite2 ~ Proclamation, hypo2_noflex, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, hypo2_noflex, var.equal = TRUE))
 
 #Flex vs. control
-t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
+t.test(Hypocrisy_composite2 ~ Proclamation, hypo2_noabs , var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite2 ~ Proclamation, hypo2_noabs , var.equal = TRUE))
 
 ```
 
