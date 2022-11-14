@@ -70,7 +70,7 @@ Hypocrisy_composite2  ~~ SI_composite2
 Honest_composite2 ~~ SI_composite2
 "
 
-fit_mult_politics_new2 = sem(multipleMed_politics2 , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
+fit_mult_politics_new2 = sem(multipleMed_politics13 , se = "boot", bootstrap = 1000, data = absflex_only, likelihood = "wishart")
 summary(fit_mult_politics_new2, standardized = T, rsq = T)
 parameterEstimates((fit_mult_politics_new2))
 

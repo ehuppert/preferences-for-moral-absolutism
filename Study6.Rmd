@@ -203,7 +203,7 @@ table(cp_omit3$personalbelief)
 # sometimes 5 - 3%
 
 #frequency with full sample
-table(CP$personalbelief)
+table(CP$personalbelief, useNA = "ifany")
 #never 87
 #rarely 42
 #sometimes 5
@@ -237,7 +237,7 @@ table(cp_omit3.2$liebehav)
 #7 sometimes - 6%
 
 #frequency with full sample
-table(CP$liebehav)
+table(CP$liebehav, useNA = "ifany")
 #Behavior freq - full sample with NA
 #59 never - 36%
 #61 rarely - 37%
@@ -264,6 +264,7 @@ table(cp_omit3.3$public)
 #2 sometimes - 2%
 
 # with full sample
+table(CP$public, useNA = "ifany")
 #97 never - 58%
 #25 rarely - 15%
 #2 sometimes - 1%

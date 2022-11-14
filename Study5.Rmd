@@ -863,6 +863,9 @@ t_apa(t.test(ms.value ~ proclamation, survey1_ms, var.equal = TRUE))
 game1_ms <- hypo_ms  %>%
   filter(order==  "game1")
 
+#independent t-test
+t.test(ms.value~ proclamation, game1_ms, var.equal = TRUE)
+t_apa(t.test(ms.value ~ proclamation, game1_ms, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
 ms_model = aov_ez('ID', 'ms.value', hypo_ms,

@@ -663,7 +663,7 @@ tapply(honest5_SI_df$honest5value , list(honest5_SI_df$proc, honest5_SI_df$hones
 #Across Proclamation
 tapply(honest5_SI_df$honest5value, honest5_SI_df$proc, FUN = mean)
 tapply(honest5_SI_df$honest5value, honest5_SI_df$proc,FUN = sd)
-tapply(honest5_SI_df$honest5value, hhonest5_SI_df$proc,FUN = length)
+tapply(honest5_SI_df$honest5value, honest5_SI_df$proc,FUN = length)
 
 #Across Time
 tapply(honest5_SI_df$honest5value, honest5_SI_df$honest5.time,FUN = mean)
@@ -794,7 +794,7 @@ tapply(trust_df$advice, trust_df$proc,FUN = length)
 
 #Overall
 mean(trust_df$advice)
-sdtrust_df$advice)
+sd(trust_df$advice)
 length(trust_df$advice)
 ```
 

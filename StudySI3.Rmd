@@ -201,7 +201,7 @@ table(s9$discounting_2, s9$proclamation)
 
 #Flexible (291)
 #140 sometimes - 48%
-#132 often - 25% 
+#132 often - 45% 
 
 ```
 
@@ -357,8 +357,8 @@ table(s9$goal_1, s9$proclamation)
 table(s9$goal_2, s9$proclamation) 
 
 #Absolute (299)
-#25 never - 88%
-#153 sometimes - 52%
+#25 never - 8%
+#153 sometimes - 51%
 
 #Flexible (291)
 #151 sometimes - 52%

@@ -440,7 +440,7 @@ tapply(s2$Honest_composite2_t1, s2$Proclamation, length)
 #Across Proclamations Time One
 tapply(s2$Honest_composite2_t2, s2$Proclamation, mean)
 tapply(s2$Honest_composite2_t2, s2$Proclamation, sd)
-tapply(s2$Honest_composite2_t2 s2$Proclamation, length)
+tapply(s2$Honest_composite2_t2, s2$Proclamation, length)
 ```
 
 # Subset Honesty Data for Simple Effects tests
@@ -521,7 +521,7 @@ t_apa(t.test(honest.value~ Proclamation, noflex_time2h, var.equal = TRUE))
 
 # Hypocrisy Model
 
-Hypocrisy si just at time one.
+Hypocrisy is just at time two.
 
 ```{r}
 hypocrisy_2.afex <-aov_car(Hypocrisy_composite2 ~ Proclamation + Error(ID), data= s2)
