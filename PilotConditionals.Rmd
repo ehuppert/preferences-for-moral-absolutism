@@ -10,14 +10,121 @@ You need to install the following packages to run this code:
 
 -here
 -tidyverse
+-afex
+-apa
 
 
 ```{r setup, include=FALSE}
 library(here)
 library(tidyverse)
+library(afex)
+library(apa)
 
 #read in data
 
 pilot_conditional <- read.csv(here("pilot_conditionals.csv"))
+```
+
+# condition 1 = never
+# condition 2 = rarely 
+#condition 3 =  sometimes 
+#condition 4 = never-harm
+#condition 5 =  never-goodreason
+#condition 6 = never-exceptional
+#condition 7 = sometimes-harm
+#condition 8 = sometimes-goodreason
+#condition 9 = sometimes-exceptional
+#condition 10 = control
+
+
+# Honest Model
+```{r}
+honestyGD.afex <-aov_car(Honest_compositeGD ~ condition  + Error(id), data= pilot_conditional)
+summary(honestyGD.afex) 
+anova_apa(honestyGD.afex)  
+```
+
+
+# Subset to be just solo statements
+
+```{r}
+solo_stance_test <- pilot_conditional %>%
+  filter(condition == "1" | condition  == "2" | condition  == "3") 
+glimpse(solo_stance_test)
+
+solo_honesty.afex <-aov_car(Honest_compositeGD ~ 
+                              condition + Error(id), 
+                            data= solo_stance_test)
+summary(solo_honesty.afex ) 
+anova_apa(solo_honesty.afex ) 
+
+#Subet to compare never stances
+never_test <- pilot_conditional %>%
+  filter(condition  == "1" | condition  == "4" | 
+           condition  == "5" | condition  == "6") 
+glimpse(never_test)
+
+#Honesty never ANOVA
+never_test.afex <-aov_car(Honest_compositeGD ~ 
+                            condition  + Error(id), 
+                            data= never_test)
+summary(never_test.afex) 
+anova_apa(never_test.afex) 
+
+#compare original abs (never) to other cells
+#never (1) vs. harm (4)
+never_v_harm <- never_test %>%
+  filter(condition  == "1" | condition  == "4")
+t.test(Honest_compositeGD~ condition , never_v_harm, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition , never_v_harm, var.equal = TRUE))
+
+#never (1) vs. good reason (5)
+never_v_goodreason <- never_test%>%
+  filter(condition  == "1" | condition  == "5")
+t.test(Honest_compositeGD~ condition , never_v_goodreason, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition , never_v_goodreason, var.equal = TRUE))
+
+#never (1) vs. exceptional (6) 
+never_v_exceptional <- never_test%>%
+  filter(condition  == "1" | condition  == "6")
+t.test(Honest_compositeGD~ condition , never_v_exceptional, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition , never_v_exceptional, var.equal = TRUE))
+
+```
+
+# Moral Model
+
+```{r}
+#Moral never ANOVA
+never_testm.afex <-aov_car(M_compositeGD ~ 
+                             condition  + Error(id), 
+                          data= never_test)
+summary(never_testm.afex ) 
+anova_apa(never_testm.afex ) 
+
+#t-test
+#compare original abs (never) to other cells
+#never (1) vs. harm (4), use subsetted dataframe from above
+
+#Moral
+t.test(M_compositeGD ~ condition, never_v_harm, var.equal = TRUE)
+t_apa(t.test(M_compositeGD  ~ condition, never_v_harm, var.equal = TRUE))
+
+
+#never (1) vs. good reason (5)
+#Moral
+t.test(M_compositeGD ~ condition , never_v_goodreason, var.equal = TRUE)
+t_apa(t.test(M_compositeGD  ~ condition , never_v_goodreason, var.equal = TRUE))
+
+#never (1) vs. exceptional (6) 
+#moral
+t.test(M_compositeGD ~ condition , never_v_exceptional, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition , never_v_exceptional, var.equal = TRUE))
+
+#Also want to compare sometimes stances
+sometimes_test <- pilot_conditional  %>%
+  filter(condition  == "1" | condition  == "4" | 
+           condition  == "5" | condition  == "6") 
+glimpse(sometimes_test )
 ```
 
