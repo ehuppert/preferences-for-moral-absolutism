@@ -1,5 +1,5 @@
 ---
-title: "Pilot Studies"
+title: "Pilot Studies 1-2 (Attitudes on Honesty)"
 author: "Elizabeth Huppert"
 date: "4/6/2021"
 output: pdf_document

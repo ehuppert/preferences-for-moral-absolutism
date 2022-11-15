@@ -1,0 +1,297 @@
+﻿id,gender,age,group,stance,condition,comm_honest,honest_f,honest_e,honest_l,Honest_compositeGD,m1,m2,m3,M_compositeGD,agree
+1,Male,37,sometimes,its sometimes okay to lie,3,5,6,4,4,4.75,5,5,5,5,6
+2,Male,35,sometimes,its sometimes okay to lie,3,3,5,3,5,4,2,2,2,2,5
+3,Male,28,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,6,3,5.25,6,6,6,6,6
+4,Male,33,rarely,Its rarely okay to lie,2,6,6,4,5,5.25,6,5,5,5.333333333,7
+5,Female,48,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,5,2,2,3.5,2,4,4,3.333333333,3
+6,Male,42,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,5,6,6,5,5.5,5,5,5,5,4
+7,Female,39,control,,10,6,6,6,6,6,6,6,6,6,NA
+8,Female,32,never-goodreason,"Its never okay to lie, except if you have a good reason",5,5,6,4,4,4.75,5,5,5,5,6
+9,Female,46,control,,10,5,6,3,5,4.75,5,5,5,5,NA
+10,Female,28,control,,10,6,6,3,5,5,7,7,6,6.666666667,NA
+11,Male,33,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,6,5,5,5.25,5,6,6,5.666666667,6
+12,Male,28,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,2,7,4,4.5,3,6,6,5,6
+13,Male,36,never-goodreason,"Its never okay to lie, except if you have a good reason",5,3,4,4,4,3.75,4,4,4,4,3
+14,Male,55,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,5,4,5.25,6,6,6,6,6
+15,Male,42,never,Its never okay to lie,1,6,5,5,6,5.5,5,5,5,5,6
+16,Male,29,never,Its never okay to lie,1,6,6,4,5,5.25,6,6,5,5.666666667,2
+17,Male,43,never-harm,"Its never okay to lie, except if it prevents harm",4,5,6,3,5,4.75,6,5,7,6,3
+18,Male,45,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,6,6,6,6,6,6,6,6
+19,Male,36,rarely,Its rarely okay to lie,2,5,5,5,4,4.75,5,5,4,4.666666667,5
+20,Female,40,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,6,2,4,4.25,5,5,5,5,6
+21,Female,22,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,3,4,5,4,4,4,4,4,4,6
+22,Female,54,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,4,6,5.5,5,5,5,5,6
+23,Male,42,never,Its never okay to lie,1,6,6,6,6,6,6,6,6,6,6
+24,Male,44,sometimes,its sometimes okay to lie,3,6,3,6,2,4.25,5,6,5,5.333333333,4
+25,Female,64,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,6,3,4,4.5,5,5,5,5,5
+26,Female,38,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,4,4,5,5,5,5,5,5
+27,Non-binary,32,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,6,2,2,3.75,6,6,5,5.666666667,5
+28,Male,44,rarely,Its rarely okay to lie,2,5,6,6,5,5.5,6,5,5,5.333333333,5
+29,Male,29,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,6,2,5,6,6,6,6,6
+30,Male,39,never,Its never okay to lie,1,6,6,4,6,5.5,5,5,5,5,6
+31,Male,50,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,5,5,5,1,4,3,5,4,4,6
+32,Male,52,rarely,Its rarely okay to lie,2,4,5,5,4,4.5,4,4,4,4,6
+33,Male,33,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,3,4,3,2,3,5,5,5,5,5
+34,Male,41,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,6,6,2,3,4.25,6,6,6,6,5
+35,Male,40,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,1,4,2,1,2,4,4,3,3.666666667,2
+36,Female,33,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,4,3,3,5,3.75,3,3,4,3.333333333,5
+37,Female,42,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,4,6,3,4.5,5,5,5,5,6
+38,Female,32,never-harm,"Its never okay to lie, except if it prevents harm",4,4,6,4,4,4.5,5,5,4,4.666666667,3
+39,Male,30,control,,10,5,6,5,6,5.5,5,5,5,5,NA
+40,Male,32,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,6,6,6,7,7,6.666666667,7
+41,Female,44,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,6,6,6,7,6,6,6.333333333,4
+42,Female,66,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,6,6,3,5.25,6,6,6,6,6
+43,Female,57,sometimes,its sometimes okay to lie,3,5,6,5,5,5.25,6,6,6,6,7
+44,Male,35,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,4,6,3,3,4,5,5,4,4.666666667,7
+45,Female,43,control,,10,5,5,6,5,5.25,5,5,5,5,NA
+46,Male,40,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,2,5,2,3.5,6,6,7,6.333333333,6
+47,Female,31,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,5,5,4,2,4,3,2,3,2.666666667,1
+48,Male,20,never-goodreason,"Its never okay to lie, except if you have a good reason",5,5,6,3,5,4.75,4,4,4,4,5
+49,Female,36,never,Its never okay to lie,1,5,4,4,3,4,5,4,5,4.666666667,5
+50,Male,58,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,7,6,6.25,6,6,6,6,7
+51,Female,56,never-harm,"Its never okay to lie, except if it prevents harm",4,6,7,6,7,6.5,7,6,7,6.666666667,6
+52,Male,31,control,,10,7,7,7,7,7,7,7,7,7,NA
+53,Male,29,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,5,2,5,4.25,6,6,5,5.666666667,6
+54,Male,59,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,3,5,5,5,5,5,5,5
+55,Male,40,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,6,4,3,4.5,6,6,5,5.666666667,7
+56,Female,29,never,Its never okay to lie,1,4,5,3,4,4,5,4,4,4.333333333,5
+57,Male,50,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,3,3,3,2,2.75,4,5,4,4.333333333,5
+58,Male,55,never-goodreason,"Its never okay to lie, except if you have a good reason",5,3,6,4,5,4.5,4,4,3,3.666666667,3
+59,Male,37,control,,10,6,6,4,5,5.25,6,7,7,6.666666667,NA
+60,Female,30,never,Its never okay to lie,1,7,7,7,7,7,7,7,7,7,7
+61,Female,59,never,Its never okay to lie,1,7,7,7,7,7,7,7,7,7,7
+62,Male,53,control,,10,4,5,5,5,4.75,4,5,5,4.666666667,NA
+63,Male,28,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,4,6,6,6,5.5,4,4,4,4,5
+64,Male,38,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,6,6,5,5.5,6,6,5,5.666666667,6
+65,Male,27,never-harm,"Its never okay to lie, except if it prevents harm",4,5,6,4,4,4.75,5,5,5,5,5
+66,Female,40,sometimes,its sometimes okay to lie,3,3,3,4,2,3,4,4,4,4,5
+67,Female,48,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,6,2,5,4.5,5,5,4,4.666666667,4
+68,Male,40,rarely,Its rarely okay to lie,2,5,4,2,4,3.75,4,4,3,3.666666667,3
+69,Male,34,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,4,5,3,3,3.75,4,4,4,4,6
+70,Male,28,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,6,6,7,7,6,6.666666667,7
+71,Male,43,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,4,5,3,4.25,4,5,5,4.666666667,6
+72,Female,49,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,1,4,2,3.25,7,7,6,6.666666667,5
+73,Male,33,never-goodreason,"Its never okay to lie, except if you have a good reason",5,5,6,4,3,4.5,5,5,5,5,6
+74,Male,24,sometimes,its sometimes okay to lie,3,4,5,4,1,3.5,4,4,4,4,6
+75,Female,28,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,6,4,2,2,3.5,6,6,4,5.333333333,5
+76,Male,41,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,6,6,6,7,7,6,6.666666667,5
+77,Male,42,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,6
+78,Male,31,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,5,6,5.75,5,5,5,5,4
+79,Male,42,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,1,7,1,7,4,1,1,1,1,4
+80,Female,33,sometimes,its sometimes okay to lie,3,5,4,2,2,3.25,6,6,5,5.666666667,6
+81,Male,42,control,,10,2,3,2,3,2.5,2,2,2,2,NA
+82,Male,30,sometimes,its sometimes okay to lie,3,2,5,3,2,3,3,3,3,3,5
+83,Male,38,sometimes,its sometimes okay to lie,3,2,5,2,1,2.5,3,3,2,2.666666667,5
+84,Female,60,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,6,6,6,6,6,6,5
+85,Male,36,never-goodreason,"Its never okay to lie, except if you have a good reason",5,5,5,4,2,4,4,3,4,3.666666667,7
+86,Male,30,never,Its never okay to lie,1,6,6,7,6,6.25,6,6,7,6.333333333,3
+87,Female,34,sometimes,its sometimes okay to lie,3,7,7,2,2,4.5,7,6,6,6.333333333,4
+88,Male,56,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,7
+89,Female,37,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,6
+90,Male,50,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,7,6,6,5,6,6,6,6,6,3
+91,Male,35,never,Its never okay to lie,1,6,6,6,6,6,6,6,5,5.666666667,5
+92,Female,25,rarely,Its rarely okay to lie,2,6,6,7,6,6.25,6,6,6,6,3
+93,Female,42,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,6,1,4,4,5,5,5,5,5
+94,Female,38,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,1,7,1,3.75,6,6,6,6,7
+95,Female,42,never-goodreason,"Its never okay to lie, except if you have a good reason",5,7,7,6,7,6.75,6,6,6,6,6
+96,Male,36,rarely,Its rarely okay to lie,2,5,6,5,5,5.25,5,5,4,4.666666667,6
+97,Female,34,sometimes,its sometimes okay to lie,3,4,5,2,1,3,3,3,3,3,5
+98,Female,41,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,7,6,7,6.5,6,6,6,6,7
+99,Male,63,control,,10,6,6,4,5,5.25,5,5,5,5,NA
+100,Male,62,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,6,6,6,6,6,6,6,6
+101,Male,32,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,4,6,3,1,3.5,4,4,4,4,4
+102,Female,48,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,6,6,6,6,6,6,6,7
+103,Female,27,rarely,Its rarely okay to lie,2,4,4,4,4,4,4,4,4,4,5
+104,Male,62,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,6,6,6,6,6,6,6,6
+105,Female,23,sometimes,its sometimes okay to lie,3,5,5,4,3,4.25,5,5,5,5,5
+106,Female,29,never,Its never okay to lie,1,6,7,7,7,6.75,6,6,6,6,5
+107,Male,38,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,6,5,6,5.75,7,7,6,6.666666667,7
+108,Female,41,control,,10,7,6,2,2,4.25,5,6,6,5.666666667,NA
+109,Male,58,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,6,5,5,5.25,5,5,5,5,7
+110,Female,24,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,6,6,6,6,6,6,6,7
+111,Male,29,never,Its never okay to lie,1,7,6,5,6,6,7,7,6,6.666666667,5
+112,Male,38,never,Its never okay to lie,1,6,7,5,6,6,6,7,6,6.333333333,6
+113,Male,33,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,2,3,2,3,2.5,4,4,3,3.666666667,5
+114,Female,29,never-harm,"Its never okay to lie, except if it prevents harm",4,6,7,6,6,6.25,6,6,6,6,5
+115,Male,35,never-harm,"Its never okay to lie, except if it prevents harm",4,1,4,2,2,2.25,1,1,1,1,4
+116,Male,26,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,6,6,6,5.75,6,6,6,6,7
+117,Male,36,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,4,6,3,5,4.5,4,5,5,4.666666667,2
+118,Male,43,control,,10,4,5,4,4,4.25,5,5,4,4.666666667,NA
+119,Non-binary,33,sometimes,its sometimes okay to lie,3,4,5,3,5,4.25,5,6,5,5.333333333,5
+120,Male,34,never-goodreason,"Its never okay to lie, except if you have a good reason",5,4,6,4,3,4.25,5,5,6,5.333333333,5
+121,Male,46,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,4,3,2,2,2.75,5,4,4,4.333333333,4
+122,Female,41,never-goodreason,"Its never okay to lie, except if you have a good reason",5,7,7,6,6,6.5,7,7,7,7,7
+123,Male,39,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,5,5,4,2,4,5,5,5,5,2
+124,Female,43,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,6,6,6,5.75,6,6,6,6,5
+125,Female,34,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,2,6,2,2,3,2,3,3,2.666666667,2
+126,Female,49,never-harm,"Its never okay to lie, except if it prevents harm",4,4,6,4,5,4.75,5,5,5,5,3
+127,Male,63,control,,10,6,6,6,6,6,6,6,6,6,NA
+128,Female,34,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,6,6,6,6,6,6,6,6
+129,Female,65,sometimes,its sometimes okay to lie,3,4,6,4,5,4.75,6,6,6,6,5
+130,Male,61,rarely,Its rarely okay to lie,2,3,3,5,5,4,5,6,3,4.666666667,6
+131,Female,37,control,,10,6,6,2,5,4.75,6,6,5,5.666666667,NA
+132,Male,27,control,,10,5,6,2,6,4.75,5,5,5,5,NA
+133,Male,27,never,Its never okay to lie,1,6,7,6,7,6.5,6,5,5,5.333333333,2
+134,Male,59,never-goodreason,"Its never okay to lie, except if you have a good reason",5,5,6,5,4,5,6,6,6,6,5
+135,Female,44,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,7
+136,Male,26,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,5,6,2,5,4.5,5,6,4,5,5
+137,Male,36,sometimes,its sometimes okay to lie,3,2,4,2,2,2.5,3,3,2,2.666666667,4
+138,Male,47,never-goodreason,"Its never okay to lie, except if you have a good reason",5,3,5,2,2,3,3,3,2,2.666666667,3
+139,Female,30,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,4,3,3,4,3.5,5,3,4,4,5
+140,Female,33,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,7
+141,Male,38,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,4,4,4,3,3.75,3,3,3,3,5
+142,Male,34,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,4,5,1,1,2.75,4,4,4,4,7
+143,Male,27,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,1,4,5,1,2.75,3,2,1,2,4
+144,Male,61,never-harm,"Its never okay to lie, except if it prevents harm",4,5,6,3,5,4.75,5,5,5,5,6
+145,Female,68,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,6,4,6,3,4.75,6,6,6,6,5
+146,Female,46,sometimes,its sometimes okay to lie,3,6,6,7,6,6.25,6,5,7,6,7
+147,Male,49,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,6,6,5,1,4.5,6,6,4,5.333333333,6
+148,Female,26,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,6
+149,Male,39,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,4,5,2,3,3.5,4,4,4,4,5
+150,Male,41,never-harm,"Its never okay to lie, except if it prevents harm",4,6,1,5,2,3.5,5,6,6,5.666666667,6
+151,Female,30,never,Its never okay to lie,1,7,6,7,6,6.5,7,7,7,7,7
+152,Female,34,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,4,3,2,3.5,5,5,5,5,6
+153,Male,43,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,5,1,2,3.25,5,5,5,5,5
+154,Female,70,never,Its never okay to lie,1,6,7,6,7,6.5,7,7,7,7,5
+155,Female,51,sometimes,its sometimes okay to lie,3,1,4,3,3,2.75,4,4,2,3.333333333,1
+156,Female,27,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,3,3,4,3,3.25,3,4,3,3.333333333,3
+157,Male,50,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,5,5,5.5,6,5,6,5.666666667,5
+158,Male,36,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,6,6,2,6,5,6,6,6,6,5
+159,Male,35,never-goodreason,"Its never okay to lie, except if you have a good reason",5,5,5,2,4,4,3,4,4,3.666666667,5
+160,Male,43,never,Its never okay to lie,1,4,3,2,2,2.75,2,3,2,2.333333333,3
+161,Female,43,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,7,6,6,6,6.25,7,7,7,7,7
+162,Male,28,control,,10,5,6,6,6,5.75,5,5,5,5,NA
+163,Male,28,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,5,5,3,4.75,5,6,6,5.666666667,6
+164,Female,61,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,6,6,6,6,6,6,6,6
+165,Male,37,never-goodreason,"Its never okay to lie, except if you have a good reason",5,4,3,5,4,4,4,4,3,3.666666667,5
+166,Female,42,never-harm,"Its never okay to lie, except if it prevents harm",4,7,7,7,7,7,7,7,7,7,7
+167,Male,34,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,7,6,5,7,6.25,7,7,6,6.666666667,6
+168,Male,32,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,2,4,3,2,2.75,2,1,2,1.666666667,2
+169,Female,42,control,,10,6,6,5,5,5.5,6,6,5,5.666666667,NA
+170,Male,30,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,3,5,6,4,4.5,7,7,7,7,6
+171,Male,29,sometimes,its sometimes okay to lie,3,5,5,2,2,3.5,5,5,5,5,5
+172,Male,34,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,5,4,4,4.5,5,4,5,4.666666667,3
+173,Female,41,rarely,Its rarely okay to lie,2,5,6,6,5,5.5,5,5,5,5,5
+174,Female,31,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,7,6,7,6.5,7,7,7,7,7
+175,Female,29,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,6,5,6,5.75,5,5,6,5.333333333,4
+176,Male,35,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,7,6,6,6,6.25,6,6,5,5.666666667,6
+177,Male,63,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,2,6,3,4.25,5,6,6,5.666666667,3
+178,Female,30,control,,10,6,6,6,6,6,6,6,6,6,NA
+179,Female,55,never,Its never okay to lie,1,6,6,6,6,6,6,6,6,6,6
+180,Male,33,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,4,5,5,4,4.5,4,3,4,3.666666667,5
+181,Female,42,sometimes,its sometimes okay to lie,3,4,2,2,2,2.5,3,3,2,2.666666667,5
+182,Female,40,control,,10,5,6,5,5,5.25,7,7,5,6.333333333,NA
+183,Female,26,rarely,Its rarely okay to lie,2,6,6,5,5,5.5,5,5,6,5.333333333,6
+184,Male,32,rarely,Its rarely okay to lie,2,1,3,6,2,3,6,6,6,6,6
+185,Male,35,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,6,4,1,4.25,7,7,7,7,5
+186,Male,41,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,4,2,7,3,4,4,4,3,3.666666667,3
+187,Female,29,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,3,4,3,1,2.75,4,3,2,3,4
+188,Male,32,never,Its never okay to lie,1,6,6,6,6,6,6,6,6,6,3
+189,Female,21,control,,10,6,6,5,6,5.75,6,6,6,6,NA
+190,Female,54,rarely,Its rarely okay to lie,2,6,6,5,4,5.25,4,4,3,3.666666667,4
+191,Male,29,never-harm,"Its never okay to lie, except if it prevents harm",4,5,2,5,4,4,6,6,7,6.333333333,6
+192,Male,84,rarely,Its rarely okay to lie,2,5,7,5,6,5.75,6,6,6,6,7
+193,Male,45,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,2,5,2,3,3,5,3,3,3.666666667,2
+194,Female,46,never-goodreason,"Its never okay to lie, except if you have a good reason",5,3,3,3,1,2.5,3,3,3,3,1
+195,Male,41,never,Its never okay to lie,1,6,6,6,3,5.25,6,5,6,5.666666667,6
+196,Male,40,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,7,6,6,6.25,6,6,6,6,4
+197,Female,28,sometimes,its sometimes okay to lie,3,2,4,2,4,3,2,2,2,2,3
+198,Female,34,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,6,3,5,4.75,5,5,5,5,5
+199,Male,45,sometimes,its sometimes okay to lie,3,5,5,2,5,4.25,3,4,3,3.333333333,4
+200,Male,37,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,4,5,5.25,6,6,6,6,3
+201,Female,45,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,2,4,2,3.25,7,7,7,7,7
+202,Male,32,rarely,Its rarely okay to lie,2,5,5,5,5,5,5,6,5,5.333333333,7
+203,Male,29,never-harm,"Its never okay to lie, except if it prevents harm",4,7,7,7,7,7,7,7,7,7,7
+204,Male,29,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,3,6,3,3,3.75,3,3,3,3,1
+205,Female,52,never-harm,"Its never okay to lie, except if it prevents harm",4,5,6,3,5,4.75,4,4,4,4,5
+206,Male,36,never,Its never okay to lie,1,6,5,5,5,5.25,6,6,6,6,5
+207,Female,35,rarely,Its rarely okay to lie,2,6,6,6,6,6,6,6,6,6,6
+208,Male,38,never-goodreason,"Its never okay to lie, except if you have a good reason",5,4,5,4,5,4.5,5,5,5,5,5
+209,Male,36,never-goodreason,"Its never okay to lie, except if you have a good reason",5,7,6,7,5,6.25,4,4,4,4,1
+210,Male,44,sometimes,its sometimes okay to lie,3,4,5,4,2,3.75,5,5,5,5,2
+211,Male,37,sometimes,its sometimes okay to lie,3,7,6,6,6,6.25,7,7,7,7,3
+212,Male,46,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,7,6,7,6.5,6,6,6,6,5
+213,Male,43,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,7,6,6,5,6,7,7,7,7,7
+214,Female,70,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,2,4,3,3,3,3,3,3,3,1
+215,Male,34,never,Its never okay to lie,1,7,6,6,6,6.25,7,7,7,7,5
+216,Male,30,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,3,2,5,2,3,2,2,3,2.333333333,6
+217,Male,40,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,5,6,3,5,4.75,5,5,5,5,7
+218,Male,39,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,5,6,3,4.75,6,6,6,6,6
+219,Female,45,control,,10,5,6,6,5,5.5,6,7,6,6.333333333,NA
+220,Female,47,never,Its never okay to lie,1,6,6,7,6,6.25,6,6,6,6,7
+221,Male,44,rarely,Its rarely okay to lie,2,6,6,4,4,5,6,6,6,6,6
+222,Female,47,never-harm,"Its never okay to lie, except if it prevents harm",4,5,5,3,3,4,5,5,5,5,4
+223,Female,31,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,7,5,7,3,5.5,7,7,6,6.666666667,7
+224,Male,28,control,,10,5,7,2,7,5.25,7,6,6,6.333333333,NA
+225,Female,26,never-goodreason,"Its never okay to lie, except if you have a good reason",5,4,6,3,5,4.5,5,5,5,5,6
+226,Male,39,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,6,4,5,5,6,6,6,6,6
+227,Male,26,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,1,2,3,3,7,7,6,6.666666667,5
+228,Male,22,sometimes,its sometimes okay to lie,3,5,5,6,5,5.25,5,5,5,5,6
+229,Female,36,control,,10,6,3,7,3,4.75,6,5,5,5.333333333,NA
+230,Female,28,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,4,6,2,5,4.25,5,5,5,5,5
+231,Female,41,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,6,6,4,5.5,6,7,6,6.333333333,7
+232,Male,37,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,6,2,5,4.5,4,4,5,4.333333333,2
+233,Male,45,never-harm,"Its never okay to lie, except if it prevents harm",4,5,6,5,4,5,5,5,5,5,5
+234,Male,25,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,6,4,5.5,6,6,6,6,6
+235,Female,35,control,,10,6,6,6,5,5.75,6,6,5,5.666666667,NA
+236,Male,31,never,Its never okay to lie,1,7,2,2,7,4.5,7,7,7,7,7
+237,Male,32,never-goodreason,"Its never okay to lie, except if you have a good reason",5,7,7,7,5,6.5,7,7,7,7,7
+238,Male,35,rarely,Its rarely okay to lie,2,6,7,6,7,6.5,6,6,6,6,6
+239,Male,29,never,Its never okay to lie,1,7,7,7,7,7,7,7,7,7,7
+240,Male,67,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,5,3,6,4,4.5,5,4,5,4.666666667,6
+241,Male,27,sometimes,its sometimes okay to lie,3,1,3,1,2,1.75,1,1,1,1,1
+242,Female,37,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,6,5,3,5,4.75,5,5,6,5.333333333,5
+243,Female,41,never-harm,"Its never okay to lie, except if it prevents harm",4,5,5,3,5,4.5,5,5,5,5,2
+244,Female,28,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,5,6,2,4.75,6,6,6,6,7
+245,Female,24,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,3,5,5,4,4.25,3,3,3,3,6
+246,Female,40,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,1,6,2,3.75,6,7,7,6.666666667,6
+247,Female,35,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,6,6,5,3,5,5,4,5,4.666666667,2
+248,Male,30,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,7,6,6,6,6.25,6,6,6,6,5
+249,Female,41,control,,10,6,3,5,2,4,6,6,5,5.666666667,NA
+250,Male,27,rarely,Its rarely okay to lie,2,5,6,3,5,4.75,6,6,5,5.666666667,3
+251,Male,37,sometimes,its sometimes okay to lie,3,4,5,4,2,3.75,5,5,4,4.666666667,1
+252,Male,49,rarely,Its rarely okay to lie,2,5,6,5,2,4.5,6,6,6,6,5
+253,Male,31,control,,10,5,6,4,6,5.25,5,5,5,5,NA
+254,Male,40,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,7,6,6.25,6,6,6,6,5
+255,Female,53,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,6,2,3,4,5,5,5,5,5
+256,Female,44,never,Its never okay to lie,1,6,7,6,6,6.25,6,6,6,6,2
+257,Female,34,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,5,5.75,7,7,6,6.666666667,7
+258,Female,31,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,3,4,3,1,2.75,4,4,3,3.666666667,3
+259,Male,36,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,2,4,2,2,2.5,3,3,3,3,3
+260,Male,28,sometimes,its sometimes okay to lie,3,3,5,2,1,2.75,1,3,1,1.666666667,1
+261,Female,35,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,6,6,7,7,6,6.666666667,5
+262,Female,40,never-goodreason,"Its never okay to lie, except if you have a good reason",5,4,6,3,2,3.75,4,5,4,4.333333333,3
+263,Female,43,rarely,Its rarely okay to lie,2,6,6,5,4,5.25,6,6,6,6,6
+264,Female,48,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,4,6,5.5,6,6,6,6,6
+265,Male,48,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,4,4,4,4,4,3,3,3,3,2
+266,Male,37,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,5,5,5.5,5,5,6,5.333333333,6
+267,Male,34,control,,10,6,6,6,6,6,5,5,5,5,NA
+268,Female,34,never,Its never okay to lie,1,7,6,6,4,5.75,6,6,6,6,3
+269,Male,28,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,4,5,4,2,3.75,5,5,4,4.666666667,5
+270,Female,40,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,5,6,5.75,6,6,6,6,6
+271,Male,29,never,Its never okay to lie,1,7,7,7,7,7,7,7,7,7,7
+272,Female,37,sometimes,its sometimes okay to lie,3,2,4,2,3,2.75,2,2,2,2,3
+273,Female,43,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,4,6,5.5,7,6,6,6.333333333,6
+274,Female,29,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,7,6,6.25,6,6,6,6,2
+275,Male,29,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,2,4,3,2,2.75,4,4,3,3.666666667,5
+276,Male,39,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,4,4,5,4,4.25,4,4,4,4,4
+277,Male,35,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,6,3,5,4.75,6,5,5,5.333333333,6
+278,Prefer not to answer,45,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,5,6,4,4,4.75,5,3,3,3.666666667,6
+279,Male,29,control,,10,6,6,5,5,5.5,5,5,5,5,NA
+280,Female,41,rarely,Its rarely okay to lie,2,6,7,6,6,6.25,6,6,6,6,6
+281,Male,42,sometimes,its sometimes okay to lie,3,2,2,3,1,2,4,3,4,3.666666667,5
+282,Female,36,sometimes,its sometimes okay to lie,3,7,5,3,3,4.5,5,6,4,5,5
+283,Male,39,sometimes-exceptional,"Its sometimes okay to lie, but only in really exceptional circumstances",9,4,5,4,4,4.25,6,6,5,5.666666667,5
+284,Male,68,rarely,Its rarely okay to lie,2,6,6,5,4,5.25,6,6,6,6,5
+285,Female,29,sometimes-harm,Its sometimes okay to lie if it prevents harm,7,5,5,4,2,4,5,5,4,4.666666667,5
+286,Female,34,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,3,5,3,4,3.75,4,4,4,4,4
+287,Female,57,never-exceptional,"Its never okay to lie, except in really exceptional circumstances",6,6,6,6,6,6,6,6,6,6,7
+288,Male,44,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,6,6,5,6,5,5.333333333,5
+289,Female,46,control,,10,6,6,6,5,5.75,7,7,6,6.666666667,NA
+290,Female,57,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,6,6,6,6,6,6,6,7
+291,Male,26,never,Its never okay to lie,1,7,7,7,7,7,6,6,6,6,3
+292,Female,43,never-harm,"Its never okay to lie, except if it prevents harm",4,6,6,6,6,6,6,6,6,6,6
+293,Male,32,never-goodreason,"Its never okay to lie, except if you have a good reason",5,6,6,4,6,5.5,6,6,6,6,7
+294,Male,36,sometimes-goodreason,Its sometimes okay to lie if you have a good reason,8,7,5,3,3,4.5,5,5,5,5,6
+295,Male,28,sometimes,its sometimes okay to lie,3,7,5,5,4,5.25,7,6,7,6.666666667,6
+296,Male,35,never-harm,"Its never okay to lie, except if it prevents harm",4,6,4,4,4,4.5,6,6,6,6,5

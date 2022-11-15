@@ -1,0 +1,23 @@
+---
+title: "Pilot Conditionals"
+output: pdf_document
+date: '2022-11-15'
+---
+
+#Set-up and Read in Data
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+
+
+```{r setup, include=FALSE}
+library(here)
+library(tidyverse)
+
+#read in data
+
+pilot_conditional <- read.csv(here("pilot_conditionals.csv"))
+```
+
