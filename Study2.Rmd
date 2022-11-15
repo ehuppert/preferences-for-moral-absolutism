@@ -116,6 +116,7 @@ honesty2_t2_check  <- data.frame(s2$Honest_frequencyT2, s2$Honest_likelihoodT2, 
 summary(honesty2_t2_check)
 describe(honesty2_t2_check)
 psych::alpha(honesty2_t2_check) #alpha = 0.81
+
 s2 <- mutate(s2, 
              Honest_composite2_t2 = 
                ((s2$Honest_frequencyT2 + s2$Honest_likelihoodT2 +
@@ -389,9 +390,32 @@ t_apa(t.test(moral.value ~ Proclamation, noflex_time2m, var.equal = TRUE))
 
 ```
 
+# Cohen's D for Morality Posthoc
+
+```{r}
+#Abs vs. Flex morality focal at time two - need cohen's D
+
+#Method 1
+#abs mean =   2.794118, sd = 1.332876, 170
+#flex mean =  1.958559, sd = 1.009658, 185
+#pooled SD = sqrt(((1.332876^2) + (1.009658^2))/2)
+sqrt((((1.332876^2) + (1.009658^2))/2)) #1.182364
+
+#cohens = (mean - mean)/SD pooeld
+(2.794118-1.958559)/1.182364 #0.7066851
+
+#Method 2
+#Exclude control from full dataset to compare just Abs vs. Flex
+control_exclude_full <- s2 %>%
+  filter(Proclamation != "control") #355
+d2 <- cohens_d(t_test(Moral_composite2_t2  ~ Proclamation, control_exclude_full)) 
+d2 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.7107867
+```
+
 # Future Honesty Model
 
 ```{r}
+
 honest2_df <-melt(s2, 
                 id.vars=c("ID", "Proclamation"),
                 #measure command is for the DV

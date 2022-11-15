@@ -272,19 +272,6 @@ moral_4.afex <- aov_car(Moral_composite4 ~ proclamation * behavior + Error(ID), 
 summary(moral_4.afex)
 anova_apa(moral_4.afex)
 
-#Abs vs. Flex morality focal - need cohen's D
-#abs mean =   4.222222, sd = 2.116426, 201 
-#flex mean =  3.587542, sd = 1.632966 , 198
-#pooled SD = sqrt(((2.116426^2) + (1.632966 ^2))/2)
-sqrt((((2.116426^2) + (1.632966 ^2))/2)) #1.890217
-
-#cohens = (mean - mean)/SD pooeld
-(4.222222-3.587542)/1.890217 #0.335771
-
-d4 <- cohens_d(t_test(Moral_composite4 ~ proclamation, rarely_exclude_5)) 
-#see Hypocrisy Simple Effects above to exclude rarely, N = 399
-d4 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.3354498 (0.34)
-
 ```
 
 # Morality Descriptives
@@ -375,6 +362,25 @@ post2 <- emmeans(mor_model, ~ proclamation)
 pairs(post2) 
 post3 <- emmeans(mor_model, ~ proclamation*behavior)
 pairs(post3)
+```
+
+# Cohen's D for Morality Posthoc
+
+```{r}
+#Method 1
+#Abs vs. Flex morality focal - need cohen's D
+#abs mean =   4.222222, sd = 2.116426, 201 
+#flex mean =  3.587542, sd = 1.632966 , 198
+#pooled SD = sqrt(((2.116426^2) + (1.632966 ^2))/2)
+sqrt((((2.116426^2) + (1.632966 ^2))/2)) #1.890217
+
+#cohens = (mean - mean)/SD pooeld
+(4.222222-3.587542)/1.890217 #0.335771
+
+#Method 2
+d4 <- cohens_d(t_test(Moral_composite4 ~ proclamation, rarely_exclude_5)) 
+#see Hypocrisy Simple Effects above to exclude rarely, N = 399
+d4 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.3354498 (0.34)
 ```
 
 #Commitment to Honesty

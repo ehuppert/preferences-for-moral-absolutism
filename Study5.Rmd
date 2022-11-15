@@ -341,18 +341,6 @@ moral.afex <- aov_car(moral.value ~ proclamation*order*moral.time + Error(ID/mor
 summary(moral.afex)
 anova_apa(moral.afex)
 
-#Abs vs. Flex morality focal at time two - need cohen's D
-#abs mean =   4.543573, sd = 1.594991, 294 
-#flex mean =  3.920635, sd = 1.393322, 306
-#pooled SD = sqrt(((1.594991^2) + (1.393322^2))/2)
-sqrt((((1.594991^2) + (1.393322^2))/2)) #1.493352
-
-#cohens = (mean - mean)/SD pooeld
-(4.543573-3.920635)/1.493352 #0.4171408
-
-d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s5)) 
-#see Hypocrisy Simple Effects above to exclude rarely, N = 600
-d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.4154103 (0.42
 ```
 
 # Morality Descriptives 
@@ -520,6 +508,24 @@ post3 <- emmeans(mor_model, ~ moral.time|order)
 pairs(post3)  
 
 
+```
+
+# Cohen's D for Morality Posthoc
+
+```{r}
+#Method 1
+#Abs vs. Flex morality focal at time two - need cohen's D
+#abs mean =   4.543573, sd = 1.594991, 294 
+#flex mean =  3.920635, sd = 1.393322, 306
+#pooled SD = sqrt(((1.594991^2) + (1.393322^2))/2)
+sqrt((((1.594991^2) + (1.393322^2))/2)) #1.493352
+
+#cohens = (mean - mean)/SD pooeld
+(4.543573-3.920635)/1.493352 #0.4171408
+
+#Method 2
+d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s5)) 
+d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.4154103 (0.42)
 ```
 
 # Correlation of Moral Judgments Across Time
