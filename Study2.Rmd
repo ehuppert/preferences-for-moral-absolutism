@@ -67,7 +67,6 @@ moral2_t1_check <- data.frame(s2$Moral1_T1, s2$Moral2_T1, s2$Moral3_T1)
 summary(moral2_t1_check)
 describe(moral2_t1_check)
 psych::alpha(moral2_t1_check) #alpha = 0.98
-
 s2 <- mutate(s2, 
              Moral_composite2_t1 = 
                ((s2$Moral1_T1 + s2$Moral2_T1 + s2$Moral3_T1)/3))
@@ -106,7 +105,6 @@ moral2_t2_check <- data.frame(s2$Moral1_T2, s2$Moral2_T2, s2$Moral3_T2)
 summary(moral2_t2_check)
 describe(moral2_t2_check)
 psych::alpha(moral2_t2_check) #alpha = 0.97
-
 s2 <- mutate(s2, 
              Moral_composite2_t2 = 
                ((s2$Moral1_T2 + s2$Moral2_T2+s2$Moral3_T2)/3))
@@ -116,7 +114,6 @@ honesty2_t2_check  <- data.frame(s2$Honest_frequencyT2, s2$Honest_likelihoodT2, 
 summary(honesty2_t2_check)
 describe(honesty2_t2_check)
 psych::alpha(honesty2_t2_check) #alpha = 0.81
-
 s2 <- mutate(s2, 
              Honest_composite2_t2 = 
                ((s2$Honest_frequencyT2 + s2$Honest_likelihoodT2 +

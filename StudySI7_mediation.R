@@ -1,3 +1,10 @@
+#Load packages
+
+library(here)
+library(tidyverse)
+library(lavaan)
+library(psych)
+
 #Read in data
 
 s13 <- read.csv(here("HypocrisyStudySI7_cleaned.csv")) #265
