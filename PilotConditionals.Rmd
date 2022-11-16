@@ -25,8 +25,8 @@ library(apa)
 pilot_conditional <- read.csv(here("pilot_conditionals.csv"))
 ```
 
-# condition 1 = never
-# condition 2 = rarely 
+#condition 1 = never
+#condition 2 = rarely 
 #condition 3 =  sometimes 
 #condition 4 = never-harm
 #condition 5 =  never-goodreason
@@ -37,94 +37,302 @@ pilot_conditional <- read.csv(here("pilot_conditionals.csv"))
 #condition 10 = control
 
 
-# Honest Model
+# Descriptives
+
 ```{r}
-honestyGD.afex <-aov_car(Honest_compositeGD ~ condition  + Error(id), data= pilot_conditional)
-summary(honestyGD.afex) 
-anova_apa(honestyGD.afex)  
+# Descriptives
+tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition, 
+       FUN = mean)
+tapply(pilot_conditional$M_compositeGD, pilot_conditional$condition, 
+       FUN = sd)
+tapply(pilot_conditional$M_compositeGD, pilot_conditional$condition, 
+       FUN = length)
+
 ```
 
 
-# Subset to be just solo statements
+# Never + Sometimes Conditionals
+Compare inferences in conditions 1 (never) vs. 7, 8, 9 (sometimes conditionals)
 
 ```{r}
+#Subset to compare only conditions 1, 7, 8, 9
+never_v_sconditions <- pilot_conditional %>%
+  filter(condition == "1" | condition  == "7" | 
+           condition  == "8" | condition  == "9")
+
+glimpse(never_v_sconditions)
+
+#Never v. Sometimes-harm (7)
+never_v_harm  <- never_v_sconditions %>%
+  filter(condition  == "1" | condition  == "7")
+
+#Moral
+t.test(M_compositeGD ~ condition, never_v_harm, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, never_v_harm, var.equal = TRUE))
+#Never still more moral than sometimes + harm
+
+#Honest
+t.test(Honest_compositeGD~ condition, never_v_harm, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, never_v_harm, var.equal = TRUE))
+#Yes, also more honest
+
+#Never v. Sometimes-goodreason (8)
+never_v_goodreason  <- never_v_sconditions %>%
+  filter(condition  == "1" | condition  == "8")
+
+#Moral
+t.test(M_compositeGD ~ condition, never_v_goodreason, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, never_v_goodreason, var.equal = TRUE))
+#Never still more moral than sometimes + good reason
+
+#Honest
+t.test(Honest_compositeGD~ condition, never_v_goodreason, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, never_v_goodreason, var.equal = TRUE))
+#And more honest
+
+#Never v. Sometimes -exceptional (9)
+never_v_exceptional  <- never_v_sconditions %>%
+  filter(condition  == "1" | condition  == "9")
+
+#Moral
+t.test(M_compositeGD ~ condition, never_v_exceptional, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, never_v_exceptional, var.equal = TRUE))
+#Never still more moral than sometimes + exceptional
+
+#Honest
+t.test(Honest_compositeGD~ condition, never_v_exceptional, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, never_v_exceptional, var.equal = TRUE))
+#And more honest
+
+```
+
+
+# Original Stances (never vs. rarely vs. sometimes)
+
+Compare conditions 1, 2, 3
+
+```{r}
+# Subset to be just solo statements
 solo_stance_test <- pilot_conditional %>%
   filter(condition == "1" | condition  == "2" | condition  == "3") 
 glimpse(solo_stance_test)
 
+#Morality
+solo_moral.afex <-aov_car(M_compositeGD ~ 
+                              condition + Error(id), 
+                            data= solo_stance_test)
+summary(solo_moral.afex) 
+anova_apa(solo_moral.afex)
+# Condition is significant on honesty
+
+#Honesty
 solo_honesty.afex <-aov_car(Honest_compositeGD ~ 
                               condition + Error(id), 
                             data= solo_stance_test)
-summary(solo_honesty.afex ) 
-anova_apa(solo_honesty.afex ) 
+summary(solo_honesty.afex) 
+anova_apa(solo_honesty.afex)
+# Condition is significant on honesty
 
-#Subet to compare never stances
+# Main effect: never (1) vs. rarely (2) vs. sometimes (3)
+
+#never (1) vs. rarely (2)
+never_v_rarely  <- solo_stance_test %>%
+  filter(condition  == "1" | condition  == "2")
+#Moral
+t.test(M_compositeGD ~ condition , never_v_rarely, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition , never_v_rarely, var.equal = TRUE))
+#Never slightly more moral than rarely, significant p = .029
+
+#Honest
+t.test(Honest_compositeGD~ condition , never_v_rarely, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition , never_v_rarely, var.equal = TRUE))
+#Never more honest than rarely, p = .019
+
+
+#never (1) vs. sometimes (3)
+never_v_sometimes  <- solo_stance_test %>%
+  filter(condition  == "1" | condition  == "3")
+#Moral
+t.test(M_compositeGD ~ condition , never_v_sometimes, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition , never_v_sometimes, var.equal = TRUE))
+
+#Honest
+t.test(Honest_compositeGD ~ condition , never_v_sometimes, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition , never_v_sometimes, var.equal = TRUE))
+
+#replicate never > sometimes effect
+
+#rarely (2) vs. sometimes (3)
+rarely_v_sometimes  <- solo_stance_test %>%
+  filter(condition  == "3" | condition  == "2")
+
+#Moral
+t.test(M_compositeGD ~ condition, rarely_v_sometimes, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, rarely_v_sometimes, var.equal = TRUE))
+
+#Honest
+t.test(Honest_compositeGD~ condition, rarely_v_sometimes, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, rarely_v_sometimes, var.equal = TRUE))
+#Yes replicate rarely > sometimes
+```
+
+
+# Compare Never alone vs. Never + Conditionals
+
+Subset to compare never (1) vs. never + conditionals (4, 5, 6)
+
+```{r}
+#Subset to compare never stances
 never_test <- pilot_conditional %>%
   filter(condition  == "1" | condition  == "4" | 
            condition  == "5" | condition  == "6") 
 glimpse(never_test)
 
-#Honesty never ANOVA
-never_test.afex <-aov_car(Honest_compositeGD ~ 
-                            condition  + Error(id), 
-                            data= never_test)
-summary(never_test.afex) 
-anova_apa(never_test.afex) 
-
-#compare original abs (never) to other cells
-#never (1) vs. harm (4)
-never_v_harm <- never_test %>%
+#never (1) vs. never harm (4)
+never_v_nharm <- never_test %>%
   filter(condition  == "1" | condition  == "4")
-t.test(Honest_compositeGD~ condition , never_v_harm, var.equal = TRUE)
-t_apa(t.test(Honest_compositeGD ~ condition , never_v_harm, var.equal = TRUE))
 
-#never (1) vs. good reason (5)
-never_v_goodreason <- never_test%>%
+#Moral
+t.test(M_compositeGD ~ condition , never_v_nharm, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition , never_v_nharm, var.equal = TRUE))
+#See comparably, no sign diff
+
+#Honest
+t.test(Honest_compositeGD ~ condition , never_v_nharm, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition , never_v_nharm, var.equal = TRUE))
+#never alone slightly more honest, p = .029
+
+#never (1) vs. never good reason (5)
+never_v_ngoodreason <- never_test %>%
   filter(condition  == "1" | condition  == "5")
-t.test(Honest_compositeGD~ condition , never_v_goodreason, var.equal = TRUE)
-t_apa(t.test(Honest_compositeGD ~ condition , never_v_goodreason, var.equal = TRUE))
 
-#never (1) vs. exceptional (6) 
-never_v_exceptional <- never_test%>%
+#Moral
+t.test(M_compositeGD ~ condition, never_v_ngoodreason, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, never_v_ngoodreason, var.equal = TRUE))
+#never alone more moral
+
+#Honest
+t.test(Honest_compositeGD ~ condition, never_v_ngoodreason, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, never_v_ngoodreason, var.equal = TRUE))
+#never alone more honest
+
+#never (1) vs. never exceptional (6) 
+never_v_nexceptional <- never_test%>%
   filter(condition  == "1" | condition  == "6")
-t.test(Honest_compositeGD~ condition , never_v_exceptional, var.equal = TRUE)
-t_apa(t.test(Honest_compositeGD ~ condition , never_v_exceptional, var.equal = TRUE))
+
+#Moral
+t.test(M_compositeGD ~ condition, never_v_nexceptional, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, never_v_nexceptional, var.equal = TRUE))
+#no significant diff, but never alone trending better, p = .054
+
+#Honest
+t.test(Honest_compositeGD ~ condition, never_v_nexceptional, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, never_v_nexceptional, var.equal = TRUE))
+#never alone more honest
 
 ```
 
-# Moral Model
+# Do Conditionals Make Sometimes Better?
 
 ```{r}
-#Moral never ANOVA
-never_testm.afex <-aov_car(M_compositeGD ~ 
-                             condition  + Error(id), 
-                          data= never_test)
-summary(never_testm.afex ) 
-anova_apa(never_testm.afex ) 
-
-#t-test
-#compare original abs (never) to other cells
-#never (1) vs. harm (4), use subsetted dataframe from above
-
-#Moral
-t.test(M_compositeGD ~ condition, never_v_harm, var.equal = TRUE)
-t_apa(t.test(M_compositeGD  ~ condition, never_v_harm, var.equal = TRUE))
-
-
-#never (1) vs. good reason (5)
-#Moral
-t.test(M_compositeGD ~ condition , never_v_goodreason, var.equal = TRUE)
-t_apa(t.test(M_compositeGD  ~ condition , never_v_goodreason, var.equal = TRUE))
-
-#never (1) vs. exceptional (6) 
-#moral
-t.test(M_compositeGD ~ condition , never_v_exceptional, var.equal = TRUE)
-t_apa(t.test(M_compositeGD ~ condition , never_v_exceptional, var.equal = TRUE))
-
-#Also want to compare sometimes stances
+#Subset sometimes only
 sometimes_test <- pilot_conditional  %>%
-  filter(condition  == "1" | condition  == "4" | 
-           condition  == "5" | condition  == "6") 
-glimpse(sometimes_test )
+  filter(condition  == "3" | condition  == "7" | 
+           condition  == "8" | condition  == "9") 
+glimpse(sometimes_test)
+
+#sometimes (3) vs. sometimes harm (7)
+some_v_sharm <- sometimes_test %>%
+  filter(condition  == "3" | condition  == "7")
+
+#Moral
+t.test(M_compositeGD ~ condition, some_v_sharm, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, some_v_sharm, var.equal = TRUE))
+#Yes, conditional does make sometimes better
+
+#Honest
+t.test(Honest_compositeGD ~ condition, some_v_sharm, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, some_v_sharm, var.equal = TRUE))
+#But does not affect honesty
+
+#sometimes (3) vs. sometimes good reason (8)
+some_v_sgoodreason <- sometimes_test %>%
+  filter(condition  == "3" | condition  == "8")
+
+#Moral
+t.test(M_compositeGD ~ condition, some_v_sgoodreason, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, some_v_sgoodreason, var.equal = TRUE))
+#interesting that not better
+
+#Honest
+t.test(Honest_compositeGD ~ condition, some_v_sgoodreason, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, some_v_sgoodreason, var.equal = TRUE))
+#not more honest
+
+#sometimes (3) vs. sometimes exceptional (9) 
+some_v_soexceptional <- sometimes_test %>%
+  filter(condition  == "3" | condition  == "9")
+
+#Moral
+t.test(M_compositeGD ~ condition, some_v_soexceptional, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, some_v_soexceptional, var.equal = TRUE))
+#does make it better
+
+#Honest
+t.test(Honest_compositeGD ~ condition, some_v_soexceptional, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, some_v_soexceptional, var.equal = TRUE))
+#and more honest
+
+```
+
+# Never v. Control
+
+```{r}
+#Compare 1 vs. 10
+#Subset to compare only conditions 1, 7, 8, 9
+never_v_control <- pilot_conditional %>%
+  filter(condition == "1" | condition  == "10")
+
+glimpse(never_v_control)
+
+#Moral
+t.test(M_compositeGD ~ condition, never_v_control, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, never_v_control, var.equal = TRUE))
+#no diff
+
+#Honest
+t.test(Honest_compositeGD ~ condition, never_v_control, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, never_v_control, var.equal = TRUE))
+#more honest
+```
+
+# Look at participants own views
+```{r}
+#remove Control/NA (they did not have this Q)
+agree_no_control <- pilot_conditional %>%
+  filter(condition != "10")
+
+glimpse(agree_no_control)
+
+#look at agreement by stance
+tapply(agree_no_control$agree, agree_no_control$condition, FUN = mean)
+
+# Is agreement in never v. 7 or 9 significant?
+# 1 vs. 7
+onev7l <- agree_no_control %>%
+  filter(condition == "1" | condition  == "7")
+glimpse(onev7l)
+t.test(agree ~ condition, onev7l, var.equal = TRUE)
+t_apa(t.test(agree ~ condition, onev7l, var.equal = TRUE))
+#no diff
+
+#Is never v rarely agreement different?
+# 1 vs. 7
+onevtwo <- agree_no_control %>%
+  filter(condition == "1" | condition  == "2")
+glimpse(onevtwo)
+t.test(agree ~ condition, onevtwo, var.equal = TRUE)
+t_apa(t.test(agree ~ condition, onevtwo, var.equal = TRUE))
+
 ```
 
