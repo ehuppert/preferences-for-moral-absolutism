@@ -424,6 +424,24 @@ flexible_s5 <- s5 %>%
 t.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5, paired = TRUE)
 t_apa(t.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5, paired = TRUE))
 
+#Look at time 1 vs. 2 on abs game 1 only to test apology idea
+absolute_behav1_s5 <- absolute_s5 %>%
+  filter(order == "game1")
+
+t.test(absolute_behav1_s5$Moral.1_composite5,
+       absolute_behav1_s5$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_behav1_s5$Moral.1_composite5,
+             absolute_behav1_s5$Moral.2_composite5, paired = TRUE))
+
+#Look at time 1 vs. 2 on flex game 1 only to test justification idea
+flexible_behav1_s5 <- flexible_s5 %>%
+  filter(order == "game1")
+
+t.test(flexible_behav1_s5$Moral.1_composite5,
+       flexible_behav1_s5$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_behav1_s5$Moral.1_composite5,
+             flexible_behav1_s5$Moral.2_composite5, paired = TRUE))
+
 #Order*Time 
 
 #Time 1 vs. 2 on survey1 only

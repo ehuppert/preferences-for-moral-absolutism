@@ -256,6 +256,13 @@ noflex_time2 <- flex_exclude2  %>%
 t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE)
 t_apa(t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE))
 
+#Look at Abs v Flex at Time 1 also
+# Use the control exclude but subset for only time 1
+nocontrol_time1 <- control_exclude2  %>%
+  filter(vote.time != "Voting_T2") #355
+# t test
+t.test(vote.value ~ Proclamation, nocontrol_time1, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, nocontrol_time1, var.equal = TRUE))
 ```
 
 # Morality Model
@@ -412,7 +419,6 @@ d2 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.7107867
 # Future Honesty Model
 
 ```{r}
-
 honest2_df <-melt(s2, 
                 id.vars=c("ID", "Proclamation"),
                 #measure command is for the DV
