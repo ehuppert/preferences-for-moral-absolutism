@@ -177,7 +177,7 @@ tapply(s2$Voting_T1, s2$Proclamation, mean)
 tapply(s2$Voting_T1, s2$Proclamation, sd)
 tapply(s2$Voting_T1, s2$Proclamation, length)
 
-#Across Proclamations Time One
+#Across Proclamations Time Two
 tapply(s2$Voting_T2, s2$Proclamation, mean)
 tapply(s2$Voting_T2, s2$Proclamation, sd)
 tapply(s2$Voting_T2, s2$Proclamation, length)
