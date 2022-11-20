@@ -508,6 +508,8 @@ flex_onlyh <- honest2_df %>%
 control_onlyh <- honest2_df %>%
   filter(Proclamation == "control") #418 (209 x 2)
 
+#Time Comparisons: Use subsetted s2 from Voting Chunk
+
 #Time 1 vs. 2 on abs only
 #Paired t-test
 t.test(abs_s2$Honest_composite2_t1, abs_s2$Honest_composite2_t2, paired = TRUE)
@@ -560,6 +562,30 @@ noflex_time2h <- flex_exclude2h %>%
 # t test
 t.test(honest.value ~ Proclamation, noflex_time2h, var.equal = TRUE)
 t_apa(t.test(honest.value~ Proclamation, noflex_time2h, var.equal = TRUE))
+
+#Abs v Flex at Time 1 alone
+# Use the control exclude but subset for only time 1
+nocontrol_time1h <- control_exclude2h  %>%
+  filter(honest.time != "Honest_composite2_t2") #355
+# t test
+t.test(honest.value ~ Proclamation, nocontrol_time1h, var.equal = TRUE)
+t_apa(t.test(honest.value ~ Proclamation, nocontrol_time1h, var.equal = TRUE))
+
+#Control v Flex at Time 1 alone
+# Use the control exclude but subset for only time 2
+noabs_time1h <- abs_exclude2h  %>%
+  filter(honest.time != "Honest_composite2_t2") #394
+# t test
+t.test(honest.value~ Proclamation, noabs_time1h , var.equal = TRUE)
+t_apa(t.test(honest.value~ Proclamation, noabs_time1h , var.equal = TRUE))
+
+#Control v Abs at Time 1 alone
+# Use the flex exclude but subset for only time 2
+noflex_time1h <- flex_exclude2h %>%
+  filter(honest.time != "Honest_composite2_t2") #379
+# t test
+t.test(honest.value ~ Proclamation, noflex_time1h , var.equal = TRUE)
+t_apa(t.test(honest.value~ Proclamation, noflex_time1h , var.equal = TRUE))
 
 ```
 

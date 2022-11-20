@@ -11,9 +11,9 @@ library(psych)
 
 s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv"))
 
-#Reorder proclamation
+#Factorize proclamation
+s5$proclamation <- factor(s5$proclamation)
 
-s5$proclamation <- factor(s5$proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
 
 #Create composite variables
 
@@ -65,7 +65,7 @@ s5 <- mutate(s5, Honest.2_composite5 = ((s5$honest_freq_2 + s5$honest_likely_2 +
 
 #Model
 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (0 = absolute, 1 = flexible)
 
 #Mediators at time two: future honesty (Honest.2_composite5), hypocrisy (Hypocrisy.2_composite5)
 
