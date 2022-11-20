@@ -207,17 +207,30 @@ flex_only<- vote2_df %>%
 control_only<- vote2_df %>%
   filter(Proclamation == "control") #418 (209 x 2)
 
-#Abs time effect
-t.test(vote.value~ vote.time, abs_only, var.equal = TRUE)
-t_apa(t.test(vote.value~ vote.time, abs_only, var.equal = TRUE))
+#Time 1 vs. 2 on abs only
+#Paired t-test
+abs_s2 <- s2 %>%
+  filter(Proclamation == "absolute")
 
-#Flex time effect
-t.test(vote.value~ vote.time, flex_only, var.equal = TRUE)
-t_apa(t.test(vote.value~ vote.time, flex_only, var.equal = TRUE))
+t.test(abs_s2$Voting_T1, abs_s2$Voting_T2, paired = TRUE)
+t_apa(t.test(abs_s2$Voting_T1, abs_s2$Voting_T2, paired = TRUE))
 
-#Control  time effect
-t.test(vote.value~ vote.time, control_only, var.equal = TRUE)
-t_apa(t.test(vote.value~ vote.time, control_only, var.equal = TRUE))
+#Time 1 vs. 2 on flex only
+#Paired t-test
+flex_s2 <- s2 %>%
+  filter(Proclamation == "flexible")
+
+t.test(flex_s2$Voting_T1, flex_s2 $Voting_T2, paired = TRUE)
+t_apa(t.test(flex_s2$Voting_T1, flex_s2$Voting_T2, paired = TRUE))
+
+#Time 1 vs. 2 on control only
+#Paired t-test
+control_s2 <- s2 %>%
+  filter(Proclamation == "control")
+
+t.test(control_s2$Voting_T1, control_s2$Voting_T2, paired = TRUE)
+t_apa(t.test(control_s2$Voting_T1, control_s2$Voting_T2, paired = TRUE))
+
 
 # Main effect: abs vs. flex vs. control
 #Abs vs. Flex 
@@ -341,18 +354,21 @@ flex_onlym <- moral2_df %>%
 control_onlym <- moral2_df %>%
   filter(Proclamation == "control") #418 (209 x 2)
 
-#Main effect of time
-#Abs time effect
-t.test(moral.value~ moral.time, abs_onlym, var.equal = TRUE)
-t_apa(t.test(moral.value~ moral.time, abs_onlym, var.equal = TRUE))
+#Time 1 vs. 2 on abs only
+#Paired t-test
+t.test(abs_s2$Moral_composite2_t1, abs_s2$Moral_composite2_t2, paired = TRUE)
+t_apa(t.test(abs_s2$Moral_composite2_t1, abs_s2$Moral_composite2_t2, paired = TRUE))
 
-#Flex time effect
-t.test(moral.value~ moral.time, flex_onlym, var.equal = TRUE)
-t_apa(t.test(moral.value~ moral.time, flex_onlym, var.equal = TRUE))
+#Time 1 vs. 2 on flex only
+#Paired t-test
+t.test(flex_s2$Moral_composite2_t1, flex_s2 $Moral_composite2_t2, paired = TRUE)
+t_apa(t.test(flex_s2$Moral_composite2_t1, flex_s2$Moral_composite2_t2, paired = TRUE))
 
-#Control  time effect
-t.test(moral.value~ moral.time, control_onlym, var.equal = TRUE)
-t_apa(t.test(moral.value~ moral.time, control_onlym, var.equal = TRUE))
+#Time 1 vs. 2 on control only
+#Paired t-test
+t.test(control_s2$Moral_composite2_t1, control_s2$Moral_composite2_t2, paired = TRUE)
+t_apa(t.test(control_s2$Moral_composite2_t1, control_s2$Moral_composite2_t2, paired = TRUE))
+
 
 # Main effect: Proclamation
 
@@ -492,18 +508,20 @@ flex_onlyh <- honest2_df %>%
 control_onlyh <- honest2_df %>%
   filter(Proclamation == "control") #418 (209 x 2)
 
-#Main effect of time
-#Abs time effect
-t.test(honest.value~ honest.time, abs_onlyh, var.equal = TRUE)
-t_apa(t.test(honest.value~ honest.time, abs_onlyh, var.equal = TRUE))
+#Time 1 vs. 2 on abs only
+#Paired t-test
+t.test(abs_s2$Honest_composite2_t1, abs_s2$Honest_composite2_t2, paired = TRUE)
+t_apa(t.test(abs_s2$Honest_composite2_t1, abs_s2$Honest_composite2_t2, paired = TRUE))
 
-#Flex time effect
-t.test(honest.value~ honest.time, flex_onlyh, var.equal = TRUE)
-t_apa(t.test(honest.value~ honest.time, flex_onlyh, var.equal = TRUE))
+#Time 1 vs. 2 on flex only
+#Paired t-test
+t.test(flex_s2$Honest_composite2_t1, flex_s2 $Honest_composite2_t2, paired = TRUE)
+t_apa(t.test(flex_s2$Honest_composite2_t1, flex_s2$Honest_composite2_t2, paired = TRUE))
 
-#Control  time effect
-t.test(honest.value~ honest.time, control_onlyh, var.equal = TRUE)
-t_apa(t.test(honest.value~ honest.time, control_onlyh, var.equal = TRUE))
+#Time 1 vs. 2 on control only
+#Paired t-test
+t.test(control_s2$Honest_composite2_t1, control_s2$Honest_composite2_t2, paired = TRUE)
+t_apa(t.test(control_s2$Honest_composite2_t1, control_s2$Honest_composite2_t2, paired = TRUE))
 
 # Main effect: Proclamation
 
