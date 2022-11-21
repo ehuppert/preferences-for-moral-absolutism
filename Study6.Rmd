@@ -177,7 +177,7 @@ t_apa((t.test(cp_omit_full$abtrust, cp_omit_full$flextrust, paired = TRUE)))
 
 ```
 
-Now we lis the code for Pilot Study 3.
+Now we list the code for Pilot Study 3.
 
 # Pilot Study 3 
 
@@ -305,23 +305,29 @@ rarely_test2 <- prop.test(x = c(61, 25), n = c(166, 166), correct = TRUE)
 rarely_test2 #yes this does, p < .001
 ```
 
-# Examine just first condition between-subjects
+# Examine trust between-subjects for only condition shown first
 
 The variable lying-stance refers to the order in which each scenario was presented.
+
+In this variable:
+"relative_first" means the flexible condition was shown first.
+"absolute_first" means the absolute condition was shown first.
+
 ```{r}
 #Subset to look at just first scenario
-
-
-
-#absolute_first only includes Lie_stanabs
-#relative_first only includes lie_rel_no media
+#absolute_first only includes Lie_stan_abs_nomedia and Lie_stan_abs_media
+#relative_first only includes lie_rel_nomedia and lie_rel_media
+#no media in both variables refers to stance alone
+#media in both variables refers to lie (media revealed lie)
 
 #Subset to only absolute_first
 btwnsubj_test1 <- cp_omit_full %>%
   filter(lying_stance == "absolute_first") #N = 63
+
 #Remove flexible evaluation from the abs first df
 btwnsubj_test1 <- btwnsubj_test1 %>%
   select(-flextrust, -flextrust2)
+
 #Subset to only relevant columns for ease of reshape
 btwnsubj_test1 <- btwnsubj_test1 %>%
   select(CP_Survey_ID, abtrust, abtrust2)
@@ -329,9 +335,11 @@ btwnsubj_test1 <- btwnsubj_test1 %>%
 #Subset to just flexible = relative_first
 btwnsubj_test2 <- cp_omit_full %>%
   filter(lying_stance == "relative_first") #N = 75
+
 #Remove absolute evaluation from the flex first df
 btwnsubj_test2 <- btwnsubj_test2 %>%
   select(-abtrust, -abtrust2)
+
 #Subset to only relevant columns for ease of reshape
 btwnsubj_test2 <- btwnsubj_test2 %>%
   select(CP_Survey_ID, flextrust, flextrust2)
