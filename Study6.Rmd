@@ -118,7 +118,7 @@ mean(cp_omit2$flextrust) # mean = 1.6
 sd(cp_omit2$flextrust) # sd = 1.03
 
 
-#lie_stan_abs 166; NA = 21 
+#lie_stan_rel 166; NA = 21 
 CP$flextrust2[CP$Lie_stan_rel_media=="Would not trust me at all"] <- "1"
 CP$flextrust2[CP$Lie_stan_rel_media=="Would only trust me a little"] <- "2"
 CP$flextrust2[CP$Lie_stan_rel_media =="Would somewhat trust me"] <-  "3"
@@ -303,5 +303,65 @@ rarely_test #no, p =  .32
 #does the proportion of the rarely stance differ in behavior and public?
 rarely_test2 <- prop.test(x = c(61, 25), n = c(166, 166), correct = TRUE)
 rarely_test2 #yes this does, p < .001
+```
+
+# Examine just first condition between-subjects
+
+The variable lying-stance refers to the order in which each scenario was presented.
+```{r}
+#Subset to look at just first scenario
+
+
+
+#absolute_first only includes Lie_stanabs
+#relative_first only includes lie_rel_no media
+
+#Subset to only absolute_first
+btwnsubj_test1 <- cp_omit_full %>%
+  filter(lying_stance == "absolute_first") #N = 63
+#Remove flexible evaluation from the abs first df
+btwnsubj_test1 <- btwnsubj_test1 %>%
+  select(-flextrust, -flextrust2)
+#Subset to only relevant columns for ease of reshape
+btwnsubj_test1 <- btwnsubj_test1 %>%
+  select(CP_Survey_ID, abtrust, abtrust2)
+
+#Subset to just flexible = relative_first
+btwnsubj_test2 <- cp_omit_full %>%
+  filter(lying_stance == "relative_first") #N = 75
+#Remove absolute evaluation from the flex first df
+btwnsubj_test2 <- btwnsubj_test2 %>%
+  select(-abtrust, -abtrust2)
+#Subset to only relevant columns for ease of reshape
+btwnsubj_test2 <- btwnsubj_test2 %>%
+  select(CP_Survey_ID, flextrust, flextrust2)
+
+#Now btwnsubject_test1 only has absolute evaluations for Ps who saw this first
+#Now btwnsubject_test2 only has flexible evaluations for Ps who saw this first
+#Merge this df, will have N = 138 again but only one set of evaluations/person
+btwnsubj_test3 <- bind_rows(btwnsubj_test1, btwnsubj_test2)
+
+#reshape wide to long
+#trust time one
+btwnsubj_test_long1 <-melt(btwnsubj_test3, 
+                id.vars=c("CP_Survey_ID"),
+                #measure command is for the DV
+                measure.vars=c("abtrust","flextrust"),
+                variable.name="stance_eval",
+                value.name="stance.value"
+)
+
+#trust time two
+btwnsubj_test_long2 <-melt(btwnsubj_test3, 
+                id.vars=c("CP_Survey_ID"),
+                #measure command is for the DV
+                measure.vars=c("abtrust2","flextrust2"),
+                variable.name="behav_eval",
+                value.name="behav.value"
+)
+
+#merge btwnsubj_test_long1 and btwnsubj_test_long2
+btwnsubj_test_merge <- rbind(btwnsubj_test_long1, btwnsubj_test_long2)
+
 ```
 
