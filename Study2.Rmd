@@ -183,6 +183,28 @@ tapply(s2$Voting_T2, s2$Proclamation, sd)
 tapply(s2$Voting_T2, s2$Proclamation, length)
 ```
 
+# Voting Difference Score
+
+Use this code to double check that paired t-tests are reporting drm right.
+
+```{r}
+#Create diff score varibale
+diff_score <- s2$Voting_T1-s2$Voting_T2
+mean(diff_score)
+sd(diff_score)
+
+#Export numbers for calculation
+aggregate(diff_score ~ s2$Proclamation, FUN = mean)
+aggregate(diff_score ~ s2$Proclamation, FUN = sd)
+
+#check absolute, M = 1.7529412; SD = 1.5644413
+#check flexible, M = 0.5459459; SD = 0.8003378
+#mean of diff score/sd of diff score
+#yes this matches
+
+
+```
+
 # Voting Simple Effects - Subsetting Data
 
 ```{r}
