@@ -371,5 +371,21 @@ btwnsubj_test_long2 <-melt(btwnsubj_test3,
 #merge btwnsubj_test_long1 and btwnsubj_test_long2
 btwnsubj_test_merge <- rbind(btwnsubj_test_long1, btwnsubj_test_long2)
 
+
+#notes on reviewer
+#abtrust
+#abtrust2
+#flextrust
+#flextrust2
+
+#lying_stance: absolute_first, relative_first
+
+CP$trust1 <- NULL
+CP$trust1 <- CP$abtrust[CP$lyingstance == "absolute_first"]
+CP$trust1 <- CP$flextrust[CP$lyingstance == "relative_first"]
+
+
+t.test(CP$trust1 ~ CP$lying_stance)
+
 ```
 
