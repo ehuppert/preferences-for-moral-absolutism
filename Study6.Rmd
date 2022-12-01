@@ -307,6 +307,33 @@ rarely_test2 #yes this does, p < .001
 
 # Examine trust between-subjects for only condition shown first
 
+```{r}
+#Absolute only  - abtrust, abtrust2
+#Flexible (relative) only - flextrust, flextrust2
+ 
+#lying_stance: absolute_first, relative_first
+ 
+
+cp_omit_full$trust1 <- "NULL"
+
+cp_omit_full$trust1 <- cp_omit_full$abtrust[cp_omit_full$lyingstance == "absolute_first"]
+cp_omit_full$trust1 <- CP$flextrust[CP$lyingstance == "relative_first"]
+
+p1c$lie[p1c$Q653 == "Lying is always okay."] <- "always"
+
+cp_omit_full$trust1 <- 
+  cp_omit_full$abtrust[CP$lyingstance == "absolute_first"]
+cp_omit_full$trust1 <-
+  cp_omit_full$flextrust[cp_omit_full$lyingstance == 'relative_first'] <- "flex"
+
+cp_omit_full$trust1 <- "abtrust"[cp_omit_full$lyingstance == 'absolute_first']
+cp_omit_full$trust1 <- "cp_omit_full$flextrust[cp_omit_full$lyingstance == 'relative_first']"
+ 
+ 
+t.test(CP$trust1 ~ CP$lying_stance)
+```
+
+
 The variable lying-stance refers to the order in which each scenario was presented.
 
 In this variable:
