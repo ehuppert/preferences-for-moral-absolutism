@@ -81,6 +81,7 @@ s2 <- mutate(s2, Honest_composite2_t1 =
                ((s2$Honest_frequencyT1+ s2$Honest_likelihoodT1+
                    s2$Honest_extremeT1 + s2$Honest_committmentT1)/4))
 
+
 ```
 
 Evaluation variables:
@@ -276,28 +277,41 @@ t.test(vote.value ~ Proclamation, nocontrol_time2, var.equal = TRUE)
 t_apa(t.test(vote.value ~ Proclamation, nocontrol_time2, var.equal = TRUE))
 
 #Control v Flex at Time 2 alone
-# Use the control exclude but subset for only time 2
 noabs_time2 <- abs_exclude2  %>%
   filter(vote.time != "Voting_T1") #394
 # t test
 t.test(vote.value ~ Proclamation, noabs_time2, var.equal = TRUE)
 t_apa(t.test(vote.value ~ Proclamation, noabs_time2, var.equal = TRUE))
 
-#Control v Abs at Time 2 alone
-# Use the flex exclude but subset for only time 2
-noflex_time2 <- flex_exclude2  %>%
-  filter(vote.time != "Voting_T1") #379
-# t test
-t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE)
-t_apa(t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE))
-
-#Look at Abs v Flex at Time 1 also
+#Abs v Flex Time 1 
 # Use the control exclude but subset for only time 1
 nocontrol_time1 <- control_exclude2  %>%
   filter(vote.time != "Voting_T2") #355
 # t test
 t.test(vote.value ~ Proclamation, nocontrol_time1, var.equal = TRUE)
 t_apa(t.test(vote.value ~ Proclamation, nocontrol_time1, var.equal = TRUE))
+
+#Control v Abs at Time 2 alone
+noflex_time2 <- flex_exclude2  %>%
+  filter(vote.time != "Voting_T1") #379
+# t test
+t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, noflex_time2, var.equal = TRUE))
+
+#Look at Abs v Control at Time 1 also
+# Use the flex exclude but subset for only time 1
+noflex_time1 <- flex_exclude2  %>%
+  filter(vote.time != "Voting_T2") #355
+# t test
+t.test(vote.value ~ Proclamation, noflex_time1, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, noflex_time1, var.equal = TRUE))
+
+#Look at Control vs Flex at Time 1 also
+noabs_time1 <- abs_exclude2  %>%
+  filter(vote.time != "Voting_T2") #355
+# t test
+t.test(vote.value ~ Proclamation, noabs_time1, var.equal = TRUE)
+t_apa(t.test(vote.value ~ Proclamation, noabs_time1, var.equal = TRUE))
 ```
 
 # Morality Model
