@@ -315,9 +315,8 @@ rarely_test2 #yes this does, p < .001
  
 
 cp_omit_full$trust1 <- "NULL"
-
-cp_omit_full$trust1 <- cp_omit_full$abtrust[cp_omit_full$lyingstance == "absolute_first"]
-cp_omit_full$trust1 <- CP$flextrust[CP$lyingstance == "relative_first"]
+cp_omit_full$trust1 <- cp_omit_full$abtrust[cp_omit_full$lying_stance == "absolute_first"]
+cp_omit_full$trust1 <-cp_omit_full$flextrust[cp_omit_full$lying_stance == "relative_first"]
 
 p1c$lie[p1c$Q653 == "Lying is always okay."] <- "always"
 

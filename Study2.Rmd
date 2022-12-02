@@ -444,6 +444,9 @@ noflex_time2m <- flex_exclude2m  %>%
 t.test(moral.value ~ Proclamation, noflex_time2m, var.equal = TRUE)
 t_apa(t.test(moral.value ~ Proclamation, noflex_time2m, var.equal = TRUE))
 
+#Time 1
+#Abs v Flex time 1
+
 ```
 
 # Cohen's D for Morality Posthoc
