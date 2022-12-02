@@ -37,11 +37,49 @@ pilot_conditional <- read.csv(here("pilot_conditionals.csv"))
 #condition 10 = control
 
 
+# Composite DVs
+
+```{r}
+#Morality
+moral_check <- data.frame(pilot_conditional$m1, pilot_conditional$m2, 
+                          pilot_conditional$m3)
+summary(moral_check)
+describe(moral_check)
+psych::alpha(moral_check) # rawalpha = 0.96
+pilot_conditional <- mutate(pilot_conditional, 
+              M_compositeGD = 
+                ((pilot_conditional$m1 + pilot_conditional$m2 + 
+                   pilot_conditional$m3)/3))
+
+#Future Honesty
+honest_check <- data.frame(pilot_conditional$honest_l,
+                           pilot_conditional$honest_e, 
+                           pilot_conditional$honest_f,
+                           pilot_conditional$comm_honest)
+summary(honest_check)
+describe(honest_check)
+psych::alpha(honest_check) # raw alpha = 0.79
+pilot_conditional <- mutate(pilot_conditional, 
+              Honest_compositeGD = 
+                ((pilot_conditional$honest_l + pilot_conditional$honest_e
+                  + pilot_conditional$honest_f +
+                    pilot_conditional$comm_honest)/4))
+```
+
 # Descriptives
 
 ```{r}
-# Descriptives
+# Morality
 tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition, 
+       FUN = mean)
+tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition, 
+       FUN = sd)
+tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition, 
+       FUN = length)
+
+
+#Future Honesty
+tapply(pilot_conditional$M_compositeGD, pilot_conditional$condition, 
        FUN = mean)
 tapply(pilot_conditional$M_compositeGD, pilot_conditional$condition, 
        FUN = sd)
@@ -285,7 +323,7 @@ t_apa(t.test(Honest_compositeGD ~ condition, some_v_soexceptional, var.equal = T
 
 ```
 
-# Never v. Control
+# Control v Never and Sometimes
 
 ```{r}
 #Compare 1 vs. 10
@@ -303,6 +341,22 @@ t_apa(t.test(M_compositeGD ~ condition, never_v_control, var.equal = TRUE))
 #Honest
 t.test(Honest_compositeGD ~ condition, never_v_control, var.equal = TRUE)
 t_apa(t.test(Honest_compositeGD ~ condition, never_v_control, var.equal = TRUE))
+#more honest
+
+#Compare 3 vs. 10
+sometimes_v_control <- pilot_conditional %>%
+  filter(condition == "3" | condition  == "10")
+
+glimpse(sometimes_v_control)
+
+#Moral
+t.test(M_compositeGD ~ condition, sometimes_v_control, var.equal = TRUE)
+t_apa(t.test(M_compositeGD ~ condition, sometimes_v_control, var.equal = TRUE))
+#no diff
+
+#Honest
+t.test(Honest_compositeGD ~ condition, sometimes_v_control, var.equal = TRUE)
+t_apa(t.test(Honest_compositeGD ~ condition, sometimes_v_control, var.equal = TRUE))
 #more honest
 ```
 

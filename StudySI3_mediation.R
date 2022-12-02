@@ -1,4 +1,4 @@
-#Study 5 multiple mediation analysis
+#Study SI3 multiple mediation analysis
 
 #Load packages
 
@@ -11,9 +11,11 @@ library(psych)
 
 s9 <- read.csv(here("HypocrisyStudySI_3.csv"))
 
-#Reorder proclamation
+#Proclamation
+s9$proclamation <- as.factor(s9$proclamation)
+levels(s9$proclamation)
+#0 = absolute, 1 = flexible
 
-s9$proclamation <- factor(s9$proclamation, levels = c("flexible", "absolute"))
 
 #Create composite variables
 
@@ -30,7 +32,7 @@ s9 <- mutate(s9, MoralSI3_composite  = ((s9$moral_1 + s9$moral_2 + s9$moral_3)/3
 
 #Model
 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (0 = absolute, 1 = flexible)
 
 #Mediators: discounting_2 (perceived lying frequency), goal_2 (honesty ideals)
 
@@ -52,4 +54,32 @@ fit_med_mod_exp_8 = sem(med_mod_exploratory_8, se = "boot", bootstrap = 1000,
 summary(fit_med_mod_exp_8, standardized = T, rsq = T)
 parameterEstimates(fit_med_mod_exp_8)
 
+# Conduct with Counts as Lying added as well
+
+#IV: proclamation (0 = absolute, 1 = flexible)
+
+#Mediators: discounting_2 (perceived lying frequency), goal_2 (honesty ideals), counts as lying
+
+#DV: morality (MoralSI3_composite)
+
+med_mod_exploratory_9 = "discounting_2  ~ a1*proclamation
+goal_2 ~ a2*proclamation
+counts ~ a3*proclamation
+MoralSI3_composite ~ b1*discounting_2 + b2*goal_2 + b3*counts + c*proclamation
+
+indirect1 := a1*b1
+indirect2 := a2*b2
+indirect3 := a3*b3
+direct := c
+total := c + (a1*b1) + (a2*b2) + (a3*b3)
+#covariances
+discounting_2  ~~ goal_2
+discounting_2  ~~ counts
+goal_2 ~~ counts
+"
+
+fit_med_mod_exp_9 = sem(med_mod_exploratory_9, se = "boot", bootstrap = 1000, 
+                        data = s9, likelihood = "wishart")
+summary(fit_med_mod_exp_9, standardized = T, rsq = T)
+parameterEstimates(fit_med_mod_exp_9)
                    

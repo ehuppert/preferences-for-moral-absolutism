@@ -269,7 +269,6 @@ t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE)
 t_apa(t.test(Honest_composite2 ~ Proclamation, abs_exclude, var.equal = TRUE))
 ```
 
-# Social Benefit of the Proclamation Model - New Subsetted Data
 
 
 # Social Benefit of the Proclamation Model

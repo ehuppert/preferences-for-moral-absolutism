@@ -50,12 +50,8 @@ absflex_only$Proclamation <- as.factor(absflex_only$Proclamation)
 absflex_only$Proclamation <- droplevels(absflex_only$Proclamation)
 levels(absflex_only$Proclamation)
 
-#re-order proclamation levels for ease of interpreation
-
-absflex_only$Proclamation <- factor(absflex_only$Proclamation, levels = c("flexible", "absolute"), labels = c("flexible", "absolute"))
-
 #MORAL 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (1 = flexible, 0 = absolute)
 
 #Mediators: future honesty (Honest_composite2), hypocrisy (Hypocrisy_composite2), social benefit (SI_composite2)
 
@@ -82,7 +78,7 @@ summary(fit_mult_politics_new2, standardized = T, rsq = T)
 parameterEstimates((fit_mult_politics_new2))
 
 #VOTE
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (1 = flexible, 0 = absolute)
 
 #Mediators: future honesty (Honest_composite2), hypocrisy (Hypocrisy_composite2 ), social benefit (SI_composite2)
 
