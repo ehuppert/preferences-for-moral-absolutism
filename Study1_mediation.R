@@ -11,9 +11,9 @@ library(tidyverse)
 
 s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv"))
 
-#re-order proclamation levels for ease of interpreation
-
-s1$Proclamation <- factor(s1$Proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
+s1$Proclamation <- as.factor(s1$Proclamation)
+levels(s1$Proclamation)
+#basolute = 0, flexible = 1
 
 #Create composite variables
 
@@ -44,7 +44,7 @@ s1<- mutate(s1,
 
 #Morality model
 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (0 = absolute, 1 = flexible)
 
 #Mediators: future honesty (Honest_composite), hypocrisy (Hypocrisy_composite)
 
@@ -68,7 +68,7 @@ parameterEstimates((fit_mult_politics))
 
 #Voting intentions model
 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (0 = absolute, 1 = flexible)
 
 #Mediators: future honesty (Honest_composite), hypocrisy (Hypocrisy_composite)
 

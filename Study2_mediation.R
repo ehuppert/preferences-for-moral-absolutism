@@ -11,6 +11,7 @@ s2 <- read.csv(here("HypocrisyStudy2_cleaned.csv")) #265
 
 s2$ID <- as.factor(s2$ID)
 s2$Proclamation <- as.factor(s2$Proclamation)
+levels(s2$Proclamation)
 
 # Add in composite variables time two
 #Hypocrisy
@@ -52,13 +53,9 @@ control_exclude_full$Proclamation <- as.factor(control_exclude_full$Proclamation
 control_exclude_full$Proclamation <- droplevels(control_exclude_full$Proclamation)
 levels(control_exclude_full$Proclamation)
 
-#re-order proclamation levels for ease of interpreation
-control_exclude_full$Proclamation <- factor(control_exclude_full$Proclamation, 
-                                            levels = c("flexible", "absolute"), 
-                                            labels = c("flexible", "absolute"))
 
 #MORAL 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (0 = absolute, 1 = flexible)
 
 #Mediators: time two future honesty (Honest_composite2_t2), hypocrisy (Hypocrisy_composite2)
 
