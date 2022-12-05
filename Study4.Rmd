@@ -1,5 +1,5 @@
 ---
-title: "Study4"
+title: "Study 5"
 author: "Elizabeth Huppert"
 date: "1/14/2020"
 output: pdf_document
@@ -28,7 +28,7 @@ library(emmeans)
 
 #read in data
 
-s4 <- read.csv(here("HypocrisyStudy4_cleaned.csv"))
+s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv"))
 
 ```
 
@@ -70,8 +70,8 @@ Pref = Attitudes towards honesty; 1-5 statement
 # Factorize Subject (id) and Trust (rv game pass or rely)
 
 ```{r}
-s4$ID <- as.factor(s4$ID)
-s4$rv_f <- as.factor(s4$rv)
+s5$ID <- as.factor(s5$ID)
+s5$rv_f <- as.factor(s5$rv)
 ```
 
 #Composite Evaluation Variables
@@ -80,29 +80,29 @@ Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Hypocrisy
-hypocrisy_4_check  <- data.frame(s4$Hypocrisy_1, s4$Hypocrisy_2, s4$Hypocrisy_3, s4$Hypocrisy_4, s4$Hypocrisy_5)
+hypocrisy_4_check  <- data.frame(s5$Hypocrisy_1, s5$Hypocrisy_2, s5$Hypocrisy_3, s5$Hypocrisy_4, s5$Hypocrisy_5)
 summary(hypocrisy_4_check)
 describe(hypocrisy_4_check)
 psych::alpha(hypocrisy_4_check) #alpha = 0.96
-s4 <- mutate(s4, Hypocrisy_composite4 = ((s4$Hypocrisy_1 + s4$Hypocrisy_2 + s4$Hypocrisy_3 + s4$Hypocrisy_4 + s4$Hypocrisy_5)/5))
+s5 <- mutate(s5, Hypocrisy_composite4 = ((s5$Hypocrisy_1 + s5$Hypocrisy_2 + s5$Hypocrisy_3 + s5$Hypocrisy_4 + s5$Hypocrisy_5)/5))
                                             
 #Morality
-moral_4_check <- data.frame(s4$Moral_1, s4$Moral_2, s4$Moral_3)
+moral_4_check <- data.frame(s5$Moral_1, s5$Moral_2, s5$Moral_3)
 summary(moral_4_check)
 describe(moral_4_check)
 psych::alpha(moral_4_check) #alpha = 0.98
-s4 <- mutate(s4, Moral_composite4 = ((s4$Moral_1 + s4$Moral_2 + s4$Moral_3)/3))
+s5 <- mutate(s5, Moral_composite4 = ((s5$Moral_1 + s5$Moral_2 + s5$Moral_3)/3))
 
 #Commitment to Honesty
-honest_4_check <- data.frame(s4$Honest_frequency, s4$Honest_likely, s4$Honest_extreme, s4$Honest_committment)
+honest_4_check <- data.frame(s5$Honest_frequency, s5$Honest_likely, s5$Honest_extreme, s5$Honest_committment)
 summary(honest_4_check)
 describe(honest_4_check)
 psych::alpha(honest_4_check) #alpha = 0.92
-s4 <- mutate(s4, Honest_composite4 = ((s4$Honest_frequency + s4$Honest_likely + s4$Honest_extreme + s4$Honest_committment)/4))
+s5 <- mutate(s5, Honest_composite4 = ((s5$Honest_frequency + s5$Honest_likely + s5$Honest_extreme + s5$Honest_committment)/4))
                                              
 #Social Influence
-cor.test(s4$Social_benefit1, s4$Social_benefit2) #r = 0.84
-s4 <- mutate(s4, SI_composite4 = ((s4$Social_benefit1 + s4$Social_benefit2)/2))
+cor.test(s5$Social_benefit1, s5$Social_benefit2) #r = 0.84
+s5 <- mutate(s5, SI_composite4 = ((s5$Social_benefit1 + s5$Social_benefit2)/2))
 
 ```
 
@@ -118,7 +118,7 @@ SI_composite4 = social influence composite of 2 items  (Ratings: 1-7)
 
 ```{r}
 #ANOVA
-hypocrisy_4.afex <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + Error(ID), s4)
+hypocrisy_4.afex <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + Error(ID), s5)
 summary(hypocrisy_4.afex)
 anova_apa(hypocrisy_4.afex)
 
@@ -128,24 +128,24 @@ anova_apa(hypocrisy_4.afex)
 
 ```{r}
 #Cells
-tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$behavior), mean)
-tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$behavior), sd)
-tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$behavior), length)
+tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$behavior), mean)
+tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$behavior), sd)
+tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$behavior), length)
 
 #Across Proclamation
-tapply(s4$Hypocrisy_composite4, s4$proclamation, mean)
-tapply(s4$Hypocrisy_composite4, s4$proclamation, sd)
-tapply(s4$Hypocrisy_composite4, s4$proclamation, length)
+tapply(s5$Hypocrisy_composite4, s5$proclamation, mean)
+tapply(s5$Hypocrisy_composite4, s5$proclamation, sd)
+tapply(s5$Hypocrisy_composite4, s5$proclamation, length)
 
 #Across Behavior
-tapply(s4$Hypocrisy_composite4, s4$behavior, mean)
-tapply(s4$Hypocrisy_composite4, s4$behavior, sd)
-tapply(s4$Hypocrisy_composite4, s4$behavior, length)
+tapply(s5$Hypocrisy_composite4, s5$behavior, mean)
+tapply(s5$Hypocrisy_composite4, s5$behavior, sd)
+tapply(s5$Hypocrisy_composite4, s5$behavior, length)
 
 #Overall
-mean(s4$Hypocrisy_composite4)
-sd(s4$Hypocrisy_composite4)
-length(s4$Hypocrisy_composite4)
+mean(s5$Hypocrisy_composite4)
+sd(s5$Hypocrisy_composite4)
+length(s5$Hypocrisy_composite4)
 
 ```
 
@@ -155,25 +155,25 @@ length(s4$Hypocrisy_composite4)
 #How does behavior vary by proclamation type?
 #Subset for main effects tests
 
-never_s4 <- s4 %>%
+never_s5 <- s5 %>%
   filter(proclamation == "never") #201 - never
 
-rarely_s4 <- s4 %>%
+rarely_s5 <- s5 %>%
   filter(proclamation == "rarely") #197 - rarely
 
-sometimes_s4 <- s4 %>%
+sometimes_s5 <- s5 %>%
   filter(proclamation == "sometimes") #198 - never
 
 
 #Subset for one level of one factor 
 
-never_exclude_5 <- s4 %>%
+never_exclude_5 <- s5 %>%
   filter(proclamation != "never")  #395, rarely and sometimes
 
-rarely_exclude_5 <- s4 %>%
+rarely_exclude_5 <- s5 %>%
   filter(proclamation != "rarely") #399, never and sometimes
 
-sometimes_exclude_5 <- s4 %>%
+sometimes_exclude_5 <- s5 %>%
   filter(proclamation != "sometimes") #398, never and rarely
 
 
@@ -247,7 +247,7 @@ t.test(Hypocrisy_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
 t_apa(t.test(Hypocrisy_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-hyp_model = aov_ez('ID', 'Hypocrisy_composite4', s4,
+hyp_model = aov_ez('ID', 'Hypocrisy_composite4', s5,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
@@ -268,7 +268,7 @@ pairs(post3)
 
 ```{r}
 #ANOVA
-moral_4.afex <- aov_car(Moral_composite4 ~ proclamation * behavior + Error(ID), s4)
+moral_4.afex <- aov_car(Moral_composite4 ~ proclamation * behavior + Error(ID), s5)
 summary(moral_4.afex)
 anova_apa(moral_4.afex)
 
@@ -278,24 +278,24 @@ anova_apa(moral_4.afex)
 
 ```{r}
 #Cells
-tapply(s4$Moral_composite4, list(s4$proclamation, s4$behavior), mean)
-tapply(s4$Moral_composite4, list(s4$proclamation, s4$behavior), sd)
-tapply(s4$Moral_composite4, list(s4$proclamation, s4$behavior), length)
+tapply(s5$Moral_composite4, list(s5$proclamation, s5$behavior), mean)
+tapply(s5$Moral_composite4, list(s5$proclamation, s5$behavior), sd)
+tapply(s5$Moral_composite4, list(s5$proclamation, s5$behavior), length)
 
 #Across Proclamation
-tapply(s4$Moral_composite4, s4$proclamation, mean)
-tapply(s4$Moral_composite4, s4$proclamation, sd)
-tapply(s4$Moral_composite4, s4$proclamation, length)
+tapply(s5$Moral_composite4, s5$proclamation, mean)
+tapply(s5$Moral_composite4, s5$proclamation, sd)
+tapply(s5$Moral_composite4, s5$proclamation, length)
 
 #Across behavior
-tapply(s4$Moral_composite4, s4$behavior, mean)
-tapply(s4$Moral_composite4, s4$behavior, sd)
-tapply(s4$Moral_composite4, s4$behavior, length)
+tapply(s5$Moral_composite4, s5$behavior, mean)
+tapply(s5$Moral_composite4, s5$behavior, sd)
+tapply(s5$Moral_composite4, s5$behavior, length)
 
 #Overall
-mean(s4$Moral_composite4)
-sd(s4$Moral_composite4)
-length(s4$Moral_composite4)
+mean(s5$Moral_composite4)
+sd(s5$Moral_composite4)
+length(s5$Moral_composite4)
 
 ```
 
@@ -347,7 +347,7 @@ t.test(Moral_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
 t_apa(t.test(Moral_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-mor_model = aov_ez('ID', 'Moral_composite4', s4,
+mor_model = aov_ez('ID', 'Moral_composite4', s5,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
@@ -387,7 +387,7 @@ d4 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.3354498 (0.34)
 
 ```{r}
 # ANOVA
-honesty_4.afex <- aov_car(Honest_composite4 ~ proclamation * behavior + Error(ID), s4)
+honesty_4.afex <- aov_car(Honest_composite4 ~ proclamation * behavior + Error(ID), s5)
 summary(honesty_4.afex)
 anova_apa(honesty_4.afex)
 ```
@@ -396,24 +396,24 @@ anova_apa(honesty_4.afex)
 
 ```{r}
 #Cells
-tapply(s4$Honest_composite4, list(s4$proclamation, s4$behavior), mean)
-tapply(s4$Honest_composite4, list(s4$proclamation, s4$behavior), sd)
-tapply(s4$Honest_composite4, list(s4$proclamation, s4$behavior), length)
+tapply(s5$Honest_composite4, list(s5$proclamation, s5$behavior), mean)
+tapply(s5$Honest_composite4, list(s5$proclamation, s5$behavior), sd)
+tapply(s5$Honest_composite4, list(s5$proclamation, s5$behavior), length)
 
 #Across Proclamation
-tapply(s4$Honest_composite4, s4$proclamation, mean)
-tapply(s4$Honest_composite4, s4$proclamation, sd)
-tapply(s4$Honest_composite4, s4$proclamation, length)
+tapply(s5$Honest_composite4, s5$proclamation, mean)
+tapply(s5$Honest_composite4, s5$proclamation, sd)
+tapply(s5$Honest_composite4, s5$proclamation, length)
 
 #Across Behavior
-tapply(s4$Honest_composite4, s4$behavior, mean)
-tapply(s4$Honest_composite4, s4$behavior, sd)
-tapply(s4$Honest_composite4, s4$behavior, length)
+tapply(s5$Honest_composite4, s5$behavior, mean)
+tapply(s5$Honest_composite4, s5$behavior, sd)
+tapply(s5$Honest_composite4, s5$behavior, length)
 
 #Overall
-mean(s4$Honest_composite4)
-sd(s4$Honest_composite4)
-length(s4$Honest_composite4)
+mean(s5$Honest_composite4)
+sd(s5$Honest_composite4)
+length(s5$Honest_composite4)
 
 ```
 
@@ -463,7 +463,7 @@ t.test(Honest_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
 t_apa(t.test(Honest_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-hon_model = aov_ez('ID', 'Honest_composite4', s4,
+hon_model = aov_ez('ID', 'Honest_composite4', s5,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
@@ -482,7 +482,7 @@ pairs(post2)
 
 ```{r}
 #ANOVA
-SI.afex <- aov_car(SI_composite4 ~ proclamation * behavior + Error(ID), s4)
+SI.afex <- aov_car(SI_composite4 ~ proclamation * behavior + Error(ID), s5)
 summary(SI.afex )
 anova_apa(SI.afex)
 ```
@@ -491,24 +491,24 @@ anova_apa(SI.afex)
 
 ```{r}
 #Cells
-tapply(s4$SI_composite4, list(s4$proclamation, s4$behavior), mean)
-tapply(s4$SI_composite4, list(s4$proclamation, s4$behavior), sd)
-tapply(s4$SI_composite4, list(s4$proclamation, s4$behavior), length)
+tapply(s5$SI_composite4, list(s5$proclamation, s5$behavior), mean)
+tapply(s5$SI_composite4, list(s5$proclamation, s5$behavior), sd)
+tapply(s5$SI_composite4, list(s5$proclamation, s5$behavior), length)
 
 #Across Proclamation
-tapply(s4$SI_composite4, s4$proclamation, mean)
-tapply(s4$SI_composite4, s4$proclamation, sd)
-tapply(s4$SI_composite4, s4$proclamation, length)
+tapply(s5$SI_composite4, s5$proclamation, mean)
+tapply(s5$SI_composite4, s5$proclamation, sd)
+tapply(s5$SI_composite4, s5$proclamation, length)
 
 #Across Behavior
-tapply(s4$SI_composite4, s4$behavior, mean)
-tapply(s4$SI_composite4, s4$behavior, sd)
-tapply(s4$SI_composite4, s4$behavior, length)
+tapply(s5$SI_composite4, s5$behavior, mean)
+tapply(s5$SI_composite4, s5$behavior, sd)
+tapply(s5$SI_composite4, s5$behavior, length)
 
 #Overall
-mean(s4$SI_composite4)
-sd(s4$SI_composite4)
-length(s4$SI_composite4)
+mean(s5$SI_composite4)
+sd(s5$SI_composite4)
+length(s5$SI_composite4)
 
 ```
 
@@ -558,7 +558,7 @@ t.test(SI_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
 t_apa(t.test(SI_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-SI_model = aov_ez('ID', 'SI_composite4', s4,
+SI_model = aov_ez('ID', 'SI_composite4', s5,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
@@ -576,36 +576,36 @@ pairs(post1)
 # Reported Model
 rv_4.glm <- glm(rv_f ~ sometimes + rarely + behavlie 
                 + sometimes*behavlie + rarely*behavlie, 
-                data=s4, family = binomial(link = "logit"))
+                data=s5, family = binomial(link = "logit"))
 summary(rv_4.glm)
 
 # Replicate with factorized dummy variables to confirm 
-s4$sometimes_f <- as.factor(s4$sometimes)
-s4$rarely_f <- as.factor(s4$rarely)
-s4$behavlie_f <- as.factor(s4$behavlie)
+s5$sometimes_f <- as.factor(s5$sometimes)
+s5$rarely_f <- as.factor(s5$rarely)
+s5$behavlie_f <- as.factor(s5$behavlie)
 
 #re-run model
 rv_4_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f 
                 + sometimes_f*behavlie_f + rarely_f*behavlie_f, 
-                data=s4, family = binomial(link = "logit"))
+                data=s5, family = binomial(link = "logit"))
 summary(rv_4_test.glm)
 
 #Exploratory
 rv.glm4_2 <- glm(rv ~ never + rarely + behavlie + 
                 never*behavlie + rarely*behavlie,
-              data=s4, family = binomial(link = "logit"))
+              data=s5, family = binomial(link = "logit"))
 summary(rv.glm4_2)
 
 # Replicate with factorized dummy variables to confirm 
-s4$never_f <- as.factor(s4$never)
+s5$never_f <- as.factor(s5$never)
 
 rv_test.glm4_2 <- glm(rv ~ never_f + rarely_f + behavlie_f + 
                 never_f*behavlie_f + rarely_f*behavlie_f,
-              data=s4, family = binomial(link = "logit"))
+              data=s5, family = binomial(link = "logit"))
 summary(rv_test.glm4_2)
 
 #Frequencies - proclamation
-table(s4$proclamation, s4$rv_f) 
+table(s5$proclamation, s5$rv_f) 
 
 #never rely:  95/201, 47%
 #rarely rely: 83/197, 42%
@@ -617,8 +617,8 @@ table(s4$proclamation, s4$rv_f)
 #sometimes 137/198 verify, 69%
 
 #Frequencies proclamation and behavior by cell
-table(s4$proclamation, s4$behavior, s4$rv_f)
-table(s4$behavior, s4$rv_f) 
+table(s5$proclamation, s5$behavior, s5$rv_f)
+table(s5$behavior, s5$rv_f) 
 
 #178 prosocial rely, 117 verify - 178/295; 60%
 #61 selfish rely, 240 selfish verify - 61/01 - 20%
@@ -653,7 +653,7 @@ summary(rv_PL6.glm)
 ```{r}
 #Distributions
 
-table(s4$pref)
+table(s5$pref)
 #109 "never" (5) / 596, 18%
 #330 "rarely" (4) / 596, 55%
 #144 "sometimes" (3) / 596, 24%
@@ -667,10 +667,10 @@ table(s4$pref)
 
 ```{r}
 #standardize - reported
-s4 <- mutate(s4, pref.center = scale(s4$pref))
+s5 <- mutate(s5, pref.center = scale(s5$pref))
 
 #mean center - for comparison (same key results)
-s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
+s5 <- mutate(s5, pref.center.2 = scale(s5$pref, scale = FALSE))
 
 ```
 
@@ -679,112 +679,112 @@ s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
 ```{r}
 #Preferences Regression - Hypocrisy
 #Scaled by mean and SD
-hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s4)
+hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s5)
 summary(hypocrisy_4.lm )
 
 #Main effects
-hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ sometimes + pref.center, data= s4)
+hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ sometimes + pref.center, data= s5)
 summary(hypocrisy_4.lm2)
 
 #Mean centered for reference
-hypocrisy_4.lm3 <- lm(Hypocrisy_composite4 ~ sometimes*pref.center.2, data= s4)
+hypocrisy_4.lm3 <- lm(Hypocrisy_composite4 ~ sometimes*pref.center.2, data= s5)
 summary(hypocrisy_4.lm3)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
-tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), mean)
-tapply(s4$Hypocrisy_composite4, list(s4$proclamation, s4$pref), sd)
-tapply(s4$Hypocrisy_composite4, list(s4$sometimes, s4$pref), mean)
-tapply(s4$Hypocrisy_composite4, s4$proclamation, mean)
-tapply(s4$Hypocrisy_composite4, s4$pref, mean)
-tapply(s4$Hypocrisy_composite4, s4$rarely, mean)
-tapply(s4$Hypocrisy_composite4, s4$rarely, sd)
-tapply(s4$Hypocrisy_composite4, s4$sometimes, mean)
-tapply(s4$Hypocrisy_composite4, s4$sometimes, sd)
+tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$pref), mean)
+tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$pref), sd)
+tapply(s5$Hypocrisy_composite4, list(s5$sometimes, s5$pref), mean)
+tapply(s5$Hypocrisy_composite4, s5$proclamation, mean)
+tapply(s5$Hypocrisy_composite4, s5$pref, mean)
+tapply(s5$Hypocrisy_composite4, s5$rarely, mean)
+tapply(s5$Hypocrisy_composite4, s5$rarely, sd)
+tapply(s5$Hypocrisy_composite4, s5$sometimes, mean)
+tapply(s5$Hypocrisy_composite4, s5$sometimes, sd)
 
 #Preferences Regression - Morality
 #Scaled by mean and SD
-moral_4.lm <- lm(Moral_composite4 ~ sometimes*pref.center, data= s4)
+moral_4.lm <- lm(Moral_composite4 ~ sometimes*pref.center, data= s5)
 summary(moral_4.lm)
 
-moral_4.lm2 <- lm(Moral_composite4 ~ sometimes + pref.center, data= s4)
+moral_4.lm2 <- lm(Moral_composite4 ~ sometimes + pref.center, data= s5)
 summary(moral_4.lm2)
 
 #Mean centered for reference
-moral_4.lm3 <- lm(Moral_composite4 ~ sometimes*pref.center.2, data= s4)
+moral_4.lm3 <- lm(Moral_composite4 ~ sometimes*pref.center.2, data= s5)
 summary(moral_4.lm3)
 
 #Look at mean morality ratings by proclamation and preferences 
-tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), mean)
-tapply(s4$Moral_composite4, list(s4$proclamation, s4$pref), sd)
-tapply(s4$Moral_composite4, list(s4$sometimes, s4$pref), mean)
-tapply(s4$Moral_composite4, s4$proclamation, mean)
-tapply(s4$Moral_composite4, s4$sometimes, mean)
-tapply(s4$Moral_composite4, s4$sometimes, sd)
-tapply(s4$Moral_composite4, s4$rarely, mean)
-tapply(s4$Moral_composite4, s4$rarely, sd)
+tapply(s5$Moral_composite4, list(s5$proclamation, s5$pref), mean)
+tapply(s5$Moral_composite4, list(s5$proclamation, s5$pref), sd)
+tapply(s5$Moral_composite4, list(s5$sometimes, s5$pref), mean)
+tapply(s5$Moral_composite4, s5$proclamation, mean)
+tapply(s5$Moral_composite4, s5$sometimes, mean)
+tapply(s5$Moral_composite4, s5$sometimes, sd)
+tapply(s5$Moral_composite4, s5$rarely, mean)
+tapply(s5$Moral_composite4, s5$rarely, sd)
 
 
 #Preferences Regression - Commitment to Honesty
 #Scaled by mean and SD
-honest_4.lm <- lm(Honest_composite4 ~ sometimes*pref.center, data= s4)
+honest_4.lm <- lm(Honest_composite4 ~ sometimes*pref.center, data= s5)
 summary(honest_4.lm)
 
 #Main effects
-honest_4.lm2 <- lm(Honest_composite4 ~ sometimes + pref.center, data= s4)
+honest_4.lm2 <- lm(Honest_composite4 ~ sometimes + pref.center, data= s5)
 summary(honest_4.lm2)
 
 #Mean centered for reference
-honest_4.lm3 <- lm(Honest_composite4 ~ sometimes*pref.center.2, data= s4)
+honest_4.lm3 <- lm(Honest_composite4 ~ sometimes*pref.center.2, data= s5)
 summary(honest_4.lm3)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
-tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), mean)
-tapply(s4$Honest_composite4, list(s4$proclamation, s4$pref), sd)
-tapply(s4$Honest_composite4, list(s4$sometimes, s4$pref), mean)
-tapply(s4$Honest_composite4, s4$proclamation, mean)
-tapply(s4$Honest_composite4, s4$sometimes, mean)
-tapply(s4$Honest_composite4, s4$sometimes, sd)
-tapply(s4$Honest_composite4, s4$rarely, mean)
-tapply(s4$Honest_composite4, s4$rarely, sd)
+tapply(s5$Honest_composite4, list(s5$proclamation, s5$pref), mean)
+tapply(s5$Honest_composite4, list(s5$proclamation, s5$pref), sd)
+tapply(s5$Honest_composite4, list(s5$sometimes, s5$pref), mean)
+tapply(s5$Honest_composite4, s5$proclamation, mean)
+tapply(s5$Honest_composite4, s5$sometimes, mean)
+tapply(s5$Honest_composite4, s5$sometimes, sd)
+tapply(s5$Honest_composite4, s5$rarely, mean)
+tapply(s5$Honest_composite4, s5$rarely, sd)
 
 
 #Preferences Regression - Social Benefit (SI)
 #Scaled by mean and SD
-SI.lm <- lm(SI_composite4 ~ sometimes*pref.center, data= s4)
+SI.lm <- lm(SI_composite4 ~ sometimes*pref.center, data= s5)
 summary(SI.lm )
 
 #Main effects
-SI.lm2 <- lm(SI_composite4 ~ sometimes + pref.center, data= s4)
+SI.lm2 <- lm(SI_composite4 ~ sometimes + pref.center, data= s5)
 summary(SI.lm2)
 
 #Mean centered for reference
-SI.lm3 <- lm(SI_composite4 ~ sometimes*pref.center.2, data= s4)
+SI.lm3 <- lm(SI_composite4 ~ sometimes*pref.center.2, data= s5)
 summary(SI.lm3)
 
 #Look at mean SI ratings by proclamation and preferences 
-tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), mean)
-tapply(s4$SI_composite4, list(s4$proclamation, s4$pref), sd)
-tapply(s4$SI_composite4, s4$sometimes, mean)
-tapply(s4$SI_composite4, s4$sometimes, sd)
-tapply(s4$SI_composite4, s4$rarely, mean)
-tapply(s4$SI_composite4, s4$rarely, sd) 
+tapply(s5$SI_composite4, list(s5$proclamation, s5$pref), mean)
+tapply(s5$SI_composite4, list(s5$proclamation, s5$pref), sd)
+tapply(s5$SI_composite4, s5$sometimes, mean)
+tapply(s5$SI_composite4, s5$sometimes, sd)
+tapply(s5$SI_composite4, s5$rarely, mean)
+tapply(s5$SI_composite4, s5$rarely, sd) 
 
 
 #Logistic Regression (trust) with own attitudes towards honesty
 rv4.4.glm <- glm(rv_f ~ sometimes*pref.center,
-              data=s4, family = binomial(link = "logit"))
+              data=s5, family = binomial(link = "logit"))
 summary(rv4.4.glm) 
 
 #Just main effect model
 rv5.glm <- glm(rv_f ~ sometimes + pref.center,
-              data=s4, family = binomial(link = "logit"))
+              data=s5, family = binomial(link = "logit"))
 summary(rv5.glm)
 
 #Frequencies
-table(s4$pref, s4$proclamation)
-table(s4$rv_f, s4$pref, s4$proclamation)
+table(s5$pref, s5$proclamation)
+table(s5$rv_f, s5$pref, s5$proclamation)
 #0 = verify, 1 = rely
-table(s4$rv_f, s4$pref, s4$proclamation)
+table(s5$rv_f, s5$pref, s5$proclamation)
 #Percentages RELY on never
 #always 1/4 25%
 #often 1/9 11%
@@ -802,7 +802,7 @@ table(s4$rv_f, s4$pref, s4$proclamation)
 #note that separate tables 0 = never/rarely, 1 = sometimes; 
 #within tables, 0 = verify, 1 = rely
 #total per cell
-table(s4$pref)
+table(s5$pref)
 
 #Percentages RELY on never/rarely
 #always 2/4, 50%
@@ -823,19 +823,19 @@ table(s4$pref)
 
 ```{r}
 #Preferences Covariate - Hypocrisy
-Hypocrisy4.pref.center <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + pref.center + Error(ID), s4, factorize = FALSE, anova_table = list(es = "pes"))
+Hypocrisy4.pref.center <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
 summary(Hypocrisy4.pref.center)
 
 #Preferences Covariate- Morality
-Moral4.pref.center <- aov_car(Moral_composite4 ~ proclamation * behavior + pref.center + Error(ID), s4, factorize = FALSE, anova_table = list(es = "pes"))
+Moral4.pref.center <- aov_car(Moral_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
 summary(Moral4.pref.center)
 
 #Preferences Covariate - Future honesty
-honest4.pref.center <- aov_car(Honest_composite4 ~ proclamation * behavior + pref.center + Error(ID), s4, factorize = FALSE, anova_table = list(es = "pes"))
+honest4.pref.center <- aov_car(Honest_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
 summary(honest4.pref.center)
 
 #Preferences Covariate - SI
-SI.pref.center <- aov_car(SI_composite4 ~ proclamation * behavior + pref.center + Error(ID), s4, factorize = FALSE, anova_table = list(es = "pes"))
+SI.pref.center <- aov_car(SI_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
 summary(SI.pref.center)
 
 ```
