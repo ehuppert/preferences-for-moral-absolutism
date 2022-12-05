@@ -307,111 +307,41 @@ rarely_test2 #yes this does, p < .001
 
 # Examine trust between-subjects for only condition shown first
 
+The variable lying-stance refers to the order in which each scenario was presented.
+
+In this variable:
+"relative_first" means the flexible condition was shown first.
+"absolute_first" means the absolute condition was shown first
+
 ```{r}
 #Absolute only  - abtrust, abtrust2
 #Flexible (relative) only - flextrust, flextrust2
  
 #lying_stance: absolute_first, relative_first
  
+#Make trust 1 column
+cp_omit_full$trust1 <- 0
 
-cp_omit_full$trust1 <- "NULL"
-cp_omit_full$trust1 <- cp_omit_full$abtrust[cp_omit_full$lying_stance == "absolute_first"]
-cp_omit_full$trust1 <-cp_omit_full$flextrust[cp_omit_full$lying_stance == "relative_first"]
+#Trust 1 values
+#Absolute
+cp_omit_full$trust1[cp_omit_full$lying_stance == "absolute_first"] <- cp_omit_full$abtrust[cp_omit_full$lying_stance == "absolute_first"]
+#Fleixble
+cp_omit_full$trust1[cp_omit_full$lying_stance == "relative_first"] <-cp_omit_full$flextrust[cp_omit_full$lying_stance == "relative_first"]
+#ttest
+t.test(cp_omit_full$trust1 ~ cp_omit_full$lying_stance, var.equal = TRUE)
 
-p1c$lie[p1c$Q653 == "Lying is always okay."] <- "always"
+#Trust 2
+#Make a trust column
+cp_omit_full$trust2 <- 0
 
-cp_omit_full$trust1 <- 
-  cp_omit_full$abtrust[CP$lyingstance == "absolute_first"]
-cp_omit_full$trust1 <-
-  cp_omit_full$flextrust[cp_omit_full$lyingstance == 'relative_first'] <- "flex"
-
-cp_omit_full$trust1 <- "abtrust"[cp_omit_full$lyingstance == 'absolute_first']
-cp_omit_full$trust1 <- "cp_omit_full$flextrust[cp_omit_full$lyingstance == 'relative_first']"
- 
- 
-t.test(CP$trust1 ~ CP$lying_stance)
-```
-
-
-The variable lying-stance refers to the order in which each scenario was presented.
-
-In this variable:
-"relative_first" means the flexible condition was shown first.
-"absolute_first" means the absolute condition was shown first.
-
-```{r}
-#Subset to look at just first scenario
-#absolute_first only includes Lie_stan_abs_nomedia and Lie_stan_abs_media
-#relative_first only includes lie_rel_nomedia and lie_rel_media
-#no media in both variables refers to stance alone
-#media in both variables refers to lie (media revealed lie)
-
-#Subset to only absolute_first
-btwnsubj_test1 <- cp_omit_full %>%
-  filter(lying_stance == "absolute_first") #N = 63
-
-#Remove flexible evaluation from the abs first df
-btwnsubj_test1 <- btwnsubj_test1 %>%
-  select(-flextrust, -flextrust2)
-
-#Subset to only relevant columns for ease of reshape
-btwnsubj_test1 <- btwnsubj_test1 %>%
-  select(CP_Survey_ID, abtrust, abtrust2)
-
-#Subset to just flexible = relative_first
-btwnsubj_test2 <- cp_omit_full %>%
-  filter(lying_stance == "relative_first") #N = 75
-
-#Remove absolute evaluation from the flex first df
-btwnsubj_test2 <- btwnsubj_test2 %>%
-  select(-abtrust, -abtrust2)
-
-#Subset to only relevant columns for ease of reshape
-btwnsubj_test2 <- btwnsubj_test2 %>%
-  select(CP_Survey_ID, flextrust, flextrust2)
-
-#Now btwnsubject_test1 only has absolute evaluations for Ps who saw this first
-#Now btwnsubject_test2 only has flexible evaluations for Ps who saw this first
-#Merge this df, will have N = 138 again but only one set of evaluations/person
-btwnsubj_test3 <- bind_rows(btwnsubj_test1, btwnsubj_test2)
-
-#reshape wide to long
-#trust time one
-btwnsubj_test_long1 <-melt(btwnsubj_test3, 
-                id.vars=c("CP_Survey_ID"),
-                #measure command is for the DV
-                measure.vars=c("abtrust","flextrust"),
-                variable.name="stance_eval",
-                value.name="stance.value"
-)
-
-#trust time two
-btwnsubj_test_long2 <-melt(btwnsubj_test3, 
-                id.vars=c("CP_Survey_ID"),
-                #measure command is for the DV
-                measure.vars=c("abtrust2","flextrust2"),
-                variable.name="behav_eval",
-                value.name="behav.value"
-)
-
-#merge btwnsubj_test_long1 and btwnsubj_test_long2
-btwnsubj_test_merge <- rbind(btwnsubj_test_long1, btwnsubj_test_long2)
-
-
-#notes on reviewer
-#abtrust
-#abtrust2
-#flextrust
-#flextrust2
-
-#lying_stance: absolute_first, relative_first
-
-CP$trust1 <- NULL
-CP$trust1 <- CP$abtrust[CP$lyingstance == "absolute_first"]
-CP$trust1 <- CP$flextrust[CP$lyingstance == "relative_first"]
-
-
-t.test(CP$trust1 ~ CP$lying_stance)
+#Trust 2 values
+#Absolute
+cp_omit_full$trust2[cp_omit_full$lying_stance == "absolute_first"] <- cp_omit_full$abtrust2[cp_omit_full$lying_stance == "absolute_first"]
+#Flexible
+cp_omit_full$trust2[cp_omit_full$lying_stance == "relative_first"] <-cp_omit_full$flextrust2[cp_omit_full$lying_stance == "relative_first"]
+#ttest
+t.test(cp_omit_full$trust2 ~ cp_omit_full$lying_stance, var.equal = TRUE)
 
 ```
+
 
