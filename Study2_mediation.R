@@ -52,7 +52,7 @@ glimpse(control_exclude_full$Proclamation)
 control_exclude_full$Proclamation <- as.factor(control_exclude_full$Proclamation)
 control_exclude_full$Proclamation <- droplevels(control_exclude_full$Proclamation)
 levels(control_exclude_full$Proclamation)
-
+#0 = absolute, 1 = flexible
 
 #MORAL 
 #IV: proclamation (0 = absolute, 1 = flexible)

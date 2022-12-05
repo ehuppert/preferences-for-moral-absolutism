@@ -7,7 +7,7 @@ library(psych)
 
 #Read in data
 
-s13 <- read.csv(here("HypocrisyStudySI7_cleaned.csv")) #265
+s13 <- read.csv(here("HypocrisyStudySI_7.csv")) #265
 
 
 # Add in composite variables

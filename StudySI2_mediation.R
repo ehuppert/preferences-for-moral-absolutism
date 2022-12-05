@@ -11,9 +11,9 @@ library(psych)
 
 s8 <- read.csv(here("HypocrisyStudySI_2.csv"))
 
-#Reorder proclamation
-
-s8$proclamation <- factor(s8$proclamation, levels = c("ambiguous", "absolute"), labels = c("flexible", "absolute"))
+#0 = absolute, 1 = flexible
+s8$proclamation <- as.factor(s8$proclamation)
+levels(s8$proclamation)
 
 #Composite Evaluation Variables
 
@@ -30,7 +30,7 @@ s8<- mutate(s8, moral7_composite  = ((s8$moral_1 + s8$moral_2)/2))
 
 #Model
 
-#IV: proclamation (0 = flexible, 1 = absolute)
+#IV: proclamation (0 = absolute, 1 = flexible)
 
 #Mediators: hypocrisy (hypocrisy7_composite), guilt (discomfort_1)
 

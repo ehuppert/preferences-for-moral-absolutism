@@ -13,7 +13,7 @@ s1 <- read.csv(here("HypocrisyStudy1_cleaned.csv"))
 
 s1$Proclamation <- as.factor(s1$Proclamation)
 levels(s1$Proclamation)
-#basolute = 0, flexible = 1
+#absolute = 0, flexible = 1
 
 #Create composite variables
 

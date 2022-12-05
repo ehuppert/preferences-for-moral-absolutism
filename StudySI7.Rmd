@@ -28,7 +28,7 @@ library(lavaan)
 
 #read in data
 
-s13 <- read.csv(here("HypocrisyStudySI7_cleaned.csv")) #265
+s13 <- read.csv(here("HypocrisyStudySI_7.csv")) #265
 ```
 
 Note: The current csv file imported for this analysis reflects cleaned data. 
