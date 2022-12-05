@@ -32,7 +32,7 @@ library(emmeans)
 
 #read in data
 
-s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv"))
+s3 <- read.csv(here("HypocrisyStudy3_cleaned.csv"))
 
 ```
 
@@ -63,7 +63,7 @@ Trustbeh = KEEP or PASS in The Coin Flip Game
 # Recode proclamation for ease of interpretation
 
 ```{r}
-s5$proclamation <- factor(s5$proclamation, levels = c("ambiguous", "absolute"))
+s3$proclamation <- factor(s3$proclamation, levels = c("ambiguous", "absolute"))
 ```
 
 # Composite evaluation variables
@@ -73,68 +73,68 @@ Items with high agreement were combined as per our pre-registration.
 ```{r}
 #Time one 
 #Hypocrisy
-hypocrisy_5_check <- data.frame(s5$hypocrisy_1, s5$hypocrisy_2, s5$hypocrisy_4, s5$hypocrisy_5)
+hypocrisy_5_check <- data.frame(s3$hypocrisy_1, s3$hypocrisy_2, s3$hypocrisy_4, s3$hypocrisy_5)
 summary(hypocrisy_5_check)
 describe(hypocrisy_5_check)
 psych::alpha(hypocrisy_5_check) #alpha = 0.89 
-s5 <- mutate(s5, Hypocrisy.1_composite5 = ((s5$hypocrisy_1 + s5$hypocrisy_2 + s5$hypocrisy_4 + s5$hypocrisy_5)/4))
+s3 <- mutate(s3, Hypocrisy.1_composite5 = ((s3$hypocrisy_1 + s3$hypocrisy_2 + s3$hypocrisy_4 + s3$hypocrisy_5)/4))
 
 #Morality
-morality5_check <- data.frame(s5$moral_1, s5$moral_2, s5$moral_3)
+morality5_check <- data.frame(s3$moral_1, s3$moral_2, s3$moral_3)
 summary(morality5_check )
 describe(morality5_check )
 psych::alpha(morality5_check ) #alpha = 0.97
-s5 <- mutate(s5, Moral.1_composite5 = ((s5$moral_1 +s5$moral_2 + s5$moral_3)/3))
+s3 <- mutate(s3, Moral.1_composite5 = ((s3$moral_1 +s3$moral_2 + s3$moral_3)/3))
 
 #Commitment to Honesty
-Honest5_df <- data.frame(s5$honest_freq_1, s5$honest_likely_1, s5$honest_extreme_1, s5$committment_honesty_1)
+Honest5_df <- data.frame(s3$honest_freq_1, s3$honest_likely_1, s3$honest_extreme_1, s3$committment_honesty_1)
 summary(Honest5_df)
 describe(Honest5_df)
 psych::alpha(Honest5_df) #alpha = 0.85
-s5 <- mutate(s5, Honest.1_composite5 = ((s5$honest_freq_1 + s5$honest_likely_1 + s5$honest_extreme_1 + s5$committment_honesty_1)/4))
+s3 <- mutate(s3, Honest.1_composite5 = ((s3$honest_freq_1 + s3$honest_likely_1 + s3$honest_extreme_1 + s3$committment_honesty_1)/4))
 
 
 #Time two  
 #Hypocrisy
-hypocrisy_5_check.2 <- data.frame(s5$hypocrisy_1.2, s5$hypocrisy_2.2, s5$hypocrisy_4.2, s5$hypocrisy_5.2)
+hypocrisy_5_check.2 <- data.frame(s3$hypocrisy_1.2, s3$hypocrisy_2.2, s3$hypocrisy_4.2, s3$hypocrisy_5.2)
 summary(hypocrisy_5_check.2)
 describe(hypocrisy_5_check.2)
 psych::alpha(hypocrisy_5_check.2) #alpha = 0.91
-s5 <- mutate(s5, 
-             Hypocrisy.2_composite5 = (s5$hypocrisy_1.2 + s5$hypocrisy_2.2 + s5$hypocrisy_4.2 + s5$hypocrisy_5.2)/4)
+s3 <- mutate(s3, 
+             Hypocrisy.2_composite5 = (s3$hypocrisy_1.2 + s3$hypocrisy_2.2 + s3$hypocrisy_4.2 + s3$hypocrisy_5.2)/4)
 
 #Morality
-morality5_check.2 <- data.frame(s5$moral_1.2, s5$moral_2.2, s5$moral_3.2)
+morality5_check.2 <- data.frame(s3$moral_1.2, s3$moral_2.2, s3$moral_3.2)
 summary(morality5_check.2)
 describe(morality5_check.2)
 psych::alpha(morality5_check.2) #alpha = 0.97
-s5 <- mutate(s5, Moral.2_composite5  = ((s5$moral_1.2+s5$moral_2.2+s5$moral_3.2)/3))
+s3 <- mutate(s3, Moral.2_composite5  = ((s3$moral_1.2+s3$moral_2.2+s3$moral_3.2)/3))
 
 #Commitment to Honesty
-Honest5_df.2  <- data.frame(s5$honest_freq_2, s5$honest_likely_2, s5$honest_extreme_2, s5$committment_honesty_2)
+Honest5_df.2  <- data.frame(s3$honest_freq_2, s3$honest_likely_2, s3$honest_extreme_2, s3$committment_honesty_2)
 summary(Honest5_df.2)
 describe(Honest5_df.2)
 psych::alpha(Honest5_df.2) #alpha = 0.82
-s5 <- mutate(s5, Honest.2_composite5 = ((s5$honest_freq_2 + s5$honest_likely_2 + s5$honest_extreme_2 + s5$committment_honesty_2)/4))
+s3 <- mutate(s3, Honest.2_composite5 = ((s3$honest_freq_2 + s3$honest_likely_2 + s3$honest_extreme_2 + s3$committment_honesty_2)/4))
 
 #Correlation between Morality time 1 and time 2 composite for post-hoc power analysis
-cor.test(s5$Moral.1_composite5, s5$Moral.2_composite5) #r = .58
+cor.test(s3$Moral.1_composite5, s3$Moral.2_composite5) #r = .58
 
 #Supplemental (guilt and moral standards/realism) 
 #Guilt time 1
-cor.test(s5$guilt_1, s5$guilt_2) #r = 0.93
-s5 <- mutate(s5, Guilt_composite = ((s5$guilt_1+s5$guilt_2)/2))
+cor.test(s3$guilt_1, s3$guilt_2) #r = 0.93
+s3 <- mutate(s3, Guilt_composite = ((s3$guilt_1+s3$guilt_2)/2))
 
 #Moral Standards time 1
-cor(s5$moral_standards1, s5$moral_standards1.2)
-cor.test(s5$moral_standards1, s5$moral_standards2) #r = 0.37; not combined
+cor(s3$moral_standards1, s3$moral_standards1.2)
+cor.test(s3$moral_standards1, s3$moral_standards2) #r = 0.37; not combined
 
 #Guilt time 2
-cor.test(s5$guilt_1.2, s5$guilt_2.2) #r = 0.91
-s5 <- mutate(s5, Guilt.2_composite = ((s5$guilt_1.2 + s5$guilt_2.2)/2))
+cor.test(s3$guilt_1.2, s3$guilt_2.2) #r = 0.91
+s3 <- mutate(s3, Guilt.2_composite = ((s3$guilt_1.2 + s3$guilt_2.2)/2))
 
 #Moral Standards time 2
-cor.test(s5$moral_standards1.2, s5$moral_standards2.2) # .48; not combined
+cor.test(s3$moral_standards1.2, s3$moral_standards2.2) # .48; not combined
 
 ```
 
@@ -161,7 +161,7 @@ Honest.2_composite5 = committment to honesty composite of 4 items at timepoint 2
 
 ```{r}
 #Dataframe for Hypocrisy
-hypocrisy_df <-melt(s5, 
+hypocrisy_df <-melt(s3, 
                 id.vars=c("condition", "ID", "proclamation", "order"),
                 #measure command is for the DV
                 measure.vars=c("Hypocrisy.1_composite5","Hypocrisy.2_composite5"),
@@ -249,19 +249,19 @@ length(hypocrisy_df$hypocrisy.value)
 
 #Time 1 vs. 2 on absolute only
 #Paired t-test
-absolute_s5 <- s5 %>%
+absolute_s3 <- s3 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$Hypocrisy.1_composite5, absolute_s5$Hypocrisy.2_composite5, paired = TRUE)
-t_apa(t.test(absolute_s5$Hypocrisy.1_composite5, absolute_s5$Hypocrisy.2_composite5, paired = TRUE))
+t.test(absolute_s3$Hypocrisy.1_composite5, absolute_s3$Hypocrisy.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s3$Hypocrisy.1_composite5, absolute_s3$Hypocrisy.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
-flexible_s5 <- s5 %>%
+flexible_s3 <- s3 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$Hypocrisy.1_composite5, flexible_s5$Hypocrisy.2_composite5, paired = TRUE)
-t_apa(t.test(flexible_s5$Hypocrisy.1_composite5, flexible_s5$Hypocrisy.2_composite5, paired = TRUE))
+t.test(flexible_s3$Hypocrisy.1_composite5, flexible_s3$Hypocrisy.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s3$Hypocrisy.1_composite5, flexible_s3$Hypocrisy.2_composite5, paired = TRUE))
 
 #Proclamation*Order 
 
@@ -328,7 +328,7 @@ pairs(post2)
 
 ```{r}
 #Dataframe for Morality
-hypo_moral5 <-melt(s5, 
+hypo_moral5 <-melt(s3, 
                        id.vars=c("condition", "ID","proclamation", "order"),
                        #measure command is for the DV
                        measure.vars=c("Moral.1_composite5","Moral.2_composite5"),
@@ -410,56 +410,56 @@ length(hypo_moral5$moral.value)
 
 #Time 1 vs. 2 on absolute only
 #Paired t-test
-absolute_s5 <- s5 %>%
+absolute_s3 <- s3 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$Moral.1_composite5, absolute_s5$Moral.2_composite5, paired = TRUE)
-t_apa(t.test(absolute_s5$Moral.1_composite5, absolute_s5$Moral.2_composite5, paired = TRUE))
+t.test(absolute_s3$Moral.1_composite5, absolute_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s3$Moral.1_composite5, absolute_s3$Moral.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
-flexible_s5 <- s5 %>%
+flexible_s3 <- s3 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5, paired = TRUE)
-t_apa(t.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5, paired = TRUE))
+t.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5, paired = TRUE))
 
 #Look at time 1 vs. 2 on abs game 1 only to test apology idea
-absolute_behav1_s5 <- absolute_s5 %>%
+absolute_behav1_s3 <- absolute_s3 %>%
   filter(order == "game1")
 
-t.test(absolute_behav1_s5$Moral.1_composite5,
-       absolute_behav1_s5$Moral.2_composite5, paired = TRUE)
-t_apa(t.test(absolute_behav1_s5$Moral.1_composite5,
-             absolute_behav1_s5$Moral.2_composite5, paired = TRUE))
+t.test(absolute_behav1_s3$Moral.1_composite5,
+       absolute_behav1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_behav1_s3$Moral.1_composite5,
+             absolute_behav1_s3$Moral.2_composite5, paired = TRUE))
 
 #Look at time 1 vs. 2 on flex game 1 only to test justification idea
-flexible_behav1_s5 <- flexible_s5 %>%
+flexible_behav1_s3 <- flexible_s3 %>%
   filter(order == "game1")
 
-t.test(flexible_behav1_s5$Moral.1_composite5,
-       flexible_behav1_s5$Moral.2_composite5, paired = TRUE)
-t_apa(t.test(flexible_behav1_s5$Moral.1_composite5,
-             flexible_behav1_s5$Moral.2_composite5, paired = TRUE))
+t.test(flexible_behav1_s3$Moral.1_composite5,
+       flexible_behav1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_behav1_s3$Moral.1_composite5,
+             flexible_behav1_s3$Moral.2_composite5, paired = TRUE))
 
 #Order*Time 
 
 #Time 1 vs. 2 on survey1 only
 #Paired t-test
-survey1_s5 <- s5 %>%
+survey1_s3 <- s3 %>%
   filter(order == "survey1")
 
-t.test(survey1_s5$Moral.1_composite5, survey1_s5$Moral.2_composite5, paired = TRUE)
-t_apa(t.test(survey1_s5$Moral.1_composite5, survey1_s5$Moral.2_composite5, paired = TRUE))
+t.test(survey1_s3$Moral.1_composite5, survey1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(survey1_s3$Moral.1_composite5, survey1_s3$Moral.2_composite5, paired = TRUE))
 
 
 #Time 1 vs. 2 on game1 only
 #Paired t-test
-game1_s5 <- s5 %>%
+game1_s3 <- s3 %>%
   filter(order == "game1")
 
-t.test(game1_s5$Moral.1_composite5, game1_s5$Moral.2_composite5, paired = TRUE)
-t_apa(t.test(game1_s5$Moral.1_composite5, game1_s5$Moral.2_composite5, paired = TRUE))
+t.test(game1_s3$Moral.1_composite5, game1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(game1_s3$Moral.1_composite5, game1_s3$Moral.2_composite5, paired = TRUE))
 
 
 #Proclamation*Order
@@ -542,7 +542,7 @@ sqrt((((1.594991^2) + (1.393322^2))/2)) #1.493352
 (4.543573-3.920635)/1.493352 #0.4171408
 
 #Method 2
-d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s5)) 
+d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s3)) 
 d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.4154103 (0.42)
 ```
 
@@ -551,12 +551,12 @@ d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.4154103 (0.42)
 ```{r}
 #Absolute time one vs. time two
 #Use just the absolute dataset
-length(absolute_s5$ID) #306
-cor.test(absolute_s5$Moral.1_composite5, absolute_s5$Moral.2_composite5 )
+length(absolute_s3$ID) #306
+cor.test(absolute_s3$Moral.1_composite5, absolute_s3$Moral.2_composite5 )
 #r = 0.5005439 
 
-length(flexible_s5$ID) #294
-cor.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5 )
+length(flexible_s3$ID) #294
+cor.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5 )
 #r = 0.627813
 ```
 
@@ -564,7 +564,7 @@ cor.test(flexible_s5$Moral.1_composite5, flexible_s5$Moral.2_composite5 )
 
 ```{r}
 #Dataframe for Commitment to Honesty
-hypo_honest5 <-melt(s5, 
+hypo_honest5 <-melt(s3, 
                    id.vars=c("condition", "ID", "proclamation", "order"),
                    #measure command is for the DV
                    measure.vars=c("Honest.1_composite5","Honest.2_composite5"),
@@ -648,37 +648,37 @@ length(hypo_honest5$honest.value)
 
 #Time 1 vs. 2 on absolute only
 #Paired t-test
-absolute_s5 <- s5 %>%
+absolute_s3 <- s3 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$Honest.1_composite5, absolute_s5$Honest.2_composite5, paired = TRUE)
-t_apa(t.test(absolute_s5$Honest.1_composite5, absolute_s5$Honest.2_composite5, paired = TRUE))
+t.test(absolute_s3$Honest.1_composite5, absolute_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s3$Honest.1_composite5, absolute_s3$Honest.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
-flexible_s5 <- s5 %>%
+flexible_s3 <- s3 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$Honest.1_composite5, flexible_s5$Honest.2_composite5, paired = TRUE)
-t_apa(t.test(flexible_s5$Honest.1_composite5, flexible_s5$Honest.2_composite5, paired = TRUE))
+t.test(flexible_s3$Honest.1_composite5, flexible_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s3$Honest.1_composite5, flexible_s3$Honest.2_composite5, paired = TRUE))
 
 #Order*Time 
 
 #Time 1 vs. 2 on survey1 only
 #Paired t-test
-survey1_s5 <- s5 %>%
+survey1_s3 <- s3 %>%
   filter(order == "survey1")
 
-t.test(survey1_s5$Honest.1_composite5, survey1_s5$Honest.2_composite5, paired = TRUE)
-t_apa(t.test(survey1_s5$Honest.1_composite5, survey1_s5$Honest.2_composite5, paired = TRUE))
+t.test(survey1_s3$Honest.1_composite5, survey1_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(survey1_s3$Honest.1_composite5, survey1_s3$Honest.2_composite5, paired = TRUE))
 
 #Time 1 vs. 2 on game1 only
 #Paired t-test
-game1_s5 <- s5 %>%
+game1_s3 <- s3 %>%
   filter(order == "game1")
 
-t.test(game1_s5$Honest.1_composite5, game1_s5$Honest.2_composite5, paired = TRUE)
-t_apa(t.test(game1_s5$Honest.1_composite5, game1_s5$Honest.2_composite5, paired = TRUE))
+t.test(game1_s3$Honest.1_composite5, game1_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(game1_s3$Honest.1_composite5, game1_s3$Honest.2_composite5, paired = TRUE))
 
 
 #Proclamation*Order
@@ -757,7 +757,7 @@ pairs(post3)
 
 ```{r}
 #Dataframe for Moral Standards (moral_standards1) - "This person has high moral standards"
-hypo_ms <-melt(s5, 
+hypo_ms <-melt(s3, 
                     id.vars=c("condition", "ID", "proclamation", "order"),
                     #measure command is for the DV
                     measure.vars=c("moral_standards1","moral_standards1.2"),
@@ -841,19 +841,19 @@ length(hypo_ms$ms.value)
 
 #Time 1 vs. 2 on absolute only
 #Paired t-test
-absolute_s5 <- s5 %>%
+absolute_s3 <- s3 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$moral_standards1, absolute_s5$moral_standards1.2, paired = TRUE)
-t_apa(t.test(absolute_s5$moral_standards1, absolute_s5$moral_standards1.2, paired = TRUE))
+t.test(absolute_s3$moral_standards1, absolute_s3$moral_standards1.2, paired = TRUE)
+t_apa(t.test(absolute_s3$moral_standards1, absolute_s3$moral_standards1.2, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
-flexible_s5 <- s5 %>%
+flexible_s3 <- s3 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$moral_standards1, flexible_s5$moral_standards1.2, paired = TRUE)
-t_apa(t.test(flexible_s5$moral_standards1, flexible_s5$moral_standards1.2, paired = TRUE))
+t.test(flexible_s3$moral_standards1, flexible_s3$moral_standards1.2, paired = TRUE)
+t_apa(t.test(flexible_s3$moral_standards1, flexible_s3$moral_standards1.2, paired = TRUE))
 
 
 #Proclamation*Order 
@@ -919,7 +919,7 @@ pairs(post3)
 
 ```{r}
 #Dataframe for Realism - "This person is realistic"
-hypo_ms2 <-melt(s5, 
+hypo_ms2 <-melt(s3, 
                     id.vars=c("condition", "ID", "proclamation", "order"),
                     #measure command is for the DV
                     measure.vars=c("moral_standards2","moral_standards2.2"),
@@ -1002,37 +1002,37 @@ length(hypo_ms2$ms2.value)
 
 #Time 1 vs. 2 on absolute only
 #Paired t-test
-absolute_s5 <- s5 %>%
+absolute_s3 <- s3 %>%
   filter(proclamation == "absolute")
 
-t.test(absolute_s5$moral_standards2, absolute_s5$moral_standards2.2, paired = TRUE)
-t_apa(t.test(absolute_s5$moral_standards2, absolute_s5$moral_standards2.2, paired = TRUE))
+t.test(absolute_s3$moral_standards2, absolute_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(absolute_s3$moral_standards2, absolute_s3$moral_standards2.2, paired = TRUE))
 
 #Time 1 vs. 2 on flexible only
 #Paired t-test
-flexible_s5 <- s5 %>%
+flexible_s3 <- s3 %>%
   filter(proclamation == "ambiguous")
 
-t.test(flexible_s5$moral_standards2, flexible_s5$moral_standards2.2, paired = TRUE)
-t_apa(t.test(flexible_s5$moral_standards2, flexible_s5$moral_standards2.2, paired = TRUE))
+t.test(flexible_s3$moral_standards2, flexible_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(flexible_s3$moral_standards2, flexible_s3$moral_standards2.2, paired = TRUE))
 
 #Order*Time 
 
 #Time 1 vs. 2 on survey1 only
 #Paired t-test
-survey1_s5 <- s5 %>%
+survey1_s3 <- s3 %>%
   filter(order == "survey1")
 
-t.test(survey1_s5$moral_standards2, survey1_s5$moral_standards2.2, paired = TRUE)
-t_apa(t.test(survey1_s5$moral_standards2, survey1_s5$moral_standards2.2, paired = TRUE))
+t.test(survey1_s3$moral_standards2, survey1_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(survey1_s3$moral_standards2, survey1_s3$moral_standards2.2, paired = TRUE))
 
 #Time 1 vs. 2 on game1 only
 #Paired t-test
-game1_s5 <- s5 %>%
+game1_s3 <- s3 %>%
   filter(order == "game1")
 
-t.test(game1_s5$moral_standards2, game1_s5$moral_standards2.2, paired = TRUE)
-t_apa(t.test(game1_s5$moral_standards2, game1_s5$moral_standards2.2, paired = TRUE))
+t.test(game1_s3$moral_standards2, game1_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(game1_s3$moral_standards2, game1_s3$moral_standards2.2, paired = TRUE))
 
 
 #Proclamation*Order 
@@ -1100,7 +1100,7 @@ pairs(post1)
 
 ```{r}
 #ANOVA (time two only)
-guilt.afex_time <- aov_car(guilt_2.2 ~ proclamation*order + Error(ID), data= s5)
+guilt.afex_time <- aov_car(guilt_2.2 ~ proclamation*order + Error(ID), data= s3)
 summary(guilt.afex_time)
 anova_apa(guilt.afex_time)
 ```
@@ -1109,30 +1109,30 @@ anova_apa(guilt.afex_time)
 
 ```{r}
 #Cells
-tapply(s5$guilt_2.2, 
-       list(s5$proclamation, s5$order), 
+tapply(s3$guilt_2.2, 
+       list(s3$proclamation, s3$order), 
        FUN = mean)
-tapply(s5$guilt_2.2, 
-       list(s5$proclamation, s5$order), 
+tapply(s3$guilt_2.2, 
+       list(s3$proclamation, s3$order), 
        FUN = sd)
-tapply(s5$guilt_2.2, 
-       list(s5$proclamation, s5$order), 
+tapply(s3$guilt_2.2, 
+       list(s3$proclamation, s3$order), 
        FUN = length)
 
 #Across Proclamation
-tapply(s5$guilt_2.2, s5$proclamation,FUN = mean)
-tapply(s5$guilt_2.2, s5$proclamation,FUN = sd)
-tapply(s5$guilt_2.2, s5$proclamation,FUN = length)
+tapply(s3$guilt_2.2, s3$proclamation,FUN = mean)
+tapply(s3$guilt_2.2, s3$proclamation,FUN = sd)
+tapply(s3$guilt_2.2, s3$proclamation,FUN = length)
 
 #Across Order
-tapply(s5$guilt_2.2, s5$order,FUN = mean)
-tapply(s5$guilt_2.2, s5$order,FUN = sd)
-tapply(s5$guilt_2.2, s5$order,FUN = length)
+tapply(s3$guilt_2.2, s3$order,FUN = mean)
+tapply(s3$guilt_2.2, s3$order,FUN = sd)
+tapply(s3$guilt_2.2, s3$order,FUN = length)
 
 #Overall
-mean(s5$guilt_2.2)
-sd(s5$guilt_2.2)
-length(s5$guilt_2.2)
+mean(s3$guilt_2.2)
+sd(s3$guilt_2.2)
+length(s3$guilt_2.2)
 
 ```
 
@@ -1140,19 +1140,19 @@ length(s5$guilt_2.2)
 
 ```{r}
 #Logistic Regression
-model.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s5, family = binomial(link = "logit"))
+model.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s3, family = binomial(link = "logit"))
 summary(model.trust_study5)
 #1 = pass, 0 = keep
 
 #and with no interaction
-model.trust_study5_2 <- glm(trustbeh ~ proclamation + order, data=s5, family = binomial(link = "logit"))
+model.trust_study5_2 <- glm(trustbeh ~ proclamation + order, data=s3, family = binomial(link = "logit"))
 summary(model.trust_study5_2 )
 
-chisq.test(s5$proclamation, s5$trustbeh)
-table(s5$proclamation,s5$trustbeh)
+chisq.test(s3$proclamation, s3$trustbeh)
+table(s3$proclamation,s3$trustbeh)
 
 #percentages who KEEP
-table(s5$proclamation, s5$order, s5$trustbeh)
+table(s3$proclamation, s3$order, s3$trustbeh)
 
 #absolute survey 1 KEEP - 77, 
 #ambiguous survey 1 KEEP - 83

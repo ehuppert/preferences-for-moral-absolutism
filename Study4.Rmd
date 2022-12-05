@@ -1,11 +1,11 @@
 ---
-title: "Study 5"
+title: "Study 4"
 author: "Elizabeth Huppert"
 date: "1/14/2020"
 output: pdf_document
 ---
 
-#Set-up and Read in Data
+# Set-up and Read in Data
 
 You need to install the following packages to run this code:
 
@@ -13,8 +13,8 @@ You need to install the following packages to run this code:
 -tidyverse
 -afex
 -apa
--psych
 -dplyr
+-psych
 -emmeans
 
 ```{r setup, include=FALSE}
@@ -22,15 +22,16 @@ library(here)
 library(tidyverse)
 library(afex)
 library(apa)
-library(psych)
 library(dplyr)
+library(psych)
 library(emmeans)
 
 #read in data
 
-s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv"))
+s4 <- read.csv(here("HypocrisyStudy4_cleaned.csv"))
 
 ```
+
 
 Note: The current csv file imported for this analysis reflects cleaned data. 
 The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
@@ -44,10 +45,10 @@ Key variable names (also see codebook for more information):
 Assignment to one of three conditions: "Lying is never [rarely/sometimes] okay" (absolute vs. ambitious vs. flexible)
 
 2. Behavior:
-Assignment to "prosocial.truth" vs. "selfish.lie" 
+Assignment to "prosocial.lie" vs. "selfish.truth"  
 
 3. Behavlie:
-selfish lie = 1, prosocial truth = 0
+prosocial lie = 1, selfish truth = 0
 
 4. rv:
 Decisions to RELY (1) or VERIFY (0) in the RV game
@@ -61,91 +62,90 @@ Dummy-coded proclamation variable (rarley = 1, sometimes/never = 0)
 7. Never:
 Dummy-coded proclamation variable (never = 1, sometimes/rarely = 0)
 
-
 Supplemental:
 
-Pref = Attitudes towards honesty; 1-5 statement
+Pref = Attitudes towards honesty;1-5 statement
 ("Lying is always [often/sometimes/rarely/never] okay" = 1-5)
 
 # Factorize Subject (id) and Trust (rv game pass or rely)
 
 ```{r}
-s5$ID <- as.factor(s5$ID)
-s5$rv_f <- as.factor(s5$rv)
+s4$ID <- as.factor(s4$ID)
+s4$rv_f <- as.factor(s4$rv)
+s4$proclamation <- as.factor(s4$proclamation)
+s4$behavior <- as.factor(s4$behavior)
 ```
 
-#Composite Evaluation Variables
+# Composite Evaluation Variables
 
 Items with high agreement were combined as per our pre-registration.
 
 ```{r}
 #Hypocrisy
-hypocrisy_4_check  <- data.frame(s5$Hypocrisy_1, s5$Hypocrisy_2, s5$Hypocrisy_3, s5$Hypocrisy_4, s5$Hypocrisy_5)
-summary(hypocrisy_4_check)
-describe(hypocrisy_4_check)
-psych::alpha(hypocrisy_4_check) #alpha = 0.96
-s5 <- mutate(s5, Hypocrisy_composite4 = ((s5$Hypocrisy_1 + s5$Hypocrisy_2 + s5$Hypocrisy_3 + s5$Hypocrisy_4 + s5$Hypocrisy_5)/5))
-                                            
-#Morality
-moral_4_check <- data.frame(s5$Moral_1, s5$Moral_2, s5$Moral_3)
-summary(moral_4_check)
-describe(moral_4_check)
-psych::alpha(moral_4_check) #alpha = 0.98
-s5 <- mutate(s5, Moral_composite4 = ((s5$Moral_1 + s5$Moral_2 + s5$Moral_3)/3))
+hypocrisy3_check <- data.frame(s4$Hypocrisy_1, s4$Hypocrisy_2, s4$Hypocrisy_3, s4$Hypocrisy_4, s4$Hypocrisy_5)
+summary(hypocrisy3_check)
+describe(hypocrisy3_check)
+psych::alpha(hypocrisy3_check) #alpha = 0.92
+s4 <- mutate(s4, 
+             Hypocrisy_composite3 = ((s4$Hypocrisy_1 + s4$Hypocrisy_2 + s4$Hypocrisy_3 + s4$Hypocrisy_4 + s4$Hypocrisy_5)/5))
 
-#Commitment to Honesty
-honest_4_check <- data.frame(s5$Honest_frequency, s5$Honest_likely, s5$Honest_extreme, s5$Honest_committment)
-summary(honest_4_check)
-describe(honest_4_check)
-psych::alpha(honest_4_check) #alpha = 0.92
-s5 <- mutate(s5, Honest_composite4 = ((s5$Honest_frequency + s5$Honest_likely + s5$Honest_extreme + s5$Honest_committment)/4))
-                                             
-#Social Influence
-cor.test(s5$Social_benefit1, s5$Social_benefit2) #r = 0.84
-s5 <- mutate(s5, SI_composite4 = ((s5$Social_benefit1 + s5$Social_benefit2)/2))
+#Morality  
+moral3_check <- data.frame(s4$Moral_1, s4$Moral_2, s4$Moral_3)
+summary(moral3_check)
+describe(moral3_check)
+psych::alpha(moral3_check) #alpha = .96
+s4 <- mutate(s4, 
+             Moral_composite3 = ((s4$Moral_1+s4$Moral_2+s4$Moral_3)/3))
+
+
+#Commitment to Honesty 
+honest3_check <- data.frame(s4$Honest_frequency, s4$Honest_likely, s4$Honest_extreme, s4$Honest_committment)
+summary(honest3_check)
+describe(honest3_check)
+psych::alpha(honest3_check) #alpha = 0.84
+s4<- mutate(s4, 
+            Honest_composite3 = ((s4$Honest_frequency + s4$Honest_likely + s4$Honest_extreme + s4$Honest_committment)/4))
+
 
 ```
 
 Evaluation variables:
 
-Hypocrisy_composite4 = hypocrisy composite of 5 items (Ratings: 1-7)
-Moral_composite4 = morality composite of 3 items (Ratings: 1-7)
-Honest_composite4 = future honesty composite of 4 items (Ratings: 1-7)
-SI_composite4 = social influence composite of 2 items  (Ratings: 1-7)
-
+Hypocrisy_composite3 = hypocrisy composite of 5 items (Ratings: 1-7)
+Moral_composite3 = morality composite of 3 items (Ratings: 1-7)
+Honest_composite3 = commitment to honesty composite of 4 items (Ratings: 1-7)
 
 #Hypocrisy Model
 
 ```{r}
 #ANOVA
-hypocrisy_4.afex <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + Error(ID), s5)
-summary(hypocrisy_4.afex)
-anova_apa(hypocrisy_4.afex)
-
+hypocrisy_3.afex <-aov_car(Hypocrisy_composite3 ~ proclamation*behavior + Error(ID), data=s4)
+summary(hypocrisy_3.afex) 
+anova_apa(hypocrisy_3.afex)
 ```
 
 #Hypocrisy Descriptives
 
 ```{r}
 #Cells
-tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$behavior), mean)
-tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$behavior), sd)
-tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$behavior), length)
+tapply(s4$Hypocrisy_composite3, list(s4$proclamation, s4$behavior), mean)
+tapply(s4$Hypocrisy_composite3, list(s4$proclamation, s4$behavior), sd)
+tapply(s4$Hypocrisy_composite3, list(s4$proclamation, s4$behavior), length)
 
 #Across Proclamation
-tapply(s5$Hypocrisy_composite4, s5$proclamation, mean)
-tapply(s5$Hypocrisy_composite4, s5$proclamation, sd)
-tapply(s5$Hypocrisy_composite4, s5$proclamation, length)
+tapply(s4$Hypocrisy_composite3, s4$proclamation, mean)
+tapply(s4$Hypocrisy_composite3, s4$proclamation, sd)
+tapply(s4$Hypocrisy_composite3, s4$proclamation, length)
 
 #Across Behavior
-tapply(s5$Hypocrisy_composite4, s5$behavior, mean)
-tapply(s5$Hypocrisy_composite4, s5$behavior, sd)
-tapply(s5$Hypocrisy_composite4, s5$behavior, length)
+tapply(s4$Hypocrisy_composite3, s4$behavior, mean)
+tapply(s4$Hypocrisy_composite3, s4$behavior, sd)
+tapply(s4$Hypocrisy_composite3, s4$behavior, length)
 
 #Overall
-mean(s5$Hypocrisy_composite4)
-sd(s5$Hypocrisy_composite4)
-length(s5$Hypocrisy_composite4)
+mean(s4$Hypocrisy_composite3)
+sd(s4$Hypocrisy_composite3)
+length(s4$Hypocrisy_composite3)
 
 ```
 
@@ -155,213 +155,191 @@ length(s5$Hypocrisy_composite4)
 #How does behavior vary by proclamation type?
 #Subset for main effects tests
 
-never_s5 <- s5 %>%
-  filter(proclamation == "never") #201 - never
+never_s4 <- s4 %>%
+  filter(proclamation == "never") #192 - never
 
-rarely_s5 <- s5 %>%
-  filter(proclamation == "rarely") #197 - rarely
+rarely_s4 <- s4 %>%
+  filter(proclamation == "rarely") #202 - rarely
 
-sometimes_s5 <- s5 %>%
-  filter(proclamation == "sometimes") #198 - never
-
+sometimes_s4 <- s4 %>%
+  filter(proclamation == "sometimes") #204 - never
 
 #Subset for one level of one factor 
 
-never_exclude_5 <- s5 %>%
-  filter(proclamation != "never")  #395, rarely and sometimes
+never_exclude <- s4 %>%
+  filter(proclamation != "never")  #406, rarely and sometimes
 
-rarely_exclude_5 <- s5 %>%
-  filter(proclamation != "rarely") #399, never and sometimes
+rarely_exclude <- s4 %>%
+  filter(proclamation != "rarely") #396, never and sometimes
 
-sometimes_exclude_5 <- s5 %>%
-  filter(proclamation != "sometimes") #398, never and rarely
+sometimes_exclude <- s4 %>%
+  filter(proclamation != "sometimes") #394, never and rarely
 
+#Selfish truth - rarely sometimes
+never_truth <- never_exclude %>%
+  filter(behavior == "selfish.truth") #197
 
-#Selfish lie - rarely vs sometimes
-never_lie_5 <- never_exclude_5 %>%
-  filter(behavior  == "selfish.lie") #197
+#Prosocial lie - rarely sometimes
+never_lie <- never_exclude %>%
+  filter(behavior == "prosocial.lie") #209
 
-#Prosocial truth - rarely vs sometimes
-never_truth_5 <- never_exclude_5 %>%
-  filter(behavior == "prosocial.truth") #198
+#Selfish truth - never sometimes
+rarely_truth <- rarely_exclude %>%
+  filter(behavior == "selfish.truth") #194
 
-#Selfish lie - never vs sometimes
-rarely_lie_5 <- rarely_exclude_5 %>%
-  filter(behavior == "selfish.lie") #205
+#Prosocial lie- never sometimes
+rarely_lie <- rarely_exclude %>%
+  filter(behavior == "prosocial.lie") #202
 
-#Prosocial truth - never vs sometimes
-rarely_truth_5 <- rarely_exclude_5 %>%
-  filter(behavior == "prosocial.truth") #194
+#Selfish truth - never rarely
+sometimes_truth <- sometimes_exclude %>%
+  filter(behavior == "selfish.truth") #189
 
-#Selfish lie - never vs rarely
-sometimes_lie_5 <- sometimes_exclude_5 %>%
-  filter(behavior == "selfish.lie") #200
-
-#Prosocial truth - never vs rarely
-sometimes_truth_5 <- sometimes_exclude_5 %>%
-  filter(behavior == "prosocial.truth") #198
-
+#Prosocial lie -never rarely
+sometimes_lie <- sometimes_exclude %>%
+  filter(behavior == "prosocial.lie") #205
 ```
 
 #Hypocrisy Simple Effects - T-tests
 
 ```{r}
-#Main effect
-#Rarely vs. never
-t.test(Hypocrisy_composite4 ~ proclamation, sometimes_exclude_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, sometimes_exclude_5, var.equal = TRUE))
+#T-tests
+#Rarely vs. sometimes, selfish truth
+t.test(Hypocrisy_composite3 ~ proclamation, never_truth, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite3 ~ proclamation, never_truth, var.equal = TRUE))
 
-#Never vs. sometimes  
-t.test(Hypocrisy_composite4 ~ proclamation, rarely_exclude_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, rarely_exclude_5, var.equal = TRUE))
+#Rarely vs. sometimes, prosocial lie
+t.test(Hypocrisy_composite3 ~ proclamation, never_lie, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite3 ~ proclamation, never_lie, var.equal = TRUE))
 
-#Rarely vs. sometimes  
-t.test(Hypocrisy_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE))
+#Never vs. sometimes, selfish truth
+t.test(Hypocrisy_composite3 ~ proclamation, rarely_truth, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite3 ~ proclamation, rarely_truth, var.equal = TRUE))
 
+#Never vs. sometimes, prosocial lie
+t.test(Hypocrisy_composite3 ~ proclamation, rarely_lie, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite3 ~ proclamation, rarely_lie, var.equal = TRUE))
 
-#Within levels of behavior 
+#Never vs. rarely, selfish truth
+t.test(Hypocrisy_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE))
 
-#Selfish lie: sometimes vs. rarely
-t.test(Hypocrisy_composite4 ~ proclamation, never_lie_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, never_lie_5, var.equal = TRUE))
-
-#Prosocial truth: sometimes vs. rarely
-t.test(Hypocrisy_composite4 ~ proclamation, never_truth_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, never_truth_5, var.equal = TRUE))
-
-#Selfish lie: sometimes vs. never
-t.test(Hypocrisy_composite4 ~ proclamation, rarely_lie_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, rarely_lie_5, var.equal = TRUE))
-
-#Prosocial truth: sometimes vs. never
-t.test(Hypocrisy_composite4 ~ proclamation, rarely_truth_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, rarely_truth_5, var.equal = TRUE))
-
-#Selfish lie: never vs. rarely
-t.test(Hypocrisy_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
-
-#Prosocial truth never vs. rarely
-t.test(Hypocrisy_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
-t_apa(t.test(Hypocrisy_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
+#Never vs. rarely, prosocial lie
+t.test(Hypocrisy_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE)
+t_apa(t.test(Hypocrisy_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-hyp_model = aov_ez('ID', 'Hypocrisy_composite4', s5,
+hyp_model = aov_ez('ID', 'Hypocrisy_composite3', s4,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
 print(hyp_model)
-cellmeans <- emmeans(hyp_model, ~ proclamation|behavior)
-print(cellmeans)
-mmeans <- emmeans(hyp_model, ~ proclamation)
-print(mmeans)
-post1 <- emmeans(hyp_model, ~ proclamation)
-pairs(post1)  
-post2 <- emmeans(hyp_model, ~ proclamation|behavior)
-pairs(post2) 
-post3 <- emmeans(hyp_model, ~ proclamation*behavior)
-pairs(post3) 
+means <- emmeans(hyp_model, ~ proclamation|behavior)
+print(means)
+post1 <- emmeans(hyp_model, ~ proclamation|behavior)
+pairs(post1)
+
+
 ```
 
-# Morality Model
+
+#Morality Model
 
 ```{r}
 #ANOVA
-moral_4.afex <- aov_car(Moral_composite4 ~ proclamation * behavior + Error(ID), s5)
-summary(moral_4.afex)
-anova_apa(moral_4.afex)
+moral_3.afex <-aov_car(Moral_composite3 ~ proclamation*behavior + Error(ID), data=s4)
+summary(moral_3.afex) 
+anova_apa(moral_3.afex)
 
 ```
 
-# Morality Descriptives
+
+#Morality Descriptives
 
 ```{r}
 #Cells
-tapply(s5$Moral_composite4, list(s5$proclamation, s5$behavior), mean)
-tapply(s5$Moral_composite4, list(s5$proclamation, s5$behavior), sd)
-tapply(s5$Moral_composite4, list(s5$proclamation, s5$behavior), length)
+tapply(s4$Moral_composite3, list(s4$proclamation, s4$behavior), mean)
+tapply(s4$Moral_composite3, list(s4$proclamation, s4$behavior), sd)
+tapply(s4$Moral_composite3, list(s4$proclamation, s4$behavior), length)
 
 #Across Proclamation
-tapply(s5$Moral_composite4, s5$proclamation, mean)
-tapply(s5$Moral_composite4, s5$proclamation, sd)
-tapply(s5$Moral_composite4, s5$proclamation, length)
+tapply(s4$Moral_composite3, s4$proclamation, mean)
+tapply(s4$Moral_composite3, s4$proclamation, sd)
+tapply(s4$Moral_composite3, s4$proclamation, length)
 
-#Across behavior
-tapply(s5$Moral_composite4, s5$behavior, mean)
-tapply(s5$Moral_composite4, s5$behavior, sd)
-tapply(s5$Moral_composite4, s5$behavior, length)
+#Across Behavior
+tapply(s4$Moral_composite3, s4$behavior, mean)
+tapply(s4$Moral_composite3, s4$behavior, sd)
+tapply(s4$Moral_composite3, s4$behavior, length)
 
 #Overall
-mean(s5$Moral_composite4)
-sd(s5$Moral_composite4)
-length(s5$Moral_composite4)
+mean(s4$Moral_composite3)
+sd(s4$Moral_composite3)
+length(s4$Moral_composite3)
 
 ```
 
-# Morality Simple Effects
+#Morality Simple Effects 
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
 
 ```{r}
-#Main Effect
-#Never vs. rarely
-t.test(Moral_composite4 ~ proclamation, sometimes_exclude_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, sometimes_exclude_5, var.equal = TRUE))
+#Main effect of proclamation
+#Never vs. rarely only
+t.test(Moral_composite3 ~ proclamation, sometimes_exclude, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, sometimes_exclude, var.equal = TRUE))
 
-#Never vs. sometimes 
-t.test(Moral_composite4 ~ proclamation, rarely_exclude_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, rarely_exclude_5, var.equal = TRUE))
+#Never vs. sometimes  only
+t.test(Moral_composite3 ~ proclamation, rarely_exclude, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, rarely_exclude, var.equal = TRUE))
 
-#Rarely vs. sometimes  
-t.test(Moral_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE))
-
-
-#Within levels of behaviors 
-
-#Prosocial truth: rarely vs. sometimes
-t.test(Moral_composite4 ~ proclamation, never_truth_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, never_truth_5, var.equal = TRUE))
-
-#Selfish lie: rarely vs. sometimes
-t.test(Moral_composite4 ~ proclamation, never_lie_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, never_lie_5, var.equal = TRUE))
+#Rarely  vs. sometimes  only
+t.test(Moral_composite3 ~ proclamation, never_exclude, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, never_exclude, var.equal = TRUE))
 
 
-#Prosocial truth: never vs. sometimes
-t.test(Moral_composite4 ~ proclamation, rarely_truth_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, rarely_truth_5, var.equal = TRUE))
+# Simple Effects
 
-#Selfish lie: never vs. sometimes
-t.test(Moral_composite4 ~ proclamation, rarely_lie_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, rarely_lie_5, var.equal = TRUE))
+#T-tests
+#Rarely vs. sometimes, selfish truth
+t.test(Moral_composite3 ~ proclamation, never_truth, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, never_truth, var.equal = TRUE))
 
-#Prosocial truth: never vs. rarely
-t.test(Moral_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
+#Rarely vs. sometimes, prosocial lie
+t.test(Moral_composite3 ~ proclamation, never_lie, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, never_lie, var.equal = TRUE))
 
-#Selfish lie: never vs. rarely
-t.test(Moral_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
-t_apa(t.test(Moral_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
+#Never vs. sometimes, selfish truth
+t.test(Moral_composite3 ~ proclamation, rarely_truth, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, rarely_truth, var.equal = TRUE))
+
+#Never vs. sometimes, prosocial lie
+t.test(Moral_composite3 ~ proclamation, rarely_lie, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, rarely_lie, var.equal = TRUE))
+
+#Never vs. rarely, selfish truth
+t.test(Moral_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE))
+
+#Never vs. rarely, prosocial lie
+t.test(Moral_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE)
+t_apa(t.test(Moral_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-mor_model = aov_ez('ID', 'Moral_composite4', s5,
+mor_model = aov_ez('ID', 'Moral_composite3', s4,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
 print(mor_model)
-cellmeans <- emmeans(mor_model, ~ proclamation|behavior)
-print(cellmeans)
-mmeans <- emmeans(mor_model, ~ proclamation)
-print(mmeans)
+means <- emmeans(mor_model, ~ proclamation|behavior)
+print(means)
 post1 <- emmeans(mor_model, ~ proclamation|behavior)
-pairs(post1)  
+pairs(post1)
 post2 <- emmeans(mor_model, ~ proclamation)
 pairs(post2) 
-post3 <- emmeans(mor_model, ~ proclamation*behavior)
-pairs(post3)
+
+
 ```
 
 # Cohen's D for Morality Posthoc
@@ -369,280 +347,195 @@ pairs(post3)
 ```{r}
 #Method 1
 #Abs vs. Flex morality focal - need cohen's D
-#abs mean =   4.222222, sd = 2.116426, 201 
-#flex mean =  3.587542, sd = 1.632966 , 198
-#pooled SD = sqrt(((2.116426^2) + (1.632966 ^2))/2)
-sqrt((((2.116426^2) + (1.632966 ^2))/2)) #1.890217
+#abs mean =  5.027778, sd = 1.427859, 192 
+#flex mean =  4.075163, sd = 1.424938, 204
+#pooled SD = sqrt(((1.427859^2) + (1.424938^2))/2)
+sqrt((((1.427859^2) + (1.424938^2))/2)) #1.426399
 
 #cohens = (mean - mean)/SD pooeld
-(4.222222-3.587542)/1.890217 #0.335771
+(5.027778-4.075163)/1.426399 #0.6678461
 
 #Method 2
-d4 <- cohens_d(t_test(Moral_composite4 ~ proclamation, rarely_exclude_5)) 
-#see Hypocrisy Simple Effects above to exclude rarely, N = 399
-d4 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.3354498 (0.34)
+d3 <- cohens_d(t_test(Moral_composite3 ~ proclamation, rarely_exclude)) 
+#see Hypocrisy Simple Effects above to exclude rarely, N = 396
+d3 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.6678664 (0.67)
 ```
 
-#Commitment to Honesty
+# Commitment to Honesty  Model
 
 ```{r}
-# ANOVA
-honesty_4.afex <- aov_car(Honest_composite4 ~ proclamation * behavior + Error(ID), s5)
-summary(honesty_4.afex)
-anova_apa(honesty_4.afex)
+#ANOVA
+honesty_3.afex <-aov_car(Honest_composite3 ~ proclamation*behavior + Error(ID), data=s4)
+summary(honesty_3.afex)
+anova_apa(honesty_3.afex)
 ```
 
 # Commitment to Honesty Descriptives
 
 ```{r}
 #Cells
-tapply(s5$Honest_composite4, list(s5$proclamation, s5$behavior), mean)
-tapply(s5$Honest_composite4, list(s5$proclamation, s5$behavior), sd)
-tapply(s5$Honest_composite4, list(s5$proclamation, s5$behavior), length)
+tapply(s4$Honest_composite3, list(s4$proclamation, s4$behavior), mean)
+tapply(s4$Honest_composite3, list(s4$proclamation, s4$behavior), sd)
+tapply(s4$Honest_composite3, list(s4$proclamation, s4$behavior), length)
 
 #Across Proclamation
-tapply(s5$Honest_composite4, s5$proclamation, mean)
-tapply(s5$Honest_composite4, s5$proclamation, sd)
-tapply(s5$Honest_composite4, s5$proclamation, length)
+tapply(s4$Honest_composite3, s4$proclamation, mean)
+tapply(s4$Honest_composite3, s4$proclamation, sd)
+tapply(s4$Honest_composite3, s4$proclamation, length)
 
 #Across Behavior
-tapply(s5$Honest_composite4, s5$behavior, mean)
-tapply(s5$Honest_composite4, s5$behavior, sd)
-tapply(s5$Honest_composite4, s5$behavior, length)
+tapply(s4$Honest_composite3, s4$behavior, mean)
+tapply(s4$Honest_composite3, s4$behavior, sd)
+tapply(s4$Honest_composite3, s4$behavior, length)
 
 #Overall
-mean(s5$Honest_composite4)
-sd(s5$Honest_composite4)
-length(s5$Honest_composite4)
+mean(s4$Honest_composite3)
+sd(s4$Honest_composite3)
+length(s4$Honest_composite3)
+
 
 ```
 
-# Commitment to Honesty Simple Effects
+# Commitment to Honesty Simple Effects - T-tests
 
 Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
 
-
 ```{r}
-#Main Effect
-#Never vs. rarely
-t.test(Honest_composite4  ~ proclamation, sometimes_exclude_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4  ~ proclamation, sometimes_exclude_5, var.equal = TRUE))
+#Main effect 
+#Never vs. rarely only
+t.test(Honest_composite3 ~ proclamation, sometimes_exclude, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, sometimes_exclude, var.equal = TRUE))
 
-#Never vs. sometimes  
-t.test(Honest_composite4  ~ proclamation, rarely_exclude_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4  ~ proclamation, rarely_exclude_5, var.equal = TRUE))
+#Never vs.sometimes  only
+t.test(Honest_composite3 ~ proclamation, rarely_exclude, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, rarely_exclude, var.equal = TRUE))
 
-#Rarely  vs. sometimes 
-t.test(Honest_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE))
+#Rarely vs. sometimes  only
+t.test(Honest_composite3 ~ proclamation, never_exclude, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, never_exclude, var.equal = TRUE))
 
-#Within levels of behavior 
+#Proclamation within levels of behavior, subsetted data
 
-#Prosocial truth: rarely vs. sometimes
-t.test(Honest_composite4  ~ proclamation, never_truth_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4  ~ proclamation, never_truth_5, var.equal = TRUE))
+#Selfish truth: sometimes vs. rarely 
+t.test(Honest_composite3 ~ proclamation, never_truth, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, never_truth, var.equal = TRUE))
 
-#Selfish lie: rarely vs. sometimes
-t.test(Honest_composite4  ~ proclamation, never_lie_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4  ~ proclamation, never_lie_5, var.equal = TRUE))
+#Prosocial lie: sometimes vs. rarely 
+t.test(Honest_composite3 ~ proclamation, never_lie, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, never_lie, var.equal = TRUE))
 
-#Prosocial truth: never vs. sometimes
-t.test(Honest_composite4  ~ proclamation, rarely_truth_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4  ~ proclamation, rarely_truth_5, var.equal = TRUE))
+#Selfish truth: never vs. sometimes
+t.test(Honest_composite3~ proclamation, rarely_truth, var.equal = TRUE)
+t_apa(t.test(Honest_composite3~ proclamation, rarely_truth, var.equal = TRUE))
 
-#Selfish lie: never vs. sometimes
-t.test(Honest_composite4  ~ proclamation, rarely_lie_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4  ~ proclamation, rarely_lie_5, var.equal = TRUE))
+#Prosocial lie: never vs. sometimes
+t.test(Honest_composite3 ~ proclamation, rarely_lie, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, rarely_lie, var.equal = TRUE))
 
-#Prosocial truth: never vs. rarely
-t.test(Honest_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
+#Selfish truth: never vs. rarely
+t.test(Honest_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, sometimes_truth, var.equal = TRUE))
 
-#Selfish lie: never vs. rarely
-t.test(Honest_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
-t_apa(t.test(Honest_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
+#Prosocial lie: never vs. rarely
+t.test(Honest_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE)
+t_apa(t.test(Honest_composite3 ~ proclamation, sometimes_lie, var.equal = TRUE))
 
 #Alternative ANOVA and tukey post-hoc tests
-hon_model = aov_ez('ID', 'Honest_composite4', s5,
+hon_model = aov_ez('ID', 'Honest_composite3', s4,
                     within = c (),
                     between = c ('proclamation', 'behavior'),
                     anova_table = list(es = 'pes'))
 print(hon_model)
-cellmeans <- emmeans(hon_model, ~ proclamation|behavior)
-print(cellmeans)
-mmeans <- emmeans(hon_model, ~ proclamation)
-print(mmeans)
+means <- emmeans(hon_model, ~ proclamation|behavior)
+print(means)
 post1 <- emmeans(hon_model, ~ proclamation|behavior)
 pairs(post1)  
 post2 <- emmeans(hon_model, ~ proclamation)
 pairs(post2)  
 ```
 
-# Social Influence
+# Behavior Model
+
+"rv" is trust in the RELY-or-VERIFY game. 1 = RELY, 0 = VERIFY.
 
 ```{r}
-#ANOVA
-SI.afex <- aov_car(SI_composite4 ~ proclamation * behavior + Error(ID), s5)
-summary(SI.afex )
-anova_apa(SI.afex)
-```
+#Reported Model
+rv.glm <- glm(rv_f ~ sometimes + rarely + behavlie + 
+                sometimes*behavlie + rarely*behavlie,
+              data=s4, family = binomial(link = "logit"))
+summary(rv.glm)
 
-# Social Influence Descriptives
+# Confirm that the model looks the same with dummy-coded variables as factors
+#Factorize 0,1 integers (dummy-coded variables)
+s4$sometimes_f <- as.factor(s4$sometimes)
+s4$rarely_f <- as.factor(s4$rarely)
+s4$behavlie_f  <- as.factor(s4$behavlie)
 
-```{r}
-#Cells
-tapply(s5$SI_composite4, list(s5$proclamation, s5$behavior), mean)
-tapply(s5$SI_composite4, list(s5$proclamation, s5$behavior), sd)
-tapply(s5$SI_composite4, list(s5$proclamation, s5$behavior), length)
-
-#Across Proclamation
-tapply(s5$SI_composite4, s5$proclamation, mean)
-tapply(s5$SI_composite4, s5$proclamation, sd)
-tapply(s5$SI_composite4, s5$proclamation, length)
-
-#Across Behavior
-tapply(s5$SI_composite4, s5$behavior, mean)
-tapply(s5$SI_composite4, s5$behavior, sd)
-tapply(s5$SI_composite4, s5$behavior, length)
-
-#Overall
-mean(s5$SI_composite4)
-sd(s5$SI_composite4)
-length(s5$SI_composite4)
-
-```
-
-# Social Benefit Simple Effects 
-
-Note: For these tests, use subsetted data from Hypocrisy simple effects test (previous code chunk).
-
-
-```{r}
-#Proclamation within subsetted data
-#Never vs. rarely
-t.test(SI_composite4  ~ proclamation, sometimes_exclude_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4  ~ proclamation, sometimes_exclude_5, var.equal = TRUE))
-
-#Never vs. sometimes  
-t.test(SI_composite4  ~ proclamation, rarely_exclude_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4  ~ proclamation, rarely_exclude_5, var.equal = TRUE))
-
-#Rarely vs. sometimes 
-t.test(SI_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4 ~ proclamation, never_exclude_5, var.equal = TRUE))
-
-#Within levels of behavior 
-
-#Prosocial truth: rarely vs. sometimes
-t.test(SI_composite4  ~ proclamation, never_truth_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4  ~ proclamation, never_truth_5, var.equal = TRUE))
-
-#Selfish lie: rarely vs. sometimes
-t.test(SI_composite4  ~ proclamation, never_lie_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4  ~ proclamation, never_lie_5, var.equal = TRUE))
-
-#Prosocial truth: never vs. sometimes
-t.test(SI_composite4  ~ proclamation, rarely_truth_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4  ~ proclamation, rarely_truth_5, var.equal = TRUE))
-
-#Selfish lie: never vs. sometimes
-t.test(SI_composite4  ~ proclamation, rarely_lie_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4  ~ proclamation, rarely_lie_5, var.equal = TRUE))
-
-#Prosocial truth: never vs. rarely
-t.test(SI_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4 ~ proclamation, sometimes_truth_5, var.equal = TRUE))
-
-#Selfish lie: never vs. rarely
-t.test(SI_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE)
-t_apa(t.test(SI_composite4 ~ proclamation, sometimes_lie_5, var.equal = TRUE))
-
-#Alternative ANOVA and tukey post-hoc tests
-SI_model = aov_ez('ID', 'SI_composite4', s5,
-                    within = c (),
-                    between = c ('proclamation', 'behavior'),
-                    anova_table = list(es = 'pes'))
-print(SI_model)
-means <- emmeans(SI_model, ~ proclamation)
-print(means)
-post1 <- emmeans(SI_model, ~ proclamation)
-pairs(post1)  
-
-```
-
-# Behavior in the RELY-or-VERIFY game
-
-```{r}
-# Reported Model
-rv_4.glm <- glm(rv_f ~ sometimes + rarely + behavlie 
-                + sometimes*behavlie + rarely*behavlie, 
-                data=s5, family = binomial(link = "logit"))
-summary(rv_4.glm)
-
-# Replicate with factorized dummy variables to confirm 
-s5$sometimes_f <- as.factor(s5$sometimes)
-s5$rarely_f <- as.factor(s5$rarely)
-s5$behavlie_f <- as.factor(s5$behavlie)
-
-#re-run model
-rv_4_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f 
-                + sometimes_f*behavlie_f + rarely_f*behavlie_f, 
-                data=s5, family = binomial(link = "logit"))
-summary(rv_4_test.glm)
+#re-run model - consistent
+rv_test.glm <- glm(rv_f ~ sometimes_f + rarely_f + behavlie_f + 
+                sometimes_f*behavlie_f + rarely_f*behavlie_f,
+              data=s4, family = binomial(link = "logit"))
+summary(rv_test.glm) #confirmed
 
 #Exploratory
-rv.glm4_2 <- glm(rv ~ never + rarely + behavlie + 
+rv.glm2 <- glm(rv_f ~ never + rarely + behavlie + 
                 never*behavlie + rarely*behavlie,
-              data=s5, family = binomial(link = "logit"))
-summary(rv.glm4_2)
+              data=s4, family = binomial(link = "logit"))
+summary(rv.glm2)
 
-# Replicate with factorized dummy variables to confirm 
-s5$never_f <- as.factor(s5$never)
+#factorize never
+s4$never_f <- as.factor(s4$never)
 
-rv_test.glm4_2 <- glm(rv ~ never_f + rarely_f + behavlie_f + 
+#re-run model
+rv_test.glm2 <- glm(rv_f ~ never_f + rarely_f + behavlie_f + 
                 never_f*behavlie_f + rarely_f*behavlie_f,
-              data=s5, family = binomial(link = "logit"))
-summary(rv_test.glm4_2)
+              data=s4, family = binomial(link = "logit"))
+summary(rv_test.glm2)
 
 #Frequencies - proclamation
-table(s5$proclamation, s5$rv_f) 
+table(s4$proclamation, s4$rv_f) #1 = RELY, 0 = VERIFY
 
-#never rely:  95/201, 47%
-#rarely rely: 83/197, 42%
-#sometimes rely: 61/198, 31%
+#never verify: 103/192, 54%
+#rarely verify: 111/202, 55%
+#sometimes  verify: 145 /204, 71%
 
-
-#never 106/201 verify, 53%
-#rarely 114/197  verify, 58%
-#sometimes 137/198 verify, 69%
+#never rely: 89/192, 46%
+#rarely rely: 91/202, 45%
+#sometimes  rely: 59/204, 29%
 
 #Frequencies proclamation and behavior by cell
-table(s5$proclamation, s5$behavior, s5$rv_f)
-table(s5$behavior, s5$rv_f) 
+table(s4$proclamation, s4$behavior, s4$rv_f)
+table(s4$behavior, s4$rv_f) 
 
-#178 prosocial rely, 117 verify - 178/295; 60%
-#61 selfish rely, 240 selfish verify - 61/01 - 20%
+
+#Compare to equilibrium
+
+#equilibrium 40% rely
+#sometimes = 29% rely
+prop.test(59, 204, p = .4, correct = FALSE)
 
 #Individual comparison
-#Prosocial truth tellers: nevers vs. sometimes, rarely_truth_5
-rv_PL3.glm <- glm(rv_f ~ proclamation,
-              data=rarely_truth_5, family = binomial(link = "logit"))
-summary(rv_PL3.glm)
+#Prosocial liars: nevers vs. sometimes, rarely_lie
+rv_PL1.glm <- glm(rv_f ~ proclamation,
+              data=rarely_lie, family = binomial(link = "logit"))
+summary(rv_PL1.glm)
 
-#Selfish liars: never vs. sometimes, rarely_lie_5
-rv_PL4.glm <- glm(rv_f ~ proclamation,
-              data=rarely_lie_5, family = binomial(link = "logit"))
-summary(rv_PL4.glm)
+#Selfish truth-tellers: never vs. sometimes, rarely_truth
+rv_PL2.glm <- glm(rv_f ~ proclamation,
+              data=rarely_truth, family = binomial(link = "logit"))
+summary(rv_PL2.glm)
 
-#Check prosocial truth tellers never vs. rarely,sometimes_truth_5
-rv_PL5.glm <- glm(rv_f ~ proclamation,
-              data=sometimes_truth_5, family = binomial(link = "logit"))
-summary(rv_PL5.glm)
+#Double check
+#Selfish truth-tellers: never vs. rarely, sometimes_truth
+rv_PL1_2.glm <- glm(rv_f ~ proclamation,
+              data=sometimes_truth, family = binomial(link = "logit"))
+summary(rv_PL1_2.glm)
 
-#Check selfish liars
-rv_PL6.glm <- glm(rv_f ~ proclamation,
-              data=sometimes_lie_5, family = binomial(link = "logit"))
-summary(rv_PL6.glm)
+#Prosocial liars: nevers vs. rarely, 
+rv_PL2_2.glm <- glm(rv_f ~ proclamation,
+              data=sometimes_lie, family = binomial(link = "logit"))
+summary(rv_PL2_2.glm)
+
 
 ```
 
@@ -651,14 +544,12 @@ summary(rv_PL6.glm)
 #Distribution of Responses
 
 ```{r}
-#Distributions
-
-table(s5$pref)
-#109 "never" (5) / 596, 18%
-#330 "rarely" (4) / 596, 55%
-#144 "sometimes" (3) / 596, 24%
-#9 "often" (2) 
-#4 "always" (1)
+table(s4$pref)
+#94 "never" (5) / 598, 16%
+#297 "rarely" (4) / 598, 50%
+#195 "sometimes" (3) / 598, 33%
+#10 "often" (2) -  1.7%
+#2 "always" (1) - .3%
 
 ```
 
@@ -667,176 +558,147 @@ table(s5$pref)
 
 ```{r}
 #standardize - reported
-s5 <- mutate(s5, pref.center = scale(s5$pref))
+s4 <- mutate(s4, pref.center = scale(s4$pref))
 
 #mean center - for comparison (same key results)
-s5 <- mutate(s5, pref.center.2 = scale(s5$pref, scale = FALSE))
+s4 <- mutate(s4, pref.center.2 = scale(s4$pref, scale = FALSE))
 
 ```
 
-# SI Appendix 4 - Regressions
+# SI Appendix 3 - Regressions
 
 ```{r}
 #Preferences Regression - Hypocrisy
 #Scaled by mean and SD
-hypocrisy_4.lm <- lm(Hypocrisy_composite4 ~ sometimes*pref.center, data= s5)
-summary(hypocrisy_4.lm )
+hypocrisy.lm <- lm(Hypocrisy_composite3 ~ sometimes*pref.center, data= s4)
+summary(hypocrisy.lm)
 
-#Main effects
-hypocrisy_4.lm2 <- lm(Hypocrisy_composite4 ~ sometimes + pref.center, data= s5)
-summary(hypocrisy_4.lm2)
+#just main effects
+hypocrisy.lm2 <- lm(Hypocrisy_composite3 ~ sometimes + pref.center, data= s4)
+summary(hypocrisy.lm2)
 
 #Mean centered for reference
-hypocrisy_4.lm3 <- lm(Hypocrisy_composite4 ~ sometimes*pref.center.2, data= s5)
-summary(hypocrisy_4.lm3)
+hypocrisy.lm3 <- lm(Hypocrisy_composite3 ~ sometimes*pref.center.2, data= s4)
+summary(hypocrisy.lm3)
 
 #Look at mean hypocrisy ratings by proclamation and preferences 
-tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$pref), mean)
-tapply(s5$Hypocrisy_composite4, list(s5$proclamation, s5$pref), sd)
-tapply(s5$Hypocrisy_composite4, list(s5$sometimes, s5$pref), mean)
-tapply(s5$Hypocrisy_composite4, s5$proclamation, mean)
-tapply(s5$Hypocrisy_composite4, s5$pref, mean)
-tapply(s5$Hypocrisy_composite4, s5$rarely, mean)
-tapply(s5$Hypocrisy_composite4, s5$rarely, sd)
-tapply(s5$Hypocrisy_composite4, s5$sometimes, mean)
-tapply(s5$Hypocrisy_composite4, s5$sometimes, sd)
+tapply(s4$Hypocrisy_composite3, list(s4$proclamation, s4$pref), mean)
+tapply(s4$Hypocrisy_composite3, list(s4$proclamation, s4$pref), sd)
+tapply(s4$Hypocrisy_composite3, list(s4$sometimes, s4$pref), mean)
+tapply(s4$Hypocrisy_composite3, list(s4$sometimes, s4$pref), sd)
+tapply(s4$Hypocrisy_composite3, s4$sometimes, mean)
+tapply(s4$Hypocrisy_composite3, s4$sometimes, sd)
 
 #Preferences Regression - Morality
 #Scaled by mean and SD
-moral_4.lm <- lm(Moral_composite4 ~ sometimes*pref.center, data= s5)
-summary(moral_4.lm)
-
-moral_4.lm2 <- lm(Moral_composite4 ~ sometimes + pref.center, data= s5)
-summary(moral_4.lm2)
+moral.lm <- lm(Moral_composite3 ~ sometimes*pref.center, data= s4)
+summary(moral.lm)
+#main effects
+moral.lm2 <- lm(Moral_composite3 ~ sometimes + pref.center, data= s4)
+summary(moral.lm2)
 
 #Mean centered for reference
-moral_4.lm3 <- lm(Moral_composite4 ~ sometimes*pref.center.2, data= s5)
-summary(moral_4.lm3)
+moral.lm3 <- lm(Moral_composite3 ~ sometimes*pref.center.2, data= s4)
+summary(moral.lm3)
 
 #Look at mean morality ratings by proclamation and preferences 
-tapply(s5$Moral_composite4, list(s5$proclamation, s5$pref), mean)
-tapply(s5$Moral_composite4, list(s5$proclamation, s5$pref), sd)
-tapply(s5$Moral_composite4, list(s5$sometimes, s5$pref), mean)
-tapply(s5$Moral_composite4, s5$proclamation, mean)
-tapply(s5$Moral_composite4, s5$sometimes, mean)
-tapply(s5$Moral_composite4, s5$sometimes, sd)
-tapply(s5$Moral_composite4, s5$rarely, mean)
-tapply(s5$Moral_composite4, s5$rarely, sd)
-
+tapply(s4$Moral_composite3, list(s4$proclamation, s4$pref), mean)
+tapply(s4$Moral_composite3, list(s4$proclamation, s4$pref), sd)
+tapply(s4$Moral_composite3, list(s4$proclamation, s4$pref), length)
+tapply(s4$Moral_composite3, list(s4$sometimes, s4$pref), mean)
+tapply(s4$Moral_composite3, s4$proclamation, mean)
+tapply(s4$Moral_composite3, s4$rarely, mean)
+tapply(s4$Moral_composite3, s4$rarely, sd)
+tapply(s4$Moral_composite3, s4$sometimes, mean)
+tapply(s4$Moral_composite3, s4$sometimes,sd)
 
 #Preferences Regression - Commitment to Honesty
 #Scaled by mean and SD
-honest_4.lm <- lm(Honest_composite4 ~ sometimes*pref.center, data= s5)
-summary(honest_4.lm)
+honest.lm <- lm(Honest_composite3 ~  sometimes*pref.center, data= s4)
+summary(honest.lm)
 
-#Main effects
-honest_4.lm2 <- lm(Honest_composite4 ~ sometimes + pref.center, data= s5)
-summary(honest_4.lm2)
+#Main effect
+honest.lm2 <- lm(Honest_composite3 ~  sometimes + pref.center, data= s4)
+summary(honest.lm2)
 
 #Mean centered for reference
-honest_4.lm3 <- lm(Honest_composite4 ~ sometimes*pref.center.2, data= s5)
-summary(honest_4.lm3)
+honest.lm3 <- lm(Honest_composite3 ~  sometimes*pref.center.2, data= s4)
+summary(honest.lm3)
 
 #Look at mean commitment to honesty ratings by proclamation and preferences 
-tapply(s5$Honest_composite4, list(s5$proclamation, s5$pref), mean)
-tapply(s5$Honest_composite4, list(s5$proclamation, s5$pref), sd)
-tapply(s5$Honest_composite4, list(s5$sometimes, s5$pref), mean)
-tapply(s5$Honest_composite4, s5$proclamation, mean)
-tapply(s5$Honest_composite4, s5$sometimes, mean)
-tapply(s5$Honest_composite4, s5$sometimes, sd)
-tapply(s5$Honest_composite4, s5$rarely, mean)
-tapply(s5$Honest_composite4, s5$rarely, sd)
-
-
-#Preferences Regression - Social Benefit (SI)
-#Scaled by mean and SD
-SI.lm <- lm(SI_composite4 ~ sometimes*pref.center, data= s5)
-summary(SI.lm )
-
-#Main effects
-SI.lm2 <- lm(SI_composite4 ~ sometimes + pref.center, data= s5)
-summary(SI.lm2)
-
-#Mean centered for reference
-SI.lm3 <- lm(SI_composite4 ~ sometimes*pref.center.2, data= s5)
-summary(SI.lm3)
-
-#Look at mean SI ratings by proclamation and preferences 
-tapply(s5$SI_composite4, list(s5$proclamation, s5$pref), mean)
-tapply(s5$SI_composite4, list(s5$proclamation, s5$pref), sd)
-tapply(s5$SI_composite4, s5$sometimes, mean)
-tapply(s5$SI_composite4, s5$sometimes, sd)
-tapply(s5$SI_composite4, s5$rarely, mean)
-tapply(s5$SI_composite4, s5$rarely, sd) 
-
+tapply(s4$Honest_composite3, list(s4$proclamation, s4$pref), mean)
+tapply(s4$Honest_composite3, list(s4$proclamation, s4$pref), sd)
+tapply(s4$Honest_composite3, list(s4$sometimes, s4$pref), mean)
+tapply(s4$Honest_composite3, s4$proclamation, mean)
+tapply(s4$Honest_composite3, s4$pref, mean)
+tapply(s4$Honest_composite3, s4$rarely, mean)
+tapply(s4$Honest_composite3, s4$sometimes, mean)
+tapply(s4$Honest_composite3, s4$sometimes, sd)
 
 #Logistic Regression (trust) with own attitudes towards honesty
-rv4.4.glm <- glm(rv_f ~ sometimes*pref.center,
-              data=s5, family = binomial(link = "logit"))
-summary(rv4.4.glm) 
+rv3.glm <- glm(rv_f ~ sometimes*pref.center,
+              data=s4, family = binomial(link = "logit"))
+summary(rv3.glm)
 
 #Just main effect model
-rv5.glm <- glm(rv_f ~ sometimes + pref.center,
-              data=s5, family = binomial(link = "logit"))
-summary(rv5.glm)
+rv4.glm <- glm(rv_f ~ sometimes + pref.center,
+              data=s4, family = binomial(link = "logit"))
+summary(rv4.glm)
 
 #Frequencies
-table(s5$pref, s5$proclamation)
-table(s5$rv_f, s5$pref, s5$proclamation)
+table(s4$pref, s4$proclamation)
+table(s4$rv_f, s4$pref, s4$proclamation)
 #0 = verify, 1 = rely
-table(s5$rv_f, s5$pref, s5$proclamation)
-#Percentages RELY on never
-#always 1/4 25%
-#often 1/9 11%
-#sometimes 15/144 10%
-#rarely 45/330 14%
-#never 33/109 30%
-
-#Percentages that RELY on rarely
-#always 1/4 25%
-#often 1/9 11%
-#sometimes 8/144 6%
-#rarely 62/330 19%
-#never 11/109 10%
-
-#note that separate tables 0 = never/rarely, 1 = sometimes; 
+table(s4$rv_f, s4$pref)
+#note that separate tables 0 = never/rarely , 1 = sometimes; 
 #within tables, 0 = verify, 1 = rely
 #total per cell
-table(s5$pref)
+table(s4$pref)
+
+#Percentages RELY on never
+#always 0/2 0%
+#often 3/10 30%
+#sometimes 22/195 11%
+#rarely 44/297 15%
+#never 20/94 21%
+
+#Percentages RELY on rarely
+#always 0/2 0%
+#often 0/10 0%
+#sometimes 23/195 12%
+#rarely 55/297 19%
+#never 13/94 14%
 
 #Percentages RELY on never/rarely
-#always 2/4, 50%
-#often, 2/9 22%
-#sometimes, 23/144 16%
-#rarely, 107/330 32%
-#never, 44/109, 40%
+#always 0/2, 0%
+#often, 3/10 30%
+#sometimes, 45/195 23%
+#rarely, 99/297 33%
+#never, 33/94
 
 #Percentages RELY on sometimes
-#always 0/4, 0%
-#often, 1/9 11%
-#sometimes, 26/144 18%
-#rarely, 30/330 9%
-#never, 4/109 4%
+#always 0/2, 0%
+#often, 1/10 10%
+#sometimes, 28/195 14%
+#rarely, 26/297 9%
+#never, 4/94 4%
+
 ```
 
-#Attitudes as a Covariate - pre-registered
+# Attitudes as a Covariate - pre-registered
 
 ```{r}
 #Preferences Covariate - Hypocrisy
-Hypocrisy4.pref.center <- aov_car(Hypocrisy_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
-summary(Hypocrisy4.pref.center)
+hypocrisy_pref.center.afex <-aov_car(Hypocrisy_composite3 ~ proclamation*behavior + pref.center + Error(ID), data= s4, factorize = FALSE, anova_table = list(es = "pes"))
+summary(hypocrisy_pref.center.afex)
 
-#Preferences Covariate- Morality
-Moral4.pref.center <- aov_car(Moral_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
-summary(Moral4.pref.center)
+#Preferences Covariate - Moral
+moral_pref2.afex <- aov_car(Moral_composite3 ~ proclamation*behavior + pref.center + Error(ID), data= s4, factorize = FALSE, anova_table = list(es = "pes"))
+summary(moral_pref2.afex)
 
-#Preferences Covariate - Future honesty
-honest4.pref.center <- aov_car(Honest_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
-summary(honest4.pref.center)
-
-#Preferences Covariate - SI
-SI.pref.center <- aov_car(SI_composite4 ~ proclamation * behavior + pref.center + Error(ID), s5, factorize = FALSE, anova_table = list(es = "pes"))
-summary(SI.pref.center)
+#Preferences Covariate - Commitment to honesty
+honest.pref.center.afex <-aov_car(Honest_composite3 ~ proclamation*behavior + pref.center + Error(ID), data= s4, factorize = FALSE, anova_table = list(es = "pes"))
+summary(honest.pref.center.afex)
 
 ```
 
@@ -846,17 +708,13 @@ The moderated mediation models on moral character and trust behavior were conduc
 
 # Syntax
 
-Study 4 Trust: First, Open "HypocrisyStudy4_cleaned.xlsx" within SPSS. This excel file is available in this R project and on the OSF page for this project. Then run the code below.
+Study 3 Trust: First, Open "HypocrisyStudy3_cleaned.xlsx" within SPSS. This excel file is available in this R project and on the OSF page for this project. Then run the code below.
 
 *1. Recreate composite variables*
-
 COMPUTE Hypocrisy_C=MEAN(Hypocrisy_1,Hypocrisy_2,Hypocrisy_3,Hypocrisy_4,Hypocrisy_5).
 EXECUTE.
 
 COMPUTE Honesty_C=MEAN(Honest_frequency,Honest_likely,Honest_extreme,Honest_committment).
-EXECUTE.
-
-COMPUTE SocBen_C=MEAN(Social_benefit1, Social_benefit2).
 EXECUTE.
 
 *2. Run mediation analysis to get indirect effects. - use point and click within Process Macro*
@@ -865,7 +723,6 @@ EXECUTE.
 IV = sometimes
 M1 = Honesty_C
 M2 = Hypocrisy_C
-M3 = SocBen_C
 Y = rv
 W = behavlie
 
@@ -877,7 +734,7 @@ SPLIT FILE LAYERED BY behavlie.
 *Test M-->Y pathways*
 
 LOGISTIC REGRESSION VARIABLES rv
-  /METHOD=ENTER Hypocrisy_C Honesty_C sometimes  SocBen_C
+  /METHOD=ENTER Hypocrisy_C Honesty_C sometimes 
   /CRITERIA=PIN(.05) POUT(.10) ITERATE(20) CUT(.5).
 
 
@@ -890,8 +747,8 @@ REGRESSION
   /NOORIGIN 
   /DEPENDENT Honesty_C
   /METHOD=ENTER sometimes.
-
-*Test X-->M2 pathway*
+  
+  *Test X-->M2 pathway*
 
 REGRESSION
   /MISSING LISTWISE
@@ -902,17 +759,7 @@ REGRESSION
   /METHOD=ENTER sometimes.
 
 
-*Test X-->M3 pathway*
-
-REGRESSION
-  /MISSING LISTWISE
-  /STATISTICS COEFF OUTS R ANOVA
-  /CRITERIA=PIN(.05) POUT(.10)
-  /NOORIGIN 
-  /DEPENDENT  SocBen_C
-  /METHOD=ENTER sometimes.
-  
-Study 4 Morality: Use the same data file in SPSS.
+Study 3 Morality: Use the same data file in SPSS.
 
 *1. Recreate composite variables*
 
@@ -922,19 +769,15 @@ EXECUTE.
 COMPUTE Honesty_C=MEAN(Honest_frequency,Honest_likely,Honest_extreme,Honest_committment).
 EXECUTE.
 
-COMPUTE SocBen_C=MEAN(Social_benefit1, Social_benefit2).
-EXECUTE.
-
 COMPUTE Moral_C=MEAN(Moral_1, Moral_2, Moral_3).
 EXECUTE.
 
 *2. Run mediation analysis to get indirect effects. - use point and click within Process Macro*
 
 *Run Hayes’ (2016) PROCESS Macro for SPSS, Model 7, 10,000 bootstraps*
-X = sometimes
+IV = sometimes
 M1 = Hypocrisy_C
 M2 = Honesty_C
-M3 = SocBen_C
 Y = Moral_C
 W = behavlie
 
@@ -951,19 +794,9 @@ REGRESSION
   /CRITERIA=PIN(.05) POUT(.10)
   /NOORIGIN 
   /DEPENDENT Moral_C
-  /METHOD=ENTER Hypocrisy_C Honesty_C sometimes  SocBen_C.
-
-*Test X-->M1 pathway*
-
-REGRESSION
-  /MISSING LISTWISE
-  /STATISTICS COEFF OUTS R ANOVA
-  /CRITERIA=PIN(.05) POUT(.10)
-  /NOORIGIN 
-  /DEPENDENT Hypocrisy_C
-  /METHOD=ENTER sometimes.
-
-*Test X-->M2 pathway*
+  /METHOD=ENTER sometimes Hypocrisy_C, Honesty_C.
+  
+  *Test X-->M1 pathway*
 
 REGRESSION
   /MISSING LISTWISE
@@ -973,15 +806,13 @@ REGRESSION
   /DEPENDENT Honesty_C
   /METHOD=ENTER sometimes.
 
-
-*Test X-->M3 pathway*
+*Test X-->M2 pathway*
 
 REGRESSION
   /MISSING LISTWISE
   /STATISTICS COEFF OUTS R ANOVA
   /CRITERIA=PIN(.05) POUT(.10)
   /NOORIGIN 
-  /DEPENDENT  SocBen_C
+  /DEPENDENT Hypocrisy_C
   /METHOD=ENTER sometimes.
-  
-  
+
