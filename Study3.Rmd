@@ -1,0 +1,1163 @@
+---
+title: "Study 5"
+author: "Elizabeth Huppert"
+date: "1/14/2020"
+output: pdf_document
+---
+
+# Set-up
+
+You need to install the following packages to run this code:
+
+-here
+-tidyverse
+-afex
+-psych
+-reshape2
+-apa
+-dplyr
+-emmeans
+
+# Load Packages and Data
+
+```{r, include = FALSE}
+library(here)
+library(tidyverse)
+library(psych)
+library(reshape2)
+library(afex)
+library(apa)
+library(dplyr)
+library(emmeans)
+
+#read in data
+
+s3 <- read.csv(here("HypocrisyStudy3_cleaned.csv"))
+
+```
+
+Note: The current csv file imported for this analysis reflects cleaned data. 
+The raw data and more information about the cleaning/coding of variables that went into making the current clean csv file is available in the Excel codebook. Additionally, more information is available upon request.
+
+
+# Models
+
+Key Variable Names (also see codebook for more information):
+
+1. Proclamation:
+Assignment to absolute vs. flexible honesty stance
+
+2. Order:
+Survey1 vs. game1 refers to order in which target information is presented
+
+-survey1 (evaluations at timepoint 1 after just survey information, evaluations at timepoint 2 after the proscoial lie behavior)
+-game1 (evaluations at timepoint 1 after just prosocial lie behavior, timepoint 2 is the survey information)
+
+3. Time:
+Within subject factor, evaluations are reported at two points in time
+
+For supplement (The Choice Game):
+Trustbeh = KEEP or PASS in The Coin Flip Game 
+(0 = KEEP, 1 = PASS)
+
+# Recode proclamation for ease of interpretation
+
+```{r}
+s3$proclamation <- factor(s3$proclamation, levels = c("ambiguous", "absolute"))
+```
+
+# Composite evaluation variables
+
+Items with high agreement were combined as per our pre-registration.
+
+```{r}
+#Time one 
+#Hypocrisy
+hypocrisy_5_check <- data.frame(s3$hypocrisy_1, s3$hypocrisy_2, s3$hypocrisy_4, s3$hypocrisy_5)
+summary(hypocrisy_5_check)
+describe(hypocrisy_5_check)
+psych::alpha(hypocrisy_5_check) #alpha = 0.89 
+s3 <- mutate(s3, Hypocrisy.1_composite5 = ((s3$hypocrisy_1 + s3$hypocrisy_2 + s3$hypocrisy_4 + s3$hypocrisy_5)/4))
+
+#Morality
+morality5_check <- data.frame(s3$moral_1, s3$moral_2, s3$moral_3)
+summary(morality5_check )
+describe(morality5_check )
+psych::alpha(morality5_check ) #alpha = 0.97
+s3 <- mutate(s3, Moral.1_composite5 = ((s3$moral_1 +s3$moral_2 + s3$moral_3)/3))
+
+#Commitment to Honesty
+Honest5_df <- data.frame(s3$honest_freq_1, s3$honest_likely_1, s3$honest_extreme_1, s3$committment_honesty_1)
+summary(Honest5_df)
+describe(Honest5_df)
+psych::alpha(Honest5_df) #alpha = 0.85
+s3 <- mutate(s3, Honest.1_composite5 = ((s3$honest_freq_1 + s3$honest_likely_1 + s3$honest_extreme_1 + s3$committment_honesty_1)/4))
+
+
+#Time two  
+#Hypocrisy
+hypocrisy_5_check.2 <- data.frame(s3$hypocrisy_1.2, s3$hypocrisy_2.2, s3$hypocrisy_4.2, s3$hypocrisy_5.2)
+summary(hypocrisy_5_check.2)
+describe(hypocrisy_5_check.2)
+psych::alpha(hypocrisy_5_check.2) #alpha = 0.91
+s3 <- mutate(s3, 
+             Hypocrisy.2_composite5 = (s3$hypocrisy_1.2 + s3$hypocrisy_2.2 + s3$hypocrisy_4.2 + s3$hypocrisy_5.2)/4)
+
+#Morality
+morality5_check.2 <- data.frame(s3$moral_1.2, s3$moral_2.2, s3$moral_3.2)
+summary(morality5_check.2)
+describe(morality5_check.2)
+psych::alpha(morality5_check.2) #alpha = 0.97
+s3 <- mutate(s3, Moral.2_composite5  = ((s3$moral_1.2+s3$moral_2.2+s3$moral_3.2)/3))
+
+#Commitment to Honesty
+Honest5_df.2  <- data.frame(s3$honest_freq_2, s3$honest_likely_2, s3$honest_extreme_2, s3$committment_honesty_2)
+summary(Honest5_df.2)
+describe(Honest5_df.2)
+psych::alpha(Honest5_df.2) #alpha = 0.82
+s3 <- mutate(s3, Honest.2_composite5 = ((s3$honest_freq_2 + s3$honest_likely_2 + s3$honest_extreme_2 + s3$committment_honesty_2)/4))
+
+#Correlation between Morality time 1 and time 2 composite for post-hoc power analysis
+cor.test(s3$Moral.1_composite5, s3$Moral.2_composite5) #r = .58
+
+#Supplemental (guilt and moral standards/realism) 
+#Guilt time 1
+cor.test(s3$guilt_1, s3$guilt_2) #r = 0.93
+s3 <- mutate(s3, Guilt_composite = ((s3$guilt_1+s3$guilt_2)/2))
+
+#Moral Standards time 1
+cor(s3$moral_standards1, s3$moral_standards1.2)
+cor.test(s3$moral_standards1, s3$moral_standards2) #r = 0.37; not combined
+
+#Guilt time 2
+cor.test(s3$guilt_1.2, s3$guilt_2.2) #r = 0.91
+s3 <- mutate(s3, Guilt.2_composite = ((s3$guilt_1.2 + s3$guilt_2.2)/2))
+
+#Moral Standards time 2
+cor.test(s3$moral_standards1.2, s3$moral_standards2.2) # .48; not combined
+
+```
+
+Evaluation variables:
+
+Timepoint 1:
+
+Hypocrisy.1_composite5 = hypocrisy composite of 4 items at timepoint 1 
+Guilt_composite = guilt composite of 2 items at timepoint 1
+Moral.1_composite5 = morality composite of 3 items at timepoint 1
+Honest.1_composite5 = committment to honesty composite of 4 items at timepoint 1
+
+Timepoint 2 (same 1-7 Likert-type scales):
+
+Hypocrisy.2_composite5  = hypocrisy composite of 4 items at timepoint 2
+Guilt.2_composite = guilt composite of 2 items at timepoint 2
+Moral.2_composite5 = morality composite of 3 items at timepoint 2
+Honest.2_composite5 = committment to honesty composite of 4 items at timepoint 2
+
+
+# Analysis
+
+# Hypocrisy Model
+
+```{r}
+#Dataframe for Hypocrisy
+hypocrisy_df <-melt(s3, 
+                id.vars=c("condition", "ID", "proclamation", "order"),
+                #measure command is for the DV
+                measure.vars=c("Hypocrisy.1_composite5","Hypocrisy.2_composite5"),
+                variable.name="hypocrisy.time",
+                value.name="hypocrisy.value"
+)
+
+#ANOVA
+hypocrisy5.afex <- aov_car(
+  hypocrisy.value ~ proclamation*order*hypocrisy.time + Error(ID/hypocrisy.time),
+  data = hypocrisy_df)
+summary(hypocrisy5.afex)
+anova_apa(hypocrisy5.afex)
+
+```
+
+# Hypocrisy Descriptives
+
+```{r}
+#Cells
+tapply(hypocrisy_df$hypocrisy.value, 
+       list(hypocrisy_df$proclamation, hypocrisy_df$order, hypocrisy_df$hypocrisy.time), 
+       FUN = mean)
+
+tapply(hypocrisy_df$hypocrisy.value, 
+       list(hypocrisy_df$proclamation, hypocrisy_df$order, hypocrisy_df$hypocrisy.time), 
+       FUN = sd)
+
+tapply(hypocrisy_df$hypocrisy.value, 
+       list(hypocrisy_df$proclamation, hypocrisy_df$order, hypocrisy_df$hypocrisy.time), 
+       FUN = length)
+
+#Across Proclamation and Time
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$proclamation, hypocrisy_df$hypocrisy.time),
+       FUN = length)
+
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$proclamation, hypocrisy_df$hypocrisy.time),
+       FUN = mean)
+
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$proclamation, hypocrisy_df$hypocrisy.time),
+       FUN = sd)
+
+#Across Order and Time
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$order, 
+                                                hypocrisy_df$hypocrisy.time),FUN = length)
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$order, 
+                                                hypocrisy_df$hypocrisy.time),FUN = mean)
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$order, 
+                                                hypocrisy_df$hypocrisy.time),FUN = sd)
+
+#Across Proclamation and Order
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$proclamation, 
+                                                hypocrisy_df$order),FUN = length)
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$proclamation, 
+                                                hypocrisy_df$order),FUN = mean)
+tapply(hypocrisy_df$hypocrisy.value, list(hypocrisy_df$proclamation, 
+                                                hypocrisy_df$order),FUN = sd)
+
+#Across Proclamation
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$proclamation,FUN = mean)
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$proclamation,FUN = sd)
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$proclamation,FUN = length)
+
+#Across Time
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$hypocrisy.time,FUN = mean)
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$hypocrisy.time,FUN = sd)
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$hypocrisy.time,FUN = length)
+
+#Across Order
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$order,FUN = mean)
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$order,FUN = sd)
+tapply(hypocrisy_df$hypocrisy.value, hypocrisy_df$order,FUN = length)
+
+#Overall
+mean(hypocrisy_df$hypocrisy.value)
+sd(hypocrisy_df$hypocrisy.value)
+length(hypocrisy_df$hypocrisy.value)
+
+```
+
+# Follow-up tests for two*way interactions: Hypocrisy
+
+```{r}
+#Proclamation*Time - paired t-tests
+
+#Time 1 vs. 2 on absolute only
+#Paired t-test
+absolute_s3 <- s3 %>%
+  filter(proclamation == "absolute")
+
+t.test(absolute_s3$Hypocrisy.1_composite5, absolute_s3$Hypocrisy.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s3$Hypocrisy.1_composite5, absolute_s3$Hypocrisy.2_composite5, paired = TRUE))
+
+#Time 1 vs. 2 on flexible only
+#Paired t-test
+flexible_s3 <- s3 %>%
+  filter(proclamation == "ambiguous")
+
+t.test(flexible_s3$Hypocrisy.1_composite5, flexible_s3$Hypocrisy.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s3$Hypocrisy.1_composite5, flexible_s3$Hypocrisy.2_composite5, paired = TRUE))
+
+#Proclamation*Order 
+
+#Effect of order in just absolute
+absolute_hypo <- hypocrisy_df %>%
+  filter(proclamation ==  "absolute")
+
+#independent t-test
+t.test(hypocrisy.value ~ order, absolute_hypo , var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ order, absolute_hypo , var.equal = TRUE))
+
+#Effect of order in just flexible
+flexible_hypo <- hypocrisy_df %>%
+  filter(proclamation ==  "ambiguous")
+
+#independent t-test
+t.test(hypocrisy.value ~ order, flexible_hypo , var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ order, flexible_hypo, var.equal = TRUE))
+
+#Effect of proc in just survey1
+survey1_hypo <- hypocrisy_df %>%
+  filter(order==  "survey1")
+
+#independent t-test
+t.test(hypocrisy.value ~ proclamation, survey1_hypo, var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ proclamation, survey1_hypo, var.equal = TRUE))
+
+
+#Effect of proc in just game1
+game1_hypo <- hypocrisy_df %>%
+  filter(order==  "game1")
+
+#independent t-test
+t.test(hypocrisy.value ~ proclamation, game1_hypo, var.equal = TRUE)
+t_apa(t.test(hypocrisy.value ~ proclamation, game1_hypo, var.equal = TRUE))
+
+
+
+#Alternative ANOVA and tukey post-hoc tests
+hyp_model = aov_ez('ID', 'hypocrisy.value', hypocrisy_df,
+                    within = c ('hypocrisy.time'),
+                    between = c ('proclamation', 'order'),
+                    anova_table = list(es = 'pes'))
+print(hyp_model)
+
+em1 <- emmeans::emmeans(hyp_model, pairwise ~ proclamation:hypocrisy.time)
+em1$contrasts
+ptmeans <- emmeans(hyp_model, ~ hypocrisy.time|proclamation)
+print(ptmeans)
+post1 <- emmeans(hyp_model, ~ hypocrisy.time|proclamation)
+pairs(post1)
+
+em2 <- emmeans::emmeans(hyp_model, pairwise ~ proclamation:order)
+em2$contrasts
+post3 <- emmeans(hyp_model, ~ proclamation|order)
+pairs(post3) 
+pomeans <- emmeans(hyp_model, ~ order|proclamation)
+print(pomeans)
+post2 <- emmeans(hyp_model, ~ order|proclamation)
+pairs(post2)
+```
+
+# Morality Model
+
+```{r}
+#Dataframe for Morality
+hypo_moral5 <-melt(s3, 
+                       id.vars=c("condition", "ID","proclamation", "order"),
+                       #measure command is for the DV
+                       measure.vars=c("Moral.1_composite5","Moral.2_composite5"),
+                       variable.name="moral.time",
+                       value.name="moral.value"
+)
+
+#ANOVA
+moral.afex <- aov_car(moral.value ~ proclamation*order*moral.time + Error(ID/moral.time), data=hypo_moral5)
+summary(moral.afex)
+anova_apa(moral.afex)
+
+```
+
+# Morality Descriptives 
+
+```{r}
+#Cells
+tapply(hypo_moral5$moral.value, 
+       list(hypo_moral5$proclamation, hypo_moral5$order, hypo_moral5$moral.time), 
+       FUN = mean)
+tapply(hypo_moral5$moral.value, 
+       list(hypo_moral5$proclamation, hypo_moral5$order, hypo_moral5$moral.time), 
+       FUN = sd)
+tapply(hypo_moral5$moral.value, 
+       list(hypo_moral5$proclamation, hypo_moral5$order, 
+            hypo_moral5$moral.time), 
+       FUN = length)
+
+#Across Proclamation and Time
+tapply(hypo_moral5$moral.value, list(hypo_moral5$proclamation, 
+                                     hypo_moral5$moral.time),FUN = length)
+tapply(hypo_moral5$moral.value, list(hypo_moral5$proclamation, 
+                                     hypo_moral5$moral.time),FUN = mean)
+tapply(hypo_moral5$moral.value, list(hypo_moral5$proclamation, 
+                                     hypo_moral5$moral.time),FUN = sd)
+
+#Across Order and Time
+tapply(hypo_moral5$moral.value, list(hypo_moral5$order, 
+                                     hypo_moral5$moral.time),FUN = length)
+tapply(hypo_moral5$moral.value, list(hypo_moral5$order, 
+                                     hypo_moral5$moral.time),FUN = mean)
+tapply(hypo_moral5$moral.value, list(hypo_moral5$order, 
+                                     hypo_moral5$moral.time),FUN = sd)
+
+#Across Proclamation and Order
+tapply(hypo_moral5$moral.value, list(hypo_moral5$proclamation, 
+                                                hypo_moral5$order),FUN = length)
+tapply(hypo_moral5$moral.value, list(hypo_moral5$proclamation, 
+                                                hypo_moral5$order),FUN = mean)
+tapply(hypo_moral5$moral.value, list(hypo_moral5$proclamation, 
+                                                hypo_moral5$order),FUN = sd)
+#Across Proclamation
+tapply(hypo_moral5$moral.value, hypo_moral5$proclamation,FUN = mean)
+tapply(hypo_moral5$moral.value, hypo_moral5$proclamation,FUN = sd)
+tapply(hypo_moral5$moral.value, hypo_moral5$proclamation,FUN = length)
+
+#Across Order
+tapply(hypo_moral5$moral.value, hypo_moral5$order,FUN = mean)
+tapply(hypo_moral5$moral.value, hypo_moral5$order,FUN = sd)
+tapply(hypo_moral5$moral.value, hypo_moral5$order,FUN = length)
+
+#Across Time
+tapply(hypo_moral5$moral.value, hypo_moral5$moral.time,FUN = mean)
+tapply(hypo_moral5$moral.value, hypo_moral5$moral.time,FUN = sd)
+tapply(hypo_moral5$moral.value, hypo_moral5$moral.time,FUN = length)
+
+#Overall
+mean(hypo_moral5$moral.value)
+sd(hypo_moral5$moral.value)
+length(hypo_moral5$moral.value)
+```
+
+
+# Follow-up tests for two*way interactions: Morality
+
+```{r}
+#Proclamation*Time 
+
+#Time 1 vs. 2 on absolute only
+#Paired t-test
+absolute_s3 <- s3 %>%
+  filter(proclamation == "absolute")
+
+t.test(absolute_s3$Moral.1_composite5, absolute_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s3$Moral.1_composite5, absolute_s3$Moral.2_composite5, paired = TRUE))
+
+#Time 1 vs. 2 on flexible only
+#Paired t-test
+flexible_s3 <- s3 %>%
+  filter(proclamation == "ambiguous")
+
+t.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5, paired = TRUE))
+
+#Look at time 1 vs. 2 on abs game 1 only to test apology idea
+absolute_behav1_s3 <- absolute_s3 %>%
+  filter(order == "game1")
+
+t.test(absolute_behav1_s3$Moral.1_composite5,
+       absolute_behav1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_behav1_s3$Moral.1_composite5,
+             absolute_behav1_s3$Moral.2_composite5, paired = TRUE))
+
+#Look at time 1 vs. 2 on flex game 1 only to test justification idea
+flexible_behav1_s3 <- flexible_s3 %>%
+  filter(order == "game1")
+
+t.test(flexible_behav1_s3$Moral.1_composite5,
+       flexible_behav1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_behav1_s3$Moral.1_composite5,
+             flexible_behav1_s3$Moral.2_composite5, paired = TRUE))
+
+#Order*Time 
+
+#Time 1 vs. 2 on survey1 only
+#Paired t-test
+survey1_s3 <- s3 %>%
+  filter(order == "survey1")
+
+t.test(survey1_s3$Moral.1_composite5, survey1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(survey1_s3$Moral.1_composite5, survey1_s3$Moral.2_composite5, paired = TRUE))
+
+
+#Time 1 vs. 2 on game1 only
+#Paired t-test
+game1_s3 <- s3 %>%
+  filter(order == "game1")
+
+t.test(game1_s3$Moral.1_composite5, game1_s3$Moral.2_composite5, paired = TRUE)
+t_apa(t.test(game1_s3$Moral.1_composite5, game1_s3$Moral.2_composite5, paired = TRUE))
+
+
+#Proclamation*Order
+
+#Effect of order in just absolute targets
+absolute_moral <- hypo_moral5 %>%
+  filter(proclamation ==  "absolute")
+
+#independent t-test
+t.test(moral.value ~ order, absolute_moral , var.equal = TRUE)
+t_apa(t.test(moral.value ~ order, absolute_moral, var.equal = TRUE))
+
+#Effect of order in just flexible targets
+flexible_moral <- hypo_moral5 %>%
+  filter(proclamation ==  "ambiguous")
+
+#independent t-test
+t.test(moral.value ~ order, flexible_moral, var.equal = TRUE)
+t_apa(t.test(moral.value ~ order, flexible_moral, var.equal = TRUE))
+
+#Effect of proc in just survey1 ordering
+survey1_moral <- hypo_moral5  %>%
+  filter(order==  "survey1")
+
+#independent t-test
+t.test(moral.value ~ proclamation, survey1_moral, var.equal = TRUE)
+t_apa(t.test(moral.value ~ proclamation, survey1_moral, var.equal = TRUE))
+
+#Effect of proc in just game1 ordering
+game1_moral <- hypo_moral5  %>%
+  filter(order==  "game1")
+
+#independent t-test
+t.test(moral.value ~ proclamation, game1_moral, var.equal = TRUE)
+t_apa(t.test(moral.value ~ proclamation, game1_moral, var.equal = TRUE))
+
+
+#Alternative ANOVA and tukey post-hoc tests
+mor_model = aov_ez('ID', 'moral.value', hypo_moral5,
+                    within = c ('moral.time'),
+                    between = c ('proclamation', 'order'),
+                    anova_table = list(es = 'pes'))
+print(mor_model)
+
+em4 <- emmeans::emmeans(mor_model, pairwise ~ moral.time:proclamation)
+em4$contrasts
+ptmeans <- emmeans(mor_model, ~ moral.time|proclamation)
+print(ptmeans)
+post1 <- emmeans(mor_model, ~ moral.time|proclamation)
+pairs(post1)
+
+em5 <- emmeans::emmeans(mor_model, pairwise ~ order:proclamation)
+em5$contrasts
+pomeans <- emmeans(mor_model, ~ order|proclamation)
+print(pomeans)
+post2 <- emmeans(mor_model, ~ order|proclamation)
+pairs(post2)  
+
+em6 <- emmeans::emmeans(mor_model, pairwise ~ moral.time:order)
+em6$contrasts
+tomeans <- emmeans(mor_model, ~ moral.time|order)
+print(tomeans)
+post3 <- emmeans(mor_model, ~ moral.time|order)
+pairs(post3)  
+
+
+```
+
+# Cohen's D for Morality Posthoc
+
+```{r}
+#Method 1
+#Abs vs. Flex morality focal at time two - need cohen's D
+#abs mean =   4.543573, sd = 1.594991, 294 
+#flex mean =  3.920635, sd = 1.393322, 306
+#pooled SD = sqrt(((1.594991^2) + (1.393322^2))/2)
+sqrt((((1.594991^2) + (1.393322^2))/2)) #1.493352
+
+#cohens = (mean - mean)/SD pooeld
+(4.543573-3.920635)/1.493352 #0.4171408
+
+#Method 2
+d5 <- cohens_d(t_test(Moral.2_composite5 ~ proclamation, s3)) 
+d5 #Cohen's d abs. vs. flex. on morality (abs value)  = 0.4154103 (0.42)
+```
+
+# Correlation of Moral Judgments Across Time
+
+```{r}
+#Absolute time one vs. time two
+#Use just the absolute dataset
+length(absolute_s3$ID) #306
+cor.test(absolute_s3$Moral.1_composite5, absolute_s3$Moral.2_composite5 )
+#r = 0.5005439 
+
+length(flexible_s3$ID) #294
+cor.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5 )
+#r = 0.627813
+```
+
+# Commitment to Honesty Model
+
+```{r}
+#Dataframe for Commitment to Honesty
+hypo_honest5 <-melt(s3, 
+                   id.vars=c("condition", "ID", "proclamation", "order"),
+                   #measure command is for the DV
+                   measure.vars=c("Honest.1_composite5","Honest.2_composite5"),
+                   variable.name="honest.time",
+                   value.name="honest.value"
+)
+
+
+#ANOVA
+honest.afex <- aov_car(honest.value ~ proclamation*order*honest.time + Error(ID/honest.time), data=hypo_honest5)
+summary(honest.afex)
+anova_apa(honest.afex)
+```
+
+# Commitment to Honesty Descriptives 
+
+```{r}
+#Cells
+tapply(hypo_honest5$honest.value, 
+       list(hypo_honest5$proclamation, hypo_honest5$order, hypo_honest5$honest.time), 
+       FUN = mean)
+tapply(hypo_honest5$honest.value, 
+       list(hypo_honest5$proclamation, hypo_honest5$order, hypo_honest5$honest.time), 
+       FUN = sd)
+tapply(hypo_honest5$honest.value, 
+       list(hypo_honest5$proclamation, hypo_honest5$order, 
+            hypo_honest5$honest.time), 
+       FUN = length)
+
+#Across Proclamation and Time
+tapply(hypo_honest5$honest.value, list(hypo_honest5$proclamation, 
+                                     hypo_honest5$honest.time),FUN = length)
+tapply(hypo_honest5$honest.value, list(hypo_honest5$proclamation, 
+                                     hypo_honest5$honest.time),FUN = mean)
+tapply(hypo_honest5$honest.value, list(hypo_honest5$proclamation, 
+                                     hypo_honest5$honest.time),FUN = sd)
+
+#Across Order and Time
+tapply(hypo_honest5$honest.value, list(hypo_honest5$order, 
+                                     hypo_honest5$honest.time),FUN = length)
+tapply(hypo_honest5$honest.value, list(hypo_honest5$order, 
+                                     hypo_honest5$honest.time), FUN = mean)
+tapply(hypo_honest5$honest.value, list(hypo_honest5$order, 
+                                     hypo_honest5$honest.time),FUN = sd)
+
+
+#Across Proclamation and Order
+tapply(hypo_honest5$honest.value, list(hypo_honest5$proclamation, 
+                                                hypo_honest5$order),FUN = length)
+tapply(hypo_honest5$honest.value, list(hypo_honest5$proclamation, 
+                                               hypo_honest5$order),FUN = mean)
+tapply(hypo_honest5$honest.value, list(hypo_honest5$proclamation, 
+                                               hypo_honest5$order),FUN = sd)
+
+#Across Proclamation
+tapply(hypo_honest5$honest.value, hypo_honest5$proclamation,FUN = mean)
+tapply(hypo_honest5$honest.value, hypo_honest5$proclamation,FUN = sd)
+tapply(hypo_honest5$honest.value, hypo_honest5$proclamation,FUN = length)
+
+#Across Order
+tapply(hypo_honest5$honest.value, hypo_honest5$order,FUN = mean)
+tapply(hypo_honest5$honest.value, hypo_honest5$order,FUN = sd)
+tapply(hypo_honest5$honest.value, hypo_honest5$order,FUN = length)
+
+#Across Time
+tapply(hypo_honest5$honest.value, hypo_honest5$honest.time,FUN = mean)
+tapply(hypo_honest5$honest.value, hypo_honest5$honest.time,FUN = sd)
+tapply(hypo_honest5$honest.value, hypo_honest5$honest.time,FUN = length)
+
+#Overall
+mean(hypo_honest5$honest.value)
+sd(hypo_honest5$honest.value)
+length(hypo_honest5$honest.value)
+
+```
+
+# Follow-up tests for two*way interactions: Commitment to Honesty
+
+```{r}
+#Proclamation*Time 
+
+#Time 1 vs. 2 on absolute only
+#Paired t-test
+absolute_s3 <- s3 %>%
+  filter(proclamation == "absolute")
+
+t.test(absolute_s3$Honest.1_composite5, absolute_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(absolute_s3$Honest.1_composite5, absolute_s3$Honest.2_composite5, paired = TRUE))
+
+#Time 1 vs. 2 on flexible only
+#Paired t-test
+flexible_s3 <- s3 %>%
+  filter(proclamation == "ambiguous")
+
+t.test(flexible_s3$Honest.1_composite5, flexible_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(flexible_s3$Honest.1_composite5, flexible_s3$Honest.2_composite5, paired = TRUE))
+
+#Order*Time 
+
+#Time 1 vs. 2 on survey1 only
+#Paired t-test
+survey1_s3 <- s3 %>%
+  filter(order == "survey1")
+
+t.test(survey1_s3$Honest.1_composite5, survey1_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(survey1_s3$Honest.1_composite5, survey1_s3$Honest.2_composite5, paired = TRUE))
+
+#Time 1 vs. 2 on game1 only
+#Paired t-test
+game1_s3 <- s3 %>%
+  filter(order == "game1")
+
+t.test(game1_s3$Honest.1_composite5, game1_s3$Honest.2_composite5, paired = TRUE)
+t_apa(t.test(game1_s3$Honest.1_composite5, game1_s3$Honest.2_composite5, paired = TRUE))
+
+
+#Proclamation*Order
+
+#Effect of order in just absolute
+absolute_honest <- hypo_honest5 %>%
+  filter(proclamation ==  "absolute")
+
+#independent t-test
+t.test(honest.value ~ order, absolute_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ order, absolute_honest, var.equal = TRUE))
+
+#Effect of order in just flexible
+flexible_honest <- hypo_honest5 %>%
+  filter(proclamation ==  "ambiguous")
+
+#independent t-test
+t.test(honest.value ~ order, flexible_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ order, flexible_honest, var.equal = TRUE))
+
+
+#Effect of proc in just survey1
+survey1_honest <- hypo_honest5  %>%
+  filter(order==  "survey1")
+
+#independent t-test
+t.test(honest.value ~ proclamation, survey1_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ proclamation, survey1_honest, var.equal = TRUE))
+
+
+#Effect of proc in just game1
+game1_honest <- hypo_honest5  %>%
+  filter(order==  "game1")
+
+#independent t-test
+t.test(honest.value ~ proclamation, game1_honest, var.equal = TRUE)
+t_apa(t.test(honest.value ~ proclamation, game1_honest, var.equal = TRUE))
+
+
+#Alternative ANOVA and tukey post-hoc tests
+hon_model = aov_ez('ID', 'honest.value', hypo_honest5,
+                    within = c ('honest.time'),
+                    between = c ('proclamation', 'order'),
+                    anova_table = list(es = 'pes'))
+print(hon_model)
+
+em7 <- emmeans::emmeans(hon_model, pairwise ~ honest.time:proclamation)
+em7$contrasts
+ptmeans <- emmeans(hon_model, ~ honest.time|proclamation)
+print(ptmeans)
+post1 <- emmeans(hon_model, ~ honest.time|proclamation)
+pairs(post1)
+
+em8 <- emmeans::emmeans(hon_model, pairwise ~ order:proclamation)
+em8$contrasts
+pomeans <- emmeans(hon_model, ~ order|proclamation)
+print(pomeans)
+post2 <- emmeans(hon_model, ~ order|proclamation)
+pairs(post2)  
+post4 <- emmeans(hon_model, ~ proclamation|order)
+pairs(post4) 
+
+em9 <- emmeans::emmeans(hon_model, pairwise ~ honest.time:order)
+em9$contrasts
+tomeans <- emmeans(hon_model, ~ honest.time|order)
+print(tomeans)
+post3 <- emmeans(hon_model, ~ honest.time|order)
+pairs(post3) 
+
+ 
+```
+
+# Supplemental Information
+
+# Moral Standards Model
+
+```{r}
+#Dataframe for Moral Standards (moral_standards1) - "This person has high moral standards"
+hypo_ms <-melt(s3, 
+                    id.vars=c("condition", "ID", "proclamation", "order"),
+                    #measure command is for the DV
+                    measure.vars=c("moral_standards1","moral_standards1.2"),
+                    variable.name="ms.time",
+                    value.name="ms.value"
+)
+
+
+#ANOVA
+moralstandards.afex <- aov_car(ms.value ~ proclamation*order*ms.time + Error(ID/ms.time), data= hypo_ms)
+summary(moralstandards.afex)
+anova_apa(moralstandards.afex)
+
+```
+
+# Moral Standards Descriptives
+
+```{r}
+#Cells
+tapply(hypo_ms$ms.value , 
+       list(hypo_ms$proclamation, hypo_ms$order, hypo_ms$ms.time), 
+       FUN = mean)
+tapply(hypo_ms$ms.value , 
+       list(hypo_ms$proclamation, hypo_ms$order, hypo_ms$ms.time), 
+       FUN = sd)
+tapply(hypo_ms$ms.value , 
+       list(hypo_ms$proclamation, hypo_ms$order, 
+            hypo_ms$ms.time), 
+       FUN = length)
+
+#Across Proclamation and Time
+tapply(hypo_ms$ms.value , list(hypo_ms$proclamation, 
+                                     hypo_ms$ms.time),FUN = length)
+tapply(hypo_ms$ms.value , list(hypo_ms$proclamation, 
+                                     hypo_ms$ms.time),FUN = mean)
+tapply(hypo_ms$ms.value , list(hypo_ms$proclamation, 
+                                     hypo_ms$ms.time),FUN = sd)
+
+#Across Order and Time
+tapply(hypo_ms$ms.value , list(hypo_ms$order, 
+                                     hypo_ms$ms.time),FUN = length)
+tapply(hypo_ms$ms.value , list(hypo_ms$order, 
+                                     hypo_ms$ms.time), FUN = mean)
+tapply(hypo_ms$ms.value , list(hypo_ms$order, 
+                                     hypo_ms$ms.time),FUN = sd)
+
+
+#Across Proclamation and Order
+tapply(hypo_ms$ms.value , list(hypo_ms$proclamation, 
+                                                hypo_ms$order),FUN = length)
+tapply(hypo_ms$ms.value , list(hypo_ms$proclamation, 
+                                               hypo_ms$order),FUN = mean)
+tapply(hypo_ms$ms.value , list(hypo_ms$proclamation, 
+                                               hypo_ms$order),FUN = sd)
+
+#Across Proclamation
+tapply(hypo_ms$ms.value , hypo_ms$proclamation,FUN = mean)
+tapply(hypo_ms$ms.value , hypo_ms$proclamation,FUN = sd)
+tapply(hypo_ms$ms.value , hypo_ms$proclamation,FUN = length)
+
+#Across Order
+tapply(hypo_ms$ms.value , hypo_ms$order,FUN = mean)
+tapply(hypo_ms$ms.value , hypo_ms$order,FUN = sd)
+tapply(hypo_ms$ms.value , hypo_ms$order,FUN = length)
+
+#Across Time
+tapply(hypo_ms$ms.value , hypo_ms$ms.time,FUN = mean)
+tapply(hypo_ms$ms.value , hypo_ms$ms.time,FUN = sd)
+tapply(hypo_ms$ms.value , hypo_ms$ms.time,FUN = length)
+
+#Overall
+mean(hypo_ms$ms.value)
+sd(hypo_ms$ms.value)
+length(hypo_ms$ms.value)
+```
+
+# Follow-up tests for two*way interactions: Moral Standards
+
+```{r}
+#Proclamation*Time 
+
+#Time 1 vs. 2 on absolute only
+#Paired t-test
+absolute_s3 <- s3 %>%
+  filter(proclamation == "absolute")
+
+t.test(absolute_s3$moral_standards1, absolute_s3$moral_standards1.2, paired = TRUE)
+t_apa(t.test(absolute_s3$moral_standards1, absolute_s3$moral_standards1.2, paired = TRUE))
+
+#Time 1 vs. 2 on flexible only
+#Paired t-test
+flexible_s3 <- s3 %>%
+  filter(proclamation == "ambiguous")
+
+t.test(flexible_s3$moral_standards1, flexible_s3$moral_standards1.2, paired = TRUE)
+t_apa(t.test(flexible_s3$moral_standards1, flexible_s3$moral_standards1.2, paired = TRUE))
+
+
+#Proclamation*Order 
+
+#Effect of order in just absolute
+absolute_ms <- hypo_ms %>%
+  filter(proclamation ==  "absolute")
+
+#independent t-test
+t.test(ms.value~ order, absolute_ms , var.equal = TRUE)
+t_apa(t.test(ms.value ~ order, absolute_ms , var.equal = TRUE))
+
+#Effect of order in just flexible
+flexible_ms <- hypo_ms %>%
+  filter(proclamation ==  "ambiguous")
+
+#independent t-test
+t.test(ms.value~ order, flexible_ms, var.equal = TRUE)
+t_apa(t.test(ms.value ~ order, flexible_ms, var.equal = TRUE))
+
+
+#Effect of proc in just survey1
+survey1_ms <- hypo_ms  %>%
+  filter(order==  "survey1")
+
+#independent t-test
+t.test(ms.value~ proclamation, survey1_ms, var.equal = TRUE)
+t_apa(t.test(ms.value ~ proclamation, survey1_ms, var.equal = TRUE))
+
+#Effect of proc in just game1
+game1_ms <- hypo_ms  %>%
+  filter(order==  "game1")
+
+#independent t-test
+t.test(ms.value~ proclamation, game1_ms, var.equal = TRUE)
+t_apa(t.test(ms.value ~ proclamation, game1_ms, var.equal = TRUE))
+
+#Alternative ANOVA and tukey post-hoc tests
+ms_model = aov_ez('ID', 'ms.value', hypo_ms,
+                    within = c ('ms.time'),
+                    between = c ('proclamation', 'order'),
+                    anova_table = list(es = 'pes'))
+print(ms_model)
+
+em9 <- emmeans::emmeans(ms_model, pairwise ~ ms.time:proclamation)
+em9$contrasts
+ptmeans <- emmeans(ms_model, ~ ms.time|proclamation)
+print(ptmeans)
+post1 <- emmeans(ms_model, ~ ms.time|proclamation)
+pairs(post1)
+
+em10 <- emmeans::emmeans(ms_model, pairwise ~ order:proclamation)
+em10$contrasts
+pomeans <- emmeans(ms_model, ~ order|proclamation)
+print(pomeans)
+post2 <- emmeans(ms_model, ~ order|proclamation)
+pairs(post2)  
+post3 <- emmeans(ms_model, ~ proclamation|order)
+pairs(post3) 
+```
+
+# Moral Standards - Realism
+
+```{r}
+#Dataframe for Realism - "This person is realistic"
+hypo_ms2 <-melt(s3, 
+                    id.vars=c("condition", "ID", "proclamation", "order"),
+                    #measure command is for the DV
+                    measure.vars=c("moral_standards2","moral_standards2.2"),
+                    variable.name="ms2.time",
+                    value.name="ms2.value"
+)
+
+#ANOVA
+realism.afex <- aov_car(ms2.value ~ proclamation*order*ms2.time + Error(ID/ms2.time), data= hypo_ms2)
+summary(realism.afex)
+anova_apa(realism.afex)
+
+```
+
+# Realism Descriptive Statistics
+
+```{r}
+#Cells
+tapply(hypo_ms2$ms2.value, 
+       list(hypo_ms2$proclamation, hypo_ms2$order, hypo_ms2$ms2.time), 
+       FUN = mean)
+tapply(hypo_ms2$ms2.value, 
+       list(hypo_ms2$proclamation, hypo_ms2$order, hypo_ms2$ms2.time), 
+       FUN = sd)
+tapply(hypo_ms2$ms2.value, 
+       list(hypo_ms2$proclamation, hypo_ms2$order, 
+            hypo_ms2$ms2.time), 
+       FUN = length)
+
+#Across Proclamation and Time
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$proclamation, 
+                                     hypo_ms2$ms2.time),FUN = length)
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$proclamation, 
+                                     hypo_ms2$ms2.time),FUN = mean)
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$proclamation, 
+                                     hypo_ms2$ms2.time),FUN = sd)
+
+#Across Order and Time
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$order, 
+                                     hypo_ms2$ms2.time),FUN = length)
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$order, 
+                                     hypo_ms2$ms2.time), FUN = mean)
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$order, 
+                                     hypo_ms2$ms2.time),FUN = sd)
+
+
+#Across Proclamation and Order
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$proclamation, 
+                                                hypo_ms2 $order),FUN = length)
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$proclamation, 
+                                               hypo_ms2$order),FUN = mean)
+tapply(hypo_ms2$ms2.value, list(hypo_ms2$proclamation, 
+                                               hypo_ms2$order),FUN = sd)
+
+#Across Proclamation
+tapply(hypo_ms2$ms2.value, hypo_ms2$proclamation,FUN = mean)
+tapply(hypo_ms2$ms2.value, hypo_ms2$proclamation,FUN = sd)
+tapply(hypo_ms2$ms2.value, hypo_ms2$proclamation,FUN = length)
+
+#Across Order
+tapply(hypo_ms2$ms2.value, hypo_ms2$order,FUN = mean)
+tapply(hypo_ms2$ms2.value, hypo_ms2$order,FUN = sd)
+tapply(hypo_ms2$ms2.value, hypo_ms2$order,FUN = length)
+
+#Across Time
+tapply(hypo_ms2$ms2.value, hypo_ms2$ms2.time,FUN = mean)
+tapply(hypo_ms2$ms2.value, hypo_ms2$ms2.time,FUN = sd)
+tapply(hypo_ms2$ms2.value, hypo_ms2$ms2.time,FUN = length)
+
+#Overall
+mean(hypo_ms2$ms2.value)
+sd(hypo_ms2$ms2.value)
+length(hypo_ms2$ms2.value)
+```
+
+# Follow-up tests for interactions: Realism
+
+```{r}
+#Proclamation*Time 
+
+#Time 1 vs. 2 on absolute only
+#Paired t-test
+absolute_s3 <- s3 %>%
+  filter(proclamation == "absolute")
+
+t.test(absolute_s3$moral_standards2, absolute_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(absolute_s3$moral_standards2, absolute_s3$moral_standards2.2, paired = TRUE))
+
+#Time 1 vs. 2 on flexible only
+#Paired t-test
+flexible_s3 <- s3 %>%
+  filter(proclamation == "ambiguous")
+
+t.test(flexible_s3$moral_standards2, flexible_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(flexible_s3$moral_standards2, flexible_s3$moral_standards2.2, paired = TRUE))
+
+#Order*Time 
+
+#Time 1 vs. 2 on survey1 only
+#Paired t-test
+survey1_s3 <- s3 %>%
+  filter(order == "survey1")
+
+t.test(survey1_s3$moral_standards2, survey1_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(survey1_s3$moral_standards2, survey1_s3$moral_standards2.2, paired = TRUE))
+
+#Time 1 vs. 2 on game1 only
+#Paired t-test
+game1_s3 <- s3 %>%
+  filter(order == "game1")
+
+t.test(game1_s3$moral_standards2, game1_s3$moral_standards2.2, paired = TRUE)
+t_apa(t.test(game1_s3$moral_standards2, game1_s3$moral_standards2.2, paired = TRUE))
+
+
+#Proclamation*Order 
+
+#Effect of order in just absolute
+absolute_ms2 <- hypo_ms2 %>%
+  filter(proclamation ==  "absolute")
+
+#independent t-test
+t.test(ms2.value ~ order, absolute_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ order, absolute_ms2, var.equal = TRUE))
+
+#Effect of order in just flexible
+flexible_ms2 <- hypo_ms2 %>%
+  filter(proclamation ==  "ambiguous")
+
+#independent t-test
+t.test(ms2.value ~ order, flexible_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ order, flexible_ms2, var.equal = TRUE))
+
+#Effect of proc in just survey1
+survey1_ms2 <- hypo_ms2  %>%
+  filter(order==  "survey1")
+
+#independent t-test
+t.test(ms2.value ~ proclamation, survey1_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ proclamation, survey1_ms2, var.equal = TRUE))
+
+#Effect of proc in just game1
+game1_ms2 <- hypo_ms2 %>%
+  filter(order==  "game1")
+
+#independent t-test
+t.test(ms2.value ~ proclamation, game1_ms2, var.equal = TRUE)
+t_apa(t.test(ms2.value ~ proclamation, game1_ms2, var.equal = TRUE))
+
+
+#Alternative ANOVA and tukey post-hoc tests
+ms2_model = aov_ez('ID', 'ms2.value', hypo_ms2,
+                    within = c ('ms2.time'),
+                    between = c ('proclamation', 'order'),
+                    anova_table = list(es = 'pes'))
+print(ms2_model)
+
+em11 <- emmeans::emmeans(ms2_model, pairwise ~ order:proclamation)
+em11$contrasts
+pomeans <- emmeans(ms2_model, ~ order|proclamation)
+print(pomeans)
+post2 <- emmeans(ms2_model, ~ order|proclamation)
+pairs(post2)  
+post3 <- emmeans(ms2_model, ~ proclamation|order)
+pairs(post3)
+
+em12 <- emmeans::emmeans(ms2_model, pairwise ~ order:proclamation)
+em12$contrasts
+ptmeans <- emmeans(ms2_model, ~ ms2.time|proclamation)
+print(ptmeans)
+post1 <- emmeans(ms2_model, ~ ms2.time|proclamation)
+pairs(post1)
+
+ 
+```
+
+# Guilt Model
+
+```{r}
+#ANOVA (time two only)
+guilt.afex_time <- aov_car(guilt_2.2 ~ proclamation*order + Error(ID), data= s3)
+summary(guilt.afex_time)
+anova_apa(guilt.afex_time)
+```
+
+# Guilt Descriptives 
+
+```{r}
+#Cells
+tapply(s3$guilt_2.2, 
+       list(s3$proclamation, s3$order), 
+       FUN = mean)
+tapply(s3$guilt_2.2, 
+       list(s3$proclamation, s3$order), 
+       FUN = sd)
+tapply(s3$guilt_2.2, 
+       list(s3$proclamation, s3$order), 
+       FUN = length)
+
+#Across Proclamation
+tapply(s3$guilt_2.2, s3$proclamation,FUN = mean)
+tapply(s3$guilt_2.2, s3$proclamation,FUN = sd)
+tapply(s3$guilt_2.2, s3$proclamation,FUN = length)
+
+#Across Order
+tapply(s3$guilt_2.2, s3$order,FUN = mean)
+tapply(s3$guilt_2.2, s3$order,FUN = sd)
+tapply(s3$guilt_2.2, s3$order,FUN = length)
+
+#Overall
+mean(s3$guilt_2.2)
+sd(s3$guilt_2.2)
+length(s3$guilt_2.2)
+
+```
+
+# Trust Game
+
+```{r}
+#Logistic Regression
+model.trust_study5 <- glm(trustbeh ~ proclamation*order, data=s3, family = binomial(link = "logit"))
+summary(model.trust_study5)
+#1 = pass, 0 = keep
+
+#and with no interaction
+model.trust_study5_2 <- glm(trustbeh ~ proclamation + order, data=s3, family = binomial(link = "logit"))
+summary(model.trust_study5_2 )
+
+chisq.test(s3$proclamation, s3$trustbeh)
+table(s3$proclamation,s3$trustbeh)
+
+#percentages who KEEP
+table(s3$proclamation, s3$order, s3$trustbeh)
+
+#absolute survey 1 KEEP - 77, 
+#ambiguous survey 1 KEEP - 83
+#absolute game 1 KEEP - 69
+#aambiguous game 1 KEEP - 81
+```
+
+See Study5_mediation.R Rscript for mediation results.
