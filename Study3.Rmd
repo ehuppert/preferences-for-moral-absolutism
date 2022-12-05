@@ -1,5 +1,5 @@
 ---
-title: "Study 5"
+title: "Study 3"
 author: "Elizabeth Huppert"
 date: "1/14/2020"
 output: pdf_document
@@ -560,7 +560,7 @@ cor.test(flexible_s3$Moral.1_composite5, flexible_s3$Moral.2_composite5 )
 #r = 0.627813
 ```
 
-# Commitment to Honesty Model
+# Future Honesty Model
 
 ```{r}
 #Dataframe for Commitment to Honesty
@@ -579,7 +579,7 @@ summary(honest.afex)
 anova_apa(honest.afex)
 ```
 
-# Commitment to Honesty Descriptives 
+# Future Honesty Descriptives 
 
 ```{r}
 #Cells
@@ -641,7 +641,7 @@ length(hypo_honest5$honest.value)
 
 ```
 
-# Follow-up tests for two*way interactions: Commitment to Honesty
+# Follow-up tests for two*way interactions: Future Honesty
 
 ```{r}
 #Proclamation*Time 
