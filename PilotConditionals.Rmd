@@ -19,6 +19,7 @@ library(here)
 library(tidyverse)
 library(afex)
 library(apa)
+library(psych)
 
 #read in data
 
@@ -361,11 +362,11 @@ t_apa(t.test(Honest_compositeGD ~ condition, sometimes_v_control, var.equal = TR
 ```
 
 # Look at participants own views
+
 ```{r}
 #remove Control/NA (they did not have this Q)
 agree_no_control <- pilot_conditional %>%
   filter(condition != "10")
-
 glimpse(agree_no_control)
 
 #look at agreement by stance
@@ -379,14 +380,22 @@ glimpse(onev7l)
 t.test(agree ~ condition, onev7l, var.equal = TRUE)
 t_apa(t.test(agree ~ condition, onev7l, var.equal = TRUE))
 #no diff
+#1 vs. 9
+onev9 <- agree_no_control %>%
+  filter(condition == "1" | condition  == "9")
+glimpse(onev9)
+t.test(agree ~ condition, onev9, var.equal = TRUE)
+t_apa(t.test(agree ~ condition, onev9, var.equal = TRUE))
+#no diff
 
 #Is never v rarely agreement different?
-# 1 vs. 7
+# 1 vs. 2
 onevtwo <- agree_no_control %>%
   filter(condition == "1" | condition  == "2")
 glimpse(onevtwo)
 t.test(agree ~ condition, onevtwo, var.equal = TRUE)
 t_apa(t.test(agree ~ condition, onevtwo, var.equal = TRUE))
+#no diff
 
 ```
 
