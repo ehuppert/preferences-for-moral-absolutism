@@ -329,6 +329,7 @@ cp_omit_full$trust1[cp_omit_full$lying_stance == "absolute_first"] <- cp_omit_fu
 cp_omit_full$trust1[cp_omit_full$lying_stance == "relative_first"] <-cp_omit_full$flextrust[cp_omit_full$lying_stance == "relative_first"]
 #ttest
 t.test(cp_omit_full$trust1 ~ cp_omit_full$lying_stance, var.equal = TRUE)
+t_apa(t.test(cp_omit_full$trust1 ~ cp_omit_full$lying_stance, var.equal = TRUE))
 
 #Trust 2
 #Make a trust column
@@ -341,6 +342,8 @@ cp_omit_full$trust2[cp_omit_full$lying_stance == "absolute_first"] <- cp_omit_fu
 cp_omit_full$trust2[cp_omit_full$lying_stance == "relative_first"] <-cp_omit_full$flextrust2[cp_omit_full$lying_stance == "relative_first"]
 #ttest
 t.test(cp_omit_full$trust2 ~ cp_omit_full$lying_stance, var.equal = TRUE)
+t_apa(t.test(cp_omit_full$trust2 ~ cp_omit_full$lying_stance, var.equal = TRUE))
+
 
 ```
 
