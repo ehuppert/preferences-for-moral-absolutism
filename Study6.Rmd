@@ -27,7 +27,7 @@ library(psych)
 library(apa)
 library(dplyr)
 
-CP <- read.csv(here("HypocrisyStudy6_public_access_dataset.csv"))
+CP <- read.csv(here("HypocrisyStudy6_public_access_dataset.csv")) #166
                
 ```
 

@@ -32,7 +32,7 @@ library(emmeans)
 
 #read in data
 
-s3 <- read.csv(here("HypocrisyStudy3_cleaned.csv"))
+s3 <- read.csv(here("HypocrisyStudy3_cleaned.csv")) #600
 
 ```
 

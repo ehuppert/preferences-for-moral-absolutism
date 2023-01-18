@@ -28,7 +28,7 @@ library(emmeans)
 
 #read in data
 
-s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv"))
+s5 <- read.csv(here("HypocrisyStudy5_cleaned.csv")) #596
 
 ```
 
