@@ -648,12 +648,15 @@ summary(rv4.glm)
 #Frequencies
 table(s4$pref, s4$proclamation)
 table(s4$rv_f, s4$pref, s4$proclamation)
+
 #0 = verify, 1 = rely
 table(s4$rv_f, s4$pref)
 #note that separate tables 0 = never/rarely , 1 = sometimes; 
 #within tables, 0 = verify, 1 = rely
 #total per cell
 table(s4$pref)
+#easier percentages
+round(proportions(table(s4$pref))*100,0)
 
 #Percentages RELY on never
 #always 0/2 0%

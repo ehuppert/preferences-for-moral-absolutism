@@ -817,6 +817,8 @@ table(s5$pref)
 #sometimes, 26/144 18%
 #rarely, 30/330 9%
 #never, 4/109 4%
+
+
 ```
 
 #Attitudes as a Covariate - pre-registered

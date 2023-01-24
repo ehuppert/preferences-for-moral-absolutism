@@ -185,11 +185,9 @@ anova_apa(hypocrisy5.afex)
 tapply(hypocrisy_df$hypocrisy.value, 
        list(hypocrisy_df$proclamation, hypocrisy_df$order, hypocrisy_df$hypocrisy.time), 
        FUN = mean)
-
 tapply(hypocrisy_df$hypocrisy.value, 
        list(hypocrisy_df$proclamation, hypocrisy_df$order, hypocrisy_df$hypocrisy.time), 
        FUN = sd)
-
 tapply(hypocrisy_df$hypocrisy.value, 
        list(hypocrisy_df$proclamation, hypocrisy_df$order, hypocrisy_df$hypocrisy.time), 
        FUN = length)
@@ -276,6 +274,7 @@ t_apa(t.test(hypocrisy.value ~ order, absolute_hypo , var.equal = TRUE))
 #Effect of order in just flexible
 flexible_hypo <- hypocrisy_df %>%
   filter(proclamation ==  "ambiguous")
+
 
 #independent t-test
 t.test(hypocrisy.value ~ order, flexible_hypo , var.equal = TRUE)
