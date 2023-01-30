@@ -2,6 +2,7 @@
 
 #Load packages
 
+
 library(here)
 library(tidyverse)
 library(lavaan)
@@ -10,6 +11,7 @@ library(lavaan)
 #Read in data
 
 s7 <- read.csv(here("HypocrisyStudySI_1.csv"))
+s7$proclamation <- as.factor(s7$proclamation)
 
 #Model
 

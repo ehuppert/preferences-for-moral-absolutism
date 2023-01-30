@@ -65,10 +65,13 @@ Moral  (Ratings: 1-7)
 6. Trustbeh:
 KEEP or PASS in The Coin Flip Game, (0 = KEEP, 1 = PASS)
 
-# Factorize Subject (ID)
+# Factorize Subject (ID) and Proclamation and behavior
 
 ```{r}
 s7$ID <- as.factor(s7$ID)
+s7$proclamation <- as.factor(s7$proclamation)
+s7$lie.motives <- as.factor(s7$lie.motives)
+s7$trustbeh <- as.factor(s7$trustbeh)
 ```
 
 
