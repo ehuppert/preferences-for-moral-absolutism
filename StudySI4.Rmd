@@ -282,7 +282,7 @@ s10_no_abs2 <- no_advisor_df %>%
   droplevels()
 
 t.test(Moral_composite9  ~ proclamation, s10_no_abs2, var.equal = TRUE)
-t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_abs2, var.equal = TRUE)) # abs v flex significant
+t_apa(t.test(Moral_composite9  ~ proclamation, s10_no_abs2, var.equal = TRUE))
 
 
 #Compare moral ratings of candidate who makes the abs proc to control
