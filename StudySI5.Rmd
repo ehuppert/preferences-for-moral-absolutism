@@ -614,13 +614,14 @@ tapply(moral5_SI_df$m5value, moral5_SI_df$m5.time,FUN = length)
 #US
 US_only <- s11 %>%
   filter(Country == "2")
+#Inda
 India_only <- s11 %>%
   filter(Country == "1")
 
-
+#moral us only
 t.test(SI_moral_composite2 ~ proc, US_only, var.equal = TRUE)
 t_apa(t.test(SI_moral_composite2 ~ proc, US_only, var.equal = TRUE))
-
+#moral india only
 t.test(SI_moral_composite2 ~ proc, India_only, var.equal = TRUE)
 t_apa(t.test(SI_moral_composite2 ~ proc, India_only, var.equal = TRUE))
 
@@ -760,9 +761,12 @@ tapply(honest5_SI_df$honest5value, honest5_SI_df$honest5.time,FUN = length)
 # Committment to Honesty with Country t-tests 
 
 ```{r}
+#use subsetted country df from moral comparisons
+#future honesty us only
 t.test(SI_honest_composite2 ~ proc, US_only, var.equal = TRUE)
 t_apa(t.test(SI_honest_composite2 ~ proc, US_only, var.equal = TRUE))
 
+#future honesty india only
 t.test(SI_honest_composite2 ~ proc, India_only, var.equal = TRUE)
 t_apa(t.test(SI_honest_composite2 ~ proc, India_only, var.equal = TRUE))
 ```

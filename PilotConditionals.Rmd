@@ -155,6 +155,8 @@ Compare conditions 1, 2, 3
 solo_stance_test <- pilot_conditional %>%
   filter(condition == "1" | condition  == "2" | condition  == "3") 
 glimpse(solo_stance_test)
+solo_stance_test$condition <- as.factor(solo_stance_test$condition)
+levels(solo_stance_test$condition)
 
 #Morality
 solo_moral.afex <-aov_car(M_compositeGD ~ 
