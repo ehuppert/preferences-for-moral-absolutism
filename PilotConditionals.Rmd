@@ -70,7 +70,7 @@ pilot_conditional <- mutate(pilot_conditional,
 # Descriptives
 
 ```{r}
-# Morality
+# Future Honesty
 tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition, 
        FUN = mean)
 tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition, 
@@ -79,7 +79,7 @@ tapply(pilot_conditional$Honest_compositeGD, pilot_conditional$condition,
        FUN = length)
 
 
-#Future Honesty
+#Morality
 tapply(pilot_conditional$M_compositeGD, pilot_conditional$condition, 
        FUN = mean)
 tapply(pilot_conditional$M_compositeGD, pilot_conditional$condition, 
